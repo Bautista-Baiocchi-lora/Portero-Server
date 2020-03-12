@@ -9,7 +9,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       host: 'localhost',
       port: 5432,
       database: 'test',
-      entities: ["src/**/*.entity{.ts,.js}"],
+      entities: ['dist/**/*.entity.js'],
     }),],
 })
 export class AppModule {}
