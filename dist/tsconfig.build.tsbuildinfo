@@ -2186,11 +2186,11 @@
         "signature": "803923d508857cdbaf83eecfa3a90b2ea0d8bb21fe771aa1921f3e11a29e576b"
       },
       "../src/admin_panel/admin.panel.module.ts": {
-        "version": "23ef7389631de46a48cdf1ebb23bf7c11d900254c3f01d8c37a7b98ccb9ed539",
+        "version": "9fde51bb3a1c4e14d1dc014d925cc4468d909fcf99eafe284219a011c85d938b",
         "signature": "5f32ac17bc7901be5c6bdf592608d760b8481198dd8fafcca0cb6b47975f232a"
       },
       "../src/app.module.ts": {
-        "version": "db452ee0742ed680a66b4f56790d0890a7a3386d7f324af6f42885f802a74202",
+        "version": "2bab8a48c561d364dc4c0d1e33bcc0677085ebb8b11b4ea12d9b4bb06c7b5104",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
@@ -7043,6 +7043,8 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/admin_panel/admin.panel.service.ts",
         "../src/admin_panel/admin.panel.controller.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../src/admin_panel/barrio.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
