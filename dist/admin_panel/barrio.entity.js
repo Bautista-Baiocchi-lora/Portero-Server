@@ -31,5 +31,5 @@ __decorate([
 Barrio = __decorate([
     typeorm_1.Entity()
 ], Barrio);
-exports.default = Barrio;
+exports.Barrio = Barrio;
 //# sourceMappingURL=barrio.entity.js.map

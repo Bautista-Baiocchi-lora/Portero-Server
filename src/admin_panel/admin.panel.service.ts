@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
-import  Barrio from './barrio.entity';
+import  {Barrio} from './barrio.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { BarrioLogInDTO } from './barrio.login.dto';

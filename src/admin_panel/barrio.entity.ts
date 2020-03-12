@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export default class Barrio{
+export class Barrio{
 
     @PrimaryGeneratedColumn()
     barrio_id: number;

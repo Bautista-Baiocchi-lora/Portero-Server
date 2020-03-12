@@ -17,7 +17,7 @@ AdminPanelModule = __decorate([
     common_1.Module({
         providers: [admin_panel_service_1.AdminPanelService],
         controllers: [admin_panel_controller_1.AdminPanelController],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.default])]
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio])]
     })
 ], AdminPanelModule);
 exports.AdminPanelModule = AdminPanelModule;

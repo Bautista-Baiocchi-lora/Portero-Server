@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AdminPanelController } from './admin.panel.controller';
 import { AdminPanelService } from './admin.panel.service';
-import { Barrio } from './barrio.entity';
+import  {Barrio}  from './barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { AdminPanelModule } from './admin.panel.module';
 

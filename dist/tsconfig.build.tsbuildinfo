@@ -2106,8 +2106,8 @@
         "signature": "26d590f7fc94dc8bd476aab67a6047b39a72b0dcbdb7c5ce1dbd369762d63e4f"
       },
       "../src/admin_panel/barrio.entity.ts": {
-        "version": "777711f8f77eebd08910decc88c85a14334f4b93777fc3a4cdbffe12c9dc5eba",
-        "signature": "890b4550f2a95fdab4fb3e6ea6eaacd641663151497536572444b1aaa9bb27b1"
+        "version": "0dab77aaab70538933e1b8a1d349fe54ea0add02ca01802dc242e47c17962adf",
+        "signature": "146ae7226f5617ea5be05410ffe8c9882ed99e41631c73590233c4ae78fb9e39"
       },
       "../node_modules/@nestjs/typeorm/dist/common/typeorm.decorators.d.ts": {
         "version": "d7c96b1fc407d8fb5e973d594bd93771677bcacc0298f00dae5e642b0a30ad27",
@@ -2178,15 +2178,15 @@
         "signature": "ce230ed9af66ac361f55e28ee292458e223f8bf8b14bfe6b873dbf0d4d3ff812"
       },
       "../src/admin_panel/admin.panel.service.ts": {
-        "version": "192263ba96ecb9e7d786cfb755a71d864a6413246c8512ac49f2cf1fc0bca055",
-        "signature": "e502110e01c5fc6cf82e3c57d4b14d612b7f6a57b0402cb3e2e2c3e093c2ccfe"
+        "version": "061c4a25b05f65a08e21aa9f5ddebc6096f8d6a32aa0ce06491aa8ebec376ad5",
+        "signature": "1c520d708e13a966d9deefc4b305bffb8fa1c0d9ac6924c297cc0302efc6cf70"
       },
       "../src/admin_panel/admin.panel.controller.ts": {
         "version": "5d9b83c3bc5d189d5079384ea5a0a5af1d0f25f4b79d1f762de39bebd49f3f15",
         "signature": "803923d508857cdbaf83eecfa3a90b2ea0d8bb21fe771aa1921f3e11a29e576b"
       },
       "../src/admin_panel/admin.panel.module.ts": {
-        "version": "9fde51bb3a1c4e14d1dc014d925cc4468d909fcf99eafe284219a011c85d938b",
+        "version": "77a3cac563d7d0af72b0e0fbb771c58a8fcd3ed2b528421e084cc43a670143d3",
         "signature": "5f32ac17bc7901be5c6bdf592608d760b8481198dd8fafcca0cb6b47975f232a"
       },
       "../src/app.module.ts": {

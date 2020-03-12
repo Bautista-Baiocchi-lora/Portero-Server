@@ -32,7 +32,7 @@ let AdminPanelService = class AdminPanelService {
 };
 AdminPanelService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_1.InjectRepository(barrio_entity_1.default)),
+    __param(0, typeorm_1.InjectRepository(barrio_entity_1.Barrio)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], AdminPanelService);
 exports.AdminPanelService = AdminPanelService;
