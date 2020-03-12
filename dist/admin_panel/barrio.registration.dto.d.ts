@@ -1,5 +1,4 @@
-export default class Barrio {
-    barrio_id: number;
+export declare class BarrioRegistrationDTO {
     email: string;
     password: string;
     name: string;

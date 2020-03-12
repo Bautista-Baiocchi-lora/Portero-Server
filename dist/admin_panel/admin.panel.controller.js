@@ -14,7 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const admin_panel_service_1 = require("./admin.panel.service");
-const RegisterBarrioDTO_1 = require("./RegisterBarrioDTO");
+const barrio_registration_dto_1 = require("./barrio.registration.dto");
+const barrio_login_dto_1 = require("./barrio.login.dto");
 let AdminPanelController = class AdminPanelController {
     constructor(adminService) {
         this.adminService = adminService;
@@ -22,14 +23,23 @@ let AdminPanelController = class AdminPanelController {
     async register(registerDTO) {
         return await this.adminService.register(registerDTO);
     }
+    async authenticate(logInDTO) {
+        return false;
+    }
 };
 __decorate([
     common_1.Post('register'),
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [RegisterBarrioDTO_1.RegisterBarrioDTO]),
+    __metadata("design:paramtypes", [barrio_registration_dto_1.BarrioRegistrationDTO]),
     __metadata("design:returntype", Promise)
 ], AdminPanelController.prototype, "register", null);
+__decorate([
+    common_1.Post('authenticate'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [barrio_login_dto_1.BarrioLogInDTO]),
+    __metadata("design:returntype", Promise)
+], AdminPanelController.prototype, "authenticate", null);
 AdminPanelController = __decorate([
     common_1.Controller('admin'),
     __metadata("design:paramtypes", [admin_panel_service_1.AdminPanelService])

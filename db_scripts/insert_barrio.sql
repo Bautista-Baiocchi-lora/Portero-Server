@@ -1,20 +1,10 @@
 create or replace function insert_barrio(
-    emailadd text,
-    fname text,
-    pass text
+    new_email text,
+    new_pass text,
+    new_name text
 )
-returns text as $$
-declare id uuid;
-begin 
-    select * 
-    insert into barrio(barrio_id,email,password,name)
-    values (emailadd,fname,lname,rol,pass,current_date,false);
-    
-    if found then
-        id:=uuid_generate_v1();
-        insert into email_confirmation(email,uuid)
-        values (emailadd,id);
-        return id;
-    end if;
-end
+returns void as $$
+    begin 
+        insert into barrio(email, password, name) values (new_email, new_pass, new_name);
+    end
 $$ language plpgsql;
