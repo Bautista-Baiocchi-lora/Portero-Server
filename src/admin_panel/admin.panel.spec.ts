@@ -4,13 +4,14 @@ import { AdminPanelService } from './admin.panel.service';
 import  {Barrio}  from './barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { AdminPanelModule } from './admin.panel.module';
+import { AppModule } from '../app.module';
 
 describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      imports:[AdminPanelModule]
+      imports:[AppModule]
     }).compile();
   });
 

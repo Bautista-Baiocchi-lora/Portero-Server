@@ -19,7 +19,7 @@ AppModule = __decorate([
                 host: 'localhost',
                 port: 5432,
                 database: 'test',
-                entities: ['dist/**/*.entity.js'],
+                entities: [__dirname + '/**/*.entity{.ts,.js}'],
             }),],
     })
 ], AppModule);

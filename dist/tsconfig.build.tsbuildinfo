@@ -2190,7 +2190,7 @@
         "signature": "5f32ac17bc7901be5c6bdf592608d760b8481198dd8fafcca0cb6b47975f232a"
       },
       "../src/app.module.ts": {
-        "version": "37f38ca8fec015ae320f4f70122ee369736ad9455f92d1c5e2b8186af875979c",
+        "version": "a270de49ef4668399e8be8d7db8e36240f7736423da31826e32c54cc3c25cba7",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
