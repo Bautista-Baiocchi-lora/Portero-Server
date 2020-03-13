@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_service_1 = require("./admin.panel.service");
+const barrio_service_1 = require("../barrio/barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
 const barrio_login_dto_1 = require("./barrio.login.dto");
 let AdminPanelController = class AdminPanelController {
@@ -42,7 +42,7 @@ __decorate([
 ], AdminPanelController.prototype, "authenticate", null);
 AdminPanelController = __decorate([
     common_1.Controller('admin'),
-    __metadata("design:paramtypes", [admin_panel_service_1.AdminPanelService])
+    __metadata("design:paramtypes", [barrio_service_1.BarrioService])
 ], AdminPanelController);
 exports.AdminPanelController = AdminPanelController;
 //# sourceMappingURL=admin.panel.controller.js.map

@@ -21,8 +21,8 @@ let BarrioService = class BarrioService {
         this.barrioRepository = barrioRepository;
     }
     async register(registerDTO) {
-        const barrio = { email: registerDTO.email, password: registerDTO.password, name: registerDTO.name };
-        return await this.barrioRepository.createQueryBuilder().insert().into(barrio_entity_1.Barrio).values([{ email: registerDTO.email, password: registerDTO.password, name: registerDTO.name }]).execute();
+        const { email, password, name } = registerDTO;
+        return await this.barrioRepository.createQueryBuilder().insert().into(barrio_entity_1.Barrio).values([{ email, password, name }]).execute();
     }
     async authenticate(logInDTO) {
         return false;
@@ -41,4 +41,4 @@ BarrioService = __decorate([
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], BarrioService);
 exports.BarrioService = BarrioService;
-//# sourceMappingURL=admin.panel.service.js.map
+//# sourceMappingURL=barrio.service.js.map

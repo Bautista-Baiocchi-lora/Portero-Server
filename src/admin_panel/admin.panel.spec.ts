@@ -1,40 +1,39 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AdminPanelController } from './admin.panel.controller';
-import { AdminPanelService } from './admin.panel.service';
-import  {Barrio}  from './barrio.entity';
+import { BarrioService } from '../barrio/barrio.service';
+import  {Barrio}  from '../barrio/barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { AdminPanelModule } from './admin.panel.module';
 import { AppModule } from '../app.module';
 import { async } from 'rxjs/internal/scheduler/async';
 import { Repository, QueryFailedError, InsertResult } from 'typeorm';
 
-describe('AppController', () => {
+describe('Admin Panel', () => {
   let app: TestingModule;
+  let adminController: AdminPanelController;
+  let barrioService: BarrioService;
 
-  beforeAll(async () => {
+  beforeAll( async () => {
     app = await Test.createTestingModule({
       imports:[AppModule]
     }).compile();
-  });
 
-  describe('Register Barrio', () => {
-    it('email and name are unique', async () => {
-      const adminController = app.get<AdminPanelController>(AdminPanelController);
+    adminController = app.get<AdminPanelController>(AdminPanelController);
+    barrioService = app.get<BarrioService>(BarrioService);
+
+    await barrioService.delete(dummyRegistration.email)
+  })
+
+  it('Register Barrio', async () => {
       expect(await adminController.register(dummyRegistration)).toBeDefined()
-    });
   });
 
-  describe('Cant register two barrios with same email', () => {
-    it('duplicate barrio created', async () => {
-      const adminController = app.get<AdminPanelController>(AdminPanelController);
-      const response:QueryFailedError= await adminController.register(dummyRegistration)
-      expect(response.).toBe(QueryFailedError)
-    });
+  it('Cant register barrio with taken email or name', async () => {
+      expect(await adminController.register(dummyRegistration)).toThrowError()
   });
 
   afterAll( async () => {
-    const barrioRepository = app.get<Repository<Barrio>>(Repository);
-    await barrioRepository.createQueryBuilder().delete().from(Barrio).execute()
+    app.close()
   })
 
 });

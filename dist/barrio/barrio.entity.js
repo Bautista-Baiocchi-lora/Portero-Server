@@ -9,16 +9,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const typeorm_1 = require("typeorm");
 const class_validator_1 = require("class-validator");
-class BarrioLogInDTO {
-}
+let Barrio = class Barrio {
+};
 __decorate([
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", Number)
+], Barrio.prototype, "barrio_id", void 0);
+__decorate([
+    typeorm_1.Column(),
     class_validator_1.IsEmail(),
     __metadata("design:type", String)
-], BarrioLogInDTO.prototype, "email", void 0);
+], Barrio.prototype, "email", void 0);
 __decorate([
-    class_validator_1.IsNotEmpty(),
+    typeorm_1.Column(),
     __metadata("design:type", String)
-], BarrioLogInDTO.prototype, "password", void 0);
-exports.BarrioLogInDTO = BarrioLogInDTO;
-//# sourceMappingURL=barrio.login.dto.js.map
+], Barrio.prototype, "password", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Barrio.prototype, "name", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Barrio.prototype, "creation_date", void 0);
+Barrio = __decorate([
+    typeorm_1.Entity()
+], Barrio);
+exports.Barrio = Barrio;
+//# sourceMappingURL=barrio.entity.js.map

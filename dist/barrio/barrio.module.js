@@ -7,15 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_controller_1 = require("./admin.panel.controller");
-const barrio_module_1 = require("../barrio/barrio.module");
-let AdminPanelModule = class AdminPanelModule {
+const barrio_service_1 = require("./barrio.service");
+const barrio_entity_1 = require("./barrio.entity");
+const typeorm_1 = require("@nestjs/typeorm");
+let BarrioModule = class BarrioModule {
 };
-AdminPanelModule = __decorate([
+BarrioModule = __decorate([
     common_1.Module({
-        controllers: [admin_panel_controller_1.AdminPanelController],
-        imports: [barrio_module_1.BarrioModule]
+        providers: [barrio_service_1.BarrioService],
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio])],
+        exports: [barrio_service_1.BarrioService]
     })
-], AdminPanelModule);
-exports.AdminPanelModule = AdminPanelModule;
-//# sourceMappingURL=admin.panel.module.js.map
+], BarrioModule);
+exports.BarrioModule = BarrioModule;
+//# sourceMappingURL=barrio.module.js.map

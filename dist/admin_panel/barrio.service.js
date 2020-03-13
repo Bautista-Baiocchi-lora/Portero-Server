@@ -41,4 +41,4 @@ BarrioService = __decorate([
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], BarrioService);
 exports.BarrioService = BarrioService;
-//# sourceMappingURL=admin.panel.service.js.map
+//# sourceMappingURL=barrio.service.js.map

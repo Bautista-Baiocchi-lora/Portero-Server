@@ -1,13 +1,10 @@
 import { Module } from "@nestjs/common";
-import { AdminPanelService } from "./admin.panel.service";
 import { AdminPanelController } from "./admin.panel.controller";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import {Barrio} from "./barrio.entity";
+import { BarrioModule } from "../barrio/barrio.module";
 
 
 @Module({
-    providers:[AdminPanelService],
     controllers: [AdminPanelController],
-    imports:[TypeOrmModule.forFeature([Barrio])]
+    imports:[BarrioModule]
 })
 export class AdminPanelModule{}

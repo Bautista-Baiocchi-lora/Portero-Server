@@ -1,7 +1,7 @@
-import { BarrioRegistrationDTO } from './barrio.registration.dto';
+import { BarrioRegistrationDTO } from '../admin_panel/barrio.registration.dto';
 import { Barrio } from './barrio.entity';
 import { Repository, InsertResult, DeleteResult } from 'typeorm';
-import { BarrioLogInDTO } from './barrio.login.dto';
+import { BarrioLogInDTO } from '../admin_panel/barrio.login.dto';
 export declare class BarrioService {
     private readonly barrioRepository;
     constructor(barrioRepository: Repository<Barrio>);

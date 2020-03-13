@@ -5,5 +5,6 @@ export class BarrioLogInDTO{
     @IsEmail()
     email: string;
     
+    @IsNotEmpty()
     password:string;
 }

@@ -2177,7 +2177,7 @@
         "version": "26d590f7fc94dc8bd476aab67a6047b39a72b0dcbdb7c5ce1dbd369762d63e4f",
         "signature": "26d590f7fc94dc8bd476aab67a6047b39a72b0dcbdb7c5ce1dbd369762d63e4f"
       },
-      "../src/admin_panel/barrio.entity.ts": {
+      "../src/barrio/barrio.entity.ts": {
         "version": "fdf7365bb9e76a2a90779ecdaa47e32811e595497da4d9a330f7762ced2faee3",
         "signature": "4b6e36caa085253c12545fc20bbd81d2b4770c896332a314e84dfc057cc48035"
       },
@@ -2214,7 +2214,7 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/admin_panel/barrio.login.dto.ts": {
-        "version": "de06ee9ba1cb6649025879b0e79ff2768b8b0d1ed3b1d58734fa02029b2904b2",
+        "version": "da813df99e1a0d2da624a05b8cedae4abfb38d0fd59c9cee0bcda5bc2f36825c",
         "signature": "6f8663046289bcc690ba3447543002b9893d8100ee446253834dc6c8ca57dbba"
       },
       "../node_modules/@types/range-parser/index.d.ts": {
@@ -2249,16 +2249,20 @@
         "version": "32ee3d0d93cb9272207587aab1c4f7f7231f3392980933adeb004308307249f1",
         "signature": "ce230ed9af66ac361f55e28ee292458e223f8bf8b14bfe6b873dbf0d4d3ff812"
       },
-      "../src/admin_panel/admin.panel.service.ts": {
-        "version": "752831e1ebe397f987a71e9572983cdbac174c98c65a8d8f06e7699d8fa8a1e7",
-        "signature": "bd5e404287d646a781435e1c2bccc63df0431919d482a4a9295c28fd467e5ba8"
+      "../src/barrio/barrio.service.ts": {
+        "version": "ac4103a691bbdbf721784323c4e8ce5a233e6d7fc76d67153df6eb9a5665e123",
+        "signature": "5b1d3fc9972355213c553606dae40a7002bf0f45cd6a825725b92872da9a3f38"
       },
       "../src/admin_panel/admin.panel.controller.ts": {
-        "version": "04dd65ea2aa30a06a588817dc9d7b55316e480173fabaacb6ab1962cdbcc34b5",
-        "signature": "70f43ea4f9c53ddf6bdb86d33890e8675e48edefff69db6a795bffdb923758c4"
+        "version": "96dae3d49a355a457639fbb44a47fbd58ca582a0098288751c5924fa99fbb68b",
+        "signature": "73968ab2b6e66c5b416ecfaf3bb4aa53e743504b74913d20a328d2d23dc5866b"
+      },
+      "../src/barrio/barrio.module.ts": {
+        "version": "b4bf8cdbb519874be3ec1fe70278f536144e594fde506e5712ed9af4c404231a",
+        "signature": "f9545d3e42877277bc6a873ed68df6a9794c288d1bd55d164e0293d693b15de5"
       },
       "../src/admin_panel/admin.panel.module.ts": {
-        "version": "77a3cac563d7d0af72b0e0fbb771c58a8fcd3ed2b528421e084cc43a670143d3",
+        "version": "a3d7d0145078cd2bcd1373fb0a0851619623d6ec1130e20036ea000eb3586e65",
         "signature": "5f32ac17bc7901be5c6bdf592608d760b8481198dd8fafcca0cb6b47975f232a"
       },
       "../src/app.module.ts": {
@@ -7091,7 +7095,7 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/admin_panel/barrio.entity.ts": [
+      "../src/barrio/barrio.entity.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -7236,10 +7240,10 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/admin_panel/admin.panel.service.ts": [
+      "../src/barrio/barrio.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/admin_panel/barrio.registration.dto.ts",
-        "../src/admin_panel/barrio.entity.ts",
+        "../src/barrio/barrio.entity.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/admin_panel/barrio.login.dto.ts",
@@ -7251,7 +7255,7 @@
       ],
       "../src/admin_panel/admin.panel.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/admin_panel/admin.panel.service.ts",
+        "../src/barrio/barrio.service.ts",
         "../src/admin_panel/barrio.registration.dto.ts",
         "../src/admin_panel/barrio.login.dto.ts",
         "../node_modules/typeorm/index.d.ts",
@@ -7260,12 +7264,20 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/barrio/barrio.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/barrio/barrio.service.ts",
+        "../src/barrio/barrio.entity.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/admin_panel/admin.panel.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/admin_panel/admin.panel.service.ts",
         "../src/admin_panel/admin.panel.controller.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../src/admin_panel/barrio.entity.ts",
+        "../src/barrio/barrio.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12481,14 +12493,14 @@
       "../src/api/postgrescriptquery.ts": [
         "../node_modules/typeorm/index.d.ts"
       ],
-      "../src/admin_panel/admin.panel.service.ts": [
-        "../src/admin_panel/barrio.registration.dto.ts",
-        "../src/admin_panel/barrio.entity.ts",
+      "../src/barrio/barrio.service.ts": [
         "../node_modules/typeorm/index.d.ts",
+        "../src/barrio/barrio.entity.ts",
+        "../src/admin_panel/barrio.registration.dto.ts",
         "../src/admin_panel/barrio.login.dto.ts"
       ],
       "../src/admin_panel/admin.panel.controller.ts": [
-        "../src/admin_panel/admin.panel.service.ts",
+        "../src/barrio/barrio.service.ts",
         "../src/admin_panel/barrio.registration.dto.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/admin_panel/barrio.login.dto.ts"
@@ -13559,7 +13571,7 @@
       "../node_modules/typeorm/naming-strategy/defaultnamingstrategy.d.ts",
       "../node_modules/typeorm/util/promiseutils.d.ts",
       "../node_modules/typeorm/index.d.ts",
-      "../src/admin_panel/barrio.entity.ts",
+      "../src/barrio/barrio.entity.ts",
       "../node_modules/@nestjs/typeorm/dist/common/typeorm.decorators.d.ts",
       "../node_modules/@nestjs/typeorm/dist/common/typeorm.utils.d.ts",
       "../node_modules/@nestjs/typeorm/dist/common/index.d.ts",
@@ -13577,8 +13589,8 @@
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
       "../src/api/postgrescriptquery.ts",
-      "../src/admin_panel/admin.panel.service.ts",
       "../src/admin_panel/admin.panel.controller.ts",
+      "../src/barrio/barrio.module.ts",
       "../src/admin_panel/admin.panel.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
@@ -13616,6 +13628,7 @@
       "../node_modules/@nestjs/core/services/reflector.service.d.ts",
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
+      "../src/query-failed.exception.filter.ts",
       "../src/main.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
@@ -13646,7 +13659,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/query-failed.exception.filter.ts"
+      "../src/barrio/barrio.service.ts"
     ]
   },
   "version": "3.7.4"

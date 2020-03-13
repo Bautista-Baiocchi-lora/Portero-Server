@@ -1,12 +1,12 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
-import {AdminPanelService} from './admin.panel.service'
+import {BarrioService} from '../barrio/barrio.service'
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { BarrioLogInDTO } from './barrio.login.dto';
-import { InsertResult, QueryFailedError } from 'typeorm';
+import { InsertResult } from 'typeorm';
 
 @Controller('admin')
 export class AdminPanelController {
-  constructor(private readonly adminService: AdminPanelService) {}
+  constructor(private readonly adminService: BarrioService) {}
 
 
   @Post('register')
