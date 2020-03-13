@@ -5,7 +5,7 @@ export class BarrioRegistrationDTO{
     @IsEmail()
     email: string;
 
-    @IsEmpty()
+    @IsNotEmpty()
     password: string;
 
     @IsNotEmpty()

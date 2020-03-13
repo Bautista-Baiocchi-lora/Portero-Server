@@ -3,4 +3,5 @@ export declare class Barrio {
     email: string;
     password: string;
     name: string;
+    creation_date: string;
 }

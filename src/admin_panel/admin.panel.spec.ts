@@ -5,6 +5,8 @@ import  {Barrio}  from './barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { AdminPanelModule } from './admin.panel.module';
 import { AppModule } from '../app.module';
+import { async } from 'rxjs/internal/scheduler/async';
+import { Repository, QueryFailedError, InsertResult } from 'typeorm';
 
 describe('AppController', () => {
   let app: TestingModule;
@@ -16,18 +18,24 @@ describe('AppController', () => {
   });
 
   describe('Register Barrio', () => {
-    it('email and name are unique', () => {
+    it('email and name are unique', async () => {
       const adminController = app.get<AdminPanelController>(AdminPanelController);
-      adminController.register(dummyRegistration).then(response => expect(response).toBe(true))
+      expect(await adminController.register(dummyRegistration)).toBeDefined()
     });
   });
 
-  describe('Duplicate Barrio registration', () => {
-    it('Cant register with a taken name/email', () => {
+  describe('Cant register two barrios with same email', () => {
+    it('duplicate barrio created', async () => {
       const adminController = app.get<AdminPanelController>(AdminPanelController);
-      adminController.register(dummyRegistration).then(response => expect(response).toBe(false))
+      const response:QueryFailedError= await adminController.register(dummyRegistration)
+      expect(response.).toBe(QueryFailedError)
     });
   });
+
+  afterAll( async () => {
+    const barrioRepository = app.get<Repository<Barrio>>(Repository);
+    await barrioRepository.createQueryBuilder().delete().from(Barrio).execute()
+  })
 
 });
 

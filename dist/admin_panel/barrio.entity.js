@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const typeorm_1 = require("typeorm");
+const class_validator_1 = require("class-validator");
 let Barrio = class Barrio {
 };
 __decorate([
@@ -18,6 +19,7 @@ __decorate([
 ], Barrio.prototype, "barrio_id", void 0);
 __decorate([
     typeorm_1.Column(),
+    class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], Barrio.prototype, "email", void 0);
 __decorate([
@@ -28,6 +30,10 @@ __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
 ], Barrio.prototype, "name", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Barrio.prototype, "creation_date", void 0);
 Barrio = __decorate([
     typeorm_1.Entity()
 ], Barrio);

@@ -16,15 +16,13 @@ const common_1 = require("@nestjs/common");
 const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const PostgreScriptQuery_1 = require("../api/PostgreScriptQuery");
 let AdminPanelService = class AdminPanelService {
     constructor(barrioRepository) {
         this.barrioRepository = barrioRepository;
     }
     async register(registerDTO) {
-        return await PostgreScriptQuery_1.default('insert_barrio')
-            .setParameters(registerDTO.email, registerDTO.password, registerDTO.name)
-            .executeForSuccess(this.barrioRepository);
+        const barrio = { email: registerDTO.email, password: registerDTO.password, name: registerDTO.name };
+        return await this.barrioRepository.createQueryBuilder().insert().into(barrio_entity_1.Barrio).values([{ email: registerDTO.email, password: registerDTO.password, name: registerDTO.name }]).execute();
     }
     async authenticate(logInDTO) {
         return false;
