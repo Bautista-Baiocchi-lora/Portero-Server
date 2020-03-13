@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {IsEmail} from 'class-validator'
 
 @Entity()
 export class Barrio{
@@ -7,6 +8,7 @@ export class Barrio{
     barrio_id: number;
 
     @Column()
+    @IsEmail()
     email: string;
 
     @Column()
@@ -14,5 +16,8 @@ export class Barrio{
 
     @Column()
     name: string;
+
+    @Column()
+    creation_date: string;
 
 }
