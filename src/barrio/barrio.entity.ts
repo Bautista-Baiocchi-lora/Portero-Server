@@ -5,7 +5,7 @@ import {IsEmail} from 'class-validator'
 export class Barrio{
 
     @PrimaryGeneratedColumn()
-    barrio_id: number;
+    id: number;
 
     @Column()
     @IsEmail()

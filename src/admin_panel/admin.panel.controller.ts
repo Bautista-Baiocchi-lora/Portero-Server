@@ -1,7 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import {BarrioService} from '../barrio/barrio.service'
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
-import { BarrioLogInDTO } from './barrio.login.dto';
 import { InsertResult } from 'typeorm';
 
 @Controller('admin')
@@ -14,8 +13,4 @@ export class AdminPanelController {
       return await this.adminService.register(registerDTO);
   }
 
-  @Post('authenticate')
-  async authenticate(logInDTO: BarrioLogInDTO): Promise<boolean> {
-    return false
-  }
 }

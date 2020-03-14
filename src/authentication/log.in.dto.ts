@@ -1,6 +1,6 @@
 import { IsEmail, IsNotEmpty } from "class-validator";
 
-export class BarrioLogInDTO{
+export class LogInDTO{
 
     @IsEmail()
     email: string;

@@ -9,33 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
-const class_validator_1 = require("class-validator");
-let Barrio = class Barrio {
+let AuthenticationService = class AuthenticationService {
+    constructor(connection) {
+        this.connection = connection;
+    }
+    async authenticate(logInDTO) {
+        return await this.connection.query(get_password_query(logInDTO));
+    }
 };
-__decorate([
-    typeorm_1.PrimaryGeneratedColumn(),
-    __metadata("design:type", Number)
-], Barrio.prototype, "id", void 0);
-__decorate([
-    typeorm_1.Column(),
-    class_validator_1.IsEmail(),
-    __metadata("design:type", String)
-], Barrio.prototype, "email", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Barrio.prototype, "password", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Barrio.prototype, "name", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], Barrio.prototype, "creation_date", void 0);
-Barrio = __decorate([
-    typeorm_1.Entity()
-], Barrio);
-exports.Barrio = Barrio;
-//# sourceMappingURL=barrio.entity.js.map
+AuthenticationService = __decorate([
+    common_1.Injectable(),
+    __metadata("design:paramtypes", [typeorm_1.Connection])
+], AuthenticationService);
+exports.AuthenticationService = AuthenticationService;
+function get_password_query(logInDTO) {
+    return `SELECT select_account_password('${logInDTO.email}');`;
+}
+//# sourceMappingURL=auth.service.js.map

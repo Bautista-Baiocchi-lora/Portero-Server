@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AdminPanelModule } from './admin_panel/admin.panel.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @Module({
-  imports: [AdminPanelModule,
+  imports: [AdminPanelModule,AuthenticationModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',

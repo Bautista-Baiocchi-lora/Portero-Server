@@ -7,22 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_module_1 = require("./admin_panel/admin.panel.module");
+const authentication_service_1 = require("./authentication.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const authentication_module_1 = require("./authentication/authentication.module");
-let AppModule = class AppModule {
+const authentication_controller_1 = require("./authentication.controller");
+let AuthenticationModule = class AuthenticationModule {
 };
-AppModule = __decorate([
+AuthenticationModule = __decorate([
     common_1.Module({
-        imports: [admin_panel_module_1.AdminPanelModule, authentication_module_1.AuthenticationModule,
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5432,
-                database: 'test',
-                entities: [__dirname + '/**/*.entity{.ts,.js}'],
-            }),],
+        providers: [authentication_service_1.AuthenticationService],
+        controllers: [authentication_controller_1.AuthenticationController],
+        imports: [typeorm_1.TypeOrmModule.forFeature()]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], AuthenticationModule);
+exports.AuthenticationModule = AuthenticationModule;
+//# sourceMappingURL=authentication.module.js.map
