@@ -7,7 +7,7 @@ const secret = "our super secret"
 @Injectable()
 export class JwtService{
 
-    async sign(session:Session):Promise<any>{
+    async sign(session:Session):Promise<string>{
         return await jwt.sign(session, secret);
     }
 

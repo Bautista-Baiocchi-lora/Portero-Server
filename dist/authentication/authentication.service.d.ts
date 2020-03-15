@@ -2,10 +2,12 @@ import { Connection } from "typeorm";
 import { LogInDTO } from "./log.in.dto";
 import Session from "./session";
 import { JwtService } from "./jwt.service";
+import { SessionService } from "./session.service";
 export declare class AuthenticationService {
     private readonly connection;
     private readonly jwtService;
-    constructor(connection: Connection, jwtService: JwtService);
-    authenticate(logInDTO: LogInDTO): Promise<Session | any>;
+    private readonly sessionService;
+    constructor(connection: Connection, jwtService: JwtService, sessionService: SessionService);
+    authenticate(logInDTO: LogInDTO): Promise<string>;
     logOut(session: Session): Promise<void>;
 }

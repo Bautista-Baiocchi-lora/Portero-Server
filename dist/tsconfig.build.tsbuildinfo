@@ -2222,8 +2222,8 @@
         "signature": "63abbb8b56270475cf5d08c91257b571531d0cbedbbab590bd57d91b511bc9a1"
       },
       "../src/authentication/jwt.service.ts": {
-        "version": "3aeb2846b683554369e85e7d9edc310a00dfda8f082dca5436111bdae7c81a11",
-        "signature": "edd199cdcd56b018445d3b3dd42a675b5fbdb4b70da5d9555a1cc4802e0ebae8"
+        "version": "b53c0ce35592fa1ceef2f2f35467c78907491b22d8699a31169a40196804038a",
+        "signature": "b6656a862aa1a4cd7a257780350350ae1e6cdf699ddbf4625cbe658f6e75b315"
       },
       "../src/authentication/session.guard.ts": {
         "version": "07c922717c7dc7baf71f404c942ca715a2c913582d7453a25c39b72da1073b3b",
@@ -2269,16 +2269,20 @@
         "version": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e",
         "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e"
       },
+      "../src/authentication/session.service.ts": {
+        "version": "01d18411cd915ad78bddab9cc74c9014dcb6cadaa245a59dbab4e715901da54c",
+        "signature": "50ef9025dbdca8710c4da3b95fd4b2a4db6194330a68dc6392c23337f524fd76"
+      },
       "../src/authentication/authentication.service.ts": {
-        "version": "98abed2c5d6322279e161b65a06991bba757eb2a7ee25ded8f1e98c41470f06e",
-        "signature": "593eef955ce1025b7fbfd4af774dd55a7eacfbf71090b860ddaa7fdeed23e914"
+        "version": "2cee3a21cf44c99eb6d84705846c25dbcee7164ac668b738d444c62d6443f24a",
+        "signature": "6e903c56028717a5716ce44c35901308e762fb55928db4b03919e5d907ee5e64"
       },
       "../src/authentication/authentication.controller.ts": {
         "version": "d99251d43b0b3728605740acd61095a221e16b6d4ffdd368d20eed2791590284",
         "signature": "c882ba8e15749f74bf9b979c169ca59753777be67d5ea000ba80edd3d29eae16"
       },
       "../src/authentication/authentication.module.ts": {
-        "version": "3a9c74ebf8b05f366ff1f0e53c41d0f585d20f4d50201a4ce46cfc60e6e3a5ef",
+        "version": "f848bfb39805e9b289814c6d25c061572cf101ae49449ce328c1832c600dd78b",
         "signature": "7e103a5d1887cd302e878e710eaa083e006d9f1d041e5c457de53776f8aba54d"
       },
       "../src/admin_panel/admin.panel.module.ts": {
@@ -7326,6 +7330,15 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/authentication/session.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/authentication/session.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/authentication/authentication.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
@@ -7335,6 +7348,7 @@
         "../src/authentication/session.ts",
         "../node_modules/@types/express/index.d.ts",
         "../src/authentication/jwt.service.ts",
+        "../src/authentication/session.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7358,6 +7372,7 @@
         "../src/authentication/authentication.controller.ts",
         "../src/authentication/jwt.service.ts",
         "../src/authentication/session.guard.ts",
+        "../src/authentication/session.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12641,9 +12656,14 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/authentication/session.service.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../src/authentication/session.ts"
+      ],
       "../src/authentication/authentication.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/authentication/jwt.service.ts",
+        "../src/authentication/session.service.ts",
         "../src/authentication/log.in.dto.ts",
         "../src/authentication/session.ts"
       ],
@@ -13775,6 +13795,7 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../src/authentication/authentication.service.ts",
       "../src/authentication/authentication.controller.ts",
       "../src/authentication/authentication.module.ts",
       "../src/admin_panel/admin.panel.module.ts",
@@ -13850,7 +13871,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/authentication/authentication.service.ts"
+      "../src/authentication/session.service.ts"
     ]
   },
   "version": "3.7.4"

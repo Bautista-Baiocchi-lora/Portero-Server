@@ -12,23 +12,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const jwt_service_1 = require("./jwt.service");
+const session_service_1 = require("./session.service");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const session_duration_in_days = 7;
 let AuthenticationService = class AuthenticationService {
-    constructor(connection, jwtService) {
+    constructor(connection, jwtService, sessionService) {
         this.connection = connection;
         this.jwtService = jwtService;
+        this.sessionService = sessionService;
     }
     async authenticate(logInDTO) {
         const response = await this.connection.query(get_password_query(logInDTO));
         const account = parse_select_account_reponse(response);
         const authenticated = await bcrypt.compare(logInDTO.password, account.password);
         if (authenticated) {
-            const response = await this.connection.query(create_session_query(account.id));
-            return this.jwtService.sign(parse_create_session_query(response));
+            const session = await this.sessionService.createSession(account.id);
+            return await this.jwtService.sign(session);
         }
-        return {};
+        return 'Invalid credentials.';
     }
     async logOut(session) {
     }
@@ -36,7 +37,8 @@ let AuthenticationService = class AuthenticationService {
 AuthenticationService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [typeorm_1.Connection,
-        jwt_service_1.JwtService])
+        jwt_service_1.JwtService,
+        session_service_1.SessionService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
 function parse_select_account_reponse(response) {
@@ -45,19 +47,6 @@ function parse_select_account_reponse(response) {
         "id": response[0].split('(')[1],
         "password": response[1].split(')')[0]
     };
-}
-function parse_create_session_query(response) {
-    response = response[0].create_session.replace('(', '').replace(')', '').replace('\"', '').replace('"', '').split(',');
-    const session = {
-        session_id: response[0],
-        account_id: parseInt(response[1]),
-        creation_date: response[2],
-        exp: parseInt(response[3])
-    };
-    return session;
-}
-function create_session_query(account_id) {
-    return `SELECT create_session('${account_id}', '${session_duration_in_days}');`;
 }
 function get_password_query(logInDTO) {
     return `SELECT select_account_password('${logInDTO.email}');`;
