@@ -3,5 +3,6 @@ import { AuthenticationService } from "./authentication.service";
 export declare class AuthenticationController {
     private readonly authService;
     constructor(authService: AuthenticationService);
-    authenticateBarrio(logInDTO: LogInDTO): Promise<boolean>;
+    authenticate(logInDTO: LogInDTO): Promise<any>;
+    logOut(session: any): Promise<void>;
 }

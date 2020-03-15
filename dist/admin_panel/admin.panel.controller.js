@@ -15,12 +15,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const barrio_service_1 = require("../barrio/barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
+const session_guard_1 = require("../authentication/session.guard");
 let AdminPanelController = class AdminPanelController {
     constructor(adminService) {
         this.adminService = adminService;
     }
     async register(registerDTO) {
         return await this.adminService.register(registerDTO);
+    }
+    test() {
+        return true;
     }
 };
 __decorate([
@@ -30,6 +34,13 @@ __decorate([
     __metadata("design:paramtypes", [barrio_registration_dto_1.BarrioRegistrationDTO]),
     __metadata("design:returntype", Promise)
 ], AdminPanelController.prototype, "register", null);
+__decorate([
+    common_1.Get('private'),
+    common_1.UseGuards(session_guard_1.SessionGuard),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Boolean)
+], AdminPanelController.prototype, "test", null);
 AdminPanelController = __decorate([
     common_1.Controller('admin'),
     __metadata("design:paramtypes", [barrio_service_1.BarrioService])

@@ -5,4 +5,5 @@ export declare class AdminPanelController {
     private readonly adminService;
     constructor(adminService: BarrioService);
     register(registerDTO: BarrioRegistrationDTO): Promise<InsertResult>;
+    test(): boolean;
 }

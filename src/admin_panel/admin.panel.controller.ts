@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import {BarrioService} from '../barrio/barrio.service'
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { InsertResult } from 'typeorm';
+import { SessionGuard } from 'src/authentication/session.guard';
 
 @Controller('admin')
 export class AdminPanelController {
@@ -12,5 +13,11 @@ export class AdminPanelController {
   async register(@Body() registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
       return await this.adminService.register(registerDTO);
   }
+
+  @Get('private')
+  @UseGuards(SessionGuard)
+   test(): boolean{
+    return true
+   }
 
 }

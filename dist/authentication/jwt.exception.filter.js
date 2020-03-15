@@ -7,17 +7,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_controller_1 = require("./admin.panel.controller");
-const barrio_module_1 = require("../barrio/barrio.module");
-const jwt_service_1 = require("../authentication/jwt.service");
-const authentication_module_1 = require("../authentication/authentication.module");
-let AdminPanelModule = class AdminPanelModule {
+const jsonwebtoken_1 = require("jsonwebtoken");
+let JwtExceptionFilter = class JwtExceptionFilter {
+    catch(exception, host) {
+        const ctx = host.switchToHttp();
+        const response = ctx.getResponse();
+        response.status(403)
+            .json(exception);
+    }
 };
-AdminPanelModule = __decorate([
-    common_1.Module({
-        controllers: [admin_panel_controller_1.AdminPanelController],
-        imports: [barrio_module_1.BarrioModule, authentication_module_1.AuthenticationModule],
-    })
-], AdminPanelModule);
-exports.AdminPanelModule = AdminPanelModule;
-//# sourceMappingURL=admin.panel.module.js.map
+JwtExceptionFilter = __decorate([
+    common_1.Catch(jsonwebtoken_1.JsonWebTokenError)
+], JwtExceptionFilter);
+exports.JwtExceptionFilter = JwtExceptionFilter;
+//# sourceMappingURL=jwt.exception.filter.js.map

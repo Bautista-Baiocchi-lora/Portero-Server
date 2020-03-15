@@ -7,17 +7,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_controller_1 = require("./admin.panel.controller");
-const barrio_module_1 = require("../barrio/barrio.module");
-const jwt_service_1 = require("../authentication/jwt.service");
-const authentication_module_1 = require("../authentication/authentication.module");
-let AdminPanelModule = class AdminPanelModule {
+const jwt = require('jsonwebtoken');
+const secret = "our super secret";
+let JwtService = class JwtService {
+    async sign(session) {
+        return await jwt.sign(session, secret);
+    }
+    async verify(token) {
+        return await jwt.verify(token, secret);
+    }
+    async decode(token) {
+        return await jwt.decode(token);
+    }
 };
-AdminPanelModule = __decorate([
-    common_1.Module({
-        controllers: [admin_panel_controller_1.AdminPanelController],
-        imports: [barrio_module_1.BarrioModule, authentication_module_1.AuthenticationModule],
-    })
-], AdminPanelModule);
-exports.AdminPanelModule = AdminPanelModule;
-//# sourceMappingURL=admin.panel.module.js.map
+JwtService = __decorate([
+    common_1.Injectable()
+], JwtService);
+exports.JwtService = JwtService;
+//# sourceMappingURL=jwt.service.js.map

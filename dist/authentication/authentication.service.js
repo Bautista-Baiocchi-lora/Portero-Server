@@ -11,11 +11,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
+const jwt_service_1 = require("./jwt.service");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let AuthenticationService = class AuthenticationService {
-    constructor(connection) {
+    constructor(connection, jwtService) {
         this.connection = connection;
+        this.jwtService = jwtService;
     }
     async authenticate(logInDTO) {
         const response = await this.connection.query(get_password_query(logInDTO));
@@ -23,20 +25,23 @@ let AuthenticationService = class AuthenticationService {
         const authenticated = await bcrypt.compare(logInDTO.password, account.password);
         if (authenticated) {
             const response = await this.connection.query(create_session_query(account.id));
-            const session_id = parse_create_session_response(response);
-            return;
+            const session = {
+                session_id: response[0].create_session,
+                account_id: account.id
+            };
+            return this.jwtService.sign(session);
         }
-        return authenticated;
+        return {};
+    }
+    async logOut(session) {
     }
 };
 AuthenticationService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [typeorm_1.Connection])
+    __metadata("design:paramtypes", [typeorm_1.Connection,
+        jwt_service_1.JwtService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
-function parse_create_session_response(response) {
-    return response[0].create_session;
-}
 function parse_select_account_reponse(response) {
     response = response[0].select_account_password.split(',');
     return {
