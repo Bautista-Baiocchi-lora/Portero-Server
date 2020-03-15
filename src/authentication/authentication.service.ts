@@ -10,6 +10,7 @@ import { JwtService } from "./jwt.service";
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
+const session_duration_in_days = 7
 
 @Injectable()
 export class AuthenticationService{
@@ -27,12 +28,7 @@ export class AuthenticationService{
          //user authenticated, now to create their session
          if(authenticated){
             const response = await this.connection.query(create_session_query(account.id))
-
-            const session:Session = {
-                session_id: response[0].create_session,
-                account_id: account.id
-            }
-            return this.jwtService.sign(session);
+            return this.jwtService.sign(parse_create_session_query(response))
          }
          return {}
         }
@@ -50,8 +46,19 @@ function parse_select_account_reponse(response){
     }
 }
 
+function parse_create_session_query(response):Session{
+    response = response[0].create_session.replace('(','').replace(')','').replace('\"','').replace('"','').split(',');
+    const session:Session = {
+        session_id: response[0],
+        account_id: parseInt(response[1]),
+        creation_date: response[2],
+        exp: parseInt(response[3])
+    }
+    return session
+}
+
 function create_session_query(account_id:number): string {
-    return `SELECT create_session('${account_id}');`
+    return `SELECT create_session('${account_id}', '${session_duration_in_days}');`
 }
 
 function get_password_query(logInDTO:LogInDTO): string{

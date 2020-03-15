@@ -1,6 +1,6 @@
 CREATE TABLE public.barrio
 (
-    id  PRIMARY KEY REFERENCES account (id) ON DELETE CASCADE,
+    id integer REFERENCES account (id) ON DELETE CASCADE PRIMARY KEY,
     name text NOT NULL UNIQUE
 )
 TABLESPACE pg_default;

@@ -2218,8 +2218,8 @@
         "signature": "e4230cb3fd411a6f75599f50b910c1176c0d8914e045ce93b1742075a04f797a"
       },
       "../src/authentication/session.ts": {
-        "version": "198b8d32982ae9318d979a1ef83f8bd1bd9449fd865c35c070fb44aa2143e9ec",
-        "signature": "6f72c26f6552e5360666d6b56c80164ee62272c2e8f1954fdaf9c8ed44479e11"
+        "version": "1e5130f36d7ac897b6101ddfdf9be5d2cb7a258318fc4941c76b10b1006d3cdb",
+        "signature": "63abbb8b56270475cf5d08c91257b571531d0cbedbbab590bd57d91b511bc9a1"
       },
       "../src/authentication/jwt.service.ts": {
         "version": "3aeb2846b683554369e85e7d9edc310a00dfda8f082dca5436111bdae7c81a11",
@@ -2270,7 +2270,7 @@
         "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e"
       },
       "../src/authentication/authentication.service.ts": {
-        "version": "fb7c18cd0fec0a760dccf03a0bad1c40838c0c29f5976b7a89a44c2547d58b13",
+        "version": "98abed2c5d6322279e161b65a06991bba757eb2a7ee25ded8f1e98c41470f06e",
         "signature": "593eef955ce1025b7fbfd4af774dd55a7eacfbf71090b860ddaa7fdeed23e914"
       },
       "../src/authentication/authentication.controller.ts": {
@@ -13775,7 +13775,6 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
-      "../src/authentication/authentication.service.ts",
       "../src/authentication/authentication.controller.ts",
       "../src/authentication/authentication.module.ts",
       "../src/admin_panel/admin.panel.module.ts",
@@ -13817,6 +13816,7 @@
       "../node_modules/@nestjs/core/index.d.ts",
       "../src/query-failed.exception.filter.ts",
       "../node_modules/@types/jsonwebtoken/index.d.ts",
+      "../src/authentication/jwt.exception.filter.ts",
       "../src/main.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
@@ -13850,7 +13850,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/authentication/jwt.exception.filter.ts"
+      "../src/authentication/authentication.service.ts"
     ]
   },
   "version": "3.7.4"

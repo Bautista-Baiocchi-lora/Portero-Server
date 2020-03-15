@@ -6,4 +6,8 @@ export default interface Session{
 
     account_id: number;
 
-}
+    creation_date:string;
+
+    exp:number;
+
+} 
