@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import Session from "./session";
+import Session from "./session.entity";
 import { Connection } from "typeorm";
 
 

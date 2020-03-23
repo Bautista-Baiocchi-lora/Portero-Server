@@ -1,4 +1,4 @@
-import Session from "./session";
+import Session from "./session.entity";
 export declare class JwtService {
     sign(session: Session): Promise<string>;
     verify(token: any): Promise<boolean>;

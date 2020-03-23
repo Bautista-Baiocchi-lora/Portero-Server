@@ -1,6 +1,6 @@
 import { Connection } from "typeorm";
 import { LogInDTO } from "./log.in.dto";
-import Session from "./session";
+import Session from "./session.entity";
 import { JwtService } from "./jwt.service";
 import { SessionService } from "./session.service";
 export declare class AuthenticationService {

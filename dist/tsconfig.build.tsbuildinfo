@@ -2217,13 +2217,13 @@
         "version": "ea761fea6ec2716d817b1360e4d7c03ffb6cb0f4b8f967e0f72c23a64d2720e4",
         "signature": "e4230cb3fd411a6f75599f50b910c1176c0d8914e045ce93b1742075a04f797a"
       },
-      "../src/authentication/session.ts": {
-        "version": "1e5130f36d7ac897b6101ddfdf9be5d2cb7a258318fc4941c76b10b1006d3cdb",
-        "signature": "63abbb8b56270475cf5d08c91257b571531d0cbedbbab590bd57d91b511bc9a1"
+      "../src/authentication/session.entity.ts": {
+        "version": "51c6f3b6e8c0b47c76ca0a0c77e689e51b13330f75cfc06977cf26bdc6626cf0",
+        "signature": "a14cefd93787699a09b6f4c831a9d68b2969803bc293ed021b79cf96668bd3a4"
       },
       "../src/authentication/jwt.service.ts": {
-        "version": "b53c0ce35592fa1ceef2f2f35467c78907491b22d8699a31169a40196804038a",
-        "signature": "b6656a862aa1a4cd7a257780350350ae1e6cdf699ddbf4625cbe658f6e75b315"
+        "version": "84859580738ee104ebc71e1eda197be262d3f696a130cebddfac7e7a7d262594",
+        "signature": "7c3146b88287388c2ad635454a3681d13312df4b5d85cdf7ad32d9740507fc96"
       },
       "../src/authentication/session.guard.ts": {
         "version": "07c922717c7dc7baf71f404c942ca715a2c913582d7453a25c39b72da1073b3b",
@@ -2270,12 +2270,12 @@
         "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e"
       },
       "../src/authentication/session.service.ts": {
-        "version": "01d18411cd915ad78bddab9cc74c9014dcb6cadaa245a59dbab4e715901da54c",
-        "signature": "50ef9025dbdca8710c4da3b95fd4b2a4db6194330a68dc6392c23337f524fd76"
+        "version": "015db80b6be5e02f5f2f2f7142d261e9366fb3a87ab37ed94be513d2782dacd8",
+        "signature": "13b5450ac246a815b3d040f23bb1f1063331bef177f9f0e5a5a2a57ce28fc7c9"
       },
       "../src/authentication/authentication.service.ts": {
-        "version": "2cee3a21cf44c99eb6d84705846c25dbcee7164ac668b738d444c62d6443f24a",
-        "signature": "6e903c56028717a5716ce44c35901308e762fb55928db4b03919e5d907ee5e64"
+        "version": "45485191fb974e4978625a8ed79c40482d3ccd732e3604b29c9d6e753c83f430",
+        "signature": "a630020ec6c25c099817f02d2e5a1b3834cd423671a9997edb394ffdbbfbe70e"
       },
       "../src/authentication/authentication.controller.ts": {
         "version": "d99251d43b0b3728605740acd61095a221e16b6d4ffdd368d20eed2791590284",
@@ -7223,8 +7223,9 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/session.ts": [
+      "../src/authentication/session.entity.ts": [
         "../node_modules/class-validator/index.d.ts",
+        "../node_modules/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7232,7 +7233,7 @@
       ],
       "../src/authentication/jwt.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/session.ts",
+        "../src/authentication/session.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7332,7 +7333,7 @@
       ],
       "../src/authentication/session.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/session.ts",
+        "../src/authentication/session.entity.ts",
         "../node_modules/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -7345,7 +7346,7 @@
         "../node_modules/typeorm/index.d.ts",
         "../src/authentication/log.in.dto.ts",
         "../node_modules/@types/node/os.d.ts",
-        "../src/authentication/session.ts",
+        "../src/authentication/session.entity.ts",
         "../node_modules/@types/express/index.d.ts",
         "../src/authentication/jwt.service.ts",
         "../src/authentication/session.service.ts",
@@ -12589,7 +12590,7 @@
         "../src/admin_panel/barrio.registration.dto.ts"
       ],
       "../src/authentication/jwt.service.ts": [
-        "../src/authentication/session.ts"
+        "../src/authentication/session.entity.ts"
       ],
       "../src/authentication/session.guard.ts": [
         "../src/authentication/jwt.service.ts",
@@ -12658,14 +12659,14 @@
       ],
       "../src/authentication/session.service.ts": [
         "../node_modules/typeorm/index.d.ts",
-        "../src/authentication/session.ts"
+        "../src/authentication/session.entity.ts"
       ],
       "../src/authentication/authentication.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/authentication/jwt.service.ts",
         "../src/authentication/session.service.ts",
         "../src/authentication/log.in.dto.ts",
-        "../src/authentication/session.ts"
+        "../src/authentication/session.entity.ts"
       ],
       "../src/authentication/authentication.controller.ts": [
         "../src/authentication/authentication.service.ts",
@@ -13782,10 +13783,6 @@
       "../node_modules/@nestjs/typeorm/dist/index.d.ts",
       "../node_modules/@nestjs/typeorm/index.d.ts",
       "../src/barrio/barrio.service.ts",
-      "../src/authentication/session.ts",
-      "../src/authentication/jwt.service.ts",
-      "../src/authentication/session.guard.ts",
-      "../src/admin_panel/admin.panel.controller.ts",
       "../src/barrio/barrio.module.ts",
       "../src/authentication/log.in.dto.ts",
       "../node_modules/@types/range-parser/index.d.ts",
@@ -13795,11 +13792,6 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
-      "../src/authentication/authentication.service.ts",
-      "../src/authentication/authentication.controller.ts",
-      "../src/authentication/authentication.module.ts",
-      "../src/admin_panel/admin.panel.module.ts",
-      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -13870,8 +13862,7 @@
       "../node_modules/@types/webpack-sources/index.d.ts",
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
-      "../node_modules/@types/yargs/index.d.ts",
-      "../src/authentication/session.service.ts"
+      "../node_modules/@types/yargs/index.d.ts"
     ]
   },
   "version": "3.7.4"

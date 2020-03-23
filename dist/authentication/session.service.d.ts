@@ -1,4 +1,4 @@
-import Session from "./session";
+import Session from "./session.entity";
 import { Connection } from "typeorm";
 export declare class SessionService {
     private readonly connection;
