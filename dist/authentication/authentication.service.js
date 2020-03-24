@@ -37,7 +37,7 @@ let AuthenticationService = class AuthenticationService {
 AuthenticationService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [typeorm_1.Connection,
-        jwt_service_1.JwtService,
+        jwt_service_1.default,
         session_service_1.SessionService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;

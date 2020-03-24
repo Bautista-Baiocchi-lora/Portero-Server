@@ -5,7 +5,7 @@ import { LogInDTO } from "./log.in.dto";
 import { type } from "os";
 import  Session from "./session.entity";
 import { Request, Response } from "express";
-import { JwtService } from "./jwt.service";
+import  JwtService  from "./jwt.service";
 import { SessionService } from "./session.service";
 
 

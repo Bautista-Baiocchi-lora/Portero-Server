@@ -1,5 +1,5 @@
 import { NestMiddleware, Injectable, CanActivate , ExecutionContext} from "@nestjs/common";
-import { JwtService } from "./jwt.service";
+import JwtService  from "./jwt.service";
 
 @Injectable()
 export class SessionGuard implements CanActivate{

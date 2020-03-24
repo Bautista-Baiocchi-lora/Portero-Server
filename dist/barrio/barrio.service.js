@@ -17,12 +17,15 @@ const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const invite_service_1 = require("../invite/invite.service");
+const session_entity_1 = require("../authentication/session.entity");
+const jwt_service_1 = require("../authentication/jwt.service");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let BarrioService = class BarrioService {
-    constructor(barrioRepo, inviteService) {
+    constructor(barrioRepo, inviteService, jwtService) {
         this.barrioRepo = barrioRepo;
         this.inviteService = inviteService;
+        this.jwtService = jwtService;
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
@@ -31,12 +34,17 @@ let BarrioService = class BarrioService {
     async delete(email) {
         return await this.barrioRepo.query(delete_barrio_query(email));
     }
+    async getNewInvite(token) {
+        const session = await this.jwtService.decode(token);
+        return this.inviteService.createBarrioInvite(session.account_id);
+    }
 };
 BarrioService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(barrio_entity_1.Barrio)),
     __metadata("design:paramtypes", [typeorm_2.Repository,
-        invite_service_1.default])
+        invite_service_1.default,
+        jwt_service_1.default])
 ], BarrioService);
 exports.BarrioService = BarrioService;
 function delete_barrio_query(email) {

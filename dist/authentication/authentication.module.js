@@ -16,10 +16,10 @@ let AuthenticationModule = class AuthenticationModule {
 };
 AuthenticationModule = __decorate([
     common_1.Module({
-        providers: [authentication_service_1.AuthenticationService, jwt_service_1.JwtService, session_service_1.SessionService],
+        providers: [authentication_service_1.AuthenticationService, jwt_service_1.default, session_service_1.SessionService],
         controllers: [authentication_controller_1.AuthenticationController],
         imports: [typeorm_1.TypeOrmModule.forFeature()],
-        exports: [jwt_service_1.JwtService]
+        exports: [jwt_service_1.default]
     })
 ], AuthenticationModule);
 exports.AuthenticationModule = AuthenticationModule;

@@ -1,11 +1,11 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, createParamDecorator } from "@nestjs/common";
 import Session from "./session.entity";
 
 const jwt = require('jsonwebtoken');
 const secret = "our super secret"
 
 @Injectable()
-export class JwtService{
+export default class JwtService{
 
     async sign(session:Session):Promise<string>{
         return await jwt.sign(session, secret);
@@ -21,3 +21,10 @@ export class JwtService{
 
 
 }
+
+export const JwtToken = createParamDecorator(
+    (data: unknown, ctx) => {
+         return ctx.headers['authorization']
+    }
+
+)

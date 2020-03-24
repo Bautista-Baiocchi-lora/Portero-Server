@@ -1,8 +1,11 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Header } from '@nestjs/common';
 import {BarrioService} from '../barrio/barrio.service'
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import { InsertResult } from 'typeorm';
 import { SessionGuard } from 'src/authentication/session.guard';
+import { Request } from 'express';
+import Session from 'src/authentication/session.entity';
+import { JwtToken } from 'src/authentication/jwt.service';
 
 @Controller('admin')
 export class AdminPanelController {
@@ -16,8 +19,8 @@ export class AdminPanelController {
 
   @Get('new/invite')
   @UseGuards(SessionGuard)
-   getNewInvite(): boolean{
-    return true
+  async getNewInvite(@JwtToken() token:string): Promise<any>{
+    return await this.barrioService.getNewInvite(token)
    }
 
 }

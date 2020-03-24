@@ -16,6 +16,8 @@ const common_1 = require("@nestjs/common");
 const barrio_service_1 = require("../barrio/barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
 const session_guard_1 = require("../authentication/session.guard");
+const session_entity_1 = require("../authentication/session.entity");
+const jwt_service_1 = require("../authentication/jwt.service");
 let AdminPanelController = class AdminPanelController {
     constructor(barrioService) {
         this.barrioService = barrioService;
@@ -23,8 +25,8 @@ let AdminPanelController = class AdminPanelController {
     async register(registerDTO) {
         return await this.barrioService.register(registerDTO);
     }
-    getNewInvite() {
-        return true;
+    async getNewInvite(token) {
+        return await this.barrioService.getNewInvite(token);
     }
 };
 __decorate([
@@ -37,9 +39,10 @@ __decorate([
 __decorate([
     common_1.Get('new/invite'),
     common_1.UseGuards(session_guard_1.SessionGuard),
+    __param(0, jwt_service_1.JwtToken()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Boolean)
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
 ], AdminPanelController.prototype, "getNewInvite", null);
 AdminPanelController = __decorate([
     common_1.Controller('admin'),

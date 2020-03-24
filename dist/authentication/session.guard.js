@@ -26,7 +26,7 @@ let SessionGuard = class SessionGuard {
 };
 SessionGuard = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [jwt_service_1.JwtService])
+    __metadata("design:paramtypes", [jwt_service_1.default])
 ], SessionGuard);
 exports.SessionGuard = SessionGuard;
 //# sourceMappingURL=session.guard.js.map
