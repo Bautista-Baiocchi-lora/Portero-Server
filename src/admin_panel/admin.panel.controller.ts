@@ -6,17 +6,17 @@ import { SessionGuard } from 'src/authentication/session.guard';
 
 @Controller('admin')
 export class AdminPanelController {
-  constructor(private readonly adminService: BarrioService) {}
+  constructor(private readonly barrioService: BarrioService) {}
 
 
   @Post('register')
   async register(@Body() registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
-      return await this.adminService.register(registerDTO);
+      return await this.barrioService.register(registerDTO);
   }
 
-  @Get('private')
+  @Get('new/invite')
   @UseGuards(SessionGuard)
-   test(): boolean{
+   getNewInvite(): boolean{
     return true
    }
 

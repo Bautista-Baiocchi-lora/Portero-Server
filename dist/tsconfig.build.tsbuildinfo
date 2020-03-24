@@ -2230,8 +2230,8 @@
         "signature": "98e117563aeb77689d62b40a7c6ccb53792a041cab3423d94fd7fce35e439806"
       },
       "../src/admin_panel/admin.panel.controller.ts": {
-        "version": "c12efa4aa27f0ab9ad3aa66df96f2d892a62b4f869bd73f23517ce62b12abb56",
-        "signature": "1b26bc435f6d96b5a6a3dbaef1dc0fb90ff5e9cf870f4fa1e8f1e61dfa07ca1b"
+        "version": "11599f6e44563797cdbc854dac0f19ddd820249238329a61440e3e544bf1497a",
+        "signature": "484af2c01ebefea6b89fdcc06286c527d48abf5bb95e88db5195cbe977bd249d"
       },
       "../src/barrio/barrio.module.ts": {
         "version": "b4bf8cdbb519874be3ec1fe70278f536144e594fde506e5712ed9af4c404231a",
@@ -13783,6 +13783,9 @@
       "../node_modules/@nestjs/typeorm/dist/index.d.ts",
       "../node_modules/@nestjs/typeorm/index.d.ts",
       "../src/barrio/barrio.service.ts",
+      "../src/authentication/session.entity.ts",
+      "../src/authentication/jwt.service.ts",
+      "../src/authentication/session.guard.ts",
       "../src/barrio/barrio.module.ts",
       "../src/authentication/log.in.dto.ts",
       "../node_modules/@types/range-parser/index.d.ts",
@@ -13792,6 +13795,11 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../src/authentication/session.service.ts",
+      "../src/authentication/authentication.service.ts",
+      "../src/authentication/authentication.controller.ts",
+      "../src/authentication/authentication.module.ts",
+      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -13862,7 +13870,9 @@
       "../node_modules/@types/webpack-sources/index.d.ts",
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
-      "../node_modules/@types/yargs/index.d.ts"
+      "../node_modules/@types/yargs/index.d.ts",
+      "../src/admin_panel/admin.panel.controller.ts",
+      "../src/admin_panel/admin.panel.module.ts"
     ]
   },
   "version": "3.7.4"
