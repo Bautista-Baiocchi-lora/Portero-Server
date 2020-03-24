@@ -2269,9 +2269,9 @@
         "version": "f9cc20496cc14a3da99e6c821c1867b171d39d2a1c304079a31349c39c72ed65",
         "signature": "32a9255f00e182fee118a4156e66734e5cdc576246735c295125153efdbe1ab5"
       },
-      "../src/invite/invite.module.ts": {
-        "version": "2d7bd44dbf44b8c0ad54c63a884b30a3917bab213a985f17c2b30ea7f8d190ed",
-        "signature": "639633d6f7f9f40f41e53f61bc7cc4c76c801171979f97af0a0f56fbcd24d33d"
+      "../src/invite/invite.controller.ts": {
+        "version": "ab43819d1ceaa039cce94ecf91cb92b387e314e01bb370e77b3ee25506c53423",
+        "signature": "d9aee5d099e567a70d953f2f08abf0520fa6e664c9e75985f899e7da04ec1110"
       },
       "../src/authentication/log.in.dto.ts": {
         "version": "07cfa73c9ccb2cf1937cd043c6fdf7251cb1cc394f11adeefbed81cb606820c6",
@@ -2292,6 +2292,10 @@
       "../src/authentication/authentication.module.ts": {
         "version": "7f1b6c5a46f15b3b44941e0fafb19f375beaa5be37845f1186c165eb27af3a26",
         "signature": "7e103a5d1887cd302e878e710eaa083e006d9f1d041e5c457de53776f8aba54d"
+      },
+      "../src/invite/invite.module.ts": {
+        "version": "e596e7e2219c1e04f617ff8b5127bf08d332b7b0ccbc607db163bed520af6861",
+        "signature": "639633d6f7f9f40f41e53f61bc7cc4c76c801171979f97af0a0f56fbcd24d33d"
       },
       "../src/barrio/barrio.module.ts": {
         "version": "f7421ed56f65aa509a7cc58fcbcb0717a508547c8084a17a4b836d3fd7435d62",
@@ -7350,11 +7354,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/invite/invite.module.ts": [
-        "../src/invite/barrio.invite.entity.ts",
+      "../src/invite/invite.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../src/invite/invite.service.ts",
+        "../src/authentication/session.guard.ts",
+        "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7410,6 +7413,18 @@
         "../src/authentication/jwt.service.ts",
         "../src/authentication/session.guard.ts",
         "../src/authentication/session.service.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/invite/invite.module.ts": [
+        "../src/invite/barrio.invite.entity.ts",
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../src/invite/invite.service.ts",
+        "../src/invite/invite.controller.ts",
+        "../src/authentication/authentication.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -13840,6 +13855,7 @@
       "../src/invite/invite.service.ts",
       "../src/authentication/session.entity.ts",
       "../src/authentication/jwt.service.ts",
+      "../src/barrio/barrio.service.ts",
       "../src/authentication/session.guard.ts",
       "../node_modules/@types/range-parser/index.d.ts",
       "../node_modules/@types/express-serve-static-core/index.d.ts",
@@ -13849,12 +13865,12 @@
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
       "../src/admin_panel/admin.panel.controller.ts",
-      "../src/invite/invite.module.ts",
       "../src/authentication/log.in.dto.ts",
       "../src/authentication/session.service.ts",
       "../src/authentication/authentication.service.ts",
       "../src/authentication/authentication.controller.ts",
       "../src/authentication/authentication.module.ts",
+      "../src/invite/invite.module.ts",
       "../src/barrio/barrio.module.ts",
       "../src/admin_panel/admin.panel.module.ts",
       "../src/app.module.ts",
@@ -13929,7 +13945,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/barrio/barrio.service.ts"
+      "../src/invite/invite.controller.ts"
     ]
   },
   "version": "3.7.4"
