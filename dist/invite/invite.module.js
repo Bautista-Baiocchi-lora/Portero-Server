@@ -6,19 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const barrio_invite_entity_1 = require("./barrio.invite.entity");
 const common_1 = require("@nestjs/common");
-const barrio_service_1 = require("./barrio.service");
-const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
-const invite_module_1 = require("../invite/invite.module");
-let BarrioModule = class BarrioModule {
+const invite_service_1 = require("./invite.service");
+let InviteModule = class InviteModule {
 };
-BarrioModule = __decorate([
+InviteModule = __decorate([
     common_1.Module({
-        providers: [barrio_service_1.BarrioService],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio]), invite_module_1.InviteModule],
-        exports: [barrio_service_1.BarrioService]
+        providers: [invite_service_1.default],
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_invite_entity_1.default])],
+        exports: [invite_service_1.default]
     })
-], BarrioModule);
-exports.BarrioModule = BarrioModule;
-//# sourceMappingURL=barrio.module.js.map
+], InviteModule);
+exports.InviteModule = InviteModule;
+//# sourceMappingURL=invite.module.js.map

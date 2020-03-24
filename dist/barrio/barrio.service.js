@@ -16,24 +16,27 @@ const common_1 = require("@nestjs/common");
 const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
+const invite_service_1 = require("../invite/invite.service");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let BarrioService = class BarrioService {
-    constructor(barrioRepository) {
-        this.barrioRepository = barrioRepository;
+    constructor(barrioRepo, inviteService) {
+        this.barrioRepo = barrioRepo;
+        this.inviteService = inviteService;
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.barrioRepository.query(insert_barrio_query(registerDTO));
+        return await this.barrioRepo.query(insert_barrio_query(registerDTO));
     }
     async delete(email) {
-        return await this.barrioRepository.query(delete_barrio_query(email));
+        return await this.barrioRepo.query(delete_barrio_query(email));
     }
 };
 BarrioService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_1.InjectRepository(barrio_entity_1.Barrio)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        invite_service_1.default])
 ], BarrioService);
 exports.BarrioService = BarrioService;
 function delete_barrio_query(email) {

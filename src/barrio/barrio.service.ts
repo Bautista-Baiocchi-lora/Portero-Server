@@ -3,6 +3,7 @@ import { BarrioRegistrationDTO } from '../admin_panel/barrio.registration.dto';
 import  {Barrio} from './barrio.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
+import InviteService from 'src/invite/invite.service';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -10,15 +11,16 @@ const saltRounds = 10;
 @Injectable()
 export class BarrioService {
 
-  constructor(@InjectRepository(Barrio) private readonly barrioRepository: Repository<Barrio>){}
+  constructor(@InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
+    private readonly inviteService: InviteService){}
 
   async register(registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
     registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds)
-    return await this.barrioRepository.query(insert_barrio_query(registerDTO))
+    return await this.barrioRepo.query(insert_barrio_query(registerDTO))
   }
 
   async delete(email: string): Promise<DeleteResult>{
-    return await this.barrioRepository.query(delete_barrio_query(email))
+    return await this.barrioRepo.query(delete_barrio_query(email))
   }
 
 }
