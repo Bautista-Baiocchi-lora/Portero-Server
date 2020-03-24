@@ -2214,8 +2214,8 @@
         "signature": "8f1241f5d9f0d3d72117768b3c974e462840fbd85026fb66685078945404cf2f"
       },
       "../src/invite/barrio.invite.entity.ts": {
-        "version": "5914b1b061f8f612c23f844fd234c5d08ef060036b7be382f7c9a7c243e18e9e",
-        "signature": "6aebdd1f5fcbe10990e96f2ac124613f1ca291aff871ecaddc42e78fd8b959c4"
+        "version": "323e26c675baaaf2c6bffcd432c2e81578adc47a2f36f321b502ea1942405eef",
+        "signature": "08866b97ccc3875ab350b1f45ab5b9d230adab294e5b7b28b4464c5802f7dff9"
       },
       "../src/invite/invite.service.ts": {
         "version": "13ad15d5eab26dc613c8932629510d3791d413d21bd53ce37a9a1e578f145c9b",
@@ -2294,7 +2294,7 @@
         "signature": "7e103a5d1887cd302e878e710eaa083e006d9f1d041e5c457de53776f8aba54d"
       },
       "../src/invite/invite.module.ts": {
-        "version": "e596e7e2219c1e04f617ff8b5127bf08d332b7b0ccbc607db163bed520af6861",
+        "version": "2a68b86ed1bad9e0387f3faa1c17a969f5df7485ba11f6de776387cf7afd894e",
         "signature": "639633d6f7f9f40f41e53f61bc7cc4c76c801171979f97af0a0f56fbcd24d33d"
       },
       "../src/barrio/barrio.module.ts": {
@@ -13851,6 +13851,7 @@
       "../node_modules/@nestjs/typeorm/dist/typeorm.module.d.ts",
       "../node_modules/@nestjs/typeorm/dist/index.d.ts",
       "../node_modules/@nestjs/typeorm/index.d.ts",
+      "../src/invite/invite.service.ts",
       "../src/authentication/session.entity.ts",
       "../src/authentication/jwt.service.ts",
       "../src/authentication/session.guard.ts",
@@ -13861,6 +13862,7 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../src/admin_panel/admin.panel.controller.ts",
       "../src/invite/invite.controller.ts",
       "../src/authentication/log.in.dto.ts",
       "../src/authentication/session.service.ts",
@@ -13939,13 +13941,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/invite/barrio.invite.entity.ts",
-      "../src/invite/invite.module.ts",
-      "../src/invite/invite.service.ts",
-      "../src/barrio/barrio.service.ts",
-      "../src/admin_panel/admin.panel.controller.ts",
-      "../src/barrio/barrio.module.ts",
-      "../src/admin_panel/admin.panel.module.ts"
+      "../src/invite/barrio.invite.entity.ts"
     ]
   },
   "version": "3.7.4"

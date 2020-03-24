@@ -25,6 +25,11 @@ __decorate([
 ], BarrioInvite.prototype, "barrio_id", void 0);
 __decorate([
     typeorm_1.Column(),
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], BarrioInvite.prototype, "account_id", void 0);
+__decorate([
+    typeorm_1.Column(),
     class_validator_1.IsDateString(),
     __metadata("design:type", String)
 ], BarrioInvite.prototype, "creation_date", void 0);
