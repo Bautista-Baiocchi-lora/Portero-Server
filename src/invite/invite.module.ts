@@ -15,4 +15,4 @@ import { AuthenticationModule } from "src/authentication/authentication.module";
 export class InviteModule{
 
 
-}
+} 
