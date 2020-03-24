@@ -2,7 +2,6 @@ CREATE TABLE public.barrio_invite
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
     barrio_id integer REFERENCES account (id) ON DELETE CASCADE,
-    claimed integer REFERENCES account(id), 
     creation_date timestamp without time zone default current_timestamp,
     exp timestamp without time zone not null
 )

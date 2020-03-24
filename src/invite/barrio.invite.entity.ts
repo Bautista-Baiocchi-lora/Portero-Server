@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { IsUUID, IsDateString, IsNumber } from "class-validator";
+import { IsUUID, IsDateString } from "class-validator";
 
 @Entity()
 export default class BarrioInvite{
@@ -11,10 +11,6 @@ export default class BarrioInvite{
     @Column()
     @IsUUID()
     barrio_id:string;
-
-    @Column()
-    @IsNumber()
-    account_id: number;
 
     @Column()
     @IsDateString()
