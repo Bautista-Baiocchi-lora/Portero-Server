@@ -3,5 +3,6 @@ import { Connection } from "typeorm";
 export declare class SessionService {
     private readonly connection;
     constructor(connection: Connection);
-    createSession(account_id: number): Promise<Session>;
+    create(account_id: number): Promise<Session>;
+    verify(session_id: string): Promise<boolean>;
 }

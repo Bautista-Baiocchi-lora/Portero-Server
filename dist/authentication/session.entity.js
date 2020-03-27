@@ -17,7 +17,7 @@ __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     class_validator_1.IsUUID(),
     __metadata("design:type", String)
-], Session.prototype, "session_id", void 0);
+], Session.prototype, "id", void 0);
 __decorate([
     typeorm_1.Column(),
     class_validator_1.IsString(),

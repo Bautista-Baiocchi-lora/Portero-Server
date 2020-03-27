@@ -24,7 +24,7 @@ JwtService = __decorate([
     common_1.Injectable()
 ], JwtService);
 exports.default = JwtService;
-exports.JwtToken = common_1.createParamDecorator((data, ctx) => {
+exports.JWT = common_1.createParamDecorator((data, ctx) => {
     return ctx.headers['authorization'];
 });
 //# sourceMappingURL=jwt.service.js.map

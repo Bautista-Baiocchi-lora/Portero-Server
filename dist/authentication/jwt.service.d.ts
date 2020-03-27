@@ -4,4 +4,4 @@ export default class JwtService {
     verify(token: any): Promise<boolean>;
     decode(token: any): Promise<Session>;
 }
-export declare const JwtToken: (...dataOrPipes: any[]) => ParameterDecorator;
+export declare const JWT: (...dataOrPipes: any[]) => ParameterDecorator;

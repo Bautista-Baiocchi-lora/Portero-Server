@@ -32,6 +32,6 @@ InviteService = __decorate([
 ], InviteService);
 exports.default = InviteService;
 function create_barrio_invite_query(barrio_id) {
-    return `SELECT create_barrio_invite('${barrio_id}', '${mins_till_exp}');`;
+    return `SELECT create_barrio_invite('${barrio_id}');`;
 }
 //# sourceMappingURL=invite.service.js.map

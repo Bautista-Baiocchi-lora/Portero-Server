@@ -6,7 +6,7 @@ export default class Session{
  
     @PrimaryGeneratedColumn()
     @IsUUID()
-    session_id: string;
+    id: string;
 
     @Column()
     @IsString()

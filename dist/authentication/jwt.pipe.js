@@ -7,16 +7,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_controller_1 = require("./admin.panel.controller");
-const barrio_module_1 = require("../barrio/barrio.module");
-const authentication_module_1 = require("../authentication/authentication.module");
-let AdminPanelModule = class AdminPanelModule {
+let JwtValidationPipe = class JwtValidationPipe {
+    transform(value, metadata) {
+        return value;
+    }
 };
-AdminPanelModule = __decorate([
-    common_1.Module({
-        controllers: [admin_panel_controller_1.AdminPanelController],
-        imports: [barrio_module_1.BarrioModule, authentication_module_1.AuthenticationModule],
-    })
-], AdminPanelModule);
-exports.AdminPanelModule = AdminPanelModule;
-//# sourceMappingURL=admin.panel.module.js.map
+JwtValidationPipe = __decorate([
+    common_1.Injectable()
+], JwtValidationPipe);
+exports.JwtValidationPipe = JwtValidationPipe;
+//# sourceMappingURL=jwt.pipe.js.map

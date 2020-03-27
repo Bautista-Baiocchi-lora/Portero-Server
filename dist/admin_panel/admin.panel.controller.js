@@ -17,7 +17,8 @@ const barrio_service_1 = require("../barrio/barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
 const session_guard_1 = require("../authentication/session.guard");
 const session_entity_1 = require("../authentication/session.entity");
-const jwt_service_1 = require("../authentication/jwt.service");
+const jwt_validation_pipe_1 = require("../authentication/jwt.validation.pipe");
+const authentication_module_1 = require("../authentication/authentication.module");
 let AdminPanelController = class AdminPanelController {
     constructor(barrioService) {
         this.barrioService = barrioService;
@@ -25,8 +26,8 @@ let AdminPanelController = class AdminPanelController {
     async register(registerDTO) {
         return await this.barrioService.register(registerDTO);
     }
-    async getNewInvite(token) {
-        return await this.barrioService.getNewInvite(token);
+    async getNewInvite(session) {
+        return await this.barrioService.getNewInvite(session);
     }
 };
 __decorate([
@@ -39,9 +40,10 @@ __decorate([
 __decorate([
     common_1.Get('new/invite'),
     common_1.UseGuards(session_guard_1.SessionGuard),
-    __param(0, jwt_service_1.JwtToken()),
+    common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
+    __param(0, authentication_module_1.UserSession()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [session_entity_1.default]),
     __metadata("design:returntype", Promise)
 ], AdminPanelController.prototype, "getNewInvite", null);
 AdminPanelController = __decorate([
