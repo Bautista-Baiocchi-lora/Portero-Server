@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
 import Session from 'src/authentication/session.entity';
-import JwtService from 'src/authentication/jwt.service';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -14,8 +13,7 @@ const saltRounds = 10;
 export class BarrioService {
 
   constructor(@InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
-    private readonly inviteService: InviteService,
-    private readonly jwtService:JwtService){}
+    private readonly inviteService: InviteService){}
 
   async register(registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
     registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds)
@@ -26,8 +24,7 @@ export class BarrioService {
     return await this.barrioRepo.query(delete_barrio_query(email))
   }
 
-  async getNewInvite(token:string): Promise<string>{
-    const session:Session = await this.jwtService.decode(token)
+  async getNewInvite(session:Session): Promise<string>{
     return this.inviteService.createBarrioInvite(session.account_id)
   }
 

@@ -1,18 +1,22 @@
-import { Module } from "@nestjs/common";
+import { Module, createParamDecorator } from "@nestjs/common";
 import { AuthenticationService } from "./authentication.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AuthenticationController } from "./authentication.controller";
-import  JwtService  from "./jwt.service";
-import { SessionGuard } from "./session.guard";
 import { SessionService } from "./session.service";
 
 
 @Module({
-    providers: [AuthenticationService, JwtService, SessionService],
+    providers: [AuthenticationService, SessionService],
     controllers: [AuthenticationController],
     imports:[TypeOrmModule.forFeature()],
-    exports:[JwtService]
+    exports:[AuthenticationService]
 })
 export class AuthenticationModule{
 
 }
+
+export const UserSession = createParamDecorator(
+    (data: unknown, ctx) => {
+         return ctx.headers['authorization']
+    }
+)

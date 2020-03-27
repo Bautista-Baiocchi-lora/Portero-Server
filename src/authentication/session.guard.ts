@@ -1,11 +1,12 @@
 import { NestMiddleware, Injectable, CanActivate , ExecutionContext} from "@nestjs/common";
-import JwtService  from "./jwt.service";
+import { SessionService } from "./session.service";
+import { AuthenticationService } from "./authentication.service";
+import Session from "./session.entity";
 
 @Injectable()
 export class SessionGuard implements CanActivate{
 
-
-    constructor(private readonly jwtService:JwtService){}
+    constructor(private readonly authService:AuthenticationService){}
 
 
     async canActivate(context: ExecutionContext): Promise<boolean>{
@@ -13,9 +14,13 @@ export class SessionGuard implements CanActivate{
 
         const hasAuthHeader:boolean = Object.keys(headers).includes('authorization')
         if(hasAuthHeader){
-            return await this.jwtService.verify(headers.authorization);
+            const jwt = headers.authorization;
+            const validToken:boolean = await this.authService.verifyJWT(jwt)
+            if(validToken){
+                const session:Session = await this.authService.decodeJWT(jwt)
+                return await this.authService.verifySession(session)
+            }
         }
-
         return false
     }
 

@@ -16,9 +16,13 @@ let SessionService = class SessionService {
     constructor(connection) {
         this.connection = connection;
     }
-    async createSession(account_id) {
-        const response = await this.connection.query(create_session_query(account_id));
-        return parse_create_session_query(response);
+    async create(account_id) {
+        return await this.connection.query(create_session_query(account_id))
+            .then(parse_create_session_query);
+    }
+    async verify(session_id) {
+        return await this.connection.query(create_session_exists_query(session_id))
+            .then(parse_session_exists_query);
     }
 };
 SessionService = __decorate([
@@ -26,10 +30,16 @@ SessionService = __decorate([
     __metadata("design:paramtypes", [typeorm_1.Connection])
 ], SessionService);
 exports.SessionService = SessionService;
+function create_session_exists_query(session_id) {
+    return `SELECT exists(select 1 from account_session where id='${session_id}');`;
+}
+function parse_session_exists_query(response) {
+    return response[0].exists;
+}
 function parse_create_session_query(response) {
     response = response[0].create_session.replace('(', '').replace(')', '').replace('\"', '').replace('"', '').split(',');
     const session = {
-        session_id: response[0],
+        id: response[0],
         account_id: parseInt(response[1]),
         creation_date: response[2],
         exp: parseInt(response[3])

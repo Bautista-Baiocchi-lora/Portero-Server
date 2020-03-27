@@ -18,5 +18,5 @@ export default class InviteService{
 } 
 
 function create_barrio_invite_query(barrio_id:number): string{
-    return `SELECT create_barrio_invite('${barrio_id}', '${mins_till_exp}');`
+    return `SELECT create_barrio_invite('${barrio_id}');`
 }

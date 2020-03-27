@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext } from "@nestjs/common";
-import JwtService from "./jwt.service";
+import { AuthenticationService } from "./authentication.service";
 export declare class SessionGuard implements CanActivate {
-    private readonly jwtService;
-    constructor(jwtService: JwtService);
+    private readonly authService;
+    constructor(authService: AuthenticationService);
     canActivate(context: ExecutionContext): Promise<boolean>;
 }

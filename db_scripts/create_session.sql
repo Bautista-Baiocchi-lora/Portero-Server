@@ -9,7 +9,7 @@ declare
     begin 
         insert into account_session(account_id, exp) values (account_idf, exp_date)
         on conflict(account_id) do update set creation_date = current_timestamp, exp = exp_date
-        returning session_id, account_id, creation_date, extract(epoch from exp) INTO new_session;
+        returning id, account_id, creation_date, extract(epoch from exp) INTO new_session;
         return new_session;
     end
 $$ language plpgsql;

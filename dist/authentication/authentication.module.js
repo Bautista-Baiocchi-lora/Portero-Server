@@ -10,17 +10,19 @@ const common_1 = require("@nestjs/common");
 const authentication_service_1 = require("./authentication.service");
 const typeorm_1 = require("@nestjs/typeorm");
 const authentication_controller_1 = require("./authentication.controller");
-const jwt_service_1 = require("./jwt.service");
 const session_service_1 = require("./session.service");
 let AuthenticationModule = class AuthenticationModule {
 };
 AuthenticationModule = __decorate([
     common_1.Module({
-        providers: [authentication_service_1.AuthenticationService, jwt_service_1.default, session_service_1.SessionService],
+        providers: [authentication_service_1.AuthenticationService, session_service_1.SessionService],
         controllers: [authentication_controller_1.AuthenticationController],
         imports: [typeorm_1.TypeOrmModule.forFeature()],
-        exports: [jwt_service_1.default]
+        exports: [authentication_service_1.AuthenticationService]
     })
 ], AuthenticationModule);
 exports.AuthenticationModule = AuthenticationModule;
+exports.UserSession = common_1.createParamDecorator((data, ctx) => {
+    return ctx.headers['authorization'];
+});
 //# sourceMappingURL=authentication.module.js.map
