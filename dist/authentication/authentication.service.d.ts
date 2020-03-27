@@ -7,7 +7,6 @@ export declare class AuthenticationService {
     private readonly sessionService;
     constructor(connection: Connection, sessionService: SessionService);
     authenticate(logInDTO: LogInDTO): Promise<string>;
-    logOut(session: Session): Promise<void>;
     verifySession(session: Session): Promise<boolean>;
     private signJWT;
     verifyJWT(token: any): Promise<boolean>;

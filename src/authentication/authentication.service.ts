@@ -9,7 +9,6 @@ import { SessionService } from "./session.service";
 
 
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 
 const jwt = require('jsonwebtoken');
 const secret = "our super secret"
@@ -35,29 +34,25 @@ export class AuthenticationService{
          return 'Invalid credentials.'
         }
 
-    async logOut(session:Session){
-        
-    }
-
-    async verifySession(session:Session):Promise<boolean>{
-        //expired
-        if(new Date(session.exp) > new Date()){
-            return false
+        async verifySession(session:Session):Promise<boolean>{
+            //expired
+            if(new Date(session.exp) > new Date()){
+                return false
+            }
+            return await this.sessionService.verify(session.id)
         }
-        return await this.sessionService.verify(session.id)
-    }
 
-    private async signJWT(session:Session):Promise<string>{
-        return await jwt.sign(session, secret);
-    }
+        private async signJWT(session:Session):Promise<string>{
+            return await jwt.sign(session, secret);
+        }
 
-    async verifyJWT(token):Promise<boolean>{
-        return await jwt.verify(token, secret)
-    }
+        async verifyJWT(token):Promise<boolean>{
+            return await jwt.verify(token, secret)
+        }
 
-    async decodeJWT(token):Promise<Session>{
-        return await jwt.decode(token)
-    }
+        async decodeJWT(token):Promise<Session>{
+            return await jwt.decode(token)
+        }
 }
 
 

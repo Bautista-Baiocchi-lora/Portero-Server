@@ -13,7 +13,6 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
 const session_service_1 = require("./session.service");
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
 const jwt = require('jsonwebtoken');
 const secret = "our super secret";
 let AuthenticationService = class AuthenticationService {
@@ -30,8 +29,6 @@ let AuthenticationService = class AuthenticationService {
             return await this.signJWT(session);
         }
         return 'Invalid credentials.';
-    }
-    async logOut(session) {
     }
     async verifySession(session) {
         if (new Date(session.exp) > new Date()) {
