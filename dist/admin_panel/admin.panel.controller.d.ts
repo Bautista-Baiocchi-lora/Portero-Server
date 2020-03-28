@@ -6,5 +6,5 @@ export declare class AdminPanelController {
     private readonly barrioService;
     constructor(barrioService: BarrioService);
     register(registerDTO: BarrioRegistrationDTO): Promise<InsertResult>;
-    getNewInvite(session: Session): Promise<any>;
+    getNewInvite(session: Session): Promise<string>;
 }

@@ -20,7 +20,7 @@ export class AdminPanelController {
   @Get('new/invite')
   @UseGuards(SessionGuard)
   @UsePipes(JwtValidationPipe)
-  async getNewInvite(@UserSession() session:Session): Promise<any>{
+  async getNewInvite(@UserSession() session:Session): Promise<string>{
     return await this.barrioService.getNewInvite(session)
    }
 
