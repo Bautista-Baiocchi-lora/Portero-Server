@@ -1,7 +1,7 @@
 CREATE TABLE public.barrio_invite
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
-    barrio_id integer unique REFERENCES account (id) ON DELETE CASCADE
+    barrio_id integer unique REFERENCES barrio (id) ON DELETE CASCADE
 )
 TABLESPACE pg_default;
 
