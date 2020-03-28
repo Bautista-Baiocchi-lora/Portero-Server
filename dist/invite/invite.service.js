@@ -22,7 +22,8 @@ let InviteService = class InviteService {
         this.barrioInviteRepo = barrioInviteRepo;
     }
     async createBarrioInvite(barrio_id) {
-        return await this.barrioInviteRepo.query(create_barrio_invite_query(barrio_id));
+        return await this.barrioInviteRepo.query(create_barrio_invite_query(barrio_id))
+            .then(parse_create_barrio_query);
     }
 };
 InviteService = __decorate([
@@ -31,6 +32,9 @@ InviteService = __decorate([
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], InviteService);
 exports.default = InviteService;
+function parse_create_barrio_query(response) {
+    return response[0].create_barrio_invite;
+}
 function create_barrio_invite_query(barrio_id) {
     return `SELECT create_barrio_invite('${barrio_id}');`;
 }
