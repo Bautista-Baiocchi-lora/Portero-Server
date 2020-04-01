@@ -10,21 +10,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_validator_1 = require("class-validator");
-class BarrioRegistrationDTO {
+class PropietarioRegistrationDTO {
 }
 __decorate([
     class_validator_1.IsEmail(),
     __metadata("design:type", String)
-], BarrioRegistrationDTO.prototype, "email", void 0);
+], PropietarioRegistrationDTO.prototype, "email", void 0);
 __decorate([
-    class_validator_1.IsNotEmpty(),
     class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], BarrioRegistrationDTO.prototype, "password", void 0);
+], PropietarioRegistrationDTO.prototype, "first_name", void 0);
 __decorate([
-    class_validator_1.IsNotEmpty(),
     class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
-], BarrioRegistrationDTO.prototype, "name", void 0);
-exports.BarrioRegistrationDTO = BarrioRegistrationDTO;
-//# sourceMappingURL=barrio.registration.dto.js.map
+], PropietarioRegistrationDTO.prototype, "last_name", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], PropietarioRegistrationDTO.prototype, "doc_id", void 0);
+__decorate([
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], PropietarioRegistrationDTO.prototype, "doc_type", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], PropietarioRegistrationDTO.prototype, "password", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], PropietarioRegistrationDTO.prototype, "device_id", void 0);
+exports.default = PropietarioRegistrationDTO;
+//# sourceMappingURL=propietario.registration.dto.js.map

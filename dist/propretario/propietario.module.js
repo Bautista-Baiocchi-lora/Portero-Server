@@ -7,23 +7,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_module_1 = require("./admin_panel/admin.panel.module");
 const typeorm_1 = require("@nestjs/typeorm");
-const authentication_module_1 = require("./authentication/authentication.module");
-const propietario_module_1 = require("./propretario/propietario.module");
-let AppModule = class AppModule {
+const propietario_entity_1 = require("./propietario.entity");
+const propietario_controller_1 = require("./propietario.controller");
+const propietario_service_1 = require("./propietario.service");
+let PropietarioModule = class PropietarioModule {
 };
-AppModule = __decorate([
+PropietarioModule = __decorate([
     common_1.Module({
-        imports: [admin_panel_module_1.AdminPanelModule, authentication_module_1.AuthenticationModule, propietario_module_1.default,
-            typeorm_1.TypeOrmModule.forRoot({
-                type: 'postgres',
-                host: 'localhost',
-                port: 5432,
-                database: 'test',
-                entities: [__dirname + '/**/*.entity{.ts,.js}'],
-            }),],
+        imports: [typeorm_1.TypeOrmModule.forFeature([propietario_entity_1.default])],
+        controllers: [propietario_controller_1.default],
+        providers: [propietario_service_1.default]
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], PropietarioModule);
+exports.default = PropietarioModule;
+//# sourceMappingURL=propietario.module.js.map
