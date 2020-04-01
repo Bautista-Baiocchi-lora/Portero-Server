@@ -2465,6 +2465,10 @@
         "version": "b6533e60d90d8a633232b4d7ad13dde78bcb7fdbf614cb45f7a5b2bb41e4e03c",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
       },
+      "../src/invite/trabajador.entity.ts": {
+        "version": "4978a1017c3a90c51716e3d9bfbe22afa7deaa6a27bb4ead9a5b3837bcad54f7",
+        "signature": "9d3e5e4dd523b0f18fd99782a96213f65141a1516ab3f6c000db4f3c2d62993c"
+      },
       "../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
         "signature": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76"
@@ -7807,6 +7811,12 @@
         "../src/query-failed.exception.filter.ts",
         "../src/authentication/jwt.exception.filter.ts",
         "../node_modules/@types/node/os.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/invite/trabajador.entity.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -13857,6 +13867,7 @@
       "../node_modules/@nestjs/typeorm/dist/index.d.ts",
       "../node_modules/@nestjs/typeorm/index.d.ts",
       "../src/invite/barrio.invite.entity.ts",
+      "../src/invite/invite.service.ts",
       "../src/authentication/session.entity.ts",
       "../src/barrio/barrio.service.ts",
       "../node_modules/@types/range-parser/index.d.ts",
@@ -13950,7 +13961,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/invite/invite.service.ts"
+      "../src/invite/trabajador.entity.ts"
     ]
   },
   "version": "3.7.4"
