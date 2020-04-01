@@ -27,7 +27,7 @@ let BarrioService = class BarrioService {
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.barrioRepo.query(insert_barrio_query(registerDTO));
+        return await this.barrioRepo.query(insert_barrio_query(registerDTO)).then(parse_insert_barrio_query);
     }
     async delete(email) {
         return await this.barrioRepo.query(delete_barrio_query(email));
@@ -43,6 +43,9 @@ BarrioService = __decorate([
         invite_service_1.default])
 ], BarrioService);
 exports.BarrioService = BarrioService;
+async function parse_insert_barrio_query(response) {
+    return !!response[0];
+}
 function delete_barrio_query(email) {
     return `DELETE from account WHERE email = '${email}';`;
 }

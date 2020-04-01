@@ -2226,8 +2226,8 @@
         "signature": "cd5a1cba13202f5b8deccd2f0f3657551e09dd8d0a32de7d2226de78de484b50"
       },
       "../src/barrio/barrio.service.ts": {
-        "version": "c540b53e7bc6f90bfa1ac5c71b20a95941e8aa53031c621175965b18f560edfe",
-        "signature": "c4a7d80025ccad0e94fcfa0d783f3aff73d8435c73edaeb4a2c10473f9570daf"
+        "version": "9c2f1d0ec0ec85e4e0bd56e03d7efda5771e68bd60ffabbee11077dbc719df0a",
+        "signature": "f09655ff511aa43b7e71008e510bfd5e809f72da00f9900d9816eff00ed99f84"
       },
       "../node_modules/@types/range-parser/index.d.ts": {
         "version": "4e88b833be14c7f384e0dcd57bb30acd799e8e34d212635d693e41a75a71164b",
@@ -2286,8 +2286,8 @@
         "signature": "558dda4593d50faf869595d3fc98b55d07928d5af2a9d5a291afb7c40711e8b9"
       },
       "../src/admin_panel/admin.panel.controller.ts": {
-        "version": "637107720e28d3c1bd6fde2b3a4242749bda76407eadfa9462f8f16d643b57c0",
-        "signature": "4a3eba7e0864e1f396d5900fbf1a901b7cd6e2ae39a159018b0fcc2c798001d4"
+        "version": "79831b43a7eba9f53557356f82a578f461c18bd64ca3a037188442ca73ba2340",
+        "signature": "a26acf9b4332e4c46f2a9c1df5eaa8b288045f3a031bf1e19f899b79d7760763"
       },
       "../src/invite/invite.controller.ts": {
         "version": "ab43819d1ceaa039cce94ecf91cb92b387e314e01bb370e77b3ee25506c53423",
@@ -2314,12 +2314,12 @@
         "signature": "0c6eda19d7752852cd04d770b53fd8070621d960488982f6349b985c37cd5a05"
       },
       "../src/propretario/propietario.service.ts": {
-        "version": "356bf37f86923328e3a008c53a60ae6e04a4b4d65d10e34981e607251e78e3f8",
-        "signature": "cc48af4dc2d392a94dcb35b179619eec25d0df508f7f2d5f3b362abf12fcca4e"
+        "version": "685000f1dcb4b1049734d4de1342e131378fdd08b0d651cd560dc927099ff7e6",
+        "signature": "17744e452d7764d6cfcb24b8a8e4d5bfacda213840598ac92b6ac93086b1ac98"
       },
       "../src/propretario/propietario.controller.ts": {
-        "version": "49816b92d8c382cd60750d6c4f9fc1e668e83239e5b160c8f3dc60fdb61d1a65",
-        "signature": "0738685b895c7c670118e44b314622bb4efea173fcd20fd0faebd61784710986"
+        "version": "88487cfa4812a2896e5dc28b34917c5fcdd2e360e546d6eb24736e7f1e657dde",
+        "signature": "d7261505f992476cb85f63a4c8533f4929d0174c815150abbb38b59e679e0837"
       },
       "../src/propretario/propietario.module.ts": {
         "version": "2dba97c523eca5c1f06bf581280fc748a2fa8a5e9a082a2aeb470e542540e458",
@@ -12808,7 +12808,6 @@
       "../src/admin_panel/admin.panel.controller.ts": [
         "../src/barrio/barrio.service.ts",
         "../src/admin_panel/barrio.registration.dto.ts",
-        "../node_modules/typeorm/index.d.ts",
         "../src/authentication/session.entity.ts"
       ],
       "../src/propretario/propietario.service.ts": [

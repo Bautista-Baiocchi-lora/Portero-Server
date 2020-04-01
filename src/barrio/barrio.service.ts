@@ -15,9 +15,9 @@ export class BarrioService {
   constructor(@InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
     private readonly inviteService: InviteService){}
 
-  async register(registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
+  async register(registerDTO: BarrioRegistrationDTO): Promise<boolean>{
     registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds)
-    return await this.barrioRepo.query(insert_barrio_query(registerDTO))
+    return await this.barrioRepo.query(insert_barrio_query(registerDTO)).then(parse_insert_barrio_query)
   }
 
   async delete(email: string): Promise<DeleteResult>{
@@ -28,6 +28,10 @@ export class BarrioService {
     return this.inviteService.createBarrioInvite(session.account_id)
   }
 
+}
+
+async function parse_insert_barrio_query(response): Promise<boolean>{
+  return !!response[0]
 }
 
 function delete_barrio_query(email: string): string{

@@ -13,7 +13,7 @@ export class AdminPanelController {
 
 
   @Post('register')
-  async register(@Body() registerDTO: BarrioRegistrationDTO): Promise<InsertResult>{
+  async register(@Body() registerDTO: BarrioRegistrationDTO): Promise<boolean>{
       return await this.barrioService.register(registerDTO);
   }
 

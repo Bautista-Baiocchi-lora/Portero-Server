@@ -3,5 +3,5 @@ import { Connection } from "typeorm";
 export default class PropietarioService {
     private readonly connection;
     constructor(connection: Connection);
-    register(registrationDTO: PropietarioRegistrationDTO): Promise<any>;
+    register(registerDTO: PropietarioRegistrationDTO): Promise<boolean>;
 }

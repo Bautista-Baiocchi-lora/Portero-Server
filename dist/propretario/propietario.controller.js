@@ -19,8 +19,8 @@ let PropietarioController = class PropietarioController {
     constructor(propietarioService) {
         this.propietarioService = propietarioService;
     }
-    async register(registrationDTO) {
-        return await this.propietarioService.register(registrationDTO);
+    async register(registerDTO) {
+        return await this.propietarioService.register(registerDTO);
     }
 };
 __decorate([

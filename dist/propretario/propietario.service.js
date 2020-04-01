@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 let PropietarioService = class PropietarioService {
     constructor(connection) {
         this.connection = connection;
     }
-    async register(registrationDTO) {
-        return await this.connection.query(create_insert_propietario_query(registrationDTO));
+    async register(registerDTO) {
+        registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
+        return await this.connection.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query);
     }
 };
 PropietarioService = __decorate([
@@ -24,8 +27,11 @@ PropietarioService = __decorate([
     __metadata("design:paramtypes", [typeorm_1.Connection])
 ], PropietarioService);
 exports.default = PropietarioService;
-function create_insert_propietario_query(registrationDTO) {
-    const { email, password, first_name, last_name, doc_id, doc_type, device_id } = registrationDTO;
+function create_insert_propietario_query(registerDTO) {
+    const { email, password, first_name, last_name, doc_id, doc_type, device_id } = registerDTO;
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`;
+}
+async function parse_insert_propietario_query(response) {
+    return !!response[0];
 }
 //# sourceMappingURL=propietario.service.js.map

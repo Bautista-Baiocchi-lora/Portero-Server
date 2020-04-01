@@ -8,8 +8,8 @@ export default class PropietarioController{
     constructor(private readonly propietarioService:PropietarioService){}
 
     @Post('register')
-    async register(@Body() registrationDTO:PropietarioRegistrationDTO){
-        return await this.propietarioService.register(registrationDTO);
+    async register(@Body() registerDTO:PropietarioRegistrationDTO): Promise<boolean>{
+        return await this.propietarioService.register(registerDTO);
     }
 
 }
