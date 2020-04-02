@@ -19,12 +19,17 @@ export default class BarrioController{
       return await this.barrioService.register(registerDTO);
     }
 
+    @Post('login')
+    async login(@Body() logInDTO: LogInDTO):Promise<Cookie>{
+      return await this.barrioService.authenticate(logInDTO)
+    }
 
-
-  @Post('login')
-  async login(@Body() logInDTO: LogInDTO):Promise<Cookie>{
-    return await this.barrioService.authenticate(logInDTO)
-  }
+    @Get('new/invite')
+    @UseGuards(SessionGuard)
+    @UsePipes(JwtValidationPipe)
+    async getNewInvite(@UserSession() session:Session): Promise<string>{
+      return await this.barrioService.getNewInvite(session)
+    }
 
 
 }

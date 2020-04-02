@@ -31,6 +31,9 @@ let BarrioController = class BarrioController {
     async login(logInDTO) {
         return await this.barrioService.authenticate(logInDTO);
     }
+    async getNewInvite(session) {
+        return await this.barrioService.getNewInvite(session);
+    }
 };
 __decorate([
     common_1.Post('register'),
@@ -46,6 +49,15 @@ __decorate([
     __metadata("design:paramtypes", [log_in_dto_1.LogInDTO]),
     __metadata("design:returntype", Promise)
 ], BarrioController.prototype, "login", null);
+__decorate([
+    common_1.Get('new/invite'),
+    common_1.UseGuards(session_guard_1.SessionGuard),
+    common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
+    __param(0, authentication_module_1.UserSession()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [session_entity_1.default]),
+    __metadata("design:returntype", Promise)
+], BarrioController.prototype, "getNewInvite", null);
 BarrioController = __decorate([
     common_1.Controller('barrio'),
     __metadata("design:paramtypes", [barrio_service_1.BarrioService])

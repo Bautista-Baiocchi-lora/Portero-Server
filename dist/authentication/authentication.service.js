@@ -13,6 +13,7 @@ const common_1 = require("@nestjs/common");
 const session_service_1 = require("./session.service");
 const propietario_entity_1 = require("../propretario/propietario.entity");
 const barrio_entity_1 = require("../barrio/barrio.entity");
+const trabajador_entity_1 = require("../trabajador/trabajador.entity");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = "our super secret";
@@ -27,6 +28,7 @@ let AuthenticationService = class AuthenticationService {
         }
         const session = await this.sessionService.create(account.id);
         session.account = account;
+        delete session.account.password;
         return await this.signJWT(session);
     }
     async verifySession(session) {

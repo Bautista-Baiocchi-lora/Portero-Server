@@ -5,6 +5,7 @@ import { SessionService } from "./session.service";
 import Propietario from "src/propretario/propietario.entity";
 import { Barrio } from "src/barrio/barrio.entity";
 import Cookie from "./cookie";
+import Trabajador from "src/trabajador/trabajador.entity";
 
 
 const bcrypt = require('bcrypt');
@@ -17,7 +18,7 @@ export class AuthenticationService{
     
     constructor(private readonly sessionService:SessionService){}
 
-    async authenticate(logInDTO:LogInDTO, account:Barrio | Propietario): Promise<string>{
+    async authenticate(logInDTO:LogInDTO, account:Barrio | Propietario | Trabajador): Promise<string>{
          const authenticated:boolean = await bcrypt.compare(logInDTO.password, account.password)
 
          //user authenticated, now to create their session
@@ -27,6 +28,7 @@ export class AuthenticationService{
          
          const session:Session  =  await this.sessionService.create(account.id)
          session.account = account
+         delete session.account.password
          return await this.signJWT(session)
     }
 

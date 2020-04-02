@@ -1,6 +1,7 @@
 import {  Injectable, CanActivate , ExecutionContext} from "@nestjs/common";
 import { AuthenticationService } from "./authentication.service";
 import Session from "./session.entity";
+import Cookie from "./cookie";
 
 @Injectable()
 export class SessionGuard implements CanActivate{

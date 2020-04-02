@@ -2229,9 +2229,13 @@
         "version": "c90b859591cabeaa051ba596eb550306d70484ab2ce00229cbd2672b9491f5dc",
         "signature": "68b005fd4bda799a2f65b0d20a42202da25640de16ef082246044eecae765ac8"
       },
+      "../src/trabajador/trabajador.entity.ts": {
+        "version": "f67efd329e5562b9bd6b0803ff49e272a4082a1c9484ad7032e9072e592ac5b7",
+        "signature": "e3f2530ceaaa614d10a2c1ee74a0bcd944d51a5f2f90b3065eebbd591743c90d"
+      },
       "../src/authentication/authentication.service.ts": {
-        "version": "05f9513112d06fc6a4429aa3e47d221625e98ee8aba56991ee1197ce92ee1b4b",
-        "signature": "110a3bf59f9c1cb3dde82c2af1ad76afc7337875b615bff0246b54448d900399"
+        "version": "82b10671c1b869bba8b6be62bea374372129bafc5f84ad21954f553d8df1d0ee",
+        "signature": "0b80df20fac06a5c9dee17dd0227c21ee65e9c4e920dc733a2331947499da3f4"
       },
       "../src/authentication/authentication.module.ts": {
         "version": "1f63f941bf37283def86578dff165679f7d7abd6cdc422cbfc5b69063daa009e",
@@ -2270,7 +2274,7 @@
         "signature": "2f640ac81ad7426d7d7c2522b91f2c36a4c4ac705c994f692e14355fa112e2e4"
       },
       "../src/authentication/session.guard.ts": {
-        "version": "fcfc97dd91b3b2958158ba8f814193750aa88e1f028274727961c17e4f31b299",
+        "version": "d137ef9d71299d1c663f708fe178e5f7a0cd370427892216b2c34eecdbc016e1",
         "signature": "0f29424e8a620df05d4909e44abf0531db264cfe64c775351564d2b75bd9deb9"
       },
       "../src/invite/invite.controller.ts": {
@@ -2286,16 +2290,12 @@
         "signature": "5f67125a9b6f361d57cf00bd4104d9d525f2bbdab786a0c395ab8b7fad9e894c"
       },
       "../src/barrio/barrio.controller.ts": {
-        "version": "81f354afa66b231d9fe4ae2176008bb80fd708fd9acc26dde292611b2242e8f6",
-        "signature": "15527734a3d32ec25187cf10428dcd31ae3436987e90a214d3a50960a2af2726"
+        "version": "a510344fd788e507c7951eb3e57f796ffe9f1a0b431a218b13050bc88e691a6f",
+        "signature": "a1fbe864df38496000110d12cfb8ea076b0f25dd8c0822f0afdff9c7d6b8ea89"
       },
       "../src/barrio/barrio.module.ts": {
         "version": "1ba93e64f026f7105cdd3bfde702e2ca2871e7f4f31b0b022df0b967da1db613",
         "signature": "f9545d3e42877277bc6a873ed68df6a9794c288d1bd55d164e0293d693b15de5"
-      },
-      "../src/trabajador/trabajador.entity.ts": {
-        "version": "f67efd329e5562b9bd6b0803ff49e272a4082a1c9484ad7032e9072e592ac5b7",
-        "signature": "e3f2530ceaaa614d10a2c1ee74a0bcd944d51a5f2f90b3065eebbd591743c90d"
       },
       "../src/trabajador/trabajador.registration.dto.ts": {
         "version": "d9cd58045f3e5bcfe779c441bff07f1e8fc3d683da70d56049beae018ec255b1",
@@ -7301,6 +7301,14 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/trabajador/trabajador.entity.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/class-validator/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/authentication/authentication.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/authentication/log.in.dto.ts",
@@ -7309,6 +7317,7 @@
         "../src/propretario/propietario.entity.ts",
         "../src/barrio/barrio.entity.ts",
         "../src/authentication/cookie.ts",
+        "../src/trabajador/trabajador.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7414,6 +7423,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/authentication/authentication.service.ts",
         "../src/authentication/session.entity.ts",
+        "../src/authentication/cookie.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7474,14 +7484,6 @@
         "../src/barrio/barrio.controller.ts",
         "../src/authentication/authentication.service.ts",
         "../src/invite/invite.service.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/trabajador/trabajador.entity.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12803,6 +12805,7 @@
         "../src/authentication/log.in.dto.ts",
         "../src/barrio/barrio.entity.ts",
         "../src/propretario/propietario.entity.ts",
+        "../src/trabajador/trabajador.entity.ts",
         "../src/authentication/session.entity.ts"
       ],
       "../src/propretario/propietario.service.ts": [
@@ -12846,7 +12849,8 @@
         "../src/barrio/barrio.service.ts",
         "../src/barrio/barrio.registration.dto.ts",
         "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/authentication/cookie.ts",
+        "../src/authentication/session.entity.ts"
       ],
       "../src/trabajador/trabajador.service.ts": [
         "../node_modules/typeorm/index.d.ts",
@@ -14032,6 +14036,7 @@
       "../src/authentication/session.entity.ts",
       "../src/authentication/session.service.ts",
       "../src/authentication/cookie.ts",
+      "../src/trabajador/trabajador.entity.ts",
       "../src/authentication/authentication.service.ts",
       "../src/authentication/authentication.module.ts",
       "../src/propretario/propietario.registration.dto.ts",
@@ -14042,15 +14047,14 @@
       "../src/invite/barrio.invite.entity.ts",
       "../src/invite/invite.service.ts",
       "../src/barrio/barrio.service.ts",
-      "../src/authentication/session.guard.ts",
       "../src/invite/invite.controller.ts",
       "../src/invite/invite.module.ts",
       "../src/authentication/jwt.validation.pipe.ts",
       "../src/barrio/barrio.controller.ts",
       "../src/barrio/barrio.module.ts",
-      "../src/trabajador/trabajador.entity.ts",
       "../src/trabajador/trabajador.registration.dto.ts",
       "../src/trabajador/trabajador.service.ts",
+      "../src/trabajador/trabajador.controller.ts",
       "../src/trabajador/trabajador.module.ts",
       "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
@@ -14131,7 +14135,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/trabajador/trabajador.controller.ts"
+      "../src/authentication/session.guard.ts"
     ]
   },
   "version": "3.7.4"
