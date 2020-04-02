@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_validator_1 = require("class-validator");
 const typeorm_1 = require("typeorm");
+const propietario_entity_1 = require("../propretario/propietario.entity");
+const barrio_entity_1 = require("../barrio/barrio.entity");
 let Session = class Session {
 };
 __decorate([

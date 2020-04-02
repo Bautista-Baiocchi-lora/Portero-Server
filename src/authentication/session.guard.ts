@@ -1,5 +1,4 @@
-import { NestMiddleware, Injectable, CanActivate , ExecutionContext} from "@nestjs/common";
-import { SessionService } from "./session.service";
+import {  Injectable, CanActivate , ExecutionContext} from "@nestjs/common";
 import { AuthenticationService } from "./authentication.service";
 import Session from "./session.entity";
 

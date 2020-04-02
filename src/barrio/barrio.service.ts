@@ -1,10 +1,13 @@
-import { Injectable, Body } from '@nestjs/common';
-import { BarrioRegistrationDTO } from '../admin_panel/barrio.registration.dto';
+import { Injectable, Body, Inject } from '@nestjs/common';
+import { BarrioRegistrationDTO } from './barrio.registration.dto';
 import  {Barrio} from './barrio.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
 import Session from 'src/authentication/session.entity';
+import { LogInDTO } from 'src/authentication/log.in.dto';
+import { AuthenticationService } from 'src/authentication/authentication.service';
+import Cookie from 'src/authentication/cookie';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -12,8 +15,11 @@ const saltRounds = 10;
 @Injectable()
 export class BarrioService {
 
-  constructor(@InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
-    private readonly inviteService: InviteService){}
+  constructor(
+    @InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
+    private readonly authService:AuthenticationService,
+    private readonly inviteService: InviteService
+    ){}
 
   async register(registerDTO: BarrioRegistrationDTO): Promise<boolean>{
     registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds)
@@ -28,9 +34,52 @@ export class BarrioService {
     return this.inviteService.createBarrioInvite(session.account_id)
   }
 
+  private async getBarrio(email:string):Promise<Barrio>{
+    return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query)
+  }
+
+  async authenticate(logInDTO: LogInDTO):Promise<Cookie>{
+    const barrio:Barrio = await this.getBarrio(logInDTO.email)
+    const jwt:string = await this.authService.authenticate(logInDTO,barrio);
+
+    delete barrio.password
+    delete barrio.creation_date
+
+    return {
+      jwt, 
+      account: barrio
+    }
+  }
+
 }
 
-async function parse_insert_barrio_query(response): Promise<boolean>{
+/*
+Response format:
+[
+  {
+    select_barrio: '(42,bautis@gmail.com,$2b$10$1rUbOGZAr12nMhyGGlam6uOyw5MDtiUFjCptEugOrl8lgvYY4Iyvi,"2020-03-26 21:23:01.725837",41,d)'
+  }
+]
+*/
+function parse_get_barrio_query(response):Barrio{
+  response = response[0].select_barrio //extract from list
+  response = response.replace('(','').replace(')', '') //remove paranthesis
+  response = response.split(',') //split into array
+  const barrio:Barrio = {
+    id: +response[0],
+    email: response[1],
+    password: response[2],
+    creation_date: response[3],
+    name: response[5].replace('\"', '').replace('\"', '') //remove slashes and quotes
+  }
+  return barrio
+}
+
+function select_barrio_query(email:string): string{
+  return `SELECT select_barrio('${email}');`
+}
+
+function parse_insert_barrio_query(response): boolean{
   return !!response[0]
 }
 

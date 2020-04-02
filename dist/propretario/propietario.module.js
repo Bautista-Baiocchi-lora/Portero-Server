@@ -11,11 +11,12 @@ const typeorm_1 = require("@nestjs/typeorm");
 const propietario_entity_1 = require("./propietario.entity");
 const propietario_controller_1 = require("./propietario.controller");
 const propietario_service_1 = require("./propietario.service");
+const authentication_module_1 = require("../authentication/authentication.module");
 let PropietarioModule = class PropietarioModule {
 };
 PropietarioModule = __decorate([
     common_1.Module({
-        imports: [typeorm_1.TypeOrmModule.forFeature([propietario_entity_1.default])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([propietario_entity_1.default]), authentication_module_1.AuthenticationModule],
         controllers: [propietario_controller_1.default],
         providers: [propietario_service_1.default]
     })

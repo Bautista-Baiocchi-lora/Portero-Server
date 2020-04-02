@@ -12,13 +12,16 @@ const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const invite_module_1 = require("../invite/invite.module");
 const authentication_module_1 = require("../authentication/authentication.module");
+const barrio_controller_1 = require("./barrio.controller");
+const authentication_service_1 = require("../authentication/authentication.service");
+const invite_service_1 = require("../invite/invite.service");
 let BarrioModule = class BarrioModule {
 };
 BarrioModule = __decorate([
     common_1.Module({
         providers: [barrio_service_1.BarrioService],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio]), invite_module_1.InviteModule, authentication_module_1.AuthenticationModule],
-        exports: [barrio_service_1.BarrioService]
+        controllers: [barrio_controller_1.default],
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio]), authentication_module_1.AuthenticationModule, invite_module_1.InviteModule],
     })
 ], BarrioModule);
 exports.BarrioModule = BarrioModule;

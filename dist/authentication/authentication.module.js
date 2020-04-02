@@ -9,15 +9,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const authentication_service_1 = require("./authentication.service");
 const typeorm_1 = require("@nestjs/typeorm");
-const authentication_controller_1 = require("./authentication.controller");
 const session_service_1 = require("./session.service");
+const session_entity_1 = require("./session.entity");
 let AuthenticationModule = class AuthenticationModule {
 };
 AuthenticationModule = __decorate([
     common_1.Module({
         providers: [authentication_service_1.AuthenticationService, session_service_1.SessionService],
-        controllers: [authentication_controller_1.AuthenticationController],
-        imports: [typeorm_1.TypeOrmModule.forFeature()],
+        imports: [typeorm_1.TypeOrmModule.forFeature([session_entity_1.default])],
         exports: [authentication_service_1.AuthenticationService]
     })
 ], AuthenticationModule);

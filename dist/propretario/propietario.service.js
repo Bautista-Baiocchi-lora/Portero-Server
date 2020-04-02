@@ -8,25 +8,72 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
+const log_in_dto_1 = require("../authentication/log.in.dto");
+const cookie_1 = require("../authentication/cookie");
+const authentication_service_1 = require("../authentication/authentication.service");
+const propietario_entity_1 = require("./propietario.entity");
+const typeorm_2 = require("@nestjs/typeorm");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let PropietarioService = class PropietarioService {
-    constructor(connection) {
-        this.connection = connection;
+    constructor(propietarioRepo, authService) {
+        this.propietarioRepo = propietarioRepo;
+        this.authService = authService;
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.connection.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query);
+        return await this.propietarioRepo.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query);
+    }
+    async getPropietario(email) {
+        return await this.propietarioRepo.query(select_propietario_query(email)).then(parse_select_propietario_query);
+    }
+    async authenticate(logInDto) {
+        const propietario = await this.getPropietario(logInDto.email);
+        const jwt = await this.authService.authenticate(logInDto, propietario);
+        delete propietario.doc_id;
+        delete propietario.doc_type;
+        delete propietario.device_id;
+        delete propietario.creation_date;
+        delete propietario.password;
+        return {
+            jwt,
+            account: propietario
+        };
     }
 };
 PropietarioService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [typeorm_1.Connection])
+    __param(0, typeorm_2.InjectRepository(propietario_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_1.Repository,
+        authentication_service_1.AuthenticationService])
 ], PropietarioService);
 exports.default = PropietarioService;
+function parse_select_propietario_query(response) {
+    response = response[0].select_propietario;
+    response = response.replace('(', '').replace(')', '');
+    response = response.split(',');
+    const propietario = {
+        id: +response[0],
+        email: response[1],
+        password: response[2],
+        creation_date: response[3],
+        first_name: response[5].replace('\"', '').replace('\"', ''),
+        last_name: response[6].replace('\"', '').replace('\"', ''),
+        doc_id: response[7],
+        doc_type: +response[8],
+        device_id: response[9]
+    };
+    return propietario;
+}
+function select_propietario_query(email) {
+    return `SELECT select_propietario('${email}');`;
+}
 function create_insert_propietario_query(registerDTO) {
     const { email, password, first_name, last_name, doc_id, doc_type, device_id } = registerDTO;
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`;

@@ -7,15 +7,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const admin_panel_module_1 = require("./admin_panel/admin.panel.module");
 const typeorm_1 = require("@nestjs/typeorm");
-const authentication_module_1 = require("./authentication/authentication.module");
 const propietario_module_1 = require("./propretario/propietario.module");
+const barrio_module_1 = require("./barrio/barrio.module");
+const invite_module_1 = require("./invite/invite.module");
+const trabajador_module_1 = require("./trabajador/trabajador.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [admin_panel_module_1.AdminPanelModule, authentication_module_1.AuthenticationModule, propietario_module_1.default,
+        imports: [propietario_module_1.default, invite_module_1.InviteModule, barrio_module_1.BarrioModule, trabajador_module_1.default,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'localhost',
