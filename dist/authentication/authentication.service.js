@@ -10,25 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
 const session_service_1 = require("./session.service");
+const propietario_entity_1 = require("../propretario/propietario.entity");
+const barrio_entity_1 = require("../barrio/barrio.entity");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const secret = "our super secret";
 let AuthenticationService = class AuthenticationService {
-    constructor(connection, sessionService) {
-        this.connection = connection;
+    constructor(sessionService) {
         this.sessionService = sessionService;
     }
-    async authenticate(logInDTO) {
-        const response = await this.connection.query(get_password_query(logInDTO));
-        const account = parse_select_account_reponse(response);
+    async authenticate(logInDTO, account) {
         const authenticated = await bcrypt.compare(logInDTO.password, account.password);
-        if (authenticated) {
-            const session = await this.sessionService.create(account.id);
-            return await this.signJWT(session);
+        if (!authenticated) {
+            throw new Error('Invalid Credentials');
         }
-        return 'Invalid credentials.';
+        const session = await this.sessionService.create(account.id);
+        session.account = account;
+        return await this.signJWT(session);
     }
     async verifySession(session) {
         if (new Date(session.exp) > new Date()) {
@@ -48,18 +47,7 @@ let AuthenticationService = class AuthenticationService {
 };
 AuthenticationService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [typeorm_1.Connection,
-        session_service_1.SessionService])
+    __metadata("design:paramtypes", [session_service_1.SessionService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
-function parse_select_account_reponse(response) {
-    response = response[0].select_account_password.split(',');
-    return {
-        "id": response[0].split('(')[1],
-        "password": response[1].split(')')[0]
-    };
-}
-function get_password_query(logInDTO) {
-    return `SELECT select_account_password('${logInDTO.email}');`;
-}
 //# sourceMappingURL=authentication.service.js.map

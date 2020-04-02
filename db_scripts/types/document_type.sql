@@ -1,1 +1,0 @@
-CREATE TYPE document_type as enum ('DNI', 'LISC')
