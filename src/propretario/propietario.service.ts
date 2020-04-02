@@ -33,7 +33,6 @@ export default class PropietarioService{
 
         delete propietario.doc_id
         delete propietario.doc_type
-        delete propietario.device_id
         delete propietario.creation_date
         delete propietario.password
 
@@ -57,8 +56,7 @@ function parse_select_propietario_query(response):Propietario{
         first_name: response[5].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         last_name: response[6].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         doc_id: response[7],
-        doc_type: +response[8],
-        device_id: response[9]
+        doc_type: +response[8]
     }
     return propietario
 }
@@ -74,10 +72,9 @@ function create_insert_propietario_query(registerDTO:PropietarioRegistrationDTO)
         first_name,
         last_name,
         doc_id,
-        doc_type,
-        device_id
+        doc_type
             } = registerDTO
-    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`
+    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`
 }
 
 async function parse_insert_propietario_query(response): Promise<boolean>{

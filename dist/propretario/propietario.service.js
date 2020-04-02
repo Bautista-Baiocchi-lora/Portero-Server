@@ -38,7 +38,6 @@ let PropietarioService = class PropietarioService {
         const jwt = await this.authService.authenticate(logInDto, propietario);
         delete propietario.doc_id;
         delete propietario.doc_type;
-        delete propietario.device_id;
         delete propietario.creation_date;
         delete propietario.password;
         return {
@@ -66,8 +65,7 @@ function parse_select_propietario_query(response) {
         first_name: response[5].replace('\"', '').replace('\"', ''),
         last_name: response[6].replace('\"', '').replace('\"', ''),
         doc_id: response[7],
-        doc_type: +response[8],
-        device_id: response[9]
+        doc_type: +response[8]
     };
     return propietario;
 }
@@ -75,8 +73,8 @@ function select_propietario_query(email) {
     return `SELECT select_propietario('${email}');`;
 }
 function create_insert_propietario_query(registerDTO) {
-    const { email, password, first_name, last_name, doc_id, doc_type, device_id } = registerDTO;
-    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`;
+    const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
+    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
 }
 async function parse_insert_propietario_query(response) {
     return !!response[0];

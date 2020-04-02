@@ -28,22 +28,21 @@ let TrabajadorService = class TrabajadorService {
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.trabajadorRepo.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query);
+        return await this.trabajadorRepo.query(create_insert_trabajador_query(registerDTO)).then(parse_insert_trabajador_query);
     }
-    async getPropietario(email) {
-        return await this.trabajadorRepo.query(select_propietario_query(email)).then(parse_select_propietario_query);
+    async getTrabajador(email) {
+        return await this.trabajadorRepo.query(select_trabajador_query(email)).then(parse_select_trabajador_query);
     }
     async authenticate(logInDto) {
-        const propietario = await this.getPropietario(logInDto.email);
-        const jwt = await this.authService.authenticate(logInDto, propietario);
-        delete propietario.doc_id;
-        delete propietario.doc_type;
-        delete propietario.device_id;
-        delete propietario.creation_date;
-        delete propietario.password;
+        const trabajador = await this.getTrabajador(logInDto.email);
+        const jwt = await this.authService.authenticate(logInDto, trabajador);
+        delete trabajador.doc_id;
+        delete trabajador.doc_type;
+        delete trabajador.creation_date;
+        delete trabajador.password;
         return {
             jwt,
-            account: propietario
+            account: trabajador
         };
     }
 };
@@ -54,8 +53,8 @@ TrabajadorService = __decorate([
         authentication_service_1.AuthenticationService])
 ], TrabajadorService);
 exports.default = TrabajadorService;
-function parse_select_propietario_query(response) {
-    response = response[0].select_propietario;
+function parse_select_trabajador_query(response) {
+    response = response[0].select_trabajador;
     response = response.replace('(', '').replace(')', '');
     response = response.split(',');
     const propietario = {
@@ -66,19 +65,18 @@ function parse_select_propietario_query(response) {
         first_name: response[5].replace('\"', '').replace('\"', ''),
         last_name: response[6].replace('\"', '').replace('\"', ''),
         doc_id: response[7],
-        doc_type: +response[8],
-        device_id: response[9]
+        doc_type: +response[8]
     };
     return propietario;
 }
-function select_propietario_query(email) {
-    return `SELECT select_propietario('${email}');`;
+function select_trabajador_query(email) {
+    return `SELECT select_trabajador('${email}');`;
 }
-function create_insert_propietario_query(registerDTO) {
-    const { email, password, first_name, last_name, doc_id, doc_type, device_id } = registerDTO;
-    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`;
+function create_insert_trabajador_query(registerDTO) {
+    const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
+    return `SELECT insert_trabajador('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
 }
-async function parse_insert_propietario_query(response) {
+async function parse_insert_trabajador_query(response) {
     return !!response[0];
 }
 //# sourceMappingURL=trabajador.service.js.map

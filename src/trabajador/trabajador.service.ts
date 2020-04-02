@@ -20,33 +20,32 @@ export default class TrabajadorService{
 
     async register(registerDTO:TrabajadorRegistrationDTO): Promise<boolean>{
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds)
-        return await this.trabajadorRepo.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query)
+        return await this.trabajadorRepo.query(create_insert_trabajador_query(registerDTO)).then(parse_insert_trabajador_query)
     }
 
-    async getPropietario(email:string):Promise<Trabajador>{
-        return await this.trabajadorRepo.query(select_propietario_query(email)).then(parse_select_propietario_query)
+    async getTrabajador(email:string): Promise<Trabajador>{
+        return await this.trabajadorRepo.query(select_trabajador_query(email)).then(parse_select_trabajador_query)
     }
 
     async authenticate(logInDto:LogInDTO): Promise<Cookie>{
-        const propietario:Trabajador = await this.getPropietario(logInDto.email)
-        const jwt:string = await this.authService.authenticate(logInDto, propietario);
+        const trabajador:Trabajador = await this.getTrabajador(logInDto.email)
+        const jwt:string = await this.authService.authenticate(logInDto, trabajador);
 
-        delete propietario.doc_id
-        delete propietario.doc_type
-        delete propietario.device_id
-        delete propietario.creation_date
-        delete propietario.password
+        delete trabajador.doc_id
+        delete trabajador.doc_type
+        delete trabajador.creation_date
+        delete trabajador.password
 
         return {
             jwt,
-            account: propietario
+            account: trabajador
         }
     }
 
 }
 
-function parse_select_propietario_query(response):Trabajador{
-    response = response[0].select_propietario //extract from list
+function parse_select_trabajador_query(response):Trabajador{
+    response = response[0].select_trabajador //extract from list
     response = response.replace('(','').replace(')', '') //remove paranthesis
     response = response.split(',') //split into array
     const propietario:Trabajador = {
@@ -57,29 +56,27 @@ function parse_select_propietario_query(response):Trabajador{
         first_name: response[5].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         last_name: response[6].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         doc_id: response[7],
-        doc_type: +response[8],
-        device_id: response[9]
+        doc_type: +response[8]
     }
     return propietario
 }
 
-function select_propietario_query(email:string):string{
-    return `SELECT select_propietario('${email}');`
+function select_trabajador_query(email:string):string{
+    return `SELECT select_trabajador('${email}');`
 }
 
-function create_insert_propietario_query(registerDTO:TrabajadorRegistrationDTO): string{
+function create_insert_trabajador_query(registerDTO:TrabajadorRegistrationDTO): string{
     const {
         email,
         password, 
         first_name,
         last_name,
         doc_id,
-        doc_type,
-        device_id
+        doc_type
             } = registerDTO
-    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`
+    return `SELECT insert_trabajador('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`
 }
 
-async function parse_insert_propietario_query(response): Promise<boolean>{
+async function parse_insert_trabajador_query(response): Promise<boolean>{
     return !!response[0]
 }

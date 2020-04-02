@@ -1,4 +1,4 @@
-create or replace function insert_propietario(
+create or replace function insert_trabajador(
     emailf text,
     passf text,
     first_namef text,
@@ -11,7 +11,7 @@ declare
     account_id integer;
     begin 
         insert into account(email, password) values (emailf, passf) RETURNING id INTO account_id;
-        insert into propietario(id, first_name, last_name, doc_id, doc_type)
+        insert into trabajador(id, first_name, last_name, doc_id, doc_type)
         values (account_id, first_namef, last_namef, doc_idf, doc_typef);
     end
 $$ language plpgsql;

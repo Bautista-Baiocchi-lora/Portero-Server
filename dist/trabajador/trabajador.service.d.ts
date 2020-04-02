@@ -9,6 +9,6 @@ export default class TrabajadorService {
     private readonly authService;
     constructor(trabajadorRepo: Repository<Trabajador>, authService: AuthenticationService);
     register(registerDTO: TrabajadorRegistrationDTO): Promise<boolean>;
-    getPropietario(email: string): Promise<Trabajador>;
+    getTrabajador(email: string): Promise<Trabajador>;
     authenticate(logInDto: LogInDTO): Promise<Cookie>;
 }

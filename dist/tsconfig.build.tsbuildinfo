@@ -2210,8 +2210,8 @@
         "signature": "40ed4a314cbec264573ab9d3c3bb6e332b1764f32b01db75045350605504f49d"
       },
       "../src/propretario/propietario.entity.ts": {
-        "version": "cc2b9144c5cb0aea57f6cb9ec8528272105f350797eeda3516fe487c281954b8",
-        "signature": "fd7a4f7243b2a86105bb94221ee48a6a4f961de3e018847e41fc27ce662062aa"
+        "version": "50dd2d8e133156197561cfab5f4c5b900722d4a22ee063b0e5b2d58491973e49",
+        "signature": "837df8dd856b094f259429314d5cce02a66aa40514e969f4783b1556d9483204"
       },
       "../src/barrio/barrio.entity.ts": {
         "version": "1396c8c723892a70e7d551db4ba276a7270840154d92c65e79c071092c6a2aab",
@@ -2225,13 +2225,13 @@
         "version": "8af78826f66a88680da81435a74ad8c444e5c53a44d0cf786e62b6bf32726792",
         "signature": "a9292967f948a35fc76767495e559af8d386754de6615d3b10360772129ec9b9"
       },
-      "../src/authentication/cookie.ts": {
-        "version": "c90b859591cabeaa051ba596eb550306d70484ab2ce00229cbd2672b9491f5dc",
-        "signature": "68b005fd4bda799a2f65b0d20a42202da25640de16ef082246044eecae765ac8"
-      },
       "../src/trabajador/trabajador.entity.ts": {
-        "version": "f67efd329e5562b9bd6b0803ff49e272a4082a1c9484ad7032e9072e592ac5b7",
-        "signature": "e3f2530ceaaa614d10a2c1ee74a0bcd944d51a5f2f90b3065eebbd591743c90d"
+        "version": "f6273ccec624e4c86160c2907452e93d5a572f2fba181b8998efba811dbd5e37",
+        "signature": "6aab7e3d8caee6cfa0e18d0a76b83e0d8ddb6c79e540fd23cfb6eab64dbcf5e2"
+      },
+      "../src/authentication/cookie.ts": {
+        "version": "af16a9f765566a3c85766c5eb304f7b985d379a962b5c39ac3698c354a48a905",
+        "signature": "48f4c4c3dc302814dbd54038dd821caf143cf051d363d8d30c45c86f5852510d"
       },
       "../src/authentication/authentication.service.ts": {
         "version": "82b10671c1b869bba8b6be62bea374372129bafc5f84ad21954f553d8df1d0ee",
@@ -2242,11 +2242,11 @@
         "signature": "558dda4593d50faf869595d3fc98b55d07928d5af2a9d5a291afb7c40711e8b9"
       },
       "../src/propretario/propietario.registration.dto.ts": {
-        "version": "eaa9d4e10f3ffb8c3f1b361ca007f8d480c678955e97d3e7847b3e274e8ae44c",
-        "signature": "0c6eda19d7752852cd04d770b53fd8070621d960488982f6349b985c37cd5a05"
+        "version": "ab282e518accdb1f64d3b108c7f38d2c82ce60e7617cd1a6820a75fb86839859",
+        "signature": "8d45e2f8e9d066d3bc5bcb88d1ed2d38fe3cfae3e13cfb8b6f60bd9ba0c128b3"
       },
       "../src/propretario/propietario.service.ts": {
-        "version": "6ed43889d1e66b16566aea2ead42435a5eed3e6231a1fb22221dcd7f8aae6bd8",
+        "version": "c6c9b88a8465ed621b623c694e5bd9d6c680dc231acc5cc3fda6b225fa30b0d7",
         "signature": "c84cdd27c4e167f7174913c11ea5f0c5bbb57e691142234c4472b43b4ac47a3a"
       },
       "../src/propretario/propietario.controller.ts": {
@@ -2298,12 +2298,12 @@
         "signature": "f9545d3e42877277bc6a873ed68df6a9794c288d1bd55d164e0293d693b15de5"
       },
       "../src/trabajador/trabajador.registration.dto.ts": {
-        "version": "d9cd58045f3e5bcfe779c441bff07f1e8fc3d683da70d56049beae018ec255b1",
-        "signature": "dc1a826cc3faaeed008c5803231339faf2538f699f8788869b04c1192dec51c8"
+        "version": "119bb635674a0af7e8d852598e1afb60afcc06680a1e5520a88eb4df56e08597",
+        "signature": "f0f88a3199f2f5447b11cb17fba6e1c21952c94f791a749b9bcbb59de6f8a555"
       },
       "../src/trabajador/trabajador.service.ts": {
-        "version": "89ad42c4d3a9c3bd152d263dc43b51f05042731920ab71bc3d15eee71f488078",
-        "signature": "0735470d379ca27ae771d392cb2f3b5b211277e173610647edfc609ed339665b"
+        "version": "add6ef28000955decc6829f33d7791f111b39ef1dcefa7ab53b7793c0ab23df2",
+        "signature": "e86ad6e086c750f5e437e0472f13cf65f44a517ec026bf3f4d54bbae6dfb9704"
       },
       "../src/trabajador/trabajador.controller.ts": {
         "version": "017f99d6f492d0420a7979d75788fd0b5286bed82fd56cbe10a5140fcf6cf009",
@@ -7292,18 +7292,19 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/cookie.ts": [
-        "../src/authentication/session.entity.ts",
-        "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts",
+      "../src/trabajador/trabajador.entity.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/trabajador/trabajador.entity.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../node_modules/class-validator/index.d.ts",
+      "../src/authentication/cookie.ts": [
+        "../src/authentication/session.entity.ts",
+        "../src/barrio/barrio.entity.ts",
+        "../src/propretario/propietario.entity.ts",
+        "../src/trabajador/trabajador.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12798,7 +12799,8 @@
       ],
       "../src/authentication/cookie.ts": [
         "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts"
+        "../src/propretario/propietario.entity.ts",
+        "../src/trabajador/trabajador.entity.ts"
       ],
       "../src/authentication/authentication.service.ts": [
         "../src/authentication/session.service.ts",
@@ -14035,18 +14037,15 @@
       "../src/barrio/barrio.entity.ts",
       "../src/authentication/session.entity.ts",
       "../src/authentication/session.service.ts",
-      "../src/authentication/cookie.ts",
       "../src/trabajador/trabajador.entity.ts",
+      "../src/authentication/cookie.ts",
       "../src/authentication/authentication.service.ts",
       "../src/authentication/authentication.module.ts",
-      "../src/propretario/propietario.registration.dto.ts",
-      "../src/propretario/propietario.service.ts",
-      "../src/propretario/propietario.controller.ts",
-      "../src/propretario/propietario.module.ts",
       "../src/barrio/barrio.registration.dto.ts",
       "../src/invite/barrio.invite.entity.ts",
       "../src/invite/invite.service.ts",
       "../src/barrio/barrio.service.ts",
+      "../src/authentication/session.guard.ts",
       "../src/invite/invite.controller.ts",
       "../src/invite/invite.module.ts",
       "../src/authentication/jwt.validation.pipe.ts",
@@ -14056,7 +14055,6 @@
       "../src/trabajador/trabajador.service.ts",
       "../src/trabajador/trabajador.controller.ts",
       "../src/trabajador/trabajador.module.ts",
-      "../src/app.module.ts",
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts",
       "../node_modules/@nestjs/core/adapters/index.d.ts",
       "../node_modules/@nestjs/core/injector/module-token-factory.d.ts",
@@ -14135,7 +14133,11 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/authentication/session.guard.ts"
+      "../src/propretario/propietario.registration.dto.ts",
+      "../src/propretario/propietario.controller.ts",
+      "../src/propretario/propietario.service.ts",
+      "../src/propretario/propietario.module.ts",
+      "../src/app.module.ts"
     ]
   },
   "version": "3.7.4"

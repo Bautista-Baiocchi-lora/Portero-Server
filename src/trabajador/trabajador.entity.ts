@@ -27,9 +27,6 @@ export default class Trabajador{
     doc_type: number;
 
     @Column()
-    device_id: string;
-
-    @Column()
     creation_date: string;
 
 }

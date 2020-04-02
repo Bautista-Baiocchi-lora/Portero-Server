@@ -5,5 +5,4 @@ export default class PropietarioRegistrationDTO {
     doc_id: string;
     doc_type: number;
     password: string;
-    device_id: string;
 }
