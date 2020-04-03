@@ -1,8 +1,5 @@
 import { Injectable } from "@nestjs/common";
 import { Repository } from "typeorm";
-import { LogInDTO } from "src/authentication/log.in.dto";
-import Cookie from "src/authentication/cookie";
-import { AuthenticationService } from "src/authentication/authentication.service";
 import { InjectRepository } from "@nestjs/typeorm";
 import Trabajador from "./trabajador.entity";
 import TrabajadorRegistrationDTO from "./trabajador.registration.dto";
@@ -14,8 +11,7 @@ const saltRounds = 10;
 export default class TrabajadorService{
 
     constructor(
-        @InjectRepository(Trabajador) private readonly trabajadorRepo:Repository<Trabajador>,
-        private readonly authService:AuthenticationService
+        @InjectRepository(Trabajador) private readonly trabajadorRepo:Repository<Trabajador>
     ){}
 
     async register(registerDTO:TrabajadorRegistrationDTO): Promise<boolean>{
@@ -25,21 +21,6 @@ export default class TrabajadorService{
 
     async getTrabajador(email:string): Promise<Trabajador>{
         return await this.trabajadorRepo.query(select_trabajador_query(email)).then(parse_select_trabajador_query)
-    }
-
-    async authenticate(logInDto:LogInDTO): Promise<Cookie>{
-        const trabajador:Trabajador = await this.getTrabajador(logInDto.email)
-        const jwt:string = await this.authService.authenticate(logInDto, trabajador);
-
-        delete trabajador.doc_id
-        delete trabajador.doc_type
-        delete trabajador.creation_date
-        delete trabajador.password
-
-        return {
-            jwt,
-            account: trabajador
-        }
     }
 
 }

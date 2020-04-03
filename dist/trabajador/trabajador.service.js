@@ -14,17 +14,13 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
-const log_in_dto_1 = require("../authentication/log.in.dto");
-const cookie_1 = require("../authentication/cookie");
-const authentication_service_1 = require("../authentication/authentication.service");
 const typeorm_2 = require("@nestjs/typeorm");
 const trabajador_entity_1 = require("./trabajador.entity");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let TrabajadorService = class TrabajadorService {
-    constructor(trabajadorRepo, authService) {
+    constructor(trabajadorRepo) {
         this.trabajadorRepo = trabajadorRepo;
-        this.authService = authService;
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
@@ -33,24 +29,11 @@ let TrabajadorService = class TrabajadorService {
     async getTrabajador(email) {
         return await this.trabajadorRepo.query(select_trabajador_query(email)).then(parse_select_trabajador_query);
     }
-    async authenticate(logInDto) {
-        const trabajador = await this.getTrabajador(logInDto.email);
-        const jwt = await this.authService.authenticate(logInDto, trabajador);
-        delete trabajador.doc_id;
-        delete trabajador.doc_type;
-        delete trabajador.creation_date;
-        delete trabajador.password;
-        return {
-            jwt,
-            account: trabajador
-        };
-    }
 };
 TrabajadorService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_2.InjectRepository(trabajador_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository,
-        authentication_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [typeorm_1.Repository])
 ], TrabajadorService);
 exports.default = TrabajadorService;
 function parse_select_trabajador_query(response) {

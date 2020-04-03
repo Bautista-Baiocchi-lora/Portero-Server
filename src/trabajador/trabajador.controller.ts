@@ -1,7 +1,5 @@
 import { Controller, Post, Body } from "@nestjs/common";
 import TrabajadorRegistrationDTO from "./trabajador.registration.dto";
-import { LogInDTO } from "src/authentication/log.in.dto";
-import Cookie from "src/authentication/cookie";
 import TrabajadorService from "./trabajador.service";
 
 
@@ -15,8 +13,4 @@ export default class TrabajadorController{
         return await this.trabajadorService.register(registerDTO);
     }
 
-    @Post('login')
-    async login(@Body() logInDTo: LogInDTO):Promise<Cookie>{
-        return await this.trabajadorService.authenticate(logInDTo)
-    }
 }

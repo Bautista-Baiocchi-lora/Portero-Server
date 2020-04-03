@@ -11,14 +11,15 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const invite_service_1 = require("./invite.service");
 const invite_controller_1 = require("./invite.controller");
-const authentication_module_1 = require("../authentication/authentication.module");
+const auth_module_1 = require("../authentication/auth.module");
+const session_module_1 = require("../session/session.module");
 let InviteModule = class InviteModule {
 };
 InviteModule = __decorate([
     common_1.Module({
         providers: [invite_service_1.default],
         controllers: [invite_controller_1.default],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_invite_entity_1.default]), authentication_module_1.AuthenticationModule],
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_invite_entity_1.default]), session_module_1.default],
         exports: [invite_service_1.default]
     })
 ], InviteModule);

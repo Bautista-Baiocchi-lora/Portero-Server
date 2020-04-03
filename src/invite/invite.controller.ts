@@ -1,5 +1,5 @@
 import { Controller, Post, Body, Query, UseGuards } from "@nestjs/common";
-import { SessionGuard } from "src/authentication/session.guard";
+import { SessionGuard } from "src/session/session.guard";
 import { IsUUID } from "class-validator";
 
 @Controller('invite')

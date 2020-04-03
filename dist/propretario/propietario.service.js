@@ -14,17 +14,14 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
-const log_in_dto_1 = require("../authentication/log.in.dto");
-const cookie_1 = require("../authentication/cookie");
-const authentication_service_1 = require("../authentication/authentication.service");
+const auth_service_1 = require("../authentication/auth.service");
 const propietario_entity_1 = require("./propietario.entity");
 const typeorm_2 = require("@nestjs/typeorm");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let PropietarioService = class PropietarioService {
-    constructor(propietarioRepo, authService) {
+    constructor(propietarioRepo) {
         this.propietarioRepo = propietarioRepo;
-        this.authService = authService;
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
@@ -33,24 +30,11 @@ let PropietarioService = class PropietarioService {
     async getPropietario(email) {
         return await this.propietarioRepo.query(select_propietario_query(email)).then(parse_select_propietario_query);
     }
-    async authenticate(logInDto) {
-        const propietario = await this.getPropietario(logInDto.email);
-        const jwt = await this.authService.authenticate(logInDto, propietario);
-        delete propietario.doc_id;
-        delete propietario.doc_type;
-        delete propietario.creation_date;
-        delete propietario.password;
-        return {
-            jwt,
-            account: propietario
-        };
-    }
 };
 PropietarioService = __decorate([
     common_1.Injectable(),
     __param(0, typeorm_2.InjectRepository(propietario_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository,
-        authentication_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [typeorm_1.Repository])
 ], PropietarioService);
 exports.default = PropietarioService;
 function parse_select_propietario_query(response) {

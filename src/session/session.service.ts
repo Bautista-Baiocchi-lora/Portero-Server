@@ -4,8 +4,6 @@ import {  Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 
 
-const session_duration_in_days = 7
-
 @Injectable()
 export class SessionService{
 
@@ -16,12 +14,19 @@ export class SessionService{
     }
 
     //checking existance is enough to verify thanks jwt being secure and immutable
-    async verify(session_id:string): Promise<boolean> {
-        return await this.sessionRepo.query(create_session_exists_query(session_id))
+    async verify(session:Session): Promise<boolean> {
+        if(new Date(session.exp) > new Date()){
+            return false
+        }
+        return await this.sessionRepo.query(create_session_exists_query(session.id))
         .then(parse_session_exists_query)
     }
 
 }
+
+
+const session_duration_in_days = 7
+
 
 function parse_create_session_query(response):Session{
     response = response[0].create_session.replace('(','').replace(')','').replace('\"','').replace('"','').split(',');

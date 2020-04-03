@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { QueryFailedExceptionFilter } from './query-failed.exception.filter';
-import { JwtExceptionFilter } from './authentication/jwt.exception.filter';
+import { JwtExceptionFilter } from './session/jwt.exception.filter';
 import { userInfo } from 'os';
 
 async function bootstrap() {
