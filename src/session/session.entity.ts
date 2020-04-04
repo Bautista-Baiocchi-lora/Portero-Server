@@ -1,7 +1,5 @@
 import { IsUUID, IsString, IsDateString } from "class-validator";
 import { PrimaryColumn, PrimaryGeneratedColumn, Entity, Column } from "typeorm";
-import Propietario from "src/propretario/propietario.entity";
-import { Barrio } from "src/barrio/barrio.entity";
 
 @Entity()
 export default class Session{
@@ -21,7 +19,5 @@ export default class Session{
     @Column()
     @IsDateString()
     exp:number;
-
-    account?: Barrio | Propietario;
 
 } 

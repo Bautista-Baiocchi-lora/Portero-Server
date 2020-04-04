@@ -4,20 +4,16 @@ import  {Barrio} from './barrio.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
-import Session from 'src/authentication/session.entity';
-import { LogInDTO } from 'src/authentication/log.in.dto';
-import { AuthenticationService } from 'src/authentication/authentication.service';
-import Cookie from 'src/authentication/cookie';
+import Session from 'src/session/session.entity';
 
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = 8;
 
 @Injectable()
 export class BarrioService {
 
   constructor(
     @InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
-    private readonly authService:AuthenticationService,
     private readonly inviteService: InviteService
     ){}
 
@@ -36,19 +32,6 @@ export class BarrioService {
 
   private async getBarrio(email:string):Promise<Barrio>{
     return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query)
-  }
-
-  async authenticate(logInDTO: LogInDTO):Promise<Cookie>{
-    const barrio:Barrio = await this.getBarrio(logInDTO.email)
-    const jwt:string = await this.authService.authenticate(logInDTO,barrio);
-
-    delete barrio.password
-    delete barrio.creation_date
-
-    return {
-      jwt, 
-      account: barrio
-    }
   }
 
 }

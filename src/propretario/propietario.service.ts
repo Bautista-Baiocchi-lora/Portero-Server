@@ -1,9 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import PropietarioRegistrationDTO from "./propietario.registration.dto";
 import { Connection, Repository } from "typeorm";
-import { LogInDTO } from "src/authentication/log.in.dto";
-import Cookie from "src/authentication/cookie";
-import { AuthenticationService } from "src/authentication/authentication.service";
+import { AuthenticationService } from "src/authentication/auth.service";
 import Propietario from "./propietario.entity";
 import { InjectRepository } from "@nestjs/typeorm";
 
@@ -14,8 +12,7 @@ const saltRounds = 10;
 export default class PropietarioService{
 
     constructor(
-        @InjectRepository(Propietario) private readonly propietarioRepo:Repository<Propietario>,
-        private readonly authService:AuthenticationService
+        @InjectRepository(Propietario) private readonly propietarioRepo:Repository<Propietario>
     ){}
 
     async register(registerDTO:PropietarioRegistrationDTO): Promise<boolean>{
@@ -25,22 +22,6 @@ export default class PropietarioService{
 
     async getPropietario(email:string):Promise<Propietario>{
         return await this.propietarioRepo.query(select_propietario_query(email)).then(parse_select_propietario_query)
-    }
-
-    async authenticate(logInDto:LogInDTO): Promise<Cookie>{
-        const propietario:Propietario = await this.getPropietario(logInDto.email)
-        const jwt:string = await this.authService.authenticate(logInDto, propietario);
-
-        delete propietario.doc_id
-        delete propietario.doc_type
-        delete propietario.device_id
-        delete propietario.creation_date
-        delete propietario.password
-
-        return {
-            jwt,
-            account: propietario
-        }
     }
 
 }
@@ -57,8 +38,7 @@ function parse_select_propietario_query(response):Propietario{
         first_name: response[5].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         last_name: response[6].replace('\"', '').replace('\"', ''), //remove slashes and quotes
         doc_id: response[7],
-        doc_type: +response[8],
-        device_id: response[9]
+        doc_type: +response[8]
     }
     return propietario
 }
@@ -74,10 +54,9 @@ function create_insert_propietario_query(registerDTO:PropietarioRegistrationDTO)
         first_name,
         last_name,
         doc_id,
-        doc_type,
-        device_id
+        doc_type
             } = registerDTO
-    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}', '${device_id}');`
+    return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`
 }
 
 async function parse_insert_propietario_query(response): Promise<boolean>{

@@ -14,8 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const trabajador_registration_dto_1 = require("./trabajador.registration.dto");
-const log_in_dto_1 = require("../authentication/log.in.dto");
-const cookie_1 = require("../authentication/cookie");
 const trabajador_service_1 = require("./trabajador.service");
 let TrabajadorController = class TrabajadorController {
     constructor(trabajadorService) {
@@ -23,9 +21,6 @@ let TrabajadorController = class TrabajadorController {
     }
     async register(registerDTO) {
         return await this.trabajadorService.register(registerDTO);
-    }
-    async login(logInDTo) {
-        return await this.trabajadorService.authenticate(logInDTo);
     }
 };
 __decorate([
@@ -35,13 +30,6 @@ __decorate([
     __metadata("design:paramtypes", [trabajador_registration_dto_1.default]),
     __metadata("design:returntype", Promise)
 ], TrabajadorController.prototype, "register", null);
-__decorate([
-    common_1.Post('login'),
-    __param(0, common_1.Body()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [log_in_dto_1.LogInDTO]),
-    __metadata("design:returntype", Promise)
-], TrabajadorController.prototype, "login", null);
 TrabajadorController = __decorate([
     common_1.Controller('trabajador'),
     __metadata("design:paramtypes", [trabajador_service_1.default])

@@ -25,8 +25,4 @@ export default class TrabajadorRegistrationDTO{
     @IsNotEmpty()
     password: string;
 
-    @IsString()
-    @IsNotEmpty()
-    device_id: string;
-
 }

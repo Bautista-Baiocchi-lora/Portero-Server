@@ -13,7 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const session_guard_1 = require("../authentication/session.guard");
+const session_guard_1 = require("../session/session.guard");
 let InviteController = class InviteController {
     constructor() { }
     async accept(invite_id) {

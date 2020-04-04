@@ -2206,56 +2206,68 @@
         "signature": "70aecfd981af29d74ba7ab6667b9cc2a53459d8eb099c139fd2aa54c3059c71d"
       },
       "../src/authentication/log.in.dto.ts": {
-        "version": "7d1a24773c12791aee0e20afa15eb75dca77abf1d6897b0e7384f22646407cba",
-        "signature": "40ed4a314cbec264573ab9d3c3bb6e332b1764f32b01db75045350605504f49d"
+        "version": "e78b4a145af88255cca80a43b1d6f03535c2b8aad92083759d1b3fb5ce98a9e9",
+        "signature": "881d2ef183b737d8abec5596cebddd59774efe6d1e49a90ca50b06122b7c0e50"
       },
-      "../src/propretario/propietario.entity.ts": {
-        "version": "cc2b9144c5cb0aea57f6cb9ec8528272105f350797eeda3516fe487c281954b8",
-        "signature": "fd7a4f7243b2a86105bb94221ee48a6a4f961de3e018847e41fc27ce662062aa"
+      "../src/session/session.entity.ts": {
+        "version": "ae271bd1a724d603e8556564fc3d3e5855c6064114257b2c5642ef9c49913d82",
+        "signature": "cd5a1cba13202f5b8deccd2f0f3657551e09dd8d0a32de7d2226de78de484b50"
       },
-      "../src/barrio/barrio.entity.ts": {
-        "version": "1396c8c723892a70e7d551db4ba276a7270840154d92c65e79c071092c6a2aab",
-        "signature": "0ca66db0e23e05012b7fbdbaa21f0cb97a771ecbc9df9a36fd8b05fa018b3a56"
+      "../src/session/session.service.ts": {
+        "version": "5a60f629b2919bf4efcc8828327ffb715a6ff5d89e04e8dbea0e5539e636491c",
+        "signature": "191f4b6fac11c74b9f9e29145b663388c43c236009f9db39e0cca162696dade4"
       },
-      "../src/authentication/session.entity.ts": {
-        "version": "f9e44acd28a091781ca9aaf4e1da7dd65e2d8a3507fff695490de4182dc77881",
-        "signature": "1e4fe81f9cadd8affeaae2f1f5ecc4461aa80056aa3b24c0de188bec64e39862"
+      "../src/session/jwt.service.ts": {
+        "version": "ceaa3bd706cb2639707e0f45b406810e3a045146bbcf96eba3165e7b2aae64ce",
+        "signature": "6c59d8cafd540333f19d3a69404bf68a6861da4108eb55f61648195be7390d97"
       },
-      "../src/authentication/session.service.ts": {
-        "version": "8af78826f66a88680da81435a74ad8c444e5c53a44d0cf786e62b6bf32726792",
-        "signature": "a9292967f948a35fc76767495e559af8d386754de6615d3b10360772129ec9b9"
+      "../src/authentication/auth.error.ts": {
+        "version": "7e999c1a2d86b5f86953fffe69578eef0f8015c01f7cad92d120e2a669de737c",
+        "signature": "04004dc191ea3e4f3c0d5f5150573484dad9cca28ca9e514e29bb0bfc3855a18"
       },
-      "../src/authentication/cookie.ts": {
-        "version": "c90b859591cabeaa051ba596eb550306d70484ab2ce00229cbd2672b9491f5dc",
-        "signature": "68b005fd4bda799a2f65b0d20a42202da25640de16ef082246044eecae765ac8"
+      "../src/authentication/auth.service.ts": {
+        "version": "3d69bbb806699898e55c0959e7d65a0f20680e01420e4c498b68ce0847239558",
+        "signature": "59dbc24165d185404ab778bce228464fd71149499198c4f3b4fe760d01f026bc"
       },
-      "../src/authentication/authentication.service.ts": {
-        "version": "05f9513112d06fc6a4429aa3e47d221625e98ee8aba56991ee1197ce92ee1b4b",
-        "signature": "110a3bf59f9c1cb3dde82c2af1ad76afc7337875b615bff0246b54448d900399"
+      "../src/session/session.module.ts": {
+        "version": "1b895fbef42f3a92a3a3540ba188adeb495c107834c442902234a3ff2cf5b777",
+        "signature": "ae1fa7b8d8cfb2da86241b1567b0ff82c5f5c7b25ff13b47f1c68ed9a7ea7999"
       },
-      "../src/authentication/authentication.module.ts": {
-        "version": "1f63f941bf37283def86578dff165679f7d7abd6cdc422cbfc5b69063daa009e",
+      "../src/authentication/auth.controller.ts": {
+        "version": "51fa29613df7acbffd0615e175a010aba541198da9c0797fec0b23435413cca7",
+        "signature": "d2b6c15859065612063fc46f0a15574d6a851d612e97eaf70cc3561000b3eae2"
+      },
+      "../src/authentication/auth.module.ts": {
+        "version": "29e313c068ee027cd1a5f833ccdc0735a050b3e01b3f09d57e1a560a5a123491",
         "signature": "558dda4593d50faf869595d3fc98b55d07928d5af2a9d5a291afb7c40711e8b9"
       },
+      "../src/propretario/propietario.entity.ts": {
+        "version": "50dd2d8e133156197561cfab5f4c5b900722d4a22ee063b0e5b2d58491973e49",
+        "signature": "837df8dd856b094f259429314d5cce02a66aa40514e969f4783b1556d9483204"
+      },
       "../src/propretario/propietario.registration.dto.ts": {
-        "version": "eaa9d4e10f3ffb8c3f1b361ca007f8d480c678955e97d3e7847b3e274e8ae44c",
-        "signature": "0c6eda19d7752852cd04d770b53fd8070621d960488982f6349b985c37cd5a05"
+        "version": "ab282e518accdb1f64d3b108c7f38d2c82ce60e7617cd1a6820a75fb86839859",
+        "signature": "8d45e2f8e9d066d3bc5bcb88d1ed2d38fe3cfae3e13cfb8b6f60bd9ba0c128b3"
       },
       "../src/propretario/propietario.service.ts": {
-        "version": "6ed43889d1e66b16566aea2ead42435a5eed3e6231a1fb22221dcd7f8aae6bd8",
-        "signature": "c84cdd27c4e167f7174913c11ea5f0c5bbb57e691142234c4472b43b4ac47a3a"
+        "version": "09621bbb6f832882021068e0144a55e0f5ee9dbf6428e0ea89521b0d31dddeaf",
+        "signature": "4e349db530405d2730e0a0ffb5a90204628b5d7d066b5a53a752c791287a0a7d"
       },
       "../src/propretario/propietario.controller.ts": {
-        "version": "64e70268e293d1c4dd4862806470953f72e6eb8292456aed0760c2ee6cd74b23",
-        "signature": "3f72706a4eb8f21ad842fd2f60455750fcaa2bce5c2328c07034097966b70b1b"
+        "version": "38dae2fce68be287d77b352f63e53a8bd95415e6bb2783d565c91273c6962043",
+        "signature": "d7261505f992476cb85f63a4c8533f4929d0174c815150abbb38b59e679e0837"
       },
       "../src/propretario/propietario.module.ts": {
-        "version": "2938a8ecb0e9fde30d733ab3902000bfa772d4c8f00df8898c502d257dc185ac",
+        "version": "4ada0949bf7e3f0bad20f24fbcb8721957b90c1b0bc358301fe51648f981c866",
         "signature": "3e7c0c498db312e686e65af5ca31432d8613a4d119dca2ab901cbebc84d403cc"
       },
       "../src/barrio/barrio.registration.dto.ts": {
         "version": "9dc7ceed9016a43b9ed64802a94479c70c724b3dcff5cb938e520fffa79c836a",
         "signature": "50ddcefca58de4df28248b7605d1903a71ab74f7dcbb09aa4834ac83341afbbb"
+      },
+      "../src/barrio/barrio.entity.ts": {
+        "version": "1396c8c723892a70e7d551db4ba276a7270840154d92c65e79c071092c6a2aab",
+        "signature": "0ca66db0e23e05012b7fbdbaa21f0cb97a771ecbc9df9a36fd8b05fa018b3a56"
       },
       "../src/invite/barrio.invite.entity.ts": {
         "version": "323e26c675baaaf2c6bffcd432c2e81578adc47a2f36f321b502ea1942405eef",
@@ -2266,55 +2278,55 @@
         "signature": "d15759bd5f3ccb7b46ee54bc62f2637b13e436db3aba7ccac64953ddf337ee9a"
       },
       "../src/barrio/barrio.service.ts": {
-        "version": "223256bf16459a49a9577c7be7b36c0840deaf0d40e719c7632d378fa7959b1e",
-        "signature": "2f640ac81ad7426d7d7c2522b91f2c36a4c4ac705c994f692e14355fa112e2e4"
+        "version": "319f1cac728a9d0f4c6f699d42a6f1a1e5aaf1bad81ae07589872d4f5a1cb8d7",
+        "signature": "bbba07692956b9de496b03c2f7f3d2890db44841c50c5e2fc8d6654f311b75bb"
       },
-      "../src/authentication/session.guard.ts": {
-        "version": "fcfc97dd91b3b2958158ba8f814193750aa88e1f028274727961c17e4f31b299",
-        "signature": "0f29424e8a620df05d4909e44abf0531db264cfe64c775351564d2b75bd9deb9"
+      "../src/session/session.guard.ts": {
+        "version": "ad6f15342c85247d561e7d2008184fd7449696f1bea9e4bd75cf39aa0bd15f60",
+        "signature": "e69af3bec02afd7a428fdbb37cb92dfd578338dd8c8a50e46dd2541473438e61"
       },
       "../src/invite/invite.controller.ts": {
-        "version": "ab43819d1ceaa039cce94ecf91cb92b387e314e01bb370e77b3ee25506c53423",
+        "version": "229942a0552e610ee45dd10cb68664d145855cc4191fda20a65148473127c5c2",
         "signature": "d9aee5d099e567a70d953f2f08abf0520fa6e664c9e75985f899e7da04ec1110"
       },
       "../src/invite/invite.module.ts": {
-        "version": "2a68b86ed1bad9e0387f3faa1c17a969f5df7485ba11f6de776387cf7afd894e",
+        "version": "d52cb1467bc516f0ea70df2469087531307cb767af7cba084eaa2a8cd8d9f24f",
         "signature": "639633d6f7f9f40f41e53f61bc7cc4c76c801171979f97af0a0f56fbcd24d33d"
       },
-      "../src/authentication/jwt.validation.pipe.ts": {
-        "version": "7062d335a04ef9297594fecf8bbdc975f0dfa61876bd2ea5b747d60e487e10df",
-        "signature": "5f67125a9b6f361d57cf00bd4104d9d525f2bbdab786a0c395ab8b7fad9e894c"
+      "../src/session/jwt.validation.pipe.ts": {
+        "version": "8974662e0868869fa7863704ab49958f7bbe84b4bf1447830d9a65039f4a3d3a",
+        "signature": "e87ca7a9ab3a28aab78ef1950607bdef29660e81f44c8288f7e8d889f322319d"
       },
       "../src/barrio/barrio.controller.ts": {
-        "version": "81f354afa66b231d9fe4ae2176008bb80fd708fd9acc26dde292611b2242e8f6",
-        "signature": "15527734a3d32ec25187cf10428dcd31ae3436987e90a214d3a50960a2af2726"
+        "version": "bb4c19fd99e77aaffcda3682999b9d82d0acc1ae3e1e13aaaff6645148ddf752",
+        "signature": "4f6340b855342f9b220cf96c6bd4dd61501b0ba4cd026cf5c472c94c3bcdda8b"
       },
       "../src/barrio/barrio.module.ts": {
-        "version": "1ba93e64f026f7105cdd3bfde702e2ca2871e7f4f31b0b022df0b967da1db613",
+        "version": "662ed2051d0a0b157ea0af798d4a83d78a264197026430c0b8a6f9a1893188df",
         "signature": "f9545d3e42877277bc6a873ed68df6a9794c288d1bd55d164e0293d693b15de5"
       },
       "../src/trabajador/trabajador.entity.ts": {
-        "version": "f67efd329e5562b9bd6b0803ff49e272a4082a1c9484ad7032e9072e592ac5b7",
-        "signature": "e3f2530ceaaa614d10a2c1ee74a0bcd944d51a5f2f90b3065eebbd591743c90d"
+        "version": "f6273ccec624e4c86160c2907452e93d5a572f2fba181b8998efba811dbd5e37",
+        "signature": "6aab7e3d8caee6cfa0e18d0a76b83e0d8ddb6c79e540fd23cfb6eab64dbcf5e2"
       },
       "../src/trabajador/trabajador.registration.dto.ts": {
-        "version": "d9cd58045f3e5bcfe779c441bff07f1e8fc3d683da70d56049beae018ec255b1",
-        "signature": "dc1a826cc3faaeed008c5803231339faf2538f699f8788869b04c1192dec51c8"
+        "version": "119bb635674a0af7e8d852598e1afb60afcc06680a1e5520a88eb4df56e08597",
+        "signature": "f0f88a3199f2f5447b11cb17fba6e1c21952c94f791a749b9bcbb59de6f8a555"
       },
       "../src/trabajador/trabajador.service.ts": {
-        "version": "89ad42c4d3a9c3bd152d263dc43b51f05042731920ab71bc3d15eee71f488078",
-        "signature": "0735470d379ca27ae771d392cb2f3b5b211277e173610647edfc609ed339665b"
+        "version": "7dd0736d505edac998f7c3791d260f0c0d755e261f79494430a7f9dc9eaa1767",
+        "signature": "5caf7c5c4c8d47312743a1ffc1aefaf834946f6a969f6b35c57155621244a434"
       },
       "../src/trabajador/trabajador.controller.ts": {
-        "version": "017f99d6f492d0420a7979d75788fd0b5286bed82fd56cbe10a5140fcf6cf009",
-        "signature": "c106df1e65e58486f124587f8d1c326c9b36429dd3aaa05d569b6b18547f6365"
+        "version": "3a8025bd26c7bab6a4b5933c899fb39daab0e0cfd25a68333c5d88cf91ad52ff",
+        "signature": "f762d579d4cf23663e61c501b1b4105c7b8838e5e2579194d516a13e8bf62e98"
       },
       "../src/trabajador/trabajador.module.ts": {
-        "version": "5476096ef60d2768d726204710387763b808801caa73932367cbb945063b1f6d",
+        "version": "7aa2f951e97d2aaab4c181163c008b9dac86c86f27a74aa23f80f9313904035a",
         "signature": "da3d1127b3e230a8c3dec954524a80c64d7014042c453f7e2be0218b511ca981"
       },
       "../src/app.module.ts": {
-        "version": "ea62cb452cf9c1608aacec7e66d705f01c16c66af9439841c1e0b24c90334c99",
+        "version": "918a83f64f402163d74745e2e78fe59092853cbdf85d5c10e640d8603aef4341",
         "signature": "b82491e2990291580288c5602d4c017238977749d52b17391f0e45d9a29be644"
       },
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": {
@@ -2493,13 +2505,17 @@
         "version": "ed2e832899b97594aebebb6f4e29124156d85edad0c4764d3b8a3e5ad1db7eb5",
         "signature": "ed2e832899b97594aebebb6f4e29124156d85edad0c4764d3b8a3e5ad1db7eb5"
       },
-      "../src/authentication/jwt.exception.filter.ts": {
+      "../src/session/jwt.exception.filter.ts": {
         "version": "4367e40ce6d1d5634e501bb56e3e8a30f1c0ef3ca70a57bc214bfc8c9724ebee",
         "signature": "34121933d231b20f45ce306abb48206fffa1c1ad4ddcf1da3e13e054d21733e3"
       },
       "../src/main.ts": {
-        "version": "b6533e60d90d8a633232b4d7ad13dde78bcb7fdbf614cb45f7a5b2bb41e4e03c",
+        "version": "76eedc31906e17a13f24491d8ef8089d5ca356323f65f559fe09a690e48a9941",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      "../src/authentication/auth.exception.filter.ts": {
+        "version": "addf6ac0cb352445f11a862732d8f4487731b797e0b865d9db50cc42c9d6a0de",
+        "signature": "695b2060742665e5d6e25e9d5243a32c03a89fc5de4d0c69782f48f3dd703963"
       },
       "../node_modules/@types/anymatch/index.d.ts": {
         "version": "48b52264fa193879a074197839dbb4796fa07e86350ff888e5361e06aa46df76",
@@ -7256,70 +7272,87 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/session/session.entity.ts": [
+        "../node_modules/class-validator/index.d.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/session/session.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/session/session.entity.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/session/jwt.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/session/session.entity.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/authentication/auth.error.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/authentication/auth.service.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/authentication/log.in.dto.ts",
+        "../src/session/session.entity.ts",
+        "../src/session/session.service.ts",
+        "../src/session/jwt.service.ts",
+        "../node_modules/typeorm/index.d.ts",
+        "../src/authentication/auth.error.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/session/session.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../src/session/session.entity.ts",
+        "../src/session/session.service.ts",
+        "../src/session/jwt.service.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/authentication/auth.controller.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/authentication/log.in.dto.ts",
+        "../src/authentication/auth.service.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/authentication/auth.module.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../src/authentication/auth.service.ts",
+        "../node_modules/@nestjs/typeorm/index.d.ts",
+        "../src/session/session.service.ts",
+        "../src/session/session.entity.ts",
+        "../src/session/session.module.ts",
+        "../src/authentication/auth.controller.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/propretario/propietario.entity.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../node_modules/class-validator/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/barrio/barrio.entity.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../node_modules/class-validator/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/authentication/session.entity.ts": [
-        "../node_modules/class-validator/index.d.ts",
-        "../node_modules/typeorm/index.d.ts",
-        "../src/propretario/propietario.entity.ts",
-        "../src/barrio/barrio.entity.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/authentication/session.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/session.entity.ts",
-        "../node_modules/typeorm/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/authentication/cookie.ts": [
-        "../src/authentication/session.entity.ts",
-        "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/authentication/authentication.service.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/session.entity.ts",
-        "../src/authentication/session.service.ts",
-        "../src/propretario/propietario.entity.ts",
-        "../src/barrio/barrio.entity.ts",
-        "../src/authentication/cookie.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "../src/authentication/authentication.module.ts": [
-        "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/authentication.service.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../src/authentication/session.service.ts",
-        "../src/authentication/session.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7336,9 +7369,7 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/propretario/propietario.registration.dto.ts",
         "../node_modules/typeorm/index.d.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts",
-        "../src/authentication/authentication.service.ts",
+        "../src/authentication/auth.service.ts",
         "../src/propretario/propietario.entity.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
@@ -7350,8 +7381,6 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/propretario/propietario.registration.dto.ts",
         "../src/propretario/propietario.service.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7363,13 +7392,21 @@
         "../src/propretario/propietario.entity.ts",
         "../src/propretario/propietario.controller.ts",
         "../src/propretario/propietario.service.ts",
-        "../src/authentication/authentication.module.ts",
+        "../src/authentication/auth.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "../src/barrio/barrio.registration.dto.ts": [
+        "../node_modules/class-validator/index.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/barrio/barrio.entity.ts": [
+        "../node_modules/typeorm/index.d.ts",
         "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -7401,19 +7438,17 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/invite/invite.service.ts",
-        "../src/authentication/session.entity.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/authentication.service.ts",
-        "../src/authentication/cookie.ts",
+        "../src/session/session.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/session.guard.ts": [
+      "../src/session/session.guard.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/authentication.service.ts",
-        "../src/authentication/session.entity.ts",
+        "../src/session/session.entity.ts",
+        "../src/session/session.service.ts",
+        "../src/session/jwt.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7421,7 +7456,7 @@
       ],
       "../src/invite/invite.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/session.guard.ts",
+        "../src/session/session.guard.ts",
         "../node_modules/class-validator/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -7434,16 +7469,18 @@
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/invite/invite.service.ts",
         "../src/invite/invite.controller.ts",
-        "../src/authentication/authentication.module.ts",
+        "../src/authentication/auth.module.ts",
+        "../src/session/session.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/jwt.validation.pipe.ts": [
+      "../src/session/jwt.validation.pipe.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/authentication.service.ts",
-        "../src/authentication/session.entity.ts",
+        "../src/authentication/auth.service.ts",
+        "../src/session/session.entity.ts",
+        "../src/session/jwt.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7453,12 +7490,10 @@
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/barrio/barrio.service.ts",
         "../src/barrio/barrio.registration.dto.ts",
-        "../src/authentication/session.guard.ts",
-        "../src/authentication/jwt.validation.pipe.ts",
-        "../src/authentication/authentication.module.ts",
-        "../src/authentication/session.entity.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts",
+        "../src/session/session.guard.ts",
+        "../src/session/jwt.validation.pipe.ts",
+        "../src/authentication/auth.module.ts",
+        "../src/session/session.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7470,10 +7505,11 @@
         "../src/barrio/barrio.entity.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/invite/invite.module.ts",
-        "../src/authentication/authentication.module.ts",
+        "../src/authentication/auth.module.ts",
         "../src/barrio/barrio.controller.ts",
-        "../src/authentication/authentication.service.ts",
+        "../src/authentication/auth.service.ts",
         "../src/invite/invite.service.ts",
+        "../src/session/session.module.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7497,9 +7533,6 @@
       "../src/trabajador/trabajador.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts",
-        "../src/authentication/authentication.service.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/trabajador/trabajador.entity.ts",
         "../src/trabajador/trabajador.registration.dto.ts",
@@ -7511,8 +7544,6 @@
       "../src/trabajador/trabajador.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/trabajador/trabajador.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts",
         "../src/trabajador/trabajador.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -7520,7 +7551,7 @@
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "../src/trabajador/trabajador.module.ts": [
-        "../src/authentication/authentication.module.ts",
+        "../src/authentication/auth.module.ts",
         "../src/trabajador/trabajador.entity.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/@nestjs/common/index.d.ts",
@@ -7534,8 +7565,8 @@
       "../src/app.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
-        "../src/authentication/authentication.module.ts",
-        "../src/authentication/session.service.ts",
+        "../src/authentication/auth.module.ts",
+        "../src/session/session.service.ts",
         "../src/propretario/propietario.module.ts",
         "../src/barrio/barrio.module.ts",
         "../src/invite/invite.module.ts",
@@ -7927,7 +7958,7 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/jwt.exception.filter.ts": [
+      "../src/session/jwt.exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@types/jsonwebtoken/index.d.ts",
         "../node_modules/@types/express/index.d.ts",
@@ -7941,8 +7972,17 @@
         "../src/app.module.ts",
         "../node_modules/@nestjs/common/index.d.ts",
         "../src/query-failed.exception.filter.ts",
-        "../src/authentication/jwt.exception.filter.ts",
+        "../src/session/jwt.exception.filter.ts",
         "../node_modules/@types/node/os.d.ts",
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "../src/authentication/auth.exception.filter.ts": [
+        "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@types/express/index.d.ts",
+        "../src/authentication/auth.error.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12786,38 +12826,31 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/session.entity.ts": [
-        "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts"
-      ],
-      "../src/authentication/session.service.ts": [
+      "../src/session/session.service.ts": [
         "../node_modules/typeorm/index.d.ts",
-        "../src/authentication/session.entity.ts"
+        "../src/session/session.entity.ts"
       ],
-      "../src/authentication/cookie.ts": [
-        "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts"
+      "../src/session/jwt.service.ts": [
+        "../src/session/session.entity.ts"
       ],
-      "../src/authentication/authentication.service.ts": [
-        "../src/authentication/session.service.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/barrio/barrio.entity.ts",
-        "../src/propretario/propietario.entity.ts",
-        "../src/authentication/session.entity.ts"
+      "../src/authentication/auth.service.ts": [
+        "../node_modules/typeorm/index.d.ts",
+        "../src/session/session.service.ts",
+        "../src/session/jwt.service.ts",
+        "../src/authentication/log.in.dto.ts"
+      ],
+      "../src/authentication/auth.controller.ts": [
+        "../src/authentication/auth.service.ts",
+        "../src/authentication/log.in.dto.ts"
       ],
       "../src/propretario/propietario.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/propretario/propietario.entity.ts",
-        "../src/authentication/authentication.service.ts",
-        "../src/propretario/propietario.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/propretario/propietario.registration.dto.ts"
       ],
       "../src/propretario/propietario.controller.ts": [
         "../src/propretario/propietario.service.ts",
-        "../src/propretario/propietario.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/propretario/propietario.registration.dto.ts"
       ],
       "../src/invite/invite.service.ts": [
         "../node_modules/typeorm/index.d.ts",
@@ -12826,41 +12859,33 @@
       "../src/barrio/barrio.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/barrio/barrio.entity.ts",
-        "../src/authentication/authentication.service.ts",
         "../src/invite/invite.service.ts",
         "../src/barrio/barrio.registration.dto.ts",
-        "../src/authentication/session.entity.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/session/session.entity.ts"
       ],
-      "../src/authentication/session.guard.ts": [
-        "../src/authentication/authentication.service.ts",
+      "../src/session/session.guard.ts": [
+        "../src/session/session.service.ts",
+        "../src/session/jwt.service.ts",
         "../node_modules/@nestjs/common/index.d.ts"
       ],
-      "../src/authentication/jwt.validation.pipe.ts": [
-        "../src/authentication/authentication.service.ts",
+      "../src/session/jwt.validation.pipe.ts": [
+        "../src/session/jwt.service.ts",
         "../node_modules/@nestjs/common/index.d.ts",
-        "../src/authentication/session.entity.ts"
+        "../src/session/session.entity.ts"
       ],
       "../src/barrio/barrio.controller.ts": [
         "../src/barrio/barrio.service.ts",
         "../src/barrio/barrio.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/session/session.entity.ts"
       ],
       "../src/trabajador/trabajador.service.ts": [
         "../node_modules/typeorm/index.d.ts",
         "../src/trabajador/trabajador.entity.ts",
-        "../src/authentication/authentication.service.ts",
-        "../src/trabajador/trabajador.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/trabajador/trabajador.registration.dto.ts"
       ],
       "../src/trabajador/trabajador.controller.ts": [
         "../src/trabajador/trabajador.service.ts",
-        "../src/trabajador/trabajador.registration.dto.ts",
-        "../src/authentication/log.in.dto.ts",
-        "../src/authentication/cookie.ts"
+        "../src/trabajador/trabajador.registration.dto.ts"
       ],
       "../node_modules/@nestjs/core/adapters/http-adapter.d.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
@@ -13239,7 +13264,10 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/authentication/jwt.exception.filter.ts": [
+      "../src/session/jwt.exception.filter.ts": [
+        "../node_modules/@nestjs/common/index.d.ts"
+      ],
+      "../src/authentication/auth.exception.filter.ts": [
         "../node_modules/@nestjs/common/index.d.ts"
       ],
       "../node_modules/@types/anymatch/index.d.ts": [
@@ -14027,25 +14055,28 @@
       "../node_modules/class-validator/metadata/metadatastorage.d.ts",
       "../node_modules/class-validator/index.d.ts",
       "../src/authentication/log.in.dto.ts",
+      "../src/session/session.entity.ts",
+      "../src/session/session.service.ts",
+      "../src/session/jwt.service.ts",
+      "../src/authentication/auth.error.ts",
+      "../src/authentication/auth.service.ts",
+      "../src/session/session.module.ts",
+      "../src/authentication/auth.controller.ts",
+      "../src/authentication/auth.module.ts",
       "../src/propretario/propietario.entity.ts",
-      "../src/barrio/barrio.entity.ts",
-      "../src/authentication/session.entity.ts",
-      "../src/authentication/session.service.ts",
-      "../src/authentication/cookie.ts",
-      "../src/authentication/authentication.service.ts",
-      "../src/authentication/authentication.module.ts",
       "../src/propretario/propietario.registration.dto.ts",
       "../src/propretario/propietario.service.ts",
       "../src/propretario/propietario.controller.ts",
       "../src/propretario/propietario.module.ts",
       "../src/barrio/barrio.registration.dto.ts",
+      "../src/barrio/barrio.entity.ts",
       "../src/invite/barrio.invite.entity.ts",
       "../src/invite/invite.service.ts",
       "../src/barrio/barrio.service.ts",
-      "../src/authentication/session.guard.ts",
+      "../src/session/session.guard.ts",
       "../src/invite/invite.controller.ts",
       "../src/invite/invite.module.ts",
-      "../src/authentication/jwt.validation.pipe.ts",
+      "../src/session/jwt.validation.pipe.ts",
       "../src/barrio/barrio.controller.ts",
       "../src/barrio/barrio.module.ts",
       "../src/trabajador/trabajador.entity.ts",
@@ -14097,8 +14128,9 @@
       "../node_modules/@types/express/index.d.ts",
       "../src/query-failed.exception.filter.ts",
       "../node_modules/@types/jsonwebtoken/index.d.ts",
-      "../src/authentication/jwt.exception.filter.ts",
+      "../src/session/jwt.exception.filter.ts",
       "../src/main.ts",
+      "../src/authentication/auth.exception.filter.ts",
       "../node_modules/@types/anymatch/index.d.ts",
       "../node_modules/@babel/types/lib/index.d.ts",
       "../node_modules/@types/babel__generator/index.d.ts",

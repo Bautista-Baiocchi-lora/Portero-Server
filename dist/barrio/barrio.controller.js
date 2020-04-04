@@ -15,12 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const barrio_service_1 = require("./barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
-const session_guard_1 = require("../authentication/session.guard");
-const jwt_validation_pipe_1 = require("../authentication/jwt.validation.pipe");
-const authentication_module_1 = require("../authentication/authentication.module");
-const session_entity_1 = require("../authentication/session.entity");
-const log_in_dto_1 = require("../authentication/log.in.dto");
-const cookie_1 = require("../authentication/cookie");
+const session_guard_1 = require("../session/session.guard");
+const jwt_validation_pipe_1 = require("../session/jwt.validation.pipe");
+const auth_module_1 = require("../authentication/auth.module");
+const session_entity_1 = require("../session/session.entity");
 let BarrioController = class BarrioController {
     constructor(barrioService) {
         this.barrioService = barrioService;
@@ -28,8 +26,8 @@ let BarrioController = class BarrioController {
     async register(registerDTO) {
         return await this.barrioService.register(registerDTO);
     }
-    async login(logInDTO) {
-        return await this.barrioService.authenticate(logInDTO);
+    async getNewInvite(session) {
+        return await this.barrioService.getNewInvite(session);
     }
 };
 __decorate([
@@ -40,12 +38,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], BarrioController.prototype, "register", null);
 __decorate([
-    common_1.Post('login'),
-    __param(0, common_1.Body()),
+    common_1.Get('new/invite'),
+    common_1.UseGuards(session_guard_1.SessionGuard),
+    common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
+    __param(0, auth_module_1.UserSession()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [log_in_dto_1.LogInDTO]),
+    __metadata("design:paramtypes", [session_entity_1.default]),
     __metadata("design:returntype", Promise)
-], BarrioController.prototype, "login", null);
+], BarrioController.prototype, "getNewInvite", null);
 BarrioController = __decorate([
     common_1.Controller('barrio'),
     __metadata("design:paramtypes", [barrio_service_1.BarrioService])

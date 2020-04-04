@@ -8,8 +8,4 @@ export class LogInDTO{
     @IsNotEmpty()
     password:string;
 
-    @IsString()
-    @IsOptional()
-    device_id: string;
-
 }

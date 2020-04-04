@@ -27,9 +27,6 @@ export default class Propietario{
     doc_type: number;
 
     @Column()
-    device_id: string;
-
-    @Column()
     creation_date: string;
 
 }

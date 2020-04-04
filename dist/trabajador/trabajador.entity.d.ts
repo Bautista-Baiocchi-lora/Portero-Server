@@ -6,6 +6,5 @@ export default class Trabajador {
     last_name: string;
     doc_id: string;
     doc_type: number;
-    device_id: string;
     creation_date: string;
 }

@@ -45,10 +45,6 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], Trabajador.prototype, "device_id", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
 ], Trabajador.prototype, "creation_date", void 0);
 Trabajador = __decorate([
     typeorm_1.Entity()

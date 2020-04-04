@@ -10,44 +10,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const session_service_1 = require("./session.service");
+const session_service_1 = require("../session/session.service");
 const propietario_entity_1 = require("../propretario/propietario.entity");
 const barrio_entity_1 = require("../barrio/barrio.entity");
+const trabajador_entity_1 = require("../trabajador/trabajador.entity");
+const jwt_service_1 = require("../session/jwt.service");
+const typeorm_1 = require("typeorm");
+const authentication_error_1 = require("./authentication.error");
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const secret = "our super secret";
 let AuthenticationService = class AuthenticationService {
-    constructor(sessionService) {
+    constructor(connection, sessionService, jwtService) {
+        this.connection = connection;
         this.sessionService = sessionService;
+        this.jwtService = jwtService;
     }
-    async authenticate(logInDTO, account) {
-        const authenticated = await bcrypt.compare(logInDTO.password, account.password);
-        if (!authenticated) {
-            throw new Error('Invalid Credentials');
+    async authenticate(logInDTO) {
+        const account = await this.connection.query(select_account_query(logInDTO.email));
+        const validated = await bcrypt.compare(logInDTO.password, account.password);
+        if (!validated) {
+            throw new authentication_error_1.AuthenticationError('1');
         }
         const session = await this.sessionService.create(account.id);
         session.account = account;
-        return await this.signJWT(session);
-    }
-    async verifySession(session) {
-        if (new Date(session.exp) > new Date()) {
-            return false;
-        }
-        return await this.sessionService.verify(session.id);
-    }
-    async signJWT(session) {
-        return await jwt.sign(session, secret);
-    }
-    async verifyJWT(token) {
-        return await jwt.verify(token, secret);
-    }
-    async decodeJWT(token) {
-        return await jwt.decode(token);
+        delete session.account.password;
+        return await this.jwtService.signJWT(session);
     }
 };
 AuthenticationService = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [session_service_1.SessionService])
+    __metadata("design:paramtypes", [typeorm_1.Connection,
+        session_service_1.SessionService,
+        jwt_service_1.JwtService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
+const select_account_query = (email) => `SELECT select_account('${email}');`;
 //# sourceMappingURL=authentication.service.js.map
