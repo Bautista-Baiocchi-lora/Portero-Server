@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { LogInDTO } from "./log.in.dto";
 import  Session from "../session/session.entity";
 import { SessionService } from "../session/session.service";
-import { JwtService } from "src/session/jwt.service";
+import { JwtService, JwtSession } from "src/session/jwt.service";
 import { Connection } from "typeorm";
 import { AuthenticationError } from "./auth.error";
 
@@ -26,18 +26,21 @@ export class AuthenticationService{
         }
 
         const session:Session  =  await this.sessionService.create(account.id)
-        return await this.jwtService.signJWT(session)
+        const token:JwtSession = {...session, email: account.email, type: account.type}
+
+        return await this.jwtService.signJWT(token)
     }
 
   
 }
+
 
 const select_account_query = (email:string) => `SELECT select_account('${email}');`
 
 function parse_select_account(response){
     response = response[0].select_account.replace('(','').replace(')','').split(',')
     return {
-        id: +response[0],
+        id: response[0],
         email: response[1],
         password: response[2],
         type: +response[3]

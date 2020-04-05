@@ -19,6 +19,8 @@ const session_guard_1 = require("../session/session.guard");
 const jwt_validation_pipe_1 = require("../session/jwt.validation.pipe");
 const auth_module_1 = require("../authentication/auth.module");
 const session_entity_1 = require("../session/session.entity");
+const barrio_guard_1 = require("../authentication/barrio.guard");
+const jwt_service_1 = require("../session/jwt.service");
 let BarrioController = class BarrioController {
     constructor(barrioService) {
         this.barrioService = barrioService;
@@ -39,11 +41,11 @@ __decorate([
 ], BarrioController.prototype, "register", null);
 __decorate([
     common_1.Get('new/invite'),
-    common_1.UseGuards(session_guard_1.SessionGuard),
+    common_1.UseGuards(barrio_guard_1.default),
     common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
     __param(0, auth_module_1.UserSession()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [session_entity_1.default]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], BarrioController.prototype, "getNewInvite", null);
 BarrioController = __decorate([

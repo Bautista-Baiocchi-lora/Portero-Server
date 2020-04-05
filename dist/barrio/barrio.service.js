@@ -18,6 +18,7 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const invite_service_1 = require("../invite/invite.service");
 const session_entity_1 = require("../session/session.entity");
+const jwt_service_1 = require("../session/jwt.service");
 const bcrypt = require('bcrypt');
 const saltRounds = 8;
 let BarrioService = class BarrioService {

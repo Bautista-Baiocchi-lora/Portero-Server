@@ -13,11 +13,17 @@ const propietario_module_1 = require("./propretario/propietario.module");
 const barrio_module_1 = require("./barrio/barrio.module");
 const invite_module_1 = require("./invite/invite.module");
 const trabajador_module_1 = require("./trabajador/trabajador.module");
+const lote_module_1 = require("./lote/lote.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [propietario_module_1.default, invite_module_1.InviteModule, barrio_module_1.BarrioModule, trabajador_module_1.default, auth_module_1.AuthenticationModule,
+        imports: [propietario_module_1.default,
+            invite_module_1.InviteModule,
+            barrio_module_1.BarrioModule,
+            trabajador_module_1.default,
+            auth_module_1.AuthenticationModule,
+            lote_module_1.default,
             typeorm_1.TypeOrmModule.forRoot({
                 type: 'postgres',
                 host: 'localhost',

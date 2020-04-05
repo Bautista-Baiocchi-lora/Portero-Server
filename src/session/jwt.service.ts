@@ -6,7 +6,7 @@ export class JwtService{
 
     constructor(){}
 
-    async signJWT(session:Session):Promise<string>{
+    async signJWT(session:JwtSession):Promise<string>{
         return await jwt.sign(session, secret);
     }
 
@@ -14,12 +14,13 @@ export class JwtService{
         return await jwt.verify(token, secret)
     }
 
-    async decodeJWT(token):Promise<Session>{
+    async decodeJWT(token):Promise<JwtSession>{
         return await jwt.decode(token)
     }
 
 }
 
+export type JwtSession = Session & {type:number, email:string;}
 
 const jwt = require('jsonwebtoken');
 const secret = "our super secret"

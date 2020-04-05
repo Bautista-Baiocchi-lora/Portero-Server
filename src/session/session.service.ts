@@ -9,7 +9,7 @@ export class SessionService{
 
     constructor(@InjectRepository(Session) private readonly sessionRepo:Repository<Session>){}
 
-    async create(account_id:number): Promise<Session>{
+    async create(account_id:string): Promise<Session>{
         return await this.sessionRepo.query(create_session_query(account_id)).then(parse_create_session_query)
     }
 
@@ -32,7 +32,7 @@ function parse_create_session_query(response):Session{
     response = response[0].create_session.replace('(','').replace(')','').replace('\"','').replace('"','').split(',');
     const session:Session = {
         id: response[0],
-        account_id: +response[1],
+        account_id: response[1],
         creation_date: response[2],
         exp: +response[3]
     }
@@ -48,6 +48,6 @@ function parse_session_exists_query(response):boolean{
     return response[0].exists 
 }
 
-function create_session_query(account_id:number): string {
+function create_session_query(account_id:string): string {
     return `SELECT create_session('${account_id}', '${session_duration_in_days}');`
 }

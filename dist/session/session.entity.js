@@ -21,8 +21,16 @@ __decorate([
 __decorate([
     typeorm_1.Column(),
     class_validator_1.IsString(),
-    __metadata("design:type", Number)
+    __metadata("design:type", String)
 ], Session.prototype, "account_id", void 0);
+__decorate([
+    class_validator_1.IsNumber(),
+    __metadata("design:type", Number)
+], Session.prototype, "type", void 0);
+__decorate([
+    class_validator_1.IsEmail(),
+    __metadata("design:type", String)
+], Session.prototype, "email", void 0);
 __decorate([
     typeorm_1.Column(),
     class_validator_1.IsDateString(),

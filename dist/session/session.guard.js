@@ -10,11 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const session_service_1 = require("./session.service");
 const jwt_service_1 = require("./jwt.service");
+const auth_error_1 = require("../authentication/auth.error");
 let SessionGuard = class SessionGuard {
-    constructor(sessionService, jwtService) {
-        this.sessionService = sessionService;
+    constructor(jwtService) {
         this.jwtService = jwtService;
     }
     async canActivate(context) {
@@ -22,19 +21,14 @@ let SessionGuard = class SessionGuard {
         const hasAuthHeader = Object.keys(headers).includes('authorization');
         if (hasAuthHeader) {
             const jwt = headers.authorization;
-            const validToken = await this.jwtService.verifyJWT(jwt);
-            if (validToken) {
-                const session = await this.jwtService.decodeJWT(jwt);
-                return await this.sessionService.verify(session);
-            }
+            return await this.jwtService.verifyJWT(jwt);
         }
-        return false;
+        throw new auth_error_1.AuthenticationError;
     }
 };
 SessionGuard = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [session_service_1.SessionService,
-        jwt_service_1.JwtService])
+    __metadata("design:paramtypes", [jwt_service_1.JwtService])
 ], SessionGuard);
 exports.SessionGuard = SessionGuard;
 //# sourceMappingURL=session.guard.js.map

@@ -1,6 +1,6 @@
 CREATE TABLE public.propietario
 (
-    id integer PRIMARY KEY REFERENCES account (id) ON DELETE CASCADE,
+    id uuid PRIMARY KEY REFERENCES account (id) ON DELETE CASCADE,
     first_name text not null,
     last_name text not null,
     doc_id text not null,

@@ -28,7 +28,8 @@ let AuthenticationService = class AuthenticationService {
             throw new auth_error_1.AuthenticationError();
         }
         const session = await this.sessionService.create(account.id);
-        return await this.jwtService.signJWT(session);
+        const token = Object.assign(Object.assign({}, session), { email: account.email, type: account.type });
+        return await this.jwtService.signJWT(token);
     }
 };
 AuthenticationService = __decorate([
@@ -42,7 +43,7 @@ const select_account_query = (email) => `SELECT select_account('${email}');`;
 function parse_select_account(response) {
     response = response[0].select_account.replace('(', '').replace(')', '').split(',');
     return {
-        id: +response[0],
+        id: response[0],
         email: response[1],
         password: response[2],
         type: +response[3]

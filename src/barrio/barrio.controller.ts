@@ -5,6 +5,8 @@ import { SessionGuard } from "src/session/session.guard";
 import { JwtValidationPipe } from "src/session/jwt.validation.pipe";
 import { UserSession } from "src/authentication/auth.module";
 import Session from "src/session/session.entity";
+import BarrioGuard from "src/authentication/barrio.guard";
+import { JwtSession } from "src/session/jwt.service";
 
 
 @Controller('barrio')
@@ -18,9 +20,9 @@ export default class BarrioController{
     }
 
     @Get('new/invite')
-    @UseGuards(SessionGuard)
+    @UseGuards(BarrioGuard)
     @UsePipes(JwtValidationPipe)
-    async getNewInvite(@UserSession() session:Session): Promise<string>{
+    async getNewInvite(@UserSession() session:JwtSession): Promise<string>{
       return await this.barrioService.getNewInvite(session)
     }
 

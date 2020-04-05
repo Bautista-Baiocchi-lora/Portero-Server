@@ -1,7 +1,11 @@
 import Session from "./session.entity";
 export declare class JwtService {
     constructor();
-    signJWT(session: Session): Promise<string>;
+    signJWT(session: JwtSession): Promise<string>;
     verifyJWT(token: any): Promise<boolean>;
-    decodeJWT(token: any): Promise<Session>;
+    decodeJWT(token: any): Promise<JwtSession>;
 }
+export declare type JwtSession = Session & {
+    type: number;
+    email: string;
+};

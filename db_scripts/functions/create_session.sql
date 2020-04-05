@@ -1,5 +1,5 @@
 create or replace function create_session(
-    account_idf integer,
+    account_idf uuid,
     days_till_exp integer
 )
 returns record as $$
