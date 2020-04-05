@@ -1,5 +1,5 @@
 create or replace function create_barrio_invite(
-    barrio_idf integer
+    barrio_idf uuid
 )
 returns uuid as $$
 declare

@@ -42,7 +42,7 @@ function parse_create_session_query(response) {
     response = response[0].create_session.replace('(', '').replace(')', '').replace('\"', '').replace('"', '').split(',');
     const session = {
         id: response[0],
-        account_id: +response[1],
+        account_id: response[1],
         creation_date: response[2],
         exp: +response[3]
     };

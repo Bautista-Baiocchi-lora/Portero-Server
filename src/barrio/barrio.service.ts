@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
 import Session from 'src/session/session.entity';
+import { JwtSession } from 'src/session/jwt.service';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 8;
@@ -26,7 +27,7 @@ export class BarrioService {
     return await this.barrioRepo.query(delete_barrio_query(email))
   }
 
-  async getNewInvite(session:Session): Promise<string>{
+  async getNewInvite(session:JwtSession): Promise<string>{
     return this.inviteService.createBarrioInvite(session.account_id)
   }
 

@@ -1,6 +1,6 @@
 CREATE TABLE public.account
 (
-    id SERIAL PRIMARY KEY,
+    id uuid PRIMARY KEY default uuid_generate_v1(),
     email text NOT NULL UNIQUE,
     password text NOT NULL,
     type integer NOT NULL,

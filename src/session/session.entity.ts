@@ -1,4 +1,4 @@
-import { IsUUID, IsString, IsDateString } from "class-validator";
+import { IsUUID, IsString, IsDateString, IsNumber, IsEmail } from "class-validator";
 import { PrimaryColumn, PrimaryGeneratedColumn, Entity, Column } from "typeorm";
 
 @Entity()
@@ -10,7 +10,13 @@ export default class Session{
 
     @Column()
     @IsString()
-    account_id: number;
+    account_id: string;
+
+    @IsNumber()
+    type?:number;
+
+    @IsEmail()
+    email?:string;
 
     @Column()
     @IsDateString()

@@ -5,7 +5,7 @@ create or replace function insert_barrio(
 )
 returns void as $$
 declare
-    account_id integer;
+    account_id uuid;
     begin 
         insert into account(email, password, type) values (new_email, new_pass, 0) RETURNING id INTO account_id;
         insert into barrio(id, name) values (account_id, new_name);
