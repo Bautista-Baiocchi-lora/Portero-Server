@@ -34,7 +34,7 @@ let BarrioService = class BarrioService {
         return await this.barrioRepo.query(delete_barrio_query(email));
     }
     async getNewInvite(session) {
-        return this.inviteService.createBarrioInvite(session.account_id);
+        return this.inviteService.createBarrioInvite(session.acc_id);
     }
     async getBarrio(email) {
         return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query);

@@ -27,7 +27,7 @@ let TrabajadorService = class TrabajadorService {
         return await this.trabajadorRepo.query(create_insert_trabajador_query(registerDTO)).then(parse_insert_trabajador_query);
     }
     async getTrabajador(email) {
-        return await this.trabajadorRepo.query(select_trabajador_query(email)).then(parse_select_trabajador_query);
+        return await this.trabajadorRepo.query(select_trabajador_query(email));
     }
 };
 TrabajadorService = __decorate([
@@ -36,22 +36,6 @@ TrabajadorService = __decorate([
     __metadata("design:paramtypes", [typeorm_1.Repository])
 ], TrabajadorService);
 exports.default = TrabajadorService;
-function parse_select_trabajador_query(response) {
-    response = response[0].select_trabajador;
-    response = response.replace('(', '').replace(')', '');
-    response = response.split(',');
-    const propietario = {
-        id: response[0],
-        email: response[1],
-        password: response[2],
-        creation_date: response[3],
-        first_name: response[5].replace('\"', '').replace('\"', ''),
-        last_name: response[6].replace('\"', '').replace('\"', ''),
-        doc_id: response[7],
-        doc_type: +response[8]
-    };
-    return propietario;
-}
 function select_trabajador_query(email) {
     return `SELECT select_trabajador('${email}');`;
 }
@@ -59,7 +43,7 @@ function create_insert_trabajador_query(registerDTO) {
     const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
     return `SELECT insert_trabajador('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
 }
-async function parse_insert_trabajador_query(response) {
+function parse_insert_trabajador_query(response) {
     return !!response[0];
 }
 //# sourceMappingURL=trabajador.service.js.map

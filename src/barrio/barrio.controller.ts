@@ -23,5 +23,4 @@ export default class BarrioController{
       return await this.barrioService.getNewInvite(session)
     }
 
-
 }

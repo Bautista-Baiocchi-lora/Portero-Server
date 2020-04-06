@@ -1,8 +1,5 @@
-import { Module, createParamDecorator, ExecutionContext } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { AuthenticationService } from "./auth.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { SessionService } from "../session/session.service";
-import Session from "../session/session.entity";
 import SessionModule from "src/session/session.module";
 import { AuthenticationController } from "./auth.controller";
 
@@ -14,4 +11,5 @@ import { AuthenticationController } from "./auth.controller";
     imports:[SessionModule]
 })
 export class AuthenticationModule{}
+
 

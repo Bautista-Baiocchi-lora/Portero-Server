@@ -1,11 +1,9 @@
 create or replace function select_account(
     emailf text
 )
-returns record as $$
-declare
-    acc record;
+returns table(id uuid, email text, password text, type int) as $$
     begin 
-        select id, email, password, type from account into acc where email = emailf;
-		return acc;
+        return query
+        select account.id, account.email, account.password, account.type from account where account.email = emailf;
     end
 $$ language plpgsql;

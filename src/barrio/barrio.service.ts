@@ -28,7 +28,7 @@ export class BarrioService {
   }
 
   async getNewInvite(session:JwtSession): Promise<string>{
-    return this.inviteService.createBarrioInvite(session.account_id)
+    return this.inviteService.createBarrioInvite(session.acc_id)
   }
 
   private async getBarrio(email:string):Promise<Barrio>{

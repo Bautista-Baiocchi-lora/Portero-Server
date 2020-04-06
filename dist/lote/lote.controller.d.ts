@@ -4,6 +4,7 @@ import { JwtSession } from "src/session/jwt.service";
 export default class LoteController {
     private readonly loteService;
     constructor(loteService: LoteService);
-    create(session: JwtSession, createDTO: CreateLoteDTO): Promise<any>;
-    getAllLotes(session: JwtSession): Promise<import("./lote.entity").default[]>;
+    create(session: JwtSession, createDTO: CreateLoteDTO): Promise<boolean>;
+    getAllLotes(session: JwtSession): Promise<any[]>;
+    associatePropietario(lote_id: string, barrio_id: string, session: JwtSession): Promise<boolean>;
 }

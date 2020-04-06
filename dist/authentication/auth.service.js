@@ -22,7 +22,7 @@ let AuthenticationService = class AuthenticationService {
         this.jwtService = jwtService;
     }
     async authenticate(logInDTO) {
-        const account = await this.connection.query(select_account_query(logInDTO.email)).then(parse_select_account);
+        const account = await this.connection.query(select_account_query(logInDTO.email)).then(response => response[0]);
         const validated = await bcrypt.compare(logInDTO.password, account.password);
         if (!validated) {
             throw new auth_error_1.AuthenticationError();
@@ -39,14 +39,5 @@ AuthenticationService = __decorate([
         jwt_service_1.JwtService])
 ], AuthenticationService);
 exports.AuthenticationService = AuthenticationService;
-const select_account_query = (email) => `SELECT select_account('${email}');`;
-function parse_select_account(response) {
-    response = response[0].select_account.replace('(', '').replace(')', '').split(',');
-    return {
-        id: response[0],
-        email: response[1],
-        password: response[2],
-        type: +response[3]
-    };
-}
+const select_account_query = (email) => `SELECT * from select_account('${email}');`;
 //# sourceMappingURL=auth.service.js.map

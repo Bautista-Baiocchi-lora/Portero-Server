@@ -60,7 +60,7 @@ function create_insert_propietario_query(registerDTO) {
     const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
 }
-async function parse_insert_propietario_query(response) {
+function parse_insert_propietario_query(response) {
     return !!response[0];
 }
 //# sourceMappingURL=propietario.service.js.map

@@ -1,9 +1,8 @@
-import { Controller, UseGuards, UsePipes, Post, Body, Get, Session } from "@nestjs/common";
+import { Controller, UseGuards, Post, Body, Get, Session, Query } from "@nestjs/common";
 import LoteService from "./lote.service";
 import CreateLoteDTO from "./create.lote.dto";
 import { JwtSession } from "src/session/jwt.service";
 import SessionGuard, {UserTypes } from "src/session/session.guard";
-import Barrio from "src/barrio/barrio.entity";
 import { UserType } from "src/authentication/user.type";
 
 @Controller('lote')
@@ -14,16 +13,22 @@ export default class LoteController{
     @UseGuards(SessionGuard)
     @UserTypes(UserType.BARRIO)
     @Post('new')
-    async create(@Session() session:JwtSession, @Body() createDTO: CreateLoteDTO){
-        return await this.loteService.create(session.account_id, createDTO);
+    async create(@Session() session:JwtSession, @Body() createDTO: CreateLoteDTO): Promise<boolean>{
+        return await this.loteService.create(session.acc_id, createDTO);
     }
 
     @Get('all')
     @UseGuards(SessionGuard)
     @UserTypes(UserType.BARRIO)
     async getAllLotes(@Session() session: JwtSession){
-        return await this.loteService.getAll(session.account_id)
+        return await this.loteService.getAll(session.acc_id)
     }
 
+    @Post('associate')
+    @UseGuards(SessionGuard)
+    @UserTypes(UserType.PROPIETARIO)
+    async associatePropietario(@Query('lote') lote_id:string, @Query('barrio') barrio_id:string, @Session() session: JwtSession){
+        return await this.loteService.associatePropietario(lote_id, barrio_id, session.acc_id);
+    }
 
 }

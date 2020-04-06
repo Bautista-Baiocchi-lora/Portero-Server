@@ -22,7 +22,7 @@ __decorate([
     typeorm_1.Column(),
     class_validator_1.IsString(),
     __metadata("design:type", String)
-], Session.prototype, "account_id", void 0);
+], Session.prototype, "acc_id", void 0);
 __decorate([
     class_validator_1.IsNumber(),
     __metadata("design:type", Number)

@@ -59,6 +59,6 @@ function create_insert_propietario_query(registerDTO:PropietarioRegistrationDTO)
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`
 }
 
-async function parse_insert_propietario_query(response): Promise<boolean>{
+function parse_insert_propietario_query(response): boolean {
     return !!response[0]
 }
