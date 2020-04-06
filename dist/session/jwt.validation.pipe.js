@@ -16,6 +16,7 @@ let JwtValidationPipe = class JwtValidationPipe {
         this.jwtService = jwtService;
     }
     async transform(value, metadata) {
+        console.log(JSON.stringify(metadata['custom']));
         return await this.jwtService.decodeJWT(value);
     }
 };

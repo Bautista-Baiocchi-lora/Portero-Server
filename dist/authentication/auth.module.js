@@ -21,7 +21,4 @@ AuthenticationModule = __decorate([
     })
 ], AuthenticationModule);
 exports.AuthenticationModule = AuthenticationModule;
-exports.UserSession = common_1.createParamDecorator((data, ctx) => {
-    return ctx.headers['authorization'];
-});
 //# sourceMappingURL=auth.module.js.map

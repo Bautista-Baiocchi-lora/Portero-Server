@@ -5,5 +5,5 @@ export default class TrabajadorService {
     private readonly trabajadorRepo;
     constructor(trabajadorRepo: Repository<Trabajador>);
     register(registerDTO: TrabajadorRegistrationDTO): Promise<boolean>;
-    getTrabajador(email: string): Promise<Trabajador>;
+    getTrabajador(email: string): Promise<any>;
 }

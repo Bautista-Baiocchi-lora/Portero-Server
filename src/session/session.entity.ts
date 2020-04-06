@@ -10,7 +10,7 @@ export default class Session{
 
     @Column()
     @IsString()
-    account_id: string;
+    acc_id: string;
 
     @IsNumber()
     type?:number;

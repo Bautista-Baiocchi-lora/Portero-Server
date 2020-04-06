@@ -13,31 +13,52 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const session_guard_1 = require("../session/session.guard");
-const jwt_validation_pipe_1 = require("../session/jwt.validation.pipe");
 const lote_service_1 = require("./lote.service");
 const create_lote_dto_1 = require("./create.lote.dto");
-const auth_module_1 = require("../authentication/auth.module");
-const barrio_entity_1 = require("../barrio/barrio.entity");
-const barrio_guard_1 = require("../authentication/barrio.guard");
 const jwt_service_1 = require("../session/jwt.service");
+const session_guard_1 = require("../session/session.guard");
+const user_type_1 = require("../authentication/user.type");
 let LoteController = class LoteController {
     constructor(loteService) {
         this.loteService = loteService;
     }
-    async create(createDTO, session) {
-        return await this.loteService.create(session.account_id, createDTO);
+    async create(session, createDTO) {
+        return await this.loteService.create(session.acc_id, createDTO);
+    }
+    async getAllLotes(session) {
+        return await this.loteService.getAll(session.acc_id);
+    }
+    async associatePropietario(lote_id, barrio_id, session) {
+        return await this.loteService.associatePropietario(lote_id, barrio_id, session.acc_id);
     }
 };
 __decorate([
-    common_1.UseGuards(barrio_guard_1.default),
-    common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
-    common_1.Post('/new'),
-    __param(0, common_1.Body()), __param(1, auth_module_1.UserSession()),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    common_1.Post('new'),
+    __param(0, common_1.Session()), __param(1, common_1.Body()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_lote_dto_1.default, Object]),
+    __metadata("design:paramtypes", [Object, create_lote_dto_1.default]),
     __metadata("design:returntype", Promise)
 ], LoteController.prototype, "create", null);
+__decorate([
+    common_1.Get('all'),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    __param(0, common_1.Session()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], LoteController.prototype, "getAllLotes", null);
+__decorate([
+    common_1.Post('associate'),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.PROPIETARIO),
+    __param(0, common_1.Query('lote')), __param(1, common_1.Query('barrio')), __param(2, common_1.Session()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", Promise)
+], LoteController.prototype, "associatePropietario", null);
 LoteController = __decorate([
     common_1.Controller('lote'),
     __metadata("design:paramtypes", [lote_service_1.default])

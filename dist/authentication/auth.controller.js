@@ -19,8 +19,8 @@ let AuthenticationController = class AuthenticationController {
     constructor(authService) {
         this.authService = authService;
     }
-    async login(logInDTo) {
-        return await this.authService.authenticate(logInDTo);
+    async login(logInDTO) {
+        return await this.authService.authenticate(logInDTO);
     }
 };
 __decorate([

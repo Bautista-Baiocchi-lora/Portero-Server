@@ -12,23 +12,33 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const jwt_service_1 = require("./jwt.service");
 const auth_error_1 = require("../authentication/auth.error");
+const core_1 = require("@nestjs/core");
+const user_type_1 = require("../authentication/user.type");
 let SessionGuard = class SessionGuard {
-    constructor(jwtService) {
+    constructor(jwtService, reflector) {
         this.jwtService = jwtService;
+        this.reflector = reflector;
     }
     async canActivate(context) {
-        const headers = context.switchToHttp().getRequest().headers;
-        const hasAuthHeader = Object.keys(headers).includes('authorization');
+        const request = context.switchToHttp().getRequest();
+        const hasAuthHeader = Object.keys(request.headers).includes('authorization');
         if (hasAuthHeader) {
-            const jwt = headers.authorization;
-            return await this.jwtService.verifyJWT(jwt);
+            const jwt = request.headers.authorization;
+            const validated = await this.jwtService.verifyJWT(jwt);
+            if (validated) {
+                const session = await this.jwtService.decodeJWT(jwt);
+                request.session = session;
+                const userType = this.reflector.get('userType', context.getHandler());
+                return userType ? userType.includes(session.type) : true;
+            }
         }
         throw new auth_error_1.AuthenticationError;
     }
 };
 SessionGuard = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [jwt_service_1.JwtService])
+    __metadata("design:paramtypes", [jwt_service_1.JwtService, core_1.Reflector])
 ], SessionGuard);
-exports.SessionGuard = SessionGuard;
+exports.default = SessionGuard;
+exports.UserTypes = (...type) => common_1.SetMetadata('userType', type);
 //# sourceMappingURL=session.guard.js.map

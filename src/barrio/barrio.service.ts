@@ -1,6 +1,6 @@
 import { Injectable, Body, Inject } from '@nestjs/common';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
-import  {Barrio} from './barrio.entity';
+import  Barrio from './barrio.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, InsertResult, QueryFailedError, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
@@ -28,7 +28,7 @@ export class BarrioService {
   }
 
   async getNewInvite(session:JwtSession): Promise<string>{
-    return this.inviteService.createBarrioInvite(session.account_id)
+    return this.inviteService.createBarrioInvite(session.acc_id)
   }
 
   private async getBarrio(email:string):Promise<Barrio>{

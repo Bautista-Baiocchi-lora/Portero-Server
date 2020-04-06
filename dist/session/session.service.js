@@ -21,7 +21,7 @@ let SessionService = class SessionService {
         this.sessionRepo = sessionRepo;
     }
     async create(account_id) {
-        return await this.sessionRepo.query(create_session_query(account_id)).then(parse_create_session_query);
+        return await this.sessionRepo.query(create_session_query(account_id)).then(response => response[0]);
     }
     async verify(session) {
         if (new Date(session.exp) > new Date()) {
@@ -38,16 +38,6 @@ SessionService = __decorate([
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;
-function parse_create_session_query(response) {
-    response = response[0].create_session.replace('(', '').replace(')', '').replace('\"', '').replace('"', '').split(',');
-    const session = {
-        id: response[0],
-        account_id: response[1],
-        creation_date: response[2],
-        exp: +response[3]
-    };
-    return session;
-}
 function create_session_exists_query(session_id) {
     return `SELECT exists(select 1 from account_session where id='${session_id}');`;
 }
@@ -55,6 +45,6 @@ function parse_session_exists_query(response) {
     return response[0].exists;
 }
 function create_session_query(account_id) {
-    return `SELECT create_session('${account_id}', '${session_duration_in_days}');`;
+    return `SELECT * from create_session('${account_id}', '${session_duration_in_days}');`;
 }
 //# sourceMappingURL=session.service.js.map

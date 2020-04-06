@@ -8,7 +8,7 @@ create or replace function insert_propietario(
 )
 returns void as $$
 declare
-    account_id integer;
+    account_id uuid;
     begin 
         insert into account(email, password, type) values (emailf, passf, 1) RETURNING id INTO account_id;
         insert into propietario(id, first_name, last_name, doc_id, doc_type)

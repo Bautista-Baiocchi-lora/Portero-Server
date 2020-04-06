@@ -1,7 +1,5 @@
-import { ExecutionContext, CanActivate } from "@nestjs/common";
-import { JwtService } from "src/session/jwt.service";
-export default class BarrioGuard implements CanActivate {
-    private readonly jwtService;
-    constructor(jwtService: JwtService);
+import { ExecutionContext } from "@nestjs/common";
+import { SessionGuard } from "src/session/session.guard";
+export default class BarrioGuard extends SessionGuard {
     canActivate(context: ExecutionContext): Promise<boolean>;
 }

@@ -1,5 +1,5 @@
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
-import { Barrio } from './barrio.entity';
+import Barrio from './barrio.entity';
 import { Repository, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
 import { JwtSession } from 'src/session/jwt.service';

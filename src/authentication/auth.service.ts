@@ -5,6 +5,7 @@ import { SessionService } from "../session/session.service";
 import { JwtService, JwtSession } from "src/session/jwt.service";
 import { Connection } from "typeorm";
 import { AuthenticationError } from "./auth.error";
+import { response } from "express";
 
 const bcrypt = require('bcrypt');
 
@@ -18,7 +19,7 @@ export class AuthenticationService{
         ){}
 
     async authenticate(logInDTO:LogInDTO): Promise<string>{
-        const account = await this.connection.query(select_account_query(logInDTO.email)).then(parse_select_account)
+        const account = await this.connection.query(select_account_query(logInDTO.email)).then(response => response[0])
         const validated:boolean = await bcrypt.compare(logInDTO.password, account.password)
 
         if(!validated){
@@ -34,15 +35,5 @@ export class AuthenticationService{
   
 }
 
+const select_account_query = (email:string) => `SELECT * from select_account('${email}');`
 
-const select_account_query = (email:string) => `SELECT select_account('${email}');`
-
-function parse_select_account(response){
-    response = response[0].select_account.replace('(','').replace(')','').split(',')
-    return {
-        id: response[0],
-        email: response[1],
-        password: response[2],
-        type: +response[3]
-    }
-}

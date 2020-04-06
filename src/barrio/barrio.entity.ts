@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import {IsEmail} from 'class-validator'
 
 @Entity()
-export class Barrio{
+export default class Barrio{
 
     @PrimaryGeneratedColumn()
     id: number;

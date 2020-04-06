@@ -16,11 +16,8 @@ const common_1 = require("@nestjs/common");
 const barrio_service_1 = require("./barrio.service");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
 const session_guard_1 = require("../session/session.guard");
-const jwt_validation_pipe_1 = require("../session/jwt.validation.pipe");
-const auth_module_1 = require("../authentication/auth.module");
-const session_entity_1 = require("../session/session.entity");
-const barrio_guard_1 = require("../authentication/barrio.guard");
 const jwt_service_1 = require("../session/jwt.service");
+const user_type_1 = require("../authentication/user.type");
 let BarrioController = class BarrioController {
     constructor(barrioService) {
         this.barrioService = barrioService;
@@ -41,9 +38,9 @@ __decorate([
 ], BarrioController.prototype, "register", null);
 __decorate([
     common_1.Get('new/invite'),
-    common_1.UseGuards(barrio_guard_1.default),
-    common_1.UsePipes(jwt_validation_pipe_1.JwtValidationPipe),
-    __param(0, auth_module_1.UserSession()),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    __param(0, common_1.Session()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)

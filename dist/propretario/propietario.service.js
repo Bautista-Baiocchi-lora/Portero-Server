@@ -42,7 +42,7 @@ function parse_select_propietario_query(response) {
     response = response.replace('(', '').replace(')', '');
     response = response.split(',');
     const propietario = {
-        id: +response[0],
+        id: response[0],
         email: response[1],
         password: response[2],
         creation_date: response[3],
@@ -60,7 +60,7 @@ function create_insert_propietario_query(registerDTO) {
     const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
 }
-async function parse_insert_propietario_query(response) {
+function parse_insert_propietario_query(response) {
     return !!response[0];
 }
 //# sourceMappingURL=propietario.service.js.map

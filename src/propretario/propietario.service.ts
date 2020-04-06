@@ -31,7 +31,7 @@ function parse_select_propietario_query(response):Propietario{
     response = response.replace('(','').replace(')', '') //remove paranthesis
     response = response.split(',') //split into array
     const propietario:Propietario = {
-        id:+response[0],
+        id:response[0],
         email:response[1],
         password: response[2],
         creation_date: response[3],
@@ -59,6 +59,6 @@ function create_insert_propietario_query(registerDTO:PropietarioRegistrationDTO)
     return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`
 }
 
-async function parse_insert_propietario_query(response): Promise<boolean>{
+function parse_insert_propietario_query(response): boolean {
     return !!response[0]
 }
