@@ -1,4 +1,4 @@
-export declare class Barrio {
+export default class Barrio {
     id: number;
     email: string;
     password: string;

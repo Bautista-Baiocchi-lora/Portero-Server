@@ -22,7 +22,7 @@ BarrioModule = __decorate([
     common_1.Module({
         providers: [barrio_service_1.BarrioService],
         controllers: [barrio_controller_1.default],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.Barrio]), invite_module_1.InviteModule, session_module_1.default],
+        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_entity_1.default]), invite_module_1.InviteModule, session_module_1.default],
     })
 ], BarrioModule);
 exports.BarrioModule = BarrioModule;

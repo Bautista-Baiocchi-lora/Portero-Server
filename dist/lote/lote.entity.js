@@ -9,20 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const common_1 = require("@nestjs/common");
-const jwt_service_1 = require("./jwt.service");
-let JwtValidationPipe = class JwtValidationPipe {
-    constructor(jwtService) {
-        this.jwtService = jwtService;
-    }
-    async transform(value, metadata) {
-        console.log(JSON.stringify(metadata['custom']));
-        return await this.jwtService.decodeJWT(value);
-    }
+const typeorm_1 = require("typeorm");
+let Lote = class Lote {
 };
-JwtValidationPipe = __decorate([
-    common_1.Injectable(),
-    __metadata("design:paramtypes", [jwt_service_1.JwtService])
-], JwtValidationPipe);
-exports.JwtValidationPipe = JwtValidationPipe;
-//# sourceMappingURL=jwt.validation.pipe.js.map
+__decorate([
+    typeorm_1.PrimaryColumn(),
+    __metadata("design:type", String)
+], Lote.prototype, "barrio_id", void 0);
+__decorate([
+    typeorm_1.PrimaryColumn(),
+    __metadata("design:type", String)
+], Lote.prototype, "name", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Lote.prototype, "num", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", Number)
+], Lote.prototype, "code", void 0);
+__decorate([
+    typeorm_1.Column(),
+    __metadata("design:type", String)
+], Lote.prototype, "street", void 0);
+Lote = __decorate([
+    typeorm_1.Entity()
+], Lote);
+exports.default = Lote;
+//# sourceMappingURL=lote.entity.js.map

@@ -7,18 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const auth_service_1 = require("./auth.service");
-const session_module_1 = require("../session/session.module");
-const auth_controller_1 = require("./auth.controller");
-let AuthenticationModule = class AuthenticationModule {
+const auth_error_1 = require("./auth.error");
+const session_guard_1 = require("../session/session.guard");
+let PropietarioGuard = class PropietarioGuard extends session_guard_1.SessionGuard {
+    async canActivate(context) {
+        const authenticated = await super.canActivate(context);
+        if (authenticated) {
+            return context.switchToHttp().getRequest().session.type === BARRIO_TYPE;
+        }
+        throw new auth_error_1.AuthenticationError();
+    }
 };
-AuthenticationModule = __decorate([
-    common_1.Module({
-        controllers: [auth_controller_1.AuthenticationController],
-        providers: [auth_service_1.AuthenticationService],
-        exports: [auth_service_1.AuthenticationService],
-        imports: [session_module_1.default]
-    })
-], AuthenticationModule);
-exports.AuthenticationModule = AuthenticationModule;
-//# sourceMappingURL=auth.module.js.map
+PropietarioGuard = __decorate([
+    common_1.Injectable()
+], PropietarioGuard);
+exports.default = PropietarioGuard;
+const BARRIO_TYPE = 0;
+//# sourceMappingURL=propietario.guard.js.map

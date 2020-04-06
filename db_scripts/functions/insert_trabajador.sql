@@ -8,7 +8,7 @@ create or replace function insert_trabajador(
 )
 returns void as $$
 declare
-    account_id integer;
+    account_id uuid;
     begin 
         insert into account(email, password, type) values (emailf, passf, 2) RETURNING id INTO account_id;
         insert into trabajador(id, first_name, last_name, doc_id, doc_type)

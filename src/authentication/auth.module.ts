@@ -1,4 +1,4 @@
-import { Module, createParamDecorator } from "@nestjs/common";
+import { Module, createParamDecorator, ExecutionContext } from "@nestjs/common";
 import { AuthenticationService } from "./auth.service";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SessionService } from "../session/session.service";
@@ -15,8 +15,3 @@ import { AuthenticationController } from "./auth.controller";
 })
 export class AuthenticationModule{}
 
-export const UserSession = createParamDecorator(
-    (data: unknown, ctx) => {
-         return ctx.headers['authorization']
-    }
-)

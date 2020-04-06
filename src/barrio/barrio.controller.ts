@@ -1,12 +1,9 @@
-import { Controller, Post, Body, Get, UseGuards, UsePipes } from "@nestjs/common";
+import { Controller, Post, Body, Get, UseGuards, UsePipes, Session } from "@nestjs/common";
 import { BarrioService } from "./barrio.service";
 import { BarrioRegistrationDTO } from "src/barrio/barrio.registration.dto";
-import { SessionGuard } from "src/session/session.guard";
-import { JwtValidationPipe } from "src/session/jwt.validation.pipe";
-import { UserSession } from "src/authentication/auth.module";
-import Session from "src/session/session.entity";
-import BarrioGuard from "src/authentication/barrio.guard";
+import SessionGuard, { UserTypes } from "src/session/session.guard";
 import { JwtSession } from "src/session/jwt.service";
+import { UserType } from "src/authentication/user.type";
 
 
 @Controller('barrio')
@@ -20,9 +17,9 @@ export default class BarrioController{
     }
 
     @Get('new/invite')
-    @UseGuards(BarrioGuard)
-    @UsePipes(JwtValidationPipe)
-    async getNewInvite(@UserSession() session:JwtSession): Promise<string>{
+    @UseGuards(SessionGuard)
+    @UserTypes(UserType.BARRIO)
+    async getNewInvite(@Session() session:JwtSession): Promise<string>{
       return await this.barrioService.getNewInvite(session)
     }
 

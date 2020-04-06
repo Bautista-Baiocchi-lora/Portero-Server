@@ -31,7 +31,7 @@ function parse_select_propietario_query(response):Propietario{
     response = response.replace('(','').replace(')', '') //remove paranthesis
     response = response.split(',') //split into array
     const propietario:Propietario = {
-        id:+response[0],
+        id:response[0],
         email:response[1],
         password: response[2],
         creation_date: response[3],

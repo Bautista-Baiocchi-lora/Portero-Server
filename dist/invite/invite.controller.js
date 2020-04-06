@@ -22,7 +22,7 @@ let InviteController = class InviteController {
 };
 __decorate([
     common_1.Post('accept'),
-    common_1.UseGuards(session_guard_1.SessionGuard),
+    common_1.UseGuards(session_guard_1.default),
     __param(0, common_1.Query('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
