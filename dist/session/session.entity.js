@@ -17,16 +17,12 @@ __decorate([
     typeorm_1.PrimaryGeneratedColumn(),
     class_validator_1.IsUUID(),
     __metadata("design:type", String)
-], Session.prototype, "id", void 0);
+], Session.prototype, "session_id", void 0);
 __decorate([
     typeorm_1.Column(),
     class_validator_1.IsString(),
     __metadata("design:type", String)
 ], Session.prototype, "acc_id", void 0);
-__decorate([
-    class_validator_1.IsNumber(),
-    __metadata("design:type", Number)
-], Session.prototype, "type", void 0);
 __decorate([
     class_validator_1.IsEmail(),
     __metadata("design:type", String)

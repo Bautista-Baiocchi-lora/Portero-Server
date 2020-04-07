@@ -29,7 +29,14 @@ let AuthenticationService = class AuthenticationService {
         }
         const session = await this.sessionService.create(account.id);
         const token = Object.assign(Object.assign({}, session), { email: account.email, type: account.type });
-        return await this.jwtService.signJWT(token);
+        const signedToken = await this.jwtService.signJWT(token);
+        return {
+            token: signedToken,
+            acc_id: account.id,
+            email: account.email,
+            session_id: session.session_id,
+            type: account.type
+        };
     }
 };
 AuthenticationService = __decorate([

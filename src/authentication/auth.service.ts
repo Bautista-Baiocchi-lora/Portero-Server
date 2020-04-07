@@ -18,7 +18,7 @@ export class AuthenticationService{
         private readonly jwtService:JwtService
         ){}
 
-    async authenticate(logInDTO:LogInDTO): Promise<string>{
+    async authenticate(logInDTO:LogInDTO): Promise<Cookie>{
         const account = await this.connection.query(select_account_query(logInDTO.email)).then(response => response[0])
         const validated:boolean = await bcrypt.compare(logInDTO.password, account.password)
 
@@ -28,11 +28,24 @@ export class AuthenticationService{
 
         const session:Session  =  await this.sessionService.create(account.id)
         const token:JwtSession = {...session, email: account.email, type: account.type}
+        const signedToken = await this.jwtService.signJWT(token)
 
-        return await this.jwtService.signJWT(token)
+        return {
+            token: signedToken,
+            acc_id: account.id,
+            email: account.email,
+            session_id: session.session_id,
+            type: account.type
+        }
     }
+}
 
-  
+export type Cookie = {
+    token:string;
+    acc_id:string;
+    email:string;
+    session_id:string;
+    type:number;
 }
 
 const select_account_query = (email:string) => `SELECT * from select_account('${email}');`

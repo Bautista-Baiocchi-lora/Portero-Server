@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from "@nestjs/common";
 import { LogInDTO } from "./log.in.dto";
-import { AuthenticationService } from "./auth.service";
+import { AuthenticationService, Cookie } from "./auth.service";
 
 @Controller('auth')
 export class AuthenticationController{
@@ -8,7 +8,7 @@ export class AuthenticationController{
     constructor(private readonly authService:AuthenticationService){}
 
     @Post('login')
-    async login(@Body() logInDTO: LogInDTO):Promise<string>{
+    async login(@Body() logInDTO: LogInDTO):Promise<Cookie>{
         return await this.authService.authenticate(logInDTO)
     }
 

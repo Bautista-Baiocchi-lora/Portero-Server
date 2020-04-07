@@ -6,14 +6,11 @@ export default class Session{
  
     @PrimaryGeneratedColumn()
     @IsUUID()
-    id: string;
+    session_id: string;
 
     @Column()
     @IsString()
     acc_id: string;
-
-    @IsNumber()
-    type?:number;
 
     @IsEmail()
     email?:string;

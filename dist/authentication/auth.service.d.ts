@@ -7,5 +7,12 @@ export declare class AuthenticationService {
     private readonly sessionService;
     private readonly jwtService;
     constructor(connection: Connection, sessionService: SessionService, jwtService: JwtService);
-    authenticate(logInDTO: LogInDTO): Promise<string>;
+    authenticate(logInDTO: LogInDTO): Promise<Cookie>;
 }
+export declare type Cookie = {
+    token: string;
+    acc_id: string;
+    email: string;
+    session_id: string;
+    type: number;
+};

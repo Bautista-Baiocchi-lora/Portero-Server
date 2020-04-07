@@ -2210,12 +2210,12 @@
         "signature": "881d2ef183b737d8abec5596cebddd59774efe6d1e49a90ca50b06122b7c0e50"
       },
       "../src/session/session.entity.ts": {
-        "version": "a5f5fe9b96cade1a8fc0a75f838d3f6a46fe17eb7414b2d83557e53c13235c53",
-        "signature": "c9a4c60ad85b0b331a435046be5f072f1a4e5ed09a34754a814783e2fdb044b3"
+        "version": "5f4fce7f058c09afc44055d1d60305fab860f3acb350b30a4464a989d57db298",
+        "signature": "f15827cef1d951b63b51a3b2dccf50384cc3b61d95541de5aafaf95011385f51"
       },
       "../src/session/session.service.ts": {
-        "version": "9543eb1395861f11f36db37104079c732ebd2ed02c973b648dac3bfed29e8f6b",
-        "signature": "d4012c0b5c814f182b7a79f7d7ea544e55bce4841c463995aca94f4d55795944"
+        "version": "054cc26ac19537930280fc8ca8960f6e66682e9a265165199cde2bd1de633e0a",
+        "signature": "7069656454eef0eb9be9c31cb761a2e0f0ad94efc17af97f832cccd33178f627"
       },
       "../src/session/jwt.service.ts": {
         "version": "3a07c31d988209941080da62d1f567af8fb756b4958ad4e10219e7e7b9731959",
@@ -2254,16 +2254,16 @@
         "signature": "af43f1d20a34fa56542ce2093fd9af37cb4f3076a648b63fd46b1ffac8948c9e"
       },
       "../src/authentication/auth.service.ts": {
-        "version": "e3632d4048d063e592fc3f2daabb981b65ac0ae16740f0d03d1f990767401185",
-        "signature": "59dbc24165d185404ab778bce228464fd71149499198c4f3b4fe760d01f026bc"
+        "version": "bfc05ba8091546f531c1fc8cf8c97e531ec806e902b2acd9493a83cb72c8c5f8",
+        "signature": "7579e5100b4e2ecc5108e3154e20499ad58ecb9a8bd278367736bfb87c4bbff5"
       },
       "../src/session/session.module.ts": {
         "version": "1b895fbef42f3a92a3a3540ba188adeb495c107834c442902234a3ff2cf5b777",
         "signature": "ae1fa7b8d8cfb2da86241b1567b0ff82c5f5c7b25ff13b47f1c68ed9a7ea7999"
       },
       "../src/authentication/auth.controller.ts": {
-        "version": "ffe548c9ccb68f2396178d7b9afa6f99fd9e10f720d04489dc400c8f01964ba6",
-        "signature": "110ed52446295c2d99ba9833b7412821bafbfcd49206bf7a5b812f7e258ef240"
+        "version": "6714fba820c80724fd9643dad423f21351251bd6607a97d36d705e4a4f84ea66",
+        "signature": "40cb3987d73ae21cd85ae08890fa16b0440353d2cadcaa76af52b0978017a6a1"
       },
       "../src/authentication/auth.module.ts": {
         "version": "0be719072066906dbef4c1066714a449c55e53a726b8e49a5b24b81b8514f510",
@@ -14136,7 +14136,6 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
-      "../src/authentication/auth.service.ts",
       "../src/session/session.module.ts",
       "../src/authentication/auth.controller.ts",
       "../src/authentication/auth.module.ts",
@@ -14198,6 +14197,7 @@
       "../src/trabajador/trabajador.module.ts",
       "../src/lote/create.lote.dto.ts",
       "../src/lote/lote.entity.ts",
+      "../src/lote/lote.service.ts",
       "../src/lote/lote.controller.ts",
       "../src/lote/lote.module.ts",
       "../src/app.module.ts",
@@ -14238,7 +14238,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/lote/lote.service.ts"
+      "../src/authentication/auth.service.ts"
     ]
   },
   "version": "3.7.4"
