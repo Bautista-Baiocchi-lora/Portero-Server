@@ -2494,20 +2494,20 @@
         "signature": "da3d1127b3e230a8c3dec954524a80c64d7014042c453f7e2be0218b511ca981"
       },
       "../src/lote/create.lote.dto.ts": {
-        "version": "aa30d9cc03e6a52546972d539c199184a020c52cfaed8d0263b44d5bf2d7c8ce",
+        "version": "3107af81c48493ffdab2c8215546e7023cbc3f9cda288be543a28c6cb175ccfa",
         "signature": "428a6eca7b4e84bce8114cf4d542a2ac63387494eb448a4e6cbe90e2b4abd408"
       },
       "../src/lote/lote.entity.ts": {
-        "version": "3680709cfb582f0f02f09e94a33fa299734fbb1f484eea38ec48ebac12c8a9d1",
-        "signature": "589116157d7ecdf3dc368feb93639f33f569053d90d3b2abf33ea1ea615a75db"
+        "version": "f04f00303600a012159e16435ec288fd796f5c21803253d25e30e72cc239e8b7",
+        "signature": "753eb026354e12e421bfe28b9bb4ebc7e222ccc5cb5131cfff1c39c1e325de42"
       },
       "../src/lote/lote.service.ts": {
-        "version": "08f6ca06d4ab17df529bbc5037d9e69d140c8b3484a7addc5077b894cefb09a9",
-        "signature": "96fdae3862a55d19175662938670baf12a44b4698b4dfdf3a76e73b5b5f5d911"
+        "version": "538cef473a3821e602561f50f474fab94d23d05446bb48d6511d27db1d440242",
+        "signature": "d9f0396719c9fcbe4943762d0befb9838215e1101cbb848316fd57047b5d2f5e"
       },
       "../src/lote/lote.controller.ts": {
-        "version": "79d72737c1a2953b867e5dfa870e655b8c1da2cc5ac6b02f459139974898031c",
-        "signature": "b32e15f102b2a8587048b4837a88f1f926b853ff6779d1019a2c4043178b8fdb"
+        "version": "4a5f7207670522b2e0a1eb4b14201f9a515294987f54469b7972bb4deebc5bcb",
+        "signature": "747caefe84cc4944a22fd34fef043047c914291f5aebbe06ce399da5a63bae2a"
       },
       "../src/lote/lote.module.ts": {
         "version": "68327520233d92303c56599e737bfdfc49dfad1ab73a77886b95af04b9fdbeea",
@@ -13319,6 +13319,7 @@
         "../src/lote/create.lote.dto.ts"
       ],
       "../src/lote/lote.controller.ts": [
+        "../node_modules/typeorm/index.d.ts",
         "../src/lote/lote.service.ts",
         "../src/session/jwt.service.ts",
         "../src/lote/create.lote.dto.ts"
@@ -14136,6 +14137,7 @@
       "../node_modules/@types/connect/index.d.ts",
       "../node_modules/@types/body-parser/index.d.ts",
       "../node_modules/@types/express/index.d.ts",
+      "../src/authentication/auth.service.ts",
       "../src/session/session.module.ts",
       "../src/authentication/auth.controller.ts",
       "../src/authentication/auth.module.ts",
@@ -14197,7 +14199,6 @@
       "../src/trabajador/trabajador.module.ts",
       "../src/lote/create.lote.dto.ts",
       "../src/lote/lote.entity.ts",
-      "../src/lote/lote.service.ts",
       "../src/lote/lote.controller.ts",
       "../src/lote/lote.module.ts",
       "../src/app.module.ts",
@@ -14238,7 +14239,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/authentication/auth.service.ts"
+      "../src/lote/lote.service.ts"
     ]
   },
   "version": "3.7.4"

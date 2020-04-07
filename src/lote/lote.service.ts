@@ -29,6 +29,10 @@ export default class LoteService{
         })
     }
 
+    async delete(lote_id:string, barrio_id:string){
+        return await this.loteRepo.delete({id: lote_id, barrio_id})
+    }
+
 }
 
 function select_propietarios_of_lotes(lotes):string{
