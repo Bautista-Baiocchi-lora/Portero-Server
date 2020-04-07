@@ -1,12 +1,15 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export default class Lote{
 
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
+    id: string;
+
+    @Column()
     barrio_id:string;
 
-    @PrimaryColumn()
+    @Column()
     name:string;
 
     @Column()

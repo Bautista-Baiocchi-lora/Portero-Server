@@ -23,13 +23,6 @@ let SessionService = class SessionService {
     async create(account_id) {
         return await this.sessionRepo.query(create_session_query(account_id)).then(response => response[0]);
     }
-    async verify(session) {
-        if (new Date(session.exp) > new Date()) {
-            return false;
-        }
-        return await this.sessionRepo.query(create_session_exists_query(session.id))
-            .then(parse_session_exists_query);
-    }
 };
 SessionService = __decorate([
     common_1.Injectable(),
@@ -38,12 +31,6 @@ SessionService = __decorate([
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;
-function create_session_exists_query(session_id) {
-    return `SELECT exists(select 1 from account_session where id='${session_id}');`;
-}
-function parse_session_exists_query(response) {
-    return response[0].exists;
-}
 function create_session_query(account_id) {
     return `SELECT * from create_session('${account_id}', '${session_duration_in_days}');`;
 }

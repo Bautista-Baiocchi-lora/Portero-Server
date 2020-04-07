@@ -34,6 +34,9 @@ let LoteService = class LoteService {
             return Object.assign(Object.assign({}, lote), { propietarios: propietariosOfLotes.filter(prop => prop.lote_id === lote.lote_id) });
         });
     }
+    async delete(lote_id, barrio_id) {
+        return await this.loteRepo.delete({ id: lote_id, barrio_id });
+    }
 };
 LoteService = __decorate([
     common_1.Injectable(),

@@ -13,11 +13,15 @@ const typeorm_1 = require("typeorm");
 let Lote = class Lote {
 };
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    typeorm_1.PrimaryGeneratedColumn(),
+    __metadata("design:type", String)
+], Lote.prototype, "id", void 0);
+__decorate([
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], Lote.prototype, "barrio_id", void 0);
 __decorate([
-    typeorm_1.PrimaryColumn(),
+    typeorm_1.Column(),
     __metadata("design:type", String)
 ], Lote.prototype, "name", void 0);
 __decorate([

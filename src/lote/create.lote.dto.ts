@@ -6,7 +6,7 @@ export default class CreateLoteDTO{
     name: string;
 
     @IsNumber()
-    num: number;
+     num: number;
 
     @IsString()
     street: string;

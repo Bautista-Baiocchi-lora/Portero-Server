@@ -1,4 +1,4 @@
-import { Controller, UseGuards, Post, Body, Get, Session, Query } from "@nestjs/common";
+import { Controller, UseGuards, Post, Body, Get, Session, Query, Patch, Delete } from "@nestjs/common";
 import LoteService from "./lote.service";
 import CreateLoteDTO from "./create.lote.dto";
 import { JwtSession } from "src/session/jwt.service";
@@ -20,8 +20,15 @@ export default class LoteController{
     @Get('all')
     @UseGuards(SessionGuard)
     @UserTypes(UserType.BARRIO)
-    async getAllLotes(@Session() session: JwtSession){
+    async getAllLotes(@Session() session: JwtSession):Promise<any[]>{
         return await this.loteService.getAll(session.acc_id)
+    }
+
+    @Delete('delete')
+    @UseGuards(SessionGuard)
+    @UserTypes(UserType.BARRIO)
+    async deleteLote(@Query('lote') lote_id:string, @Session() session:JwtSession){
+        return await this.loteService.delete(lote_id, session.acc_id);
     }
 
     @Post('associate')

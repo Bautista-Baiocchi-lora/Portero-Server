@@ -7,4 +7,5 @@ export default class LoteService {
     create(barrio_id: string, loteDTO: CreateLoteDTO): Promise<boolean>;
     associatePropietario(lote_id: string, barrio_id: string, propietario_id: string): Promise<boolean>;
     getAll(barrio_id: string): Promise<any[]>;
+    delete(lote_id: string, barrio_id: string): Promise<import("typeorm").DeleteResult>;
 }

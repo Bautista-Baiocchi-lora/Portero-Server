@@ -28,6 +28,9 @@ let LoteController = class LoteController {
     async getAllLotes(session) {
         return await this.loteService.getAll(session.acc_id);
     }
+    async deleteLote(lote_id, session) {
+        return await this.loteService.delete(lote_id, session.acc_id);
+    }
     async associatePropietario(lote_id, barrio_id, session) {
         return await this.loteService.associatePropietario(lote_id, barrio_id, session.acc_id);
     }
@@ -50,6 +53,15 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], LoteController.prototype, "getAllLotes", null);
+__decorate([
+    common_1.Delete('delete'),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    __param(0, common_1.Query('lote')), __param(1, common_1.Session()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], LoteController.prototype, "deleteLote", null);
 __decorate([
     common_1.Post('associate'),
     common_1.UseGuards(session_guard_1.default),
