@@ -1,17 +1,15 @@
-import { ExceptionFilter, Catch, ArgumentsHost } from "@nestjs/common";
-import { QueryFailedError } from "typeorm";
-import {Response} from 'express'
+import { ArgumentsHost, Catch, ExceptionFilter } from '@nestjs/common';
+import { Response } from 'express';
+import { QueryFailedError } from 'typeorm';
 
 @Catch(QueryFailedError)
-export class QueryFailedExceptionFilter implements ExceptionFilter{
-    catch(exception: QueryFailedError, host: ArgumentsHost) {
-       const ctx = host.switchToHttp()
-       const response = ctx.getResponse<Response>()
+export class QueryFailedExceptionFilter implements ExceptionFilter {
+  catch(exception: QueryFailedError, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<Response>();
 
-       response.status(400)
-       .json({
-           error: exception.message
-       })
-    }
-
+    response.status(400).json({
+      error: exception.message,
+    });
+  }
 }

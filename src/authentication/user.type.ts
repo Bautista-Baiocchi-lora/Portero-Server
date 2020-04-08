@@ -1,5 +1,5 @@
-export enum UserType{
-    BARRIO = 0,
-    PROPIETARIO = 1,
-    TRABAJADOR = 2
+export enum UserType {
+  BARRIO = 0,
+  PROPIETARIO = 1,
+  TRABAJADOR = 2,
 }

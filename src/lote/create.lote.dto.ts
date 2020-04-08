@@ -1,18 +1,15 @@
-import { IsString, IsNumber } from "class-validator";
+import { IsNumber, IsString } from 'class-validator';
 
-export default class CreateLoteDTO{
+export default class CreateLoteDTO {
+  @IsString()
+  name: string;
 
-    @IsString()
-    name: string;
+  @IsNumber()
+  num: number;
 
-    @IsNumber()
-     num: number;
+  @IsString()
+  street: string;
 
-    @IsString()
-    street: string;
-
-    @IsNumber()
-    code: number;
-
-
+  @IsNumber()
+  code: number;
 }
