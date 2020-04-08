@@ -1,15 +1,12 @@
-import { Module } from "@nestjs/common";
-import { AuthenticationService } from "./auth.service";
-import SessionModule from "src/session/session.module";
-import { AuthenticationController } from "./auth.controller";
-
+import { Module } from '@nestjs/common';
+import SessionModule from 'src/session/session.module';
+import { AuthenticationController } from './auth.controller';
+import { AuthenticationService } from './auth.service';
 
 @Module({
-    controllers:[AuthenticationController],
-    providers: [AuthenticationService],
-    exports:[AuthenticationService],
-    imports:[SessionModule]
+  controllers: [AuthenticationController],
+  providers: [AuthenticationService],
+  exports: [AuthenticationService],
+  imports: [SessionModule],
 })
-export class AuthenticationModule{}
-
-
+export class AuthenticationModule {}

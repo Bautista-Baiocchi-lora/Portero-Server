@@ -1,16 +1,14 @@
-import { IsEmail, IsDefined, IsEmpty, IsNotEmpty, IsString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
-export class BarrioRegistrationDTO{
+export class BarrioRegistrationDTO {
+  @IsEmail()
+  email: string;
 
-    @IsEmail()
-    email: string;
+  @IsNotEmpty()
+  @IsString()
+  password: string;
 
-    @IsNotEmpty()
-    @IsString()
-    password: string;
-
-    @IsNotEmpty()
-    @IsString()
-    name: string;
-
+  @IsNotEmpty()
+  @IsString()
+  name: string;
 }

@@ -1,28 +1,25 @@
-import { IsEmail, IsString, IsNotEmpty, IsNumber } from "class-validator";
+import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
+export default class TrabajadorRegistrationDTO {
+  @IsEmail()
+  email: string;
 
-export default class TrabajadorRegistrationDTO{
+  @IsString()
+  @IsNotEmpty()
+  first_name: string;
 
-    @IsEmail()
-    email: string;
+  @IsString()
+  @IsNotEmpty()
+  last_name: string;
 
-    @IsString()
-    @IsNotEmpty()
-    first_name: string;
+  @IsString()
+  @IsNotEmpty()
+  doc_id: string;
 
-    @IsString()
-    @IsNotEmpty()
-    last_name: string;
+  @IsNumber()
+  doc_type: number;
 
-    @IsString()
-    @IsNotEmpty()
-    doc_id: string;
-
-    @IsNumber()
-    doc_type: number;
-
-    @IsString()
-    @IsNotEmpty()
-    password: string;
-
+  @IsString()
+  @IsNotEmpty()
+  password: string;
 }

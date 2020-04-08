@@ -1,32 +1,30 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { IsEmail } from "class-validator";
+import { IsEmail } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export default class Trabajador{
+export default class Trabajador {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  @IsEmail()
+  email: string;
 
-    @Column()
-    @IsEmail()
-    email: string;
+  @Column()
+  password: string;
 
-    @Column()
-    password: string;
+  @Column()
+  first_name: string;
 
-    @Column()
-    first_name: string; 
+  @Column()
+  last_name: string;
 
-    @Column()
-    last_name: string;
+  @Column()
+  doc_id: string;
 
-    @Column()
-    doc_id: string;
+  @Column()
+  doc_type: number;
 
-    @Column()
-    doc_type: number;
-
-    @Column()
-    creation_date: string;
-
+  @Column()
+  creation_date: string;
 }

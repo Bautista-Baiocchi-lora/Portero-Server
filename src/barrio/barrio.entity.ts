@@ -1,23 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import {IsEmail} from 'class-validator'
+import { IsEmail } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export default class Barrio{
+export default class Barrio {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @PrimaryGeneratedColumn()
-    id: number;
+  @Column()
+  @IsEmail()
+  email: string;
 
-    @Column()
-    @IsEmail()
-    email: string;
+  @Column()
+  password: string;
 
-    @Column()
-    password: string;
+  @Column()
+  name: string;
 
-    @Column()
-    name: string;
-
-    @Column()
-    creation_date: string;
-
+  @Column()
+  creation_date: string;
 }
