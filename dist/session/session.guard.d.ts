@@ -1,7 +1,7 @@
-import { CanActivate, ExecutionContext } from "@nestjs/common";
-import { JwtService } from "./jwt.service";
-import { Reflector } from "@nestjs/core";
-import { UserType } from "src/authentication/user.type";
+import { CanActivate, ExecutionContext } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
+import { UserType } from 'src/authentication/user.type';
+import { JwtService } from './jwt.service';
 export default class SessionGuard implements CanActivate {
     private readonly jwtService;
     private reflector;

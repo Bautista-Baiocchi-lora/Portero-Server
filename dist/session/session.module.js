@@ -8,16 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const jwt_service_1 = require("./jwt.service");
 const session_entity_1 = require("./session.entity");
 const session_service_1 = require("./session.service");
-const jwt_service_1 = require("./jwt.service");
 let SessionModule = class SessionModule {
 };
 SessionModule = __decorate([
     common_1.Module({
         providers: [session_service_1.SessionService, jwt_service_1.JwtService],
         imports: [typeorm_1.TypeOrmModule.forFeature([session_entity_1.default])],
-        exports: [session_service_1.SessionService, jwt_service_1.JwtService]
+        exports: [session_service_1.SessionService, jwt_service_1.JwtService],
     })
 ], SessionModule);
 exports.default = SessionModule;

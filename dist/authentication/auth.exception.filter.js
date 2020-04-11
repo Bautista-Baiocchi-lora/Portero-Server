@@ -12,8 +12,7 @@ let AuthenticationExceptionFilter = class AuthenticationExceptionFilter {
     catch(exception, host) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse();
-        response.status(403)
-            .json(exception);
+        response.status(403).json(exception);
     }
 };
 AuthenticationExceptionFilter = __decorate([

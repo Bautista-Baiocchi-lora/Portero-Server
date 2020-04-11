@@ -1,5 +1,5 @@
-import BarrioInvite from "./barrio.invite.entity";
-import { Repository } from "typeorm";
+import { Repository } from 'typeorm';
+import BarrioInvite from './barrio.invite.entity';
 export default class InviteService {
     private readonly barrioInviteRepo;
     constructor(barrioInviteRepo: Repository<BarrioInvite>);

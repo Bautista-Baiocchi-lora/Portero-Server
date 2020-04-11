@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const session_service_1 = require("../session/session.service");
 const jwt_service_1 = require("../session/jwt.service");
 const typeorm_1 = require("typeorm");
+const session_service_1 = require("../session/session.service");
 const auth_error_1 = require("./auth.error");
 const bcrypt = require('bcrypt');
 let AuthenticationService = class AuthenticationService {
@@ -22,7 +22,9 @@ let AuthenticationService = class AuthenticationService {
         this.jwtService = jwtService;
     }
     async authenticate(logInDTO) {
-        const account = await this.connection.query(select_account_query(logInDTO.email)).then(response => response[0]);
+        const account = await this.connection
+            .query(select_account_query(logInDTO.email))
+            .then(response => response[0]);
         const validated = await bcrypt.compare(logInDTO.password, account.password);
         if (!validated) {
             throw new auth_error_1.AuthenticationError();
@@ -35,7 +37,7 @@ let AuthenticationService = class AuthenticationService {
             acc_id: account.id,
             email: account.email,
             session_id: session.session_id,
-            type: account.type
+            type: account.type,
         };
     }
 };

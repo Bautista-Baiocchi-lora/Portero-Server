@@ -14,15 +14,16 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const barrio_invite_entity_1 = require("./barrio.invite.entity");
 const typeorm_2 = require("typeorm");
+const barrio_invite_entity_1 = require("./barrio.invite.entity");
 const mins_till_exp = 2;
 let InviteService = class InviteService {
     constructor(barrioInviteRepo) {
         this.barrioInviteRepo = barrioInviteRepo;
     }
     async createBarrioInvite(barrio_id) {
-        return await this.barrioInviteRepo.query(create_barrio_invite_query(barrio_id))
+        return await this.barrioInviteRepo
+            .query(create_barrio_invite_query(barrio_id))
             .then(parse_create_barrio_query);
     }
 };

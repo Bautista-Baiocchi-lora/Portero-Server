@@ -10,10 +10,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const jwt_service_1 = require("./jwt.service");
-const auth_error_1 = require("../authentication/auth.error");
 const core_1 = require("@nestjs/core");
+const auth_error_1 = require("../authentication/auth.error");
 const user_type_1 = require("../authentication/user.type");
+const jwt_service_1 = require("./jwt.service");
 let SessionGuard = class SessionGuard {
     constructor(jwtService, reflector) {
         this.jwtService = jwtService;
@@ -32,7 +32,7 @@ let SessionGuard = class SessionGuard {
                 return userType ? userType.includes(session.type) : true;
             }
         }
-        throw new auth_error_1.AuthenticationError;
+        throw new auth_error_1.AuthenticationError();
     }
 };
 SessionGuard = __decorate([

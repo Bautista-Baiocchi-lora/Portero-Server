@@ -9,16 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const auth_module_1 = require("./authentication/auth.module");
-const propietario_module_1 = require("./propretario/propietario.module");
 const barrio_module_1 = require("./barrio/barrio.module");
 const invite_module_1 = require("./invite/invite.module");
-const trabajador_module_1 = require("./trabajador/trabajador.module");
 const lote_module_1 = require("./lote/lote.module");
+const propietario_module_1 = require("./propretario/propietario.module");
+const trabajador_module_1 = require("./trabajador/trabajador.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [propietario_module_1.default,
+        imports: [
+            propietario_module_1.default,
             invite_module_1.InviteModule,
             barrio_module_1.BarrioModule,
             trabajador_module_1.default,
@@ -30,7 +31,8 @@ AppModule = __decorate([
                 port: 5432,
                 database: 'test',
                 entities: [__dirname + '/**/*.entity{.ts,.js}'],
-            }),],
+            }),
+        ],
     })
 ], AppModule);
 exports.AppModule = AppModule;

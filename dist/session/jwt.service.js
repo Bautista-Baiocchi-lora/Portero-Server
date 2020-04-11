@@ -28,5 +28,5 @@ JwtService = __decorate([
 ], JwtService);
 exports.JwtService = JwtService;
 const jwt = require('jsonwebtoken');
-const secret = "our super secret";
+const secret = 'our super secret';
 //# sourceMappingURL=jwt.service.js.map

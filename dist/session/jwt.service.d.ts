@@ -1,4 +1,4 @@
-import Session from "./session.entity";
+import Session from './session.entity';
 export declare class JwtService {
     constructor();
     signJWT(session: JwtSession): Promise<string>;

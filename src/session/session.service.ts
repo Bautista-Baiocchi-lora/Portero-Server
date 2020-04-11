@@ -7,15 +7,29 @@ import Session from './session.entity';
 export class SessionService {
   constructor(@InjectRepository(Session) private readonly sessionRepo: Repository<Session>) {}
 
-  async create(account_id: string): Promise<Session> {
+  async create(account_id: string, mac_address: string): Promise<Session> {
     return await this.sessionRepo
-      .query(create_session_query(account_id))
+      .query(create_session_query(account_id, mac_address))
       .then(response => response[0]);
+  }
+
+  async verify(session_id: string, account_id: string, mac_address: string): Promise<boolean> {
+    return await this.sessionRepo.query(
+      validate_session_query(session_id, account_id, mac_address),
+    );
   }
 }
 
 const session_duration_in_days = 7;
 
-function create_session_query(account_id: string): string {
-  return `SELECT * from create_session('${account_id}', '${session_duration_in_days}');`;
+function validate_session_query(
+  session_id: string,
+  account_id: string,
+  mac_address: string,
+): string {
+  return `SELECT * from validate_session('${session_id}', '${mac_address}', '${account_id}');`;
+}
+
+function create_session_query(account_id: string, mac_address: string): string {
+  return `SELECT * from create_session('${account_id}', '${mac_address}', '${session_duration_in_days}');`;
 }

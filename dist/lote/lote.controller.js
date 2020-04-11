@@ -13,11 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const lote_service_1 = require("./lote.service");
-const create_lote_dto_1 = require("./create.lote.dto");
+const user_type_1 = require("../authentication/user.type");
 const jwt_service_1 = require("../session/jwt.service");
 const session_guard_1 = require("../session/session.guard");
-const user_type_1 = require("../authentication/user.type");
+const create_lote_dto_1 = require("./create.lote.dto");
+const lote_service_1 = require("./lote.service");
 let LoteController = class LoteController {
     constructor(loteService) {
         this.loteService = loteService;
@@ -66,7 +66,9 @@ __decorate([
     common_1.Post('associate'),
     common_1.UseGuards(session_guard_1.default),
     session_guard_1.UserTypes(user_type_1.UserType.PROPIETARIO),
-    __param(0, common_1.Query('lote')), __param(1, common_1.Query('barrio')), __param(2, common_1.Session()),
+    __param(0, common_1.Query('lote')),
+    __param(1, common_1.Query('barrio')),
+    __param(2, common_1.Session()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", Promise)

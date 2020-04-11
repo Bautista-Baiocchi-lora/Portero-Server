@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsMACAddress, IsNotEmpty } from 'class-validator';
 
 export class LogInDTO {
   @IsEmail()
@@ -6,4 +6,8 @@ export class LogInDTO {
 
   @IsNotEmpty()
   password: string;
+
+  //device Mac_Adress
+  @IsMACAddress()
+  mid?: string;
 }

@@ -1,6 +1,6 @@
-import LoteService from "./lote.service";
-import CreateLoteDTO from "./create.lote.dto";
-import { JwtSession } from "src/session/jwt.service";
+import { JwtSession } from 'src/session/jwt.service';
+import CreateLoteDTO from './create.lote.dto';
+import LoteService from './lote.service';
 export default class LoteController {
     private readonly loteService;
     constructor(loteService: LoteService);

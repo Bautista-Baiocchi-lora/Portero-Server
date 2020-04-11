@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
-const common_1 = require("@nestjs/common");
 const query_failed_exception_filter_1 = require("./query-failed.exception.filter");
 const jwt_exception_filter_1 = require("./session/jwt.exception.filter");
 async function bootstrap() {

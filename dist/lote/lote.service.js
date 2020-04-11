@@ -13,18 +13,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 const lote_entity_1 = require("./lote.entity");
-const typeorm_2 = require("@nestjs/typeorm");
 let LoteService = class LoteService {
     constructor(loteRepo) {
         this.loteRepo = loteRepo;
     }
     async create(barrio_id, loteDTO) {
-        return await this.loteRepo.query(insert_lote_query(barrio_id, loteDTO)).then(parse_insert_query);
+        return await this.loteRepo
+            .query(insert_lote_query(barrio_id, loteDTO))
+            .then(parse_insert_query);
     }
     async associatePropietario(lote_id, barrio_id, propietario_id) {
-        return await this.loteRepo.query(insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id)).then(parse_insert_query);
+        return await this.loteRepo
+            .query(insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id))
+            .then(parse_insert_query);
     }
     async getAll(barrio_id) {
         const lotes = await this.loteRepo.query(select_lotes_query(barrio_id));
@@ -40,12 +44,14 @@ let LoteService = class LoteService {
 };
 LoteService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(lote_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(lote_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], LoteService);
 exports.default = LoteService;
 function select_propietarios_of_lotes(lotes) {
-    return `SELECT * from select_propietarios_of_lotes(array${JSON.stringify(lotes).split('"').join("'")}::uuid[]);`;
+    return `SELECT * from select_propietarios_of_lotes(array${JSON.stringify(lotes)
+        .split('"')
+        .join("'")}::uuid[]);`;
 }
 function insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id) {
     return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}');`;

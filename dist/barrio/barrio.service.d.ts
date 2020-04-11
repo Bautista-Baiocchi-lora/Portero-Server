@@ -1,8 +1,8 @@
-import { BarrioRegistrationDTO } from './barrio.registration.dto';
-import Barrio from './barrio.entity';
-import { Repository, DeleteResult } from 'typeorm';
 import InviteService from 'src/invite/invite.service';
 import { JwtSession } from 'src/session/jwt.service';
+import { DeleteResult, Repository } from 'typeorm';
+import Barrio from './barrio.entity';
+import { BarrioRegistrationDTO } from './barrio.registration.dto';
 export declare class BarrioService {
     private readonly barrioRepo;
     private readonly inviteService;

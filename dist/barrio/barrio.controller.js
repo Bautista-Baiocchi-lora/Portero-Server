@@ -13,11 +13,11 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const barrio_service_1 = require("./barrio.service");
-const barrio_registration_dto_1 = require("./barrio.registration.dto");
-const session_guard_1 = require("../session/session.guard");
-const jwt_service_1 = require("../session/jwt.service");
 const user_type_1 = require("../authentication/user.type");
+const barrio_registration_dto_1 = require("./barrio.registration.dto");
+const jwt_service_1 = require("../session/jwt.service");
+const session_guard_1 = require("../session/session.guard");
+const barrio_service_1 = require("./barrio.service");
 let BarrioController = class BarrioController {
     constructor(barrioService) {
         this.barrioService = barrioService;

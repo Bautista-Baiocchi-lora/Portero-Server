@@ -13,21 +13,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 const session_entity_1 = require("./session.entity");
-const typeorm_1 = require("typeorm");
-const typeorm_2 = require("@nestjs/typeorm");
 let SessionService = class SessionService {
     constructor(sessionRepo) {
         this.sessionRepo = sessionRepo;
     }
     async create(account_id) {
-        return await this.sessionRepo.query(create_session_query(account_id)).then(response => response[0]);
+        return await this.sessionRepo
+            .query(create_session_query(account_id))
+            .then(response => response[0]);
     }
 };
 SessionService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(session_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(session_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;

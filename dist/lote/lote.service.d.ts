@@ -1,6 +1,6 @@
-import CreateLoteDTO from "./create.lote.dto";
-import { Repository } from "typeorm";
-import Lote from "./lote.entity";
+import { Repository } from 'typeorm';
+import CreateLoteDTO from './create.lote.dto';
+import Lote from './lote.entity';
 export default class LoteService {
     private readonly loteRepo;
     constructor(loteRepo: Repository<Lote>);

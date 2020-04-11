@@ -1,6 +1,6 @@
-import { BarrioService } from "./barrio.service";
-import { BarrioRegistrationDTO } from "src/barrio/barrio.registration.dto";
-import { JwtSession } from "src/session/jwt.service";
+import { BarrioRegistrationDTO } from 'src/barrio/barrio.registration.dto';
+import { JwtSession } from 'src/session/jwt.service';
+import { BarrioService } from './barrio.service';
 export default class BarrioController {
     private readonly barrioService;
     constructor(barrioService: BarrioService);
