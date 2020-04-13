@@ -1,27 +1,26 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import BarrioInvite from './barrio.invite.entity';
+import { Connection } from 'typeorm';
 
-const mins_till_exp = 2;
+const jwt = require('jsonwebtoken');
 
 @Injectable()
 export default class InviteService {
-  constructor(
-    @InjectRepository(BarrioInvite) private readonly barrioInviteRepo: Repository<BarrioInvite>,
-  ) {}
+  constructor(private readonly connection: Connection) {}
 
-  async createBarrioInvite(barrio_id: string): Promise<string> {
-    return await this.barrioInviteRepo
-      .query(create_barrio_invite_query(barrio_id))
-      .then(parse_create_barrio_query);
+  async sign(invite: any): Promise<SignedInvite> {
+    const registration = await this.connection
+      .query(register_invite_query())
+      .then(response => response[0]);
+    const token = await jwt.sign(invite, registration.encry_key);
+    return {
+      invite: token,
+      id: registration.invite_id,
+    };
   }
 }
 
-function parse_create_barrio_query(response): string {
-  return response[0].create_barrio_invite;
-}
+export type SignedInvite = { invite: string; id: string };
 
-function create_barrio_invite_query(barrio_id: string): string {
-  return `SELECT create_barrio_invite('${barrio_id}');`;
+function register_invite_query(): string {
+  return 'SELECT * from register_invite();';
 }

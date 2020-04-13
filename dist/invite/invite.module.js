@@ -6,21 +6,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const barrio_invite_entity_1 = require("./barrio.invite.entity");
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("@nestjs/typeorm");
-const invite_service_1 = require("./invite.service");
-const invite_controller_1 = require("./invite.controller");
-const auth_module_1 = require("../authentication/auth.module");
 const session_module_1 = require("../session/session.module");
+const invite_controller_1 = require("./invite.controller");
+const invite_service_1 = require("./invite.service");
 let InviteModule = class InviteModule {
 };
 InviteModule = __decorate([
     common_1.Module({
         providers: [invite_service_1.default],
         controllers: [invite_controller_1.default],
-        imports: [typeorm_1.TypeOrmModule.forFeature([barrio_invite_entity_1.default]), session_module_1.default],
-        exports: [invite_service_1.default]
+        imports: [session_module_1.default],
+        exports: [invite_service_1.default],
     })
 ], InviteModule);
 exports.InviteModule = InviteModule;

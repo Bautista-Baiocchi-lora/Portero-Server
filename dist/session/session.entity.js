@@ -24,6 +24,11 @@ __decorate([
     __metadata("design:type", String)
 ], Session.prototype, "acc_id", void 0);
 __decorate([
+    typeorm_1.Column(),
+    class_validator_1.IsMACAddress(),
+    __metadata("design:type", String)
+], Session.prototype, "device_id", void 0);
+__decorate([
     class_validator_1.IsEmail(),
     __metadata("design:type", String)
 ], Session.prototype, "email", void 0);

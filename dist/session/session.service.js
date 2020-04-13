@@ -13,25 +13,35 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 const session_entity_1 = require("./session.entity");
-const typeorm_1 = require("typeorm");
-const typeorm_2 = require("@nestjs/typeorm");
 let SessionService = class SessionService {
     constructor(sessionRepo) {
         this.sessionRepo = sessionRepo;
     }
-    async create(account_id) {
-        return await this.sessionRepo.query(create_session_query(account_id)).then(response => response[0]);
+    async create(account_id, mac_address) {
+        return await this.sessionRepo
+            .query(create_session_query(account_id, mac_address))
+            .then(response => response[0]);
+    }
+    async verify(session_id, account_id, mac_address) {
+        return await this.sessionRepo
+            .query(validate_session_query(session_id, account_id, mac_address))
+            .then(response => !!response);
     }
 };
 SessionService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(session_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(session_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;
-function create_session_query(account_id) {
-    return `SELECT * from create_session('${account_id}', '${session_duration_in_days}');`;
+function validate_session_query(session_id, account_id, mac_address) {
+    return `SELECT * from validate_session('${session_id}'::uuid, '${mac_address}', '${account_id}'::uuid);`;
+}
+function create_session_query(account_id, mac_address) {
+    return `SELECT * from create_session('${account_id}', '${mac_address}', '${session_duration_in_days}');`;
 }
 //# sourceMappingURL=session.service.js.map

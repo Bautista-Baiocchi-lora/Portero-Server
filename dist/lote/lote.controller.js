@@ -13,11 +13,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const lote_service_1 = require("./lote.service");
-const create_lote_dto_1 = require("./create.lote.dto");
+const user_type_1 = require("../authentication/user.type");
+const invite_service_1 = require("../invite/invite.service");
 const jwt_service_1 = require("../session/jwt.service");
 const session_guard_1 = require("../session/session.guard");
-const user_type_1 = require("../authentication/user.type");
+const create_lote_dto_1 = require("./create.lote.dto");
+const lote_service_1 = require("./lote.service");
 let LoteController = class LoteController {
     constructor(loteService) {
         this.loteService = loteService;
@@ -25,14 +26,17 @@ let LoteController = class LoteController {
     async create(session, createDTO) {
         return await this.loteService.create(session.acc_id, createDTO);
     }
+    async invite(lote_id, session) {
+        return await this.loteService.createInvite(lote_id, session.acc_id);
+    }
     async getAllLotes(session) {
         return await this.loteService.getAll(session.acc_id);
     }
     async deleteLote(lote_id, session) {
         return await this.loteService.delete(lote_id, session.acc_id);
     }
-    async associatePropietario(lote_id, barrio_id, session) {
-        return await this.loteService.associatePropietario(lote_id, barrio_id, session.acc_id);
+    async associatePropietario(lote_id, barrio_id, device_id, session) {
+        return await this.loteService.associatePropietario(lote_id, barrio_id, session, device_id);
     }
 };
 __decorate([
@@ -44,6 +48,16 @@ __decorate([
     __metadata("design:paramtypes", [Object, create_lote_dto_1.default]),
     __metadata("design:returntype", Promise)
 ], LoteController.prototype, "create", null);
+__decorate([
+    common_1.Get('invite'),
+    common_1.UseGuards(session_guard_1.default),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    __param(0, common_1.Query('lote')),
+    __param(1, common_1.Session()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], LoteController.prototype, "invite", null);
 __decorate([
     common_1.Get('all'),
     common_1.UseGuards(session_guard_1.default),
@@ -66,9 +80,12 @@ __decorate([
     common_1.Post('associate'),
     common_1.UseGuards(session_guard_1.default),
     session_guard_1.UserTypes(user_type_1.UserType.PROPIETARIO),
-    __param(0, common_1.Query('lote')), __param(1, common_1.Query('barrio')), __param(2, common_1.Session()),
+    __param(0, common_1.Query('lote')),
+    __param(1, common_1.Query('barrio')),
+    __param(2, common_1.Query('device')),
+    __param(3, common_1.Session()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:paramtypes", [String, String, String, Object]),
     __metadata("design:returntype", Promise)
 ], LoteController.prototype, "associatePropietario", null);
 LoteController = __decorate([

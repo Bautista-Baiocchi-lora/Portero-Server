@@ -20,5 +20,9 @@ __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], LogInDTO.prototype, "password", void 0);
+__decorate([
+    class_validator_1.IsNotEmpty(),
+    __metadata("design:type", String)
+], LogInDTO.prototype, "mid", void 0);
 exports.LogInDTO = LogInDTO;
 //# sourceMappingURL=log.in.dto.js.map

@@ -8,17 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const propietario_entity_1 = require("./propietario.entity");
 const propietario_controller_1 = require("./propietario.controller");
+const propietario_entity_1 = require("./propietario.entity");
 const propietario_service_1 = require("./propietario.service");
-const auth_module_1 = require("../authentication/auth.module");
 let PropietarioModule = class PropietarioModule {
 };
 PropietarioModule = __decorate([
     common_1.Module({
         imports: [typeorm_1.TypeOrmModule.forFeature([propietario_entity_1.default])],
         controllers: [propietario_controller_1.default],
-        providers: [propietario_service_1.default]
+        providers: [propietario_service_1.default],
     })
 ], PropietarioModule);
 exports.default = PropietarioModule;

@@ -13,10 +13,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
-const auth_service_1 = require("../authentication/auth.service");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 const propietario_entity_1 = require("./propietario.entity");
-const typeorm_2 = require("@nestjs/typeorm");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 let PropietarioService = class PropietarioService {
@@ -25,16 +24,20 @@ let PropietarioService = class PropietarioService {
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.propietarioRepo.query(create_insert_propietario_query(registerDTO)).then(parse_insert_propietario_query);
+        return await this.propietarioRepo
+            .query(create_insert_propietario_query(registerDTO))
+            .then(parse_insert_propietario_query);
     }
     async getPropietario(email) {
-        return await this.propietarioRepo.query(select_propietario_query(email)).then(parse_select_propietario_query);
+        return await this.propietarioRepo
+            .query(select_propietario_query(email))
+            .then(parse_select_propietario_query);
     }
 };
 PropietarioService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(propietario_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(propietario_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], PropietarioService);
 exports.default = PropietarioService;
 function parse_select_propietario_query(response) {
@@ -46,10 +49,10 @@ function parse_select_propietario_query(response) {
         email: response[1],
         password: response[2],
         creation_date: response[3],
-        first_name: response[5].replace('\"', '').replace('\"', ''),
-        last_name: response[6].replace('\"', '').replace('\"', ''),
+        first_name: response[5].replace('"', '').replace('"', ''),
+        last_name: response[6].replace('"', '').replace('"', ''),
         doc_id: response[7],
-        doc_type: +response[8]
+        doc_type: +response[8],
     };
     return propietario;
 }

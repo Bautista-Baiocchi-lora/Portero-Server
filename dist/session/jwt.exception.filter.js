@@ -12,8 +12,7 @@ let JwtExceptionFilter = class JwtExceptionFilter {
     catch(exception, host) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse();
-        response.status(403)
-            .json(exception);
+        response.status(403).json(exception);
     }
 };
 JwtExceptionFilter = __decorate([

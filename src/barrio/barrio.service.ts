@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import InviteService from 'src/invite/invite.service';
-import { JwtSession } from 'src/session/jwt.service';
 import { DeleteResult, Repository } from 'typeorm';
 import Barrio from './barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
@@ -25,10 +24,6 @@ export class BarrioService {
 
   async delete(email: string): Promise<DeleteResult> {
     return await this.barrioRepo.query(delete_barrio_query(email));
-  }
-
-  async getNewInvite(session: JwtSession): Promise<string> {
-    return this.inviteService.createBarrioInvite(session.acc_id);
   }
 
   private async getBarrio(email: string): Promise<Barrio> {

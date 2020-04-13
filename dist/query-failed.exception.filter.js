@@ -12,9 +12,8 @@ let QueryFailedExceptionFilter = class QueryFailedExceptionFilter {
     catch(exception, host) {
         const ctx = host.switchToHttp();
         const response = ctx.getResponse();
-        response.status(400)
-            .json({
-            error: exception.message
+        response.status(400).json({
+            error: exception.message,
         });
     }
 };

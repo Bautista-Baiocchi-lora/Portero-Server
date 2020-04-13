@@ -13,12 +13,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
-const typeorm_2 = require("typeorm");
 const invite_service_1 = require("../invite/invite.service");
-const session_entity_1 = require("../session/session.entity");
-const jwt_service_1 = require("../session/jwt.service");
+const typeorm_2 = require("typeorm");
+const barrio_entity_1 = require("./barrio.entity");
 const bcrypt = require('bcrypt');
 const saltRounds = 8;
 let BarrioService = class BarrioService {
@@ -28,13 +26,12 @@ let BarrioService = class BarrioService {
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.barrioRepo.query(insert_barrio_query(registerDTO)).then(parse_insert_barrio_query);
+        return await this.barrioRepo
+            .query(insert_barrio_query(registerDTO))
+            .then(parse_insert_barrio_query);
     }
     async delete(email) {
         return await this.barrioRepo.query(delete_barrio_query(email));
-    }
-    async getNewInvite(session) {
-        return this.inviteService.createBarrioInvite(session.acc_id);
     }
     async getBarrio(email) {
         return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query);
@@ -56,7 +53,7 @@ function parse_get_barrio_query(response) {
         email: response[1],
         password: response[2],
         creation_date: response[3],
-        name: response[5].replace('\"', '').replace('\"', '')
+        name: response[5].replace('"', '').replace('"', ''),
     };
     return barrio;
 }

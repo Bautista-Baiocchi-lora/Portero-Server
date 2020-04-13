@@ -7,15 +7,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const barrio_service_1 = require("./barrio.service");
-const barrio_entity_1 = require("./barrio.entity");
 const typeorm_1 = require("@nestjs/typeorm");
 const invite_module_1 = require("../invite/invite.module");
-const auth_module_1 = require("../authentication/auth.module");
-const barrio_controller_1 = require("./barrio.controller");
-const auth_service_1 = require("../authentication/auth.service");
-const invite_service_1 = require("../invite/invite.service");
 const session_module_1 = require("../session/session.module");
+const barrio_controller_1 = require("./barrio.controller");
+const barrio_entity_1 = require("./barrio.entity");
+const barrio_service_1 = require("./barrio.service");
 let BarrioModule = class BarrioModule {
 };
 BarrioModule = __decorate([

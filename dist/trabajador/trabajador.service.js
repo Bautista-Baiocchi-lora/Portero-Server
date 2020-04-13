@@ -13,8 +13,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const typeorm_1 = require("typeorm");
-const typeorm_2 = require("@nestjs/typeorm");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 const trabajador_entity_1 = require("./trabajador.entity");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -24,7 +24,9 @@ let TrabajadorService = class TrabajadorService {
     }
     async register(registerDTO) {
         registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-        return await this.trabajadorRepo.query(create_insert_trabajador_query(registerDTO)).then(parse_insert_trabajador_query);
+        return await this.trabajadorRepo
+            .query(create_insert_trabajador_query(registerDTO))
+            .then(parse_insert_trabajador_query);
     }
     async getTrabajador(email) {
         return await this.trabajadorRepo.query(select_trabajador_query(email));
@@ -32,8 +34,8 @@ let TrabajadorService = class TrabajadorService {
 };
 TrabajadorService = __decorate([
     common_1.Injectable(),
-    __param(0, typeorm_2.InjectRepository(trabajador_entity_1.default)),
-    __metadata("design:paramtypes", [typeorm_1.Repository])
+    __param(0, typeorm_1.InjectRepository(trabajador_entity_1.default)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], TrabajadorService);
 exports.default = TrabajadorService;
 function select_trabajador_query(email) {

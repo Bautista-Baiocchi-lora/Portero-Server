@@ -6,4 +6,8 @@ export class LogInDTO {
 
   @IsNotEmpty()
   password: string;
+
+  //device Mac_Adress
+  @IsNotEmpty()
+  mid: string;
 }

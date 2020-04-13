@@ -5,15 +5,15 @@ import Session from './session.entity';
 export class JwtService {
   constructor() {}
 
-  async signJWT(session: JwtSession): Promise<string> {
-    return await jwt.sign(session, secret);
+  async sign(data: any, secret: string): Promise<string> {
+    return await jwt.sign(data, secret);
   }
 
-  async verifyJWT(token): Promise<boolean> {
+  async verify(token, secret: string): Promise<JwtSession> {
     return await jwt.verify(token, secret);
   }
 
-  async decodeJWT(token): Promise<JwtSession> {
+  async decode(token): Promise<JwtSession> {
     return await jwt.decode(token);
   }
 }
@@ -21,4 +21,3 @@ export class JwtService {
 export type JwtSession = Session & { type: number; email: string };
 
 const jwt = require('jsonwebtoken');
-const secret = 'our super secret';

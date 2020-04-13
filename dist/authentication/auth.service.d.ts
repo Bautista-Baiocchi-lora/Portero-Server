@@ -1,7 +1,7 @@
-import { LogInDTO } from "./log.in.dto";
-import { SessionService } from "../session/session.service";
-import { JwtService } from "src/session/jwt.service";
-import { Connection } from "typeorm";
+import { JwtService } from 'src/session/jwt.service';
+import { Connection } from 'typeorm';
+import { SessionService } from '../session/session.service';
+import { LogInDTO } from './log.in.dto';
 export declare class AuthenticationService {
     private readonly connection;
     private readonly sessionService;
