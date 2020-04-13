@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const invite_service_1 = require("../invite/invite.service");
-const jwt_service_1 = require("../session/jwt.service");
 const typeorm_2 = require("typeorm");
 const barrio_entity_1 = require("./barrio.entity");
 const bcrypt = require('bcrypt');
@@ -33,9 +32,6 @@ let BarrioService = class BarrioService {
     }
     async delete(email) {
         return await this.barrioRepo.query(delete_barrio_query(email));
-    }
-    async getNewInvite(session) {
-        return this.inviteService.createBarrioInvite(session.acc_id);
     }
     async getBarrio(email) {
         return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query);

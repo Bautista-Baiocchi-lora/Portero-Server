@@ -13,10 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
-const user_type_1 = require("../authentication/user.type");
 const barrio_registration_dto_1 = require("./barrio.registration.dto");
-const jwt_service_1 = require("../session/jwt.service");
-const session_guard_1 = require("../session/session.guard");
 const barrio_service_1 = require("./barrio.service");
 let BarrioController = class BarrioController {
     constructor(barrioService) {
@@ -24,9 +21,6 @@ let BarrioController = class BarrioController {
     }
     async register(registerDTO) {
         return await this.barrioService.register(registerDTO);
-    }
-    async getNewInvite(session) {
-        return await this.barrioService.getNewInvite(session);
     }
 };
 __decorate([
@@ -36,15 +30,6 @@ __decorate([
     __metadata("design:paramtypes", [barrio_registration_dto_1.BarrioRegistrationDTO]),
     __metadata("design:returntype", Promise)
 ], BarrioController.prototype, "register", null);
-__decorate([
-    common_1.Get('new/invite'),
-    common_1.UseGuards(session_guard_1.default),
-    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
-    __param(0, common_1.Session()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], BarrioController.prototype, "getNewInvite", null);
 BarrioController = __decorate([
     common_1.Controller('barrio'),
     __metadata("design:paramtypes", [barrio_service_1.BarrioService])

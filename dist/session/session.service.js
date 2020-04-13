@@ -20,10 +20,15 @@ let SessionService = class SessionService {
     constructor(sessionRepo) {
         this.sessionRepo = sessionRepo;
     }
-    async create(account_id) {
+    async create(account_id, mac_address) {
         return await this.sessionRepo
-            .query(create_session_query(account_id))
+            .query(create_session_query(account_id, mac_address))
             .then(response => response[0]);
+    }
+    async verify(session_id, account_id, mac_address) {
+        return await this.sessionRepo
+            .query(validate_session_query(session_id, account_id, mac_address))
+            .then(response => !!response);
     }
 };
 SessionService = __decorate([
@@ -33,7 +38,10 @@ SessionService = __decorate([
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;
-function create_session_query(account_id) {
-    return `SELECT * from create_session('${account_id}', '${session_duration_in_days}');`;
+function validate_session_query(session_id, account_id, mac_address) {
+    return `SELECT * from validate_session('${session_id}'::uuid, '${mac_address}', '${account_id}'::uuid);`;
+}
+function create_session_query(account_id, mac_address) {
+    return `SELECT * from create_session('${account_id}', '${mac_address}', '${session_duration_in_days}');`;
 }
 //# sourceMappingURL=session.service.js.map

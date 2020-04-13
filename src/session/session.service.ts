@@ -14,9 +14,9 @@ export class SessionService {
   }
 
   async verify(session_id: string, account_id: string, mac_address: string): Promise<boolean> {
-    return await this.sessionRepo.query(
-      validate_session_query(session_id, account_id, mac_address),
-    );
+    return await this.sessionRepo
+      .query(validate_session_query(session_id, account_id, mac_address))
+      .then(response => !!response);
   }
 }
 
@@ -27,7 +27,7 @@ function validate_session_query(
   account_id: string,
   mac_address: string,
 ): string {
-  return `SELECT * from validate_session('${session_id}', '${mac_address}', '${account_id}');`;
+  return `SELECT * from validate_session('${session_id}'::uuid, '${mac_address}', '${account_id}'::uuid);`;
 }
 
 function create_session_query(account_id: string, mac_address: string): string {

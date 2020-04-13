@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService, JwtSession } from 'src/session/jwt.service';
 import { Connection } from 'typeorm';
+import * as settings from '../server-config.json';
 import Session from '../session/session.entity';
 import { SessionService } from '../session/session.service';
 import { AuthenticationError } from './auth.error';
@@ -28,7 +29,7 @@ export class AuthenticationService {
 
     const session: Session = await this.sessionService.create(account.id, logInDTO.mid);
     const token: JwtSession = { ...session, email: account.email, type: account.type };
-    const signedToken = await this.jwtService.signJWT(token);
+    const signedToken = await this.jwtService.sign(token, settings.jwt.session_secret);
 
     return {
       token: signedToken,

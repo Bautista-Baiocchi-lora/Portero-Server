@@ -13,23 +13,29 @@ const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const auth_error_1 = require("../authentication/auth.error");
 const user_type_1 = require("../authentication/user.type");
+const settings = require("../server-config.json");
 const jwt_service_1 = require("./jwt.service");
+const session_service_1 = require("./session.service");
 let SessionGuard = class SessionGuard {
-    constructor(jwtService, reflector) {
+    constructor(jwtService, reflector, sessionService) {
         this.jwtService = jwtService;
         this.reflector = reflector;
+        this.sessionService = sessionService;
     }
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
         const hasAuthHeader = Object.keys(request.headers).includes('authorization');
         if (hasAuthHeader) {
             const jwt = request.headers.authorization;
-            const validated = await this.jwtService.verifyJWT(jwt);
-            if (validated) {
-                const session = await this.jwtService.decodeJWT(jwt);
-                request.session = session;
-                const userType = this.reflector.get('userType', context.getHandler());
-                return userType ? userType.includes(session.type) : true;
+            const session = await this.jwtService.verify(jwt, settings.jwt.session_secret);
+            if (session) {
+                const dbValidated = await this.sessionService.verify(session.session_id, session.acc_id, session.device_id);
+                if (dbValidated) {
+                    request.session = session;
+                    const userType = this.reflector.get('userType', context.getHandler());
+                    return userType ? userType.includes(session.type) : true;
+                }
+                return false;
             }
         }
         throw new auth_error_1.AuthenticationError();
@@ -37,7 +43,9 @@ let SessionGuard = class SessionGuard {
 };
 SessionGuard = __decorate([
     common_1.Injectable(),
-    __metadata("design:paramtypes", [jwt_service_1.JwtService, core_1.Reflector])
+    __metadata("design:paramtypes", [jwt_service_1.JwtService,
+        core_1.Reflector,
+        session_service_1.SessionService])
 ], SessionGuard);
 exports.default = SessionGuard;
 exports.UserTypes = (...type) => common_1.SetMetadata('userType', type);

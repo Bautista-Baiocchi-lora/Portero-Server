@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
+const invite_module_1 = require("../invite/invite.module");
 const session_module_1 = require("../session/session.module");
 const lote_controller_1 = require("./lote.controller");
 const lote_entity_1 = require("./lote.entity");
@@ -18,7 +19,7 @@ LoteModule = __decorate([
     common_1.Module({
         controllers: [lote_controller_1.default],
         providers: [lote_service_1.default],
-        imports: [session_module_1.default, typeorm_1.TypeOrmModule.forFeature([lote_entity_1.default])],
+        imports: [session_module_1.default, typeorm_1.TypeOrmModule.forFeature([lote_entity_1.default]), invite_module_1.InviteModule],
     })
 ], LoteModule);
 exports.default = LoteModule;

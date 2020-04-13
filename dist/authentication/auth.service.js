@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const jwt_service_1 = require("../session/jwt.service");
 const typeorm_1 = require("typeorm");
+const settings = require("../server-config.json");
 const session_service_1 = require("../session/session.service");
 const auth_error_1 = require("./auth.error");
 const bcrypt = require('bcrypt');
@@ -29,9 +30,9 @@ let AuthenticationService = class AuthenticationService {
         if (!validated) {
             throw new auth_error_1.AuthenticationError();
         }
-        const session = await this.sessionService.create(account.id);
+        const session = await this.sessionService.create(account.id, logInDTO.mid);
         const token = Object.assign(Object.assign({}, session), { email: account.email, type: account.type });
-        const signedToken = await this.jwtService.signJWT(token);
+        const signedToken = await this.jwtService.sign(token, settings.jwt.session_secret);
         return {
             token: signedToken,
             acc_id: account.id,

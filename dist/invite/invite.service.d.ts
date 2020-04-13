@@ -1,7 +1,10 @@
-import { Repository } from 'typeorm';
-import BarrioInvite from './barrio.invite.entity';
+import { Connection } from 'typeorm';
 export default class InviteService {
-    private readonly barrioInviteRepo;
-    constructor(barrioInviteRepo: Repository<BarrioInvite>);
-    createBarrioInvite(barrio_id: string): Promise<string>;
+    private readonly connection;
+    constructor(connection: Connection);
+    sign(invite: any): Promise<SignedInvite>;
 }
+export declare type SignedInvite = {
+    invite: string;
+    id: string;
+};

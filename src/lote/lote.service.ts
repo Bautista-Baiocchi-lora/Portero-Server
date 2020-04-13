@@ -1,12 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import InviteService, { SignedInvite } from 'src/invite/invite.service';
+import { JwtSession } from 'src/session/jwt.service';
 import { Repository } from 'typeorm';
 import CreateLoteDTO from './create.lote.dto';
 import Lote from './lote.entity';
 
 @Injectable()
 export default class LoteService {
-  constructor(@InjectRepository(Lote) private readonly loteRepo: Repository<Lote>) {}
+  constructor(
+    @InjectRepository(Lote) private readonly loteRepo: Repository<Lote>,
+    private readonly inviteService: InviteService,
+  ) {}
 
   async create(barrio_id: string, loteDTO: CreateLoteDTO): Promise<boolean> {
     return await this.loteRepo
@@ -14,13 +19,21 @@ export default class LoteService {
       .then(parse_insert_query);
   }
 
+  async createInvite(lote_id: string, acc_id: string): Promise<SignedInvite> {
+    return await this.inviteService.sign(invite(lote_id, acc_id));
+  }
+
   async associatePropietario(
     lote_id: string,
     barrio_id: string,
-    propietario_id: string,
+    session: JwtSession,
+    device_id: string,
   ): Promise<boolean> {
+    if (session.device_id !== device_id) {
+      return false;
+    }
     return await this.loteRepo
-      .query(insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id))
+      .query(insert_propiertario_de_lote_query(lote_id, barrio_id, session.acc_id, device_id))
       .then(parse_insert_query);
   }
 
@@ -43,8 +56,12 @@ export default class LoteService {
   }
 }
 
-function select_propietarios_of_lotes(lotes): string {
-  return `SELECT * from select_propietarios_of_lotes(array${JSON.stringify(lotes)
+function invite(lote_id: string, barrio_id: string) {
+  return { type: 'ASSOCIATE_PROP', lote_id, barrio_id };
+}
+
+function select_propietarios_of_lotes(lote_ids: string[]): string {
+  return `SELECT * from select_propietarios_of_lotes(array${JSON.stringify(lote_ids)
     .split('"')
     .join("'")}::uuid[]);`;
 }
@@ -53,8 +70,9 @@ function insert_propiertario_de_lote_query(
   lote_id: string,
   barrio_id: string,
   propietario_id: string,
+  device_id: string,
 ): string {
-  return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}');`;
+  return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}');`;
 }
 
 function parse_insert_query(response): boolean {

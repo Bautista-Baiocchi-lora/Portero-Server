@@ -12,13 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 let JwtService = class JwtService {
     constructor() { }
-    async signJWT(session) {
-        return await jwt.sign(session, secret);
+    async sign(data, secret) {
+        return await jwt.sign(data, secret);
     }
-    async verifyJWT(token) {
+    async verify(token, secret) {
         return await jwt.verify(token, secret);
     }
-    async decodeJWT(token) {
+    async decode(token) {
         return await jwt.decode(token);
     }
 };
@@ -28,5 +28,4 @@ JwtService = __decorate([
 ], JwtService);
 exports.JwtService = JwtService;
 const jwt = require('jsonwebtoken');
-const secret = 'our super secret';
 //# sourceMappingURL=jwt.service.js.map
