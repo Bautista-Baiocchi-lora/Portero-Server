@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const invite_service_1 = require("../invite/invite.service");
+const invite_type_1 = require("../invite/invite.type");
 const jwt_service_1 = require("../session/jwt.service");
 const typeorm_2 = require("typeorm");
 const lote_entity_1 = require("./lote.entity");
@@ -28,18 +29,21 @@ let LoteService = class LoteService {
             .query(insert_lote_query(barrio_id, loteDTO))
             .then(parse_insert_query);
     }
-    async createInvite(lote_id, acc_id) {
-        return await this.inviteService.sign(invite(lote_id, acc_id));
-    }
-    async associatePropietario(lote_id, barrio_id, session, device_id) {
-        if (session.device_id !== device_id) {
-            return false;
+    async associatePropietario(associateDTO, session) {
+        const invite = await this.inviteService.decode(associateDTO.invite);
+        if (invite.type !== invite_type_1.InviteType.ASSOCIATE_PROP) {
+            throw new Error('Invite must be of type: Associate_Prop');
         }
         return await this.loteRepo
-            .query(insert_propiertario_de_lote_query(lote_id, barrio_id, session.acc_id, device_id))
+            .query(insert_propiertario_de_lote_query(invite.lote_id, invite.barrio_id, session.acc_id, session.device_id, associateDTO.lote_nickname))
             .then(parse_insert_query);
     }
-    async getAll(barrio_id) {
+    async getAllLotesOfPropietario(session) {
+        return await this.loteRepo
+            .query(select_lotes_by_propietario(session.acc_id, session.device_id))
+            .then(response => response[0]);
+    }
+    async getAllLotesAndPropietariosInBarrio(barrio_id) {
         const lotes = await this.loteRepo.query(select_lotes_query(barrio_id));
         const lote_ids = lotes.map(lote => lote.lote_id);
         const propietariosOfLotes = await this.loteRepo.query(select_propietarios_of_lotes(lote_ids));
@@ -58,22 +62,22 @@ LoteService = __decorate([
         invite_service_1.default])
 ], LoteService);
 exports.default = LoteService;
-function invite(lote_id, barrio_id) {
-    return { type: 'ASSOCIATE_PROP', lote_id, barrio_id };
+function select_lotes_by_propietario(propietario_id, device_id) {
+    return `SELECT * from select_lotes_by_propietario('${propietario_id}', '${device_id}');`;
 }
 function select_propietarios_of_lotes(lote_ids) {
     return `SELECT * from select_propietarios_of_lotes(array${JSON.stringify(lote_ids)
         .split('"')
         .join("'")}::uuid[]);`;
 }
-function insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id, device_id) {
-    return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}');`;
+function insert_propiertario_de_lote_query(lote_id, barrio_id, propietario_id, device_id, lote_nickname) {
+    return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}', '${lote_nickname}');`;
 }
 function parse_insert_query(response) {
     return !!response[0];
 }
 function select_lotes_query(barrio_id) {
-    return `SELECT * from select_lotes('${barrio_id}');`;
+    return `SELECT * from select_lotes_by_barrio('${barrio_id}');`;
 }
 function insert_lote_query(barrio_id, loteDTO) {
     const { name, street, code, num } = loteDTO;
