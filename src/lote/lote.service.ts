@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import InviteService, { SignedInvite } from 'src/invite/invite.service';
+import InviteService from 'src/invite/invite.service';
+import { InviteType } from 'src/invite/invite.type';
 import { JwtSession } from 'src/session/jwt.service';
 import { Repository } from 'typeorm';
+import { AssociatePropietarioDTO } from './associate.propietario.dto';
 import CreateLoteDTO from './create.lote.dto';
 import Lote from './lote.entity';
 
@@ -19,25 +21,36 @@ export default class LoteService {
       .then(parse_insert_query);
   }
 
-  async createInvite(lote_id: string, acc_id: string): Promise<SignedInvite> {
-    return await this.inviteService.sign(invite(lote_id, acc_id));
-  }
-
   async associatePropietario(
-    lote_id: string,
-    barrio_id: string,
+    associateDTO: AssociatePropietarioDTO,
     session: JwtSession,
-    device_id: string,
   ): Promise<boolean> {
-    if (session.device_id !== device_id) {
-      return false;
+    const invite: any = await this.inviteService.decode(associateDTO.invite, associateDTO.id);
+
+    if (invite.type !== InviteType.ASSOCIATE_PROP) {
+      throw new Error('Invite must be of type: Associate_Prop');
     }
+
     return await this.loteRepo
-      .query(insert_propiertario_de_lote_query(lote_id, barrio_id, session.acc_id, device_id))
+      .query(
+        insert_propiertario_de_lote_query(
+          invite.lote_id,
+          invite.barrio_id,
+          session.acc_id,
+          session.device_id,
+          associateDTO.nickname,
+        ),
+      )
       .then(parse_insert_query);
   }
 
-  async getAll(barrio_id: string) {
+  async getAllLotesOfPropietario(session: JwtSession): Promise<any[]> {
+    return await this.loteRepo.query(
+      select_lotes_by_propietario(session.acc_id, session.device_id),
+    );
+  }
+
+  async getAllLotesAndPropietariosInBarrio(barrio_id: string) {
     const lotes: any[] = await this.loteRepo.query(select_lotes_query(barrio_id));
     const lote_ids: string[] = lotes.map(lote => lote.lote_id);
     const propietariosOfLotes: any[] = await this.loteRepo.query(
@@ -56,8 +69,8 @@ export default class LoteService {
   }
 }
 
-function invite(lote_id: string, barrio_id: string) {
-  return { type: 'ASSOCIATE_PROP', lote_id, barrio_id };
+function select_lotes_by_propietario(propietario_id: string, device_id: string): string {
+  return `SELECT * from select_lotes_by_propietario('${propietario_id}', '${device_id}');`;
 }
 
 function select_propietarios_of_lotes(lote_ids: string[]): string {
@@ -71,8 +84,9 @@ function insert_propiertario_de_lote_query(
   barrio_id: string,
   propietario_id: string,
   device_id: string,
+  lote_nickname: string,
 ): string {
-  return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}');`;
+  return `SELECT insert_propietario_of_lote('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}', '${lote_nickname}');`;
 }
 
 function parse_insert_query(response): boolean {
@@ -80,7 +94,7 @@ function parse_insert_query(response): boolean {
 }
 
 function select_lotes_query(barrio_id: string): string {
-  return `SELECT * from select_lotes('${barrio_id}');`;
+  return `SELECT * from select_lotes_by_barrio('${barrio_id}');`;
 }
 
 function insert_lote_query(barrio_id: string, loteDTO: CreateLoteDTO): string {

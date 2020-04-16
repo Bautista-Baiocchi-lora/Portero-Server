@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("typeorm");
+const invite_type_1 = require("./invite.type");
 const jwt = require('jsonwebtoken');
 let InviteService = class InviteService {
     constructor(connection) {
@@ -26,12 +27,27 @@ let InviteService = class InviteService {
             id: registration.invite_id,
         };
     }
+    async createLoteInvite(lote_id, barrio_id) {
+        return await this.sign(loteInvite(lote_id, barrio_id));
+    }
+    async decode(signedInvite, invite_id) {
+        const key = await this.connection
+            .query(select_invite_key_query(invite_id))
+            .then(response => response[0]['key']);
+        return await jwt.decode(signedInvite, key);
+    }
 };
 InviteService = __decorate([
     common_1.Injectable(),
     __metadata("design:paramtypes", [typeorm_1.Connection])
 ], InviteService);
 exports.default = InviteService;
+function loteInvite(lote_id, barrio_id) {
+    return { type: invite_type_1.InviteType.ASSOCIATE_PROP, lote_id, barrio_id };
+}
+function select_invite_key_query(invite_id) {
+    return `SELECT key from invite where id = '${invite_id}';`;
+}
 function register_invite_query() {
     return 'SELECT * from register_invite();';
 }
