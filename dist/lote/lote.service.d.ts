@@ -10,7 +10,7 @@ export default class LoteService {
     constructor(loteRepo: Repository<Lote>, inviteService: InviteService);
     create(barrio_id: string, loteDTO: CreateLoteDTO): Promise<boolean>;
     associatePropietario(associateDTO: AssociatePropietarioDTO, session: JwtSession): Promise<boolean>;
-    getAllLotesOfPropietario(session: JwtSession): Promise<any>;
+    getAllLotesOfPropietario(session: JwtSession): Promise<any[]>;
     getAllLotesAndPropietariosInBarrio(barrio_id: string): Promise<any[]>;
     delete(lote_id: string, barrio_id: string): Promise<import("typeorm").DeleteResult>;
 }

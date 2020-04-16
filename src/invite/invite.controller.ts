@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Session, UseGuards } from '@nestjs/common';
+import { Controller, Post, Query, Session, UseGuards } from '@nestjs/common';
 import { UserType } from 'src/authentication/user.type';
 import { JwtSession } from 'src/session/jwt.service';
 import SessionGuard, { UserTypes } from 'src/session/session.guard';
@@ -8,7 +8,7 @@ import InviteService, { SignedInvite } from './invite.service';
 export default class InviteController {
   constructor(private readonly inviteService: InviteService) {}
 
-  @Get('prop/to/lote')
+  @Post('prop/to/lote')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
   async newLoteInvite(

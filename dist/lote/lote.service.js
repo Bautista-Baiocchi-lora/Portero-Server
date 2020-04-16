@@ -30,18 +30,16 @@ let LoteService = class LoteService {
             .then(parse_insert_query);
     }
     async associatePropietario(associateDTO, session) {
-        const invite = await this.inviteService.decode(associateDTO.invite);
+        const invite = await this.inviteService.decode(associateDTO.invite, associateDTO.id);
         if (invite.type !== invite_type_1.InviteType.ASSOCIATE_PROP) {
             throw new Error('Invite must be of type: Associate_Prop');
         }
         return await this.loteRepo
-            .query(insert_propiertario_de_lote_query(invite.lote_id, invite.barrio_id, session.acc_id, session.device_id, associateDTO.lote_nickname))
+            .query(insert_propiertario_de_lote_query(invite.lote_id, invite.barrio_id, session.acc_id, session.device_id, associateDTO.nickname))
             .then(parse_insert_query);
     }
     async getAllLotesOfPropietario(session) {
-        return await this.loteRepo
-            .query(select_lotes_by_propietario(session.acc_id, session.device_id))
-            .then(response => response[0]);
+        return await this.loteRepo.query(select_lotes_by_propietario(session.acc_id, session.device_id));
     }
     async getAllLotesAndPropietariosInBarrio(barrio_id) {
         const lotes = await this.loteRepo.query(select_lotes_query(barrio_id));

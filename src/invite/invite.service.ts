@@ -23,9 +23,9 @@ export default class InviteService {
     return await this.sign(loteInvite(lote_id, barrio_id));
   }
 
-  async decode(signedInvite: SignedInvite) {
+  async decode(signedInvite: string, invite_id: string) {
     const key: string = await this.connection
-      .query(select_invite_key_query(signedInvite.id))
+      .query(select_invite_key_query(invite_id))
       .then(response => response[0]['key']);
 
     return await jwt.decode(signedInvite, key);

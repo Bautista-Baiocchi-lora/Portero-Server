@@ -4,7 +4,7 @@ export default class InviteService {
     constructor(connection: Connection);
     private sign;
     createLoteInvite(lote_id: string, barrio_id: string): Promise<SignedInvite>;
-    decode(signedInvite: SignedInvite): Promise<any>;
+    decode(signedInvite: string, invite_id: string): Promise<any>;
 }
 export declare type SignedInvite = {
     invite: string;

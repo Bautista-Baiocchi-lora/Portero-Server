@@ -2398,11 +2398,11 @@
         "signature": "95e8a9865fed0e0ef27a964184c0877bf3a5d55660763269ffab803d3de9f918"
       },
       "../src/invite/invite.service.ts": {
-        "version": "23e318a60e7d371f7070c8375317d8f6e53858de7c556c02c8113ae75c915614",
-        "signature": "cd334df5da1fd1ae79152f323504fbc8f8af6ceff3f7f2a3fb510909e40bb8fd"
+        "version": "c95a6642146c2bd0d1090c74050569a925d6c445fe7cb1cfb040b8d77a9c35a8",
+        "signature": "e1ea661ad7401cfa8904d1d005f0d840557d15f17db976be6ff2f3c2def22ad5"
       },
       "../src/invite/invite.controller.ts": {
-        "version": "aded8c8047ff9b5676a548a977ce52daedafc8b35932b755349ed25191de3742",
+        "version": "96b14f98a7d6de8609aeff37cb722034e2aa36cbbf04d024c4daa3987c3215e9",
         "signature": "65d39b5630614e79682adfba0881eaa09dab370c1fbc9ef123a1efa795d18d91"
       },
       "../src/invite/invite.module.ts": {
@@ -2430,8 +2430,8 @@
         "signature": "f9545d3e42877277bc6a873ed68df6a9794c288d1bd55d164e0293d693b15de5"
       },
       "../src/lote/associate.propietario.dto.ts": {
-        "version": "beca21ca73e1a4febc1222c1628fb9881153f05351a34eae3150e2331a6f35d0",
-        "signature": "b0864c0b99124d78f9db35fd988efd9dd3ba57179188cb61080420cb6b067eca"
+        "version": "8e9e09e9e0ebe54c39ada3db3164fe6178b28ac242f4757c102f1474de082f59",
+        "signature": "6ea4bc9c3e4d93cecac4402456f7d1f5b8b8b783351e319d34d75e4814055c5c"
       },
       "../src/lote/create.lote.dto.ts": {
         "version": "def1c34f22ca6ca603b842eeeca3e3bbc4bafb9d3ee4dc96513a2f996ab2d025",
@@ -2442,12 +2442,12 @@
         "signature": "753eb026354e12e421bfe28b9bb4ebc7e222ccc5cb5131cfff1c39c1e325de42"
       },
       "../src/lote/lote.service.ts": {
-        "version": "81611461b6860b10799f034e3b9928f092b0e8ca1e84a79f2b6f46cd22864968",
-        "signature": "70b5421eee22c6c1325494b98899de68469a1070456d198ff224ee1d10460631"
+        "version": "5028fda1eaa4f18153a45d2d6c33c364aef1c110fdb2d266109b36424f1f2a72",
+        "signature": "b8212717ee0250eea4f3a7d8fd3300f7cf5ef95a991d869060753504d5e3c074"
       },
       "../src/lote/lote.controller.ts": {
-        "version": "6592f90761c710a3c2cac3a9da830bf476da2da59e17a87a49d602a4ef4d4401",
-        "signature": "08623d9ac0cddb6f15f0e042f77f64afa9518b1a9a625c5c5ada0ade95226ff7"
+        "version": "820aa94b0c0bc5486d04bf53455354a433a92fcdfa4932cf271ec3bb340be415",
+        "signature": "52b103ccd0bf3783ddfa51cdb0b0982196b421089336706b2f9e681884042e3c"
       },
       "../src/lote/lote.module.ts": {
         "version": "f468b0346ed383b9752339a23bf5fbf214733be7b0a282f956e7ac86e5b038cd",
@@ -7799,7 +7799,6 @@
       ],
       "../src/lote/associate.propietario.dto.ts": [
         "../node_modules/class-validator/index.d.ts",
-        "../src/invite/invite.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -13255,9 +13254,6 @@
       "../src/barrio/barrio.controller.ts": [
         "../src/barrio/barrio.service.ts",
         "../src/barrio/barrio.registration.dto.ts"
-      ],
-      "../src/lote/associate.propietario.dto.ts": [
-        "../src/invite/invite.service.ts"
       ],
       "../src/lote/lote.service.ts": [
         "../node_modules/typeorm/index.d.ts",

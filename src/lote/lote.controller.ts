@@ -34,7 +34,7 @@ export default class LoteController {
   @Get('propietario/all')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.PROPIETARIO)
-  async getPropietarioLotes(@Session() session: JwtSession) {
+  async getPropietarioLotes(@Session() session: JwtSession): Promise<any[]> {
     return await this.loteService.getAllLotesOfPropietario(session);
   }
 
@@ -44,7 +44,7 @@ export default class LoteController {
   async associatePropietario(
     @Body() associateDTO: AssociatePropietarioDTO,
     @Session() session: JwtSession,
-  ) {
+  ): Promise<boolean> {
     return await this.loteService.associatePropietario(associateDTO, session);
   }
 }

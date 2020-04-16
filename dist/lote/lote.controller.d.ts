@@ -8,6 +8,6 @@ export default class LoteController {
     create(session: JwtSession, createDTO: CreateLoteDTO): Promise<boolean>;
     deleteLote(lote_id: string, session: JwtSession): Promise<import("typeorm").DeleteResult>;
     getBarrioLotes(session: JwtSession): Promise<any[]>;
-    getPropietarioLotes(session: JwtSession): Promise<any>;
+    getPropietarioLotes(session: JwtSession): Promise<any[]>;
     associatePropietario(associateDTO: AssociatePropietarioDTO, session: JwtSession): Promise<boolean>;
 }

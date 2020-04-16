@@ -25,7 +25,7 @@ export default class LoteService {
     associateDTO: AssociatePropietarioDTO,
     session: JwtSession,
   ): Promise<boolean> {
-    const invite: any = await this.inviteService.decode(associateDTO.invite);
+    const invite: any = await this.inviteService.decode(associateDTO.invite, associateDTO.id);
 
     if (invite.type !== InviteType.ASSOCIATE_PROP) {
       throw new Error('Invite must be of type: Associate_Prop');
@@ -38,16 +38,16 @@ export default class LoteService {
           invite.barrio_id,
           session.acc_id,
           session.device_id,
-          associateDTO.lote_nickname,
+          associateDTO.nickname,
         ),
       )
       .then(parse_insert_query);
   }
 
-  async getAllLotesOfPropietario(session: JwtSession) {
-    return await this.loteRepo
-      .query(select_lotes_by_propietario(session.acc_id, session.device_id))
-      .then(response => response[0]);
+  async getAllLotesOfPropietario(session: JwtSession): Promise<any[]> {
+    return await this.loteRepo.query(
+      select_lotes_by_propietario(session.acc_id, session.device_id),
+    );
   }
 
   async getAllLotesAndPropietariosInBarrio(barrio_id: string) {

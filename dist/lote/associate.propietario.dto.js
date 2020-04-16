@@ -10,16 +10,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_validator_1 = require("class-validator");
-const invite_service_1 = require("../invite/invite.service");
 class AssociatePropietarioDTO {
 }
 __decorate([
-    class_validator_1.IsDefined(),
-    __metadata("design:type", Object)
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
+], AssociatePropietarioDTO.prototype, "id", void 0);
+__decorate([
+    class_validator_1.IsString(),
+    __metadata("design:type", String)
 ], AssociatePropietarioDTO.prototype, "invite", void 0);
 __decorate([
     class_validator_1.IsString(),
     __metadata("design:type", String)
-], AssociatePropietarioDTO.prototype, "lote_nickname", void 0);
+], AssociatePropietarioDTO.prototype, "nickname", void 0);
 exports.AssociatePropietarioDTO = AssociatePropietarioDTO;
 //# sourceMappingURL=associate.propietario.dto.js.map

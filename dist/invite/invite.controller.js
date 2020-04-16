@@ -26,7 +26,7 @@ let InviteController = class InviteController {
     }
 };
 __decorate([
-    common_1.Get('prop/to/lote'),
+    common_1.Post('prop/to/lote'),
     common_1.UseGuards(session_guard_1.default),
     session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
     __param(0, common_1.Query('lote')),

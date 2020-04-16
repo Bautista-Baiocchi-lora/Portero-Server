@@ -1,10 +1,12 @@
-import { IsDefined, IsString } from 'class-validator';
-import { SignedInvite } from 'src/invite/invite.service';
+import { IsString } from 'class-validator';
 
 export class AssociatePropietarioDTO {
-  @IsDefined()
-  invite: SignedInvite;
+  @IsString()
+  id: string;
 
   @IsString()
-  lote_nickname: string;
+  invite: string;
+
+  @IsString()
+  nickname: string;
 }

@@ -30,9 +30,9 @@ let InviteService = class InviteService {
     async createLoteInvite(lote_id, barrio_id) {
         return await this.sign(loteInvite(lote_id, barrio_id));
     }
-    async decode(signedInvite) {
+    async decode(signedInvite, invite_id) {
         const key = await this.connection
-            .query(select_invite_key_query(signedInvite.id))
+            .query(select_invite_key_query(invite_id))
             .then(response => response[0]['key']);
         return await jwt.decode(signedInvite, key);
     }
