@@ -2442,19 +2442,15 @@
         "signature": "f9b3c05760a881ab82e006feb110f55168dcc9dad77bb5f0657b80625be6ff12"
       },
       "../src/lote/lote.service.ts": {
-        "version": "5a4837fa7db0d6910743768fb759d9ca7071c32564a0ad976d7a5f94f0884bac",
+        "version": "c9e588eb41ddf803aadba393f644664a0d6d417cf323e240a353986c48df112a",
         "signature": "1e44382e893ab38ff92ab4656830c17aa71de2d2d0700e9e4cd045356c77f12d"
       },
       "../src/lote/lote.controller.ts": {
         "version": "406577938b07f3de423f2ac08b3eb5fcaa8995d178bb71f93339360e79bf71cc",
         "signature": "53a1ea154b18950847ade96e7f78941869bb441b3dd6385a81be5f9188d7c8a2"
       },
-      "../src/lote/lote.entity.ts": {
-        "version": "31bb20f3360d6dc95f463251a20c208b2dc086d588e3522cd2d6cd0628744bbb",
-        "signature": "753eb026354e12e421bfe28b9bb4ebc7e222ccc5cb5131cfff1c39c1e325de42"
-      },
       "../src/lote/lote.module.ts": {
-        "version": "f468b0346ed383b9752339a23bf5fbf214733be7b0a282f956e7ac86e5b038cd",
+        "version": "d1dbaf5021ad8b1275e359e3fd62fcba6ff1e29da0c182e857b56aec1f75dc54",
         "signature": "c4c15da3cc608e51e6f8cd616e35dabbd81926236e6c486fb588a3b98b67c34b"
       },
       "../src/propretario/propietario.registration.dto.ts": {
@@ -7849,20 +7845,11 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/lote/lote.entity.ts": [
-        "../node_modules/typeorm/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "../src/lote/lote.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/invite/invite.module.ts",
         "../src/session/session.module.ts",
         "../src/lote/lote.controller.ts",
-        "../src/lote/lote.entity.ts",
         "../src/lote/lote.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -14215,8 +14202,8 @@
       "../src/lote/associate.propietario.dto.ts",
       "../src/lote/create.lote.dto.ts",
       "../src/lote/lote.queries.ts",
-      "../src/lote/lote.service.ts",
-      "../src/lote/lote.entity.ts",
+      "../src/lote/lote.controller.ts",
+      "../src/lote/lote.module.ts",
       "../src/propretario/propietario.registration.dto.ts",
       "../src/propretario/propietario.entity.ts",
       "../src/propretario/propietario.service.ts",
@@ -14272,8 +14259,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/lote/lote.controller.ts",
-      "../src/lote/lote.module.ts"
+      "../src/lote/lote.service.ts"
     ]
   },
   "version": "3.7.4"

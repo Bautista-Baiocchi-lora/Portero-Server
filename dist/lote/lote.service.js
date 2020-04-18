@@ -21,7 +21,9 @@ let LoteService = class LoteService {
         this.inviteService = inviteService;
     }
     async create(barrio_id, loteDTO) {
-        return await this.loteRepo.query(query.insert_lote_query(barrio_id, loteDTO));
+        return await this.loteRepo
+            .query(query.insert_lote_query(barrio_id, loteDTO))
+            .then(response => response[0]);
     }
     async associatePropietario(associateDTO, session) {
         const invite = await this.inviteService.decode(associateDTO.invite, associateDTO.id);

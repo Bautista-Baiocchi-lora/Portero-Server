@@ -5,7 +5,7 @@ returns table (prop_id uuid, email text, prop_fn text, prop_ln text, doc_id text
     begin 
 	   return query
        select a.id, a.email, p.first_name, p.last_name, p.doc_id, p.doc_type,
-       pol.lote_id, pol.creation_date, l.name, l.street, l.num, l.code
+       l.id, pol.creation_date, l.name, l.street, l.num, l.code
        from 
        (propietario_of_lote pol right join lote l on pol.lote_id = l.id)
        left join 
