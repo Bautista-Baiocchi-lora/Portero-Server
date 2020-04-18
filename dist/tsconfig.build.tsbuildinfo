@@ -2437,20 +2437,20 @@
         "version": "def1c34f22ca6ca603b842eeeca3e3bbc4bafb9d3ee4dc96513a2f996ab2d025",
         "signature": "428a6eca7b4e84bce8114cf4d542a2ac63387494eb448a4e6cbe90e2b4abd408"
       },
-      "../src/lote/lote.entity.ts": {
-        "version": "31bb20f3360d6dc95f463251a20c208b2dc086d588e3522cd2d6cd0628744bbb",
-        "signature": "753eb026354e12e421bfe28b9bb4ebc7e222ccc5cb5131cfff1c39c1e325de42"
+      "../src/lote/lote.queries.ts": {
+        "version": "24a4bb5f21e5588ef87a2f8fd38ff94b2cccfb9647b5a45c92bfab816429245c",
+        "signature": "f9b3c05760a881ab82e006feb110f55168dcc9dad77bb5f0657b80625be6ff12"
       },
       "../src/lote/lote.service.ts": {
-        "version": "5028fda1eaa4f18153a45d2d6c33c364aef1c110fdb2d266109b36424f1f2a72",
-        "signature": "b8212717ee0250eea4f3a7d8fd3300f7cf5ef95a991d869060753504d5e3c074"
+        "version": "c9e588eb41ddf803aadba393f644664a0d6d417cf323e240a353986c48df112a",
+        "signature": "1e44382e893ab38ff92ab4656830c17aa71de2d2d0700e9e4cd045356c77f12d"
       },
       "../src/lote/lote.controller.ts": {
-        "version": "820aa94b0c0bc5486d04bf53455354a433a92fcdfa4932cf271ec3bb340be415",
-        "signature": "52b103ccd0bf3783ddfa51cdb0b0982196b421089336706b2f9e681884042e3c"
+        "version": "406577938b07f3de423f2ac08b3eb5fcaa8995d178bb71f93339360e79bf71cc",
+        "signature": "53a1ea154b18950847ade96e7f78941869bb441b3dd6385a81be5f9188d7c8a2"
       },
       "../src/lote/lote.module.ts": {
-        "version": "f468b0346ed383b9752339a23bf5fbf214733be7b0a282f956e7ac86e5b038cd",
+        "version": "d1dbaf5021ad8b1275e359e3fd62fcba6ff1e29da0c182e857b56aec1f75dc54",
         "signature": "c4c15da3cc608e51e6f8cd616e35dabbd81926236e6c486fb588a3b98b67c34b"
       },
       "../src/propretario/propietario.registration.dto.ts": {
@@ -7811,8 +7811,8 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "../src/lote/lote.entity.ts": [
-        "../node_modules/typeorm/index.d.ts",
+      "../src/lote/lote.queries.ts": [
+        "../src/lote/create.lote.dto.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7820,14 +7820,13 @@
       ],
       "../src/lote/lote.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/invite/invite.service.ts",
         "../src/invite/invite.type.ts",
         "../src/session/jwt.service.ts",
         "../node_modules/typeorm/index.d.ts",
         "../src/lote/associate.propietario.dto.ts",
         "../src/lote/create.lote.dto.ts",
-        "../src/lote/lote.entity.ts",
+        "../src/lote/lote.queries.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -7848,11 +7847,9 @@
       ],
       "../src/lote/lote.module.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
-        "../node_modules/@nestjs/typeorm/index.d.ts",
         "../src/invite/invite.module.ts",
         "../src/session/session.module.ts",
         "../src/lote/lote.controller.ts",
-        "../src/lote/lote.entity.ts",
         "../src/lote/lote.service.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -13255,16 +13252,17 @@
         "../src/barrio/barrio.service.ts",
         "../src/barrio/barrio.registration.dto.ts"
       ],
+      "../src/lote/lote.queries.ts": [
+        "../src/lote/create.lote.dto.ts"
+      ],
       "../src/lote/lote.service.ts": [
         "../node_modules/typeorm/index.d.ts",
-        "../src/lote/lote.entity.ts",
         "../src/invite/invite.service.ts",
         "../src/lote/create.lote.dto.ts",
         "../src/lote/associate.propietario.dto.ts",
         "../src/session/jwt.service.ts"
       ],
       "../src/lote/lote.controller.ts": [
-        "../node_modules/typeorm/index.d.ts",
         "../src/lote/lote.service.ts",
         "../src/session/jwt.service.ts",
         "../src/lote/create.lote.dto.ts",
@@ -14203,7 +14201,7 @@
       "../src/barrio/barrio.module.ts",
       "../src/lote/associate.propietario.dto.ts",
       "../src/lote/create.lote.dto.ts",
-      "../src/lote/lote.entity.ts",
+      "../src/lote/lote.queries.ts",
       "../src/lote/lote.controller.ts",
       "../src/lote/lote.module.ts",
       "../src/propretario/propietario.registration.dto.ts",

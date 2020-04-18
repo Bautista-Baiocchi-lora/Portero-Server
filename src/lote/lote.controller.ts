@@ -4,7 +4,7 @@ import { JwtSession } from 'src/session/jwt.service';
 import SessionGuard, { UserTypes } from 'src/session/session.guard';
 import { AssociatePropietarioDTO } from './associate.propietario.dto';
 import CreateLoteDTO from './create.lote.dto';
-import LoteService from './lote.service';
+import LoteService, { Lote } from './lote.service';
 
 @Controller('lote')
 export default class LoteController {
@@ -13,22 +13,22 @@ export default class LoteController {
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
   @Post('new')
-  async create(@Session() session: JwtSession, @Body() createDTO: CreateLoteDTO): Promise<boolean> {
+  async create(@Session() session: JwtSession, @Body() createDTO: CreateLoteDTO): Promise<Lote> {
     return await this.loteService.create(session.acc_id, createDTO);
   }
 
   @Delete('delete')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
-  async deleteLote(@Query('lote') lote_id: string, @Session() session: JwtSession) {
-    return await this.loteService.delete(lote_id, session.acc_id);
+  async deleteLote(@Query('lote') lote_id: string) {
+    return await this.loteService.delete(lote_id);
   }
 
   @Get('barrio/all')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
   async getBarrioLotes(@Session() session: JwtSession): Promise<any[]> {
-    return await this.loteService.getAllLotesAndPropietariosInBarrio(session.acc_id);
+    return await this.loteService.getAllLotesWithPropietariosByBarrio(session.acc_id);
   }
 
   @Get('propietario/all')
