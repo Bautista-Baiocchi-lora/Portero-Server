@@ -1,5 +1,5 @@
 export class AuthenticationError extends Error {
-  constructor() {
-    super('Auth exception');
+  constructor(message?: string) {
+    super(`Auth Exception: ${message}`);
   }
 }

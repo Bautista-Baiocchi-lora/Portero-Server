@@ -28,7 +28,7 @@ let AuthenticationService = class AuthenticationService {
             .then(response => response[0]);
         const validated = await bcrypt.compare(logInDTO.password, account.password);
         if (!validated) {
-            throw new auth_error_1.AuthenticationError();
+            throw new auth_error_1.AuthenticationError('Invalid credentials.');
         }
         const session = await this.sessionService.create(account.id, logInDTO.mid);
         const token = Object.assign(Object.assign({}, session), { email: account.email, type: account.type });
