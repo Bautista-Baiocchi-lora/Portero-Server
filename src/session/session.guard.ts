@@ -18,26 +18,30 @@ export default class SessionGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     const hasAuthHeader: boolean = Object.keys(request.headers).includes('authorization');
-    if (hasAuthHeader) {
-      const jwt = request.headers.authorization;
-      const session: JwtSession = await this.jwtService.verify(jwt, settings.jwt.session_secret);
-
-      if (session) {
-        const dbValidated: boolean = await this.sessionService.verify(
-          session.session_id,
-          session.acc_id,
-          session.device_id,
-        );
-
-        if (dbValidated) {
-          request.session = session;
-          const userType = this.reflector.get<UserType[]>('userType', context.getHandler());
-          return userType ? userType.includes(session.type) : true;
-        }
-        return false;
-      }
+    if (!hasAuthHeader) {
+      throw new AuthenticationError('Session undefined.');
     }
-    throw new AuthenticationError();
+
+    const jwt = request.headers.authorization;
+    const session: JwtSession = await this.jwtService.verify(jwt, settings.jwt.session_secret);
+
+    if (!session) {
+      throw new AuthenticationError('Session Token invalid.');
+    }
+
+    const dbValidated: boolean = await this.sessionService.verify(
+      session.session_id,
+      session.acc_id,
+      session.device_id,
+    );
+
+    if (!dbValidated) {
+      throw new AuthenticationError('Session Invalid.');
+    }
+
+    request.session = session;
+    const userType = this.reflector.get<UserType[]>('userType', context.getHandler());
+    return userType ? userType.includes(session.type) : true;
   }
 }
 

@@ -25,20 +25,21 @@ let SessionGuard = class SessionGuard {
     async canActivate(context) {
         const request = context.switchToHttp().getRequest();
         const hasAuthHeader = Object.keys(request.headers).includes('authorization');
-        if (hasAuthHeader) {
-            const jwt = request.headers.authorization;
-            const session = await this.jwtService.verify(jwt, settings.jwt.session_secret);
-            if (session) {
-                const dbValidated = await this.sessionService.verify(session.session_id, session.acc_id, session.device_id);
-                if (dbValidated) {
-                    request.session = session;
-                    const userType = this.reflector.get('userType', context.getHandler());
-                    return userType ? userType.includes(session.type) : true;
-                }
-                return false;
-            }
+        if (!hasAuthHeader) {
+            throw new auth_error_1.AuthenticationError('Session undefined.');
         }
-        throw new auth_error_1.AuthenticationError();
+        const jwt = request.headers.authorization;
+        const session = await this.jwtService.verify(jwt, settings.jwt.session_secret);
+        if (!session) {
+            throw new auth_error_1.AuthenticationError('Session Token invalid.');
+        }
+        const dbValidated = await this.sessionService.verify(session.session_id, session.acc_id, session.device_id);
+        if (!dbValidated) {
+            throw new auth_error_1.AuthenticationError('Session Invalid.');
+        }
+        request.session = session;
+        const userType = this.reflector.get('userType', context.getHandler());
+        return userType ? userType.includes(session.type) : true;
     }
 };
 SessionGuard = __decorate([

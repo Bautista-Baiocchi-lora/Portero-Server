@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class AuthenticationError extends Error {
-    constructor() {
-        super('Auth exception');
+    constructor(message) {
+        super(`Auth Exception: ${message}`);
     }
 }
 exports.AuthenticationError = AuthenticationError;

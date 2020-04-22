@@ -2226,15 +2226,15 @@
         "signature": "f9992d2b329d6e12bd0316f1e7ed2c6fda5e0f08be21f45e684b8719b7a950ec"
       },
       "../src/authentication/auth.error.ts": {
-        "version": "048fcc841ae512b1f5cc92d7f0d1df2f3371d9013ff05315dea2f236696c2813",
-        "signature": "04004dc191ea3e4f3c0d5f5150573484dad9cca28ca9e514e29bb0bfc3855a18"
+        "version": "8b163ebd64c96da366cfb25bd7b4afd5466d745365e896497c257b4b0cae27aa",
+        "signature": "3e6b631ccc775f4d9b6ed23fea79dd1cb86ffb0da6b996bd122c3cb656b04d9e"
       },
       "../src/authentication/log.in.dto.ts": {
         "version": "48663a142002c7b9e10f0e1ec274da16504b753dccc328fbb721cd434c8471a3",
         "signature": "3d4c108b99b57517eae4ebe4a55c3a680f8bff0edf486276b05696c0260c7c99"
       },
       "../src/authentication/auth.service.ts": {
-        "version": "4c069771d4223399c814d5b93586b1d59256f653de891a75a09b115c74008147",
+        "version": "3b0d97f11ca31ed7700a28fea0d65f547c0dedccd7fcf816d2fa5779e22ddc9d",
         "signature": "34eb04a7ebc11dce915ced76f73e7d586853ceb1561f3d5638f3021af720c321"
       },
       "../src/authentication/auth.controller.ts": {
@@ -2390,7 +2390,7 @@
         "signature": "6400917b161d3331bc82638ccc4aa149d755f501cfaba3d716fca1228c956171"
       },
       "../src/session/session.guard.ts": {
-        "version": "01cdb3c9a3c7056016ec0936861a013312edebedddfb2e95282e22e715dfd560",
+        "version": "e74021423e595c68ebc2c20cbc74c886dcac2053d58406c191355ef0bf46a3ff",
         "signature": "4df5c43a4cd7f324aac48892b62d5c7a95b81b3e4773887074f8a8277372ddcd"
       },
       "../src/invite/invite.type.ts": {
@@ -14189,7 +14189,6 @@
       "../node_modules/@nestjs/core/services/reflector.service.d.ts",
       "../node_modules/@nestjs/core/services/index.d.ts",
       "../node_modules/@nestjs/core/index.d.ts",
-      "../src/session/session.guard.ts",
       "../src/invite/invite.type.ts",
       "../src/invite/invite.service.ts",
       "../src/invite/invite.controller.ts",
@@ -14202,6 +14201,7 @@
       "../src/lote/associate.propietario.dto.ts",
       "../src/lote/create.lote.dto.ts",
       "../src/lote/lote.queries.ts",
+      "../src/lote/lote.service.ts",
       "../src/lote/lote.controller.ts",
       "../src/lote/lote.module.ts",
       "../src/propretario/propietario.registration.dto.ts",
@@ -14259,7 +14259,7 @@
       "../node_modules/@types/webpack/index.d.ts",
       "../node_modules/@types/yargs-parser/index.d.ts",
       "../node_modules/@types/yargs/index.d.ts",
-      "../src/lote/lote.service.ts"
+      "../src/session/session.guard.ts"
     ]
   },
   "version": "3.7.4"
