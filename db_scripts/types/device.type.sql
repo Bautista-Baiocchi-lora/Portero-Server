@@ -1,0 +1,1 @@
+CREATE TYPE DEVICE_TYPE as ENUM ('web', 'mobile')

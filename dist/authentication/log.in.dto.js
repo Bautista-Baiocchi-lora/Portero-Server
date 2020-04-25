@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const class_validator_1 = require("class-validator");
+const device_type_1 = require("./device.type");
 class LogInDTO {
 }
 __decorate([
@@ -24,5 +25,9 @@ __decorate([
     class_validator_1.IsNotEmpty(),
     __metadata("design:type", String)
 ], LogInDTO.prototype, "mid", void 0);
+__decorate([
+    class_validator_1.IsEnum(device_type_1.DeviceType),
+    __metadata("design:type", String)
+], LogInDTO.prototype, "type", void 0);
 exports.LogInDTO = LogInDTO;
 //# sourceMappingURL=log.in.dto.js.map

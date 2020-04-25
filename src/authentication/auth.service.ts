@@ -27,7 +27,11 @@ export class AuthenticationService {
       throw new AuthenticationError();
     }
 
-    const session: Session = await this.sessionService.create(account.id, logInDTO.mid);
+    const session: Session = await this.sessionService.create(
+      account.id,
+      logInDTO.mid,
+      logInDTO.type,
+    );
     const token: JwtSession = { ...session, email: account.email, type: account.type };
     const signedToken = await this.jwtService.sign(token, settings.jwt.session_secret);
 

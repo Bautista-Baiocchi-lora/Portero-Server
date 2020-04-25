@@ -2213,9 +2213,13 @@
         "version": "281568394c6a4b918b584904182b234904648687b11018d33d0db0c89a0f3d16",
         "signature": "b34f6d0e664076482a354efc1a627c830fe0cede26dcec2743b50eac284672e2"
       },
+      "../src/authentication/device.type.ts": {
+        "version": "3682302575ebb57b2f59f9e76446c6c6d5f9f12bff80c316fa96ab34ad605993",
+        "signature": "c578bebc40cc4efb259e8c29cd34cd56a3e9f3e466901a6b5754e1cf650c4c50"
+      },
       "../src/session/session.service.ts": {
-        "version": "955431ab8a36974e2d6e8f27ec922fd2fd17fec67cf51350e62dda781d7acc58",
-        "signature": "3fe9818685cc24addbde33c577cba35febb5f3436f5d7df0cfc4655362298e17"
+        "version": "90b12971a672957c2c0dafc6e07563b48b730697e13ebf26d64cd82cce447211",
+        "signature": "af84c0ca4255aa390518d074a7c757567fb18f877eeebbb33a7b86398eaaa448"
       },
       "../src/session/session.module.ts": {
         "version": "6edebe69dbf81c9103efc0115261d76f95be8bc02d3cc36bc51ea95eb725d6f5",
@@ -2230,11 +2234,11 @@
         "signature": "04004dc191ea3e4f3c0d5f5150573484dad9cca28ca9e514e29bb0bfc3855a18"
       },
       "../src/authentication/log.in.dto.ts": {
-        "version": "48663a142002c7b9e10f0e1ec274da16504b753dccc328fbb721cd434c8471a3",
-        "signature": "3d4c108b99b57517eae4ebe4a55c3a680f8bff0edf486276b05696c0260c7c99"
+        "version": "32301288f06c25522b0d88235e830a206939e9a2bdd0945e6914c79da961133f",
+        "signature": "dda83d3596a3a9c33ae9bd90792e82feebab5ae97b410f2753a956912a1250db"
       },
       "../src/authentication/auth.service.ts": {
-        "version": "4c069771d4223399c814d5b93586b1d59256f653de891a75a09b115c74008147",
+        "version": "40f523238bf23d8bc4de27a6132dfa7fd1b19e7b7fb2eff883c0254fab38c2a0",
         "signature": "34eb04a7ebc11dce915ced76f73e7d586853ceb1561f3d5638f3021af720c321"
       },
       "../src/authentication/auth.controller.ts": {
@@ -7302,10 +7306,17 @@
         "../node_modules/@types/node/util.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts"
       ],
+      "../src/authentication/device.type.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/ts3.2/fs.d.ts",
+        "../node_modules/@types/node/util.d.ts",
+        "../node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "../src/session/session.service.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
         "../node_modules/@nestjs/typeorm/index.d.ts",
         "../node_modules/typeorm/index.d.ts",
+        "../src/authentication/device.type.ts",
         "../src/session/session.entity.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -7337,6 +7348,7 @@
       ],
       "../src/authentication/log.in.dto.ts": [
         "../node_modules/class-validator/index.d.ts",
+        "../src/authentication/device.type.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/util.d.ts",
@@ -12882,7 +12894,11 @@
       ],
       "../src/session/session.service.ts": [
         "../node_modules/typeorm/index.d.ts",
-        "../src/session/session.entity.ts"
+        "../src/session/session.entity.ts",
+        "../src/authentication/device.type.ts"
+      ],
+      "../src/authentication/log.in.dto.ts": [
+        "../src/authentication/device.type.ts"
       ],
       "../src/authentication/auth.service.ts": [
         "../node_modules/typeorm/index.d.ts",
@@ -14115,6 +14131,7 @@
       "../node_modules/class-validator/index.d.ts",
       "../src/session/session.entity.ts",
       "../src/session/jwt.service.ts",
+      "../src/authentication/device.type.ts",
       "../src/session/session.module.ts",
       "../src/server-config.json",
       "../src/authentication/auth.error.ts",
