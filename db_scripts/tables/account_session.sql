@@ -2,7 +2,7 @@ CREATE TABLE public.account_session
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
     account_id uuid unique REFERENCES account (id) ON DELETE CASCADE,
-    device_id text,
+    device_id text REFERENCES device (id),
     creation_date timestamp without time zone default current_timestamp,
     exp timestamp without time zone not null
 )

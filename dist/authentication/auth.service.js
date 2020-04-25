@@ -30,7 +30,7 @@ let AuthenticationService = class AuthenticationService {
         if (!validated) {
             throw new auth_error_1.AuthenticationError('Invalid credentials.');
         }
-        const session = await this.sessionService.create(account.id, logInDTO.mid);
+        const session = await this.sessionService.create(account.id, logInDTO.mid, logInDTO.type);
         const token = Object.assign(Object.assign({}, session), { email: account.email, type: account.type });
         const signedToken = await this.jwtService.sign(token, settings.jwt.session_secret);
         return {

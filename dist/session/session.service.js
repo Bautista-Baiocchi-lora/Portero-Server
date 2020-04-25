@@ -20,14 +20,14 @@ let SessionService = class SessionService {
     constructor(sessionRepo) {
         this.sessionRepo = sessionRepo;
     }
-    async create(account_id, mac_address) {
+    async create(account_id, device_id, type) {
         return await this.sessionRepo
-            .query(create_session_query(account_id, mac_address))
+            .query(create_session_query(account_id, device_id, type))
             .then(response => response[0]);
     }
-    async verify(session_id, account_id, mac_address) {
+    async verify(session_id, account_id, device_id) {
         return await this.sessionRepo
-            .query(validate_session_query(session_id, account_id, mac_address))
+            .query(validate_session_query(session_id, account_id, device_id))
             .then(response => !!response);
     }
 };
@@ -38,10 +38,10 @@ SessionService = __decorate([
 ], SessionService);
 exports.SessionService = SessionService;
 const session_duration_in_days = 7;
-function validate_session_query(session_id, account_id, mac_address) {
-    return `SELECT * from validate_session('${session_id}'::uuid, '${mac_address}', '${account_id}'::uuid);`;
+function validate_session_query(session_id, account_id, device_id) {
+    return `SELECT * from validate_session('${session_id}'::uuid, '${device_id}', '${account_id}'::uuid);`;
 }
-function create_session_query(account_id, mac_address) {
-    return `SELECT * from create_session('${account_id}', '${mac_address}', '${session_duration_in_days}');`;
+function create_session_query(account_id, device_id, type) {
+    return `SELECT * from create_session('${account_id}', '${device_id}', '${type}', '${session_duration_in_days}');`;
 }
 //# sourceMappingURL=session.service.js.map
