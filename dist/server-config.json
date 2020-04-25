@@ -1,5 +1,0 @@
-{
-    "jwt": {
-        "session_secret": "our secret"
-    }
-}
