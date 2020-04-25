@@ -1,4 +1,4 @@
-create or replace function select_lotes(
+create or replace function select_lotes_by_barrio(
     barrio_idf uuid
 )
 returns table (lote_id uuid, lote_name text, lote_street text, lote_num int, lote_code int) as $$

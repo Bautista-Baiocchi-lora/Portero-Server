@@ -13,22 +13,31 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const user_type_1 = require("../authentication/user.type");
+const jwt_service_1 = require("../session/jwt.service");
 const session_guard_1 = require("../session/session.guard");
+const invite_service_1 = require("./invite.service");
 let InviteController = class InviteController {
-    constructor() { }
-    async claim(data) { }
+    constructor(inviteService) {
+        this.inviteService = inviteService;
+    }
+    async newLoteInvite(lote_id, session) {
+        return await this.inviteService.createLoteInvite(lote_id, session.acc_id);
+    }
 };
 __decorate([
-    common_1.Post('claim'),
+    common_1.Post('prop/to/lote'),
     common_1.UseGuards(session_guard_1.default),
-    __param(0, common_1.Body()),
+    session_guard_1.UserTypes(user_type_1.UserType.BARRIO),
+    __param(0, common_1.Query('lote')),
+    __param(1, common_1.Session()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [String, Object]),
     __metadata("design:returntype", Promise)
-], InviteController.prototype, "claim", null);
+], InviteController.prototype, "newLoteInvite", null);
 InviteController = __decorate([
     common_1.Controller('invite'),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [invite_service_1.default])
 ], InviteController);
 exports.default = InviteController;
 //# sourceMappingURL=invite.controller.js.map

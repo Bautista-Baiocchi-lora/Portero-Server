@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, Post, Query, Session, UseGuards } from '@nestjs/common';
 import { UserType } from 'src/authentication/user.type';
-import { SignedInvite } from 'src/invite/invite.service';
 import { JwtSession } from 'src/session/jwt.service';
 import SessionGuard, { UserTypes } from 'src/session/session.guard';
+import { AssociatePropietarioDTO } from './associate.propietario.dto';
 import CreateLoteDTO from './create.lote.dto';
-import LoteService from './lote.service';
+import LoteService, { Lote } from './lote.service';
 
 @Controller('lote')
 export default class LoteController {
@@ -13,43 +13,38 @@ export default class LoteController {
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
   @Post('new')
-  async create(@Session() session: JwtSession, @Body() createDTO: CreateLoteDTO): Promise<boolean> {
+  async create(@Session() session: JwtSession, @Body() createDTO: CreateLoteDTO): Promise<Lote> {
     return await this.loteService.create(session.acc_id, createDTO);
-  }
-
-  @Get('invite')
-  @UseGuards(SessionGuard)
-  @UserTypes(UserType.BARRIO)
-  async invite(
-    @Query('lote') lote_id: string,
-    @Session() session: JwtSession,
-  ): Promise<SignedInvite> {
-    return await this.loteService.createInvite(lote_id, session.acc_id);
-  }
-
-  @Get('all')
-  @UseGuards(SessionGuard)
-  @UserTypes(UserType.BARRIO)
-  async getAllLotes(@Session() session: JwtSession): Promise<any[]> {
-    return await this.loteService.getAll(session.acc_id);
   }
 
   @Delete('delete')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.BARRIO)
-  async deleteLote(@Query('lote') lote_id: string, @Session() session: JwtSession) {
-    return await this.loteService.delete(lote_id, session.acc_id);
+  async deleteLote(@Query('lote') lote_id: string) {
+    return await this.loteService.delete(lote_id);
+  }
+
+  @Get('barrio/all')
+  @UseGuards(SessionGuard)
+  @UserTypes(UserType.BARRIO)
+  async getBarrioLotes(@Session() session: JwtSession): Promise<any[]> {
+    return await this.loteService.getAllLotesWithPropietariosByBarrio(session.acc_id);
+  }
+
+  @Get('propietario/all')
+  @UseGuards(SessionGuard)
+  @UserTypes(UserType.PROPIETARIO)
+  async getPropietarioLotes(@Session() session: JwtSession): Promise<any[]> {
+    return await this.loteService.getAllLotesOfPropietario(session);
   }
 
   @Post('associate')
   @UseGuards(SessionGuard)
   @UserTypes(UserType.PROPIETARIO)
   async associatePropietario(
-    @Query('lote') lote_id: string,
-    @Query('barrio') barrio_id: string,
-    @Query('device') device_id: string,
+    @Body() associateDTO: AssociatePropietarioDTO,
     @Session() session: JwtSession,
-  ) {
-    return await this.loteService.associatePropietario(lote_id, barrio_id, session, device_id);
+  ): Promise<boolean> {
+    return await this.loteService.associatePropietario(associateDTO, session);
   }
 }

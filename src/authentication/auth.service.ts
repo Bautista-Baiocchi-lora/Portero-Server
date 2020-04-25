@@ -24,7 +24,7 @@ export class AuthenticationService {
     const validated: boolean = await bcrypt.compare(logInDTO.password, account.password);
 
     if (!validated) {
-      throw new AuthenticationError();
+      throw new AuthenticationError('Invalid credentials.');
     }
 
     const session: Session = await this.sessionService.create(
