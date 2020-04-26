@@ -6,6 +6,6 @@ declare
         insert into invite(key) values (substr(md5(random()::text), 0, 20)) returning invite.id into invite_id;
         
         return query
-        select id, key from invite where invite.id = invite_id;
+        select id, key from invite i where i.id = invite_id;
     end
 $$ language plpgsql;

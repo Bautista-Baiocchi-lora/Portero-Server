@@ -5,7 +5,7 @@ CREATE TABLE public.propietario_of_lote
     device_id text REFERENCES device (id),
     nickname text,
     creation_date timestamp without time zone default current_timestamp,
-    PRIMARY KEY(lote_id, propietario_id)
+    PRIMARY KEY(propietario_id, lote_id, device_id)
 )
 TABLESPACE pg_default;
 
