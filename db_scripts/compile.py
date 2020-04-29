@@ -13,14 +13,19 @@ tables = [
     './tables/device.sql',
     './tables/session.sql',
     './tables/barrio_session.sql',
-    './tables/phone_session.sql',
+    './tables/user_session.sql',
     './tables/guardia.sql',
     './tables/propietario.sql',
     './tables/trabajador.sql'
     ]
 
 functions = [
-
+    './functions/import_uuid_generator.sql',
+    './functions/insert_account.sql',
+    './functions/insert_barrio.sql',
+    './functions/insert_user.sql',
+    './functions/select_account.sql',
+    './functions/insert_session.sql'
 ]
 
 scripts = types + tables + functions
