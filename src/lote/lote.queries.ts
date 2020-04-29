@@ -18,8 +18,8 @@ export const parse_insert_query = (response): boolean => {
   return !!response[0];
 };
 
-export const delete_lote_query = (lote_id: string): string => {
-  return `SELECT * from delete_lote('${lote_id}');`;
+export const delete_lote_query = (lote_id: string, barrio_id: string): string => {
+  return `SELECT * from delete_lote('${lote_id}', '${barrio_id}');`;
 };
 
 export const select_lotes_with_propietarios = (barrio_id: string): string => {

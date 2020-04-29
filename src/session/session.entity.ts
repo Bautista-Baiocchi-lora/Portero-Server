@@ -1,4 +1,4 @@
-import { IsDateString, IsEmail, IsMACAddress, IsString, IsUUID } from 'class-validator';
+import { IsDateString, IsMACAddress, IsString, IsUUID } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -13,10 +13,7 @@ export default class Session {
 
   @Column()
   @IsMACAddress()
-  device_id: string;
-
-  @IsEmail()
-  email?: string;
+  dev_id?: string;
 
   @Column()
   @IsDateString()

@@ -36,8 +36,8 @@ $$ language plpgsql;
 
 create or replace function insert_user_session(
     user_idf uuid,
-    days_till_exp int,
-    device_idf text
+    device_idf text,
+    days_till_exp int
 
 )
 returns table(session_id uuid, acc_id uuid, dev_id text, creation_date timestamp without time zone, exp double precision) as $$

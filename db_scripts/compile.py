@@ -25,7 +25,10 @@ functions = [
     './functions/insert_barrio.sql',
     './functions/insert_user.sql',
     './functions/select_account.sql',
-    './functions/insert_session.sql'
+    './functions/insert_session.sql',
+    './functions/verify_session.sql',
+    './functions/insert_lote.sql',
+    './functions/delete_lote.sql'
 ]
 
 scripts = types + tables + functions

@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable, SetMetadata } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
+import { AccountType } from 'src/authentication/account.type';
 import { AuthenticationError } from 'src/authentication/auth.error';
-import { UserType } from 'src/authentication/user.type';
 import * as settings from '../server-config.json';
 import { JwtService, JwtSession } from './jwt.service';
 import { SessionService } from './session.service';
@@ -29,20 +29,16 @@ export default class SessionGuard implements CanActivate {
       throw new AuthenticationError('Session Token invalid.');
     }
 
-    const dbValidated: boolean = await this.sessionService.verify(
-      session.session_id,
-      session.acc_id,
-      session.device_id,
-    );
+    const dbValidated: boolean = await this.sessionService.verify(session.session_id);
 
     if (!dbValidated) {
       throw new AuthenticationError('Session Invalid.');
     }
 
     request.session = session;
-    const userType = this.reflector.get<UserType[]>('userType', context.getHandler());
-    return userType ? userType.includes(session.type) : true;
+    const accountType = this.reflector.get<AccountType[]>('accountType', context.getHandler());
+    return accountType ? accountType.includes(session.type) : true;
   }
 }
 
-export const UserTypes = (...type: UserType[]) => SetMetadata('userType', type);
+export const AccountTypes = (...type: AccountType[]) => SetMetadata('accountType', type);

@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import InviteService from 'src/invite/invite.service';
 import { DeleteResult, Repository } from 'typeorm';
 import Barrio from './barrio.entity';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
@@ -10,10 +9,7 @@ const saltRounds = 8;
 
 @Injectable()
 export class BarrioService {
-  constructor(
-    @InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>,
-    private readonly inviteService: InviteService,
-  ) {}
+  constructor(@InjectRepository(Barrio) private readonly barrioRepo: Repository<Barrio>) {}
 
   async register(registerDTO: BarrioRegistrationDTO): Promise<boolean> {
     registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
@@ -25,36 +21,6 @@ export class BarrioService {
   async delete(email: string): Promise<DeleteResult> {
     return await this.barrioRepo.query(delete_barrio_query(email));
   }
-
-  private async getBarrio(email: string): Promise<Barrio> {
-    return await this.barrioRepo.query(select_barrio_query(email)).then(parse_get_barrio_query);
-  }
-}
-
-/*
-Response format:
-[
-  {
-    select_barrio: '(42,bautis@gmail.com,$2b$10$1rUbOGZAr12nMhyGGlam6uOyw5MDtiUFjCptEugOrl8lgvYY4Iyvi,"2020-03-26 21:23:01.725837",41,d)'
-  }
-]
-*/
-function parse_get_barrio_query(response): Barrio {
-  response = response[0].select_barrio; //extract from list
-  response = response.replace('(', '').replace(')', ''); //remove paranthesis
-  response = response.split(','); //split into array
-  const barrio: Barrio = {
-    id: +response[0],
-    email: response[1],
-    password: response[2],
-    creation_date: response[3],
-    name: response[5].replace('"', '').replace('"', ''), //remove slashes and quotes
-  };
-  return barrio;
-}
-
-function select_barrio_query(email: string): string {
-  return `SELECT select_barrio('${email}');`;
 }
 
 function parse_insert_barrio_query(response): boolean {

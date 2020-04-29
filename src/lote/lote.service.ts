@@ -36,7 +36,7 @@ export default class LoteService {
           invite.lote_id,
           invite.barrio_id,
           session.acc_id,
-          session.device_id,
+          session.dev_id,
           associateDTO.nickname,
         ),
       )
@@ -45,7 +45,7 @@ export default class LoteService {
 
   async getAllLotesOfPropietario(session: JwtSession): Promise<any[]> {
     return await this.loteRepo.query(
-      query.select_lotes_by_propietario(session.acc_id, session.device_id),
+      query.select_lotes_by_propietario(session.acc_id, session.dev_id),
     );
   }
 
@@ -53,8 +53,8 @@ export default class LoteService {
     return await this.loteRepo.query(query.select_lotes_with_propietarios(barrio_id));
   }
 
-  async delete(lote_id: string) {
-    return await this.loteRepo.query(query.delete_lote_query(lote_id));
+  async delete(lote_id: string, barrio_id: string): Promise<string> {
+    return await this.loteRepo.query(query.delete_lote_query(lote_id, barrio_id));
   }
 }
 
