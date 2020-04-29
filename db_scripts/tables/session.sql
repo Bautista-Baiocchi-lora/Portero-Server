@@ -1,13 +1,10 @@
-CREATE TABLE public.lote
+CREATE TABLE public.session
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
-    street text NOT NULL,
-    num integer NOT NULL,
-    code integer NOT NULL,
     creation_date timestamp without time zone default current_timestamp,
-    UNIQUE (street, num, code)
+    exp timestamp without time zone not null
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.lote
+ALTER TABLE public.session
     OWNER to $USER;
