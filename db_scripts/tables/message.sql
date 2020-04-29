@@ -1,4 +1,4 @@
-CREATE TABLE public.invite
+CREATE TABLE public.message
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
     encry_key text not null,
@@ -7,5 +7,5 @@ CREATE TABLE public.invite
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.invite
+ALTER TABLE public.message
     OWNER to $USER;

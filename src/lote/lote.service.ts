@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import InviteService from 'src/invite/invite.service';
-import { InviteType } from 'src/invite/invite.type';
+import InviteService from 'src/message/message.service';
+import { MessageType } from 'src/message/message.type';
 import { JwtSession } from 'src/session/jwt.service';
 import { Connection } from 'typeorm';
 import { AssociatePropietarioDTO } from './associate.propietario.dto';
@@ -26,7 +26,7 @@ export default class LoteService {
   ): Promise<boolean> {
     const invite: any = await this.inviteService.decode(associateDTO.invite, associateDTO.id);
 
-    if (invite.type !== InviteType.ASSOCIATE_PROP) {
+    if (invite.type !== MessageType.ASSOCIATE_PROP) {
       throw new Error('Invite must be of type: Associate_Prop');
     }
 

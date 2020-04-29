@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthenticationModule } from './authentication/auth.module';
-import { BarrioModule } from './barrio/barrio.module';
-import { InviteModule } from './invite/invite.module';
+import BarrioModule from './barrio/barrio.module';
 import LoteModule from './lote/lote.module';
+import MessageModule from './message/message.module';
 import PropietarioModule from './propretario/propietario.module';
 import TrabajadorModule from './trabajador/trabajador.module';
 
 @Module({
   imports: [
     PropietarioModule,
-    InviteModule,
+    MessageModule,
     BarrioModule,
     TrabajadorModule,
     AuthenticationModule,

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import SessionModule from 'src/session/session.module';
-import InviteController from './invite.controller';
-import InviteService from './invite.service';
+import MessageController from './message.controller';
+import InviteService from './message.service';
 
 @Module({
   providers: [InviteService],
-  controllers: [InviteController],
+  controllers: [MessageController],
   imports: [SessionModule],
   exports: [InviteService],
 })
-export class InviteModule {}
+export default class MessageModule {}

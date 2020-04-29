@@ -28,7 +28,8 @@ functions = [
     './functions/insert_session.sql',
     './functions/verify_session.sql',
     './functions/insert_lote.sql',
-    './functions/delete_lote.sql'
+    './functions/delete_lote.sql',
+    './functions/insert_message.sql'
 ]
 
 scripts = types + tables + functions
