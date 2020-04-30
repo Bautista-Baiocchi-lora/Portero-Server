@@ -6,11 +6,13 @@ import LoteModule from './lote/lote.module';
 import MessageModule from './message/message.module';
 import PropietarioModule from './propretario/propietario.module';
 import TrabajadorModule from './trabajador/trabajador.module';
+import UserModule from './user/user.module';
 
 @Module({
   imports: [
     PropietarioModule,
     MessageModule,
+    UserModule,
     BarrioModule,
     TrabajadorModule,
     AuthenticationModule,
