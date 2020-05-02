@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import MessageModule from 'src/message/message.module';
+import SessionModule from '../session/session.module';
 import PropietarioController from './propietario.controller';
-import Propietario from './propietario.entity';
 import PropietarioService from './propietario.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Propietario])],
+  imports: [SessionModule, MessageModule],
   controllers: [PropietarioController],
   providers: [PropietarioService],
 })

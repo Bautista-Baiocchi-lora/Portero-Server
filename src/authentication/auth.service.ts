@@ -33,6 +33,7 @@ export class AuthenticationService {
       logInDTO.mid,
       account.type,
     );
+
     const token: JwtSession = { ...session, email: account.email, type: account.type };
     const signedToken = await this.jwtService.sign(token, settings.jwt.session_secret);
 

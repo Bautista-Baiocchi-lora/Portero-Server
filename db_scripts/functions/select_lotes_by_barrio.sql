@@ -1,4 +1,4 @@
-create or replace function select_lotes_with_propietarios(
+create or replace function select_lotes_by_barrio(
     barrio_idf uuid
 )
 returns table (prop_id uuid, email text, prop_fn text, prop_ln text, birth date, doc_id text, doc_type int, prop_since timestamp without time zone, lote_id uuid, lote_street text, lote_num int, lote_code int, lote_name text) as $$

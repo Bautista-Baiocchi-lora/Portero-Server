@@ -1,58 +1,39 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import Propietario from './propietario.entity';
-import PropietarioRegistrationDTO from './propietario.registration.dto';
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+import MessageService from 'src/message/message.service';
+import { MessageType } from 'src/message/message.type';
+import { JwtSession } from 'src/session/jwt.service';
+import { Connection } from 'typeorm';
+import * as query from './propietario.queries';
+import { PropietarioRegistrationDTO } from './propietario.registration.dto';
 
 @Injectable()
 export default class PropietarioService {
   constructor(
-    @InjectRepository(Propietario) private readonly propietarioRepo: Repository<Propietario>,
+    private readonly connection: Connection,
+    private readonly messageService: MessageService,
   ) {}
 
-  async register(registerDTO: PropietarioRegistrationDTO): Promise<boolean> {
-    registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-    return await this.propietarioRepo
-      .query(create_insert_propietario_query(registerDTO))
-      .then(parse_insert_propietario_query);
+  async getAllLotes(session: JwtSession): Promise<any[]> {
+    return await this.connection.query(query.get_all_lotes_query(session.acc_id));
   }
 
-  async getPropietario(email: string): Promise<Propietario> {
-    return await this.propietarioRepo
-      .query(select_propietario_query(email))
-      .then(parse_select_propietario_query);
+  async register(registerDTO: PropietarioRegistrationDTO, session: JwtSession): Promise<boolean> {
+    const message: any = await this.messageService.decode(registerDTO.message, registerDTO.id);
+
+    if (message.type !== MessageType.ASSOCIATE_PROP) {
+      throw new Error('Message must be of type: Associate_Prop');
+    }
+
+    return await this.connection
+      .query(
+        query.insert_propiertario_of_lote(
+          message.lote_id,
+          message.barrio_id,
+          session.acc_id,
+          session.dev_id,
+          registerDTO.nickname,
+        ),
+      )
+      .then(response => !!response);
   }
-}
-
-function parse_select_propietario_query(response): Propietario {
-  response = response[0].select_propietario; //extract from list
-  response = response.replace('(', '').replace(')', ''); //remove paranthesis
-  response = response.split(','); //split into array
-  const propietario: Propietario = {
-    id: response[0],
-    email: response[1],
-    password: response[2],
-    creation_date: response[3],
-    first_name: response[5].replace('"', '').replace('"', ''), //remove slashes and quotes
-    last_name: response[6].replace('"', '').replace('"', ''), //remove slashes and quotes
-    doc_id: response[7],
-    doc_type: +response[8],
-  };
-  return propietario;
-}
-
-function select_propietario_query(email: string): string {
-  return `SELECT select_propietario('${email}');`;
-}
-
-function create_insert_propietario_query(registerDTO: PropietarioRegistrationDTO): string {
-  const { email, password, first_name, last_name, doc_id, doc_type } = registerDTO;
-  return `SELECT insert_propietario('${email}', '${password}', '${first_name}', '${last_name}', '${doc_id}', '${doc_type}');`;
-}
-
-function parse_insert_propietario_query(response): boolean {
-  return !!response[0];
 }
