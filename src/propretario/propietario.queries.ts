@@ -8,4 +8,5 @@ export const insert_propiertario_of_lote = (
   return `SELECT * from insert_propietario('${barrio_id}', '${lote_id}', '${propietario_id}', '${device_id}', '${lote_nickname}');`;
 };
 
-export const get_all_lotes_query = (acc_id: string) => `SELECT * from `;
+export const get_all_lotes_query = (session_id: string) =>
+  `SELECT * from select_lotes_by_propietario('${session_id}');`;

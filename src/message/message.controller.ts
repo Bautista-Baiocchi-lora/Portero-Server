@@ -2,11 +2,11 @@ import { Controller, Post, Query, Session, UseGuards } from '@nestjs/common';
 import { AccountType } from 'src/authentication/account.type';
 import { JwtSession } from 'src/session/jwt.service';
 import SessionGuard, { AccountTypes } from 'src/session/session.guard';
-import InviteService, { SignedMessage } from './message.service';
+import MessageService, { SignedMessage } from './message.service';
 
 @Controller('message')
 export default class MessageController {
-  constructor(private readonly inviteService: InviteService) {}
+  constructor(private readonly messageService: MessageService) {}
 
   @Post('prop/to/lote')
   @UseGuards(SessionGuard)
@@ -15,6 +15,6 @@ export default class MessageController {
     @Query('lote') lote_id: string,
     @Session() session: JwtSession,
   ): Promise<SignedMessage> {
-    return await this.inviteService.createLoteInvite(lote_id, session.acc_id);
+    return await this.messageService.createLoteInvite(lote_id, session.acc_id);
   }
 }

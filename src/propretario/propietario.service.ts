@@ -14,7 +14,7 @@ export default class PropietarioService {
   ) {}
 
   async getAllLotes(session: JwtSession): Promise<any[]> {
-    return await this.connection.query(query.get_all_lotes_query(session.acc_id));
+    return await this.connection.query(query.get_all_lotes_query(session.session_id));
   }
 
   async register(registerDTO: PropietarioRegistrationDTO, session: JwtSession): Promise<boolean> {
