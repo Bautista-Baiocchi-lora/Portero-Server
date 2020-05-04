@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { JwtSession } from 'src/session/jwt.service';
 import { Connection } from 'typeorm';
+import { JwtSession } from '../session/jwt.service';
 import { MessageType } from './message.type';
 
 const jwt = require('jsonwebtoken');
