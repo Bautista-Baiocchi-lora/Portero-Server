@@ -13,7 +13,7 @@ ALTER TABLE public.user_session
 
 CREATE FUNCTION is_user() RETURNS trigger AS $is_user$
     BEGIN
-        if not exists(select 1 from account_type t where t.id = NEW.user_id and t.type = 1) then
+        if not exists(select 1 from account_type t where t.id = NEW.user_id and t.type > 0) then
             RAISE EXCEPTION 'Account is not of type user';
         end if;
         return NEW;

@@ -13,7 +13,7 @@ ALTER TABLE public.propietario
     OWNER to bautista;
 
 
-CREATE FUNCTION is_allowed() RETURNS trigger AS $is_allowed$
+CREATE FUNCTION can_be_propietario() RETURNS trigger AS $can_be_propietario$
     BEGIN
         if exists(select 1 from propietario p where p.lote_id = NEW.lote_id and p.nickname = NEW.nickname) then
             RAISE EXCEPTION 'Lote Nickname taken';
@@ -23,7 +23,7 @@ CREATE FUNCTION is_allowed() RETURNS trigger AS $is_allowed$
         end if;
         return NEW;
     END;
-$is_allowed$ LANGUAGE plpgsql;
+$can_be_propietario$ LANGUAGE plpgsql;
 
-CREATE trigger is_allowed BEFORE INSERT OR UPDATE ON propietario
-    FOR EACH ROW EXECUTE PROCEDURE is_allowed();
+CREATE trigger can_be_propietario BEFORE INSERT OR UPDATE ON propietario
+    FOR EACH ROW EXECUTE PROCEDURE can_be_propietario();

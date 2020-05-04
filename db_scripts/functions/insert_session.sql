@@ -45,7 +45,8 @@ returns table(session_id uuid, acc_id uuid, dev_id text, creation_date timestamp
     sess_id uuid := insert_session(user_idf, days_till_exp);
     begin 
         insert into device (id) values (device_idf) on conflict do nothing;
-        insert into user_session (id, user_id, device_id) values (sess_id, user_idf, device_idf);
+        insert into user_session (id, user_id, device_id) values (sess_id, user_idf, device_idf)
+        on conflict (user_id, device_id) do update set id = sess_id;
 
         return query
         select s.id, u.user_id, u.device_id, s.creation_date, extract(epoch from s.exp)
