@@ -29,6 +29,7 @@ function validate_session_query(session_id: string): string {
 
 function create_session_query(account_id: string, device_id: string, type: AccountType): string {
   switch (type) {
+    case AccountType.GUARDIA:
     case AccountType.USER:
       return `SELECT * from insert_user_session('${account_id}', '${device_id}', '${session_duration_in_days}');`;
     case AccountType.BARRIO:

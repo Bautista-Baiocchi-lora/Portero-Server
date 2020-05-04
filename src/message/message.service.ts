@@ -25,7 +25,7 @@ export default class MessageService {
   }
 
   async createGuardiaInvite(session: JwtSession): Promise<SignedMessage> {
-    return await this.sign(guardiaInvite(session.acc_id), session.acc_id);
+    return await this.sign(guardiaInvite(session.acc_id, 0), session.acc_id);
   }
 
   async decode(message: string, message_id: string) {
@@ -39,8 +39,8 @@ export default class MessageService {
 
 export type SignedMessage = { message: string; id: string };
 
-const guardiaInvite = (barrio_id: string) => {
-  type: MessageType.ASSOCIATE_GUARDIA, barrio_id;
+const guardiaInvite = (barrio_id: string, rank: number) => {
+  type: MessageType.ASSOCIATE_GUARDIA, rank, barrio_id;
 };
 
 const loteInvite = (lote_id: string, barrio_id: string) => {
