@@ -17,4 +17,11 @@ export default class MessageController {
   ): Promise<SignedMessage> {
     return await this.messageService.createLoteInvite(lote_id, session.acc_id);
   }
+
+  @Post('guardia/to/barrio')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.BARRIO)
+  async associateNewGuardia(@Session() session: JwtSession): Promise<SignedMessage> {
+    return await this.messageService.createGuardiaInvite(session);
+  }
 }

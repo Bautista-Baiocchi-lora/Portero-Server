@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { JwtSession } from 'src/session/jwt.service';
 import { Connection } from 'typeorm';
 import { MessageType } from './message.type';
 
@@ -19,8 +20,12 @@ export default class MessageService {
     };
   }
 
-  async createLoteInvite(lote_id: string, barrio_id: string) {
+  async createLoteInvite(lote_id: string, barrio_id: string): Promise<SignedMessage> {
     return await this.sign(loteInvite(lote_id, barrio_id), barrio_id);
+  }
+
+  async createGuardiaInvite(session: JwtSession): Promise<SignedMessage> {
+    return await this.sign(guardiaInvite(session.acc_id), session.acc_id);
   }
 
   async decode(message: string, message_id: string) {
@@ -34,9 +39,13 @@ export default class MessageService {
 
 export type SignedMessage = { message: string; id: string };
 
-function loteInvite(lote_id: string, barrio_id: string) {
-  return { type: MessageType.ASSOCIATE_PROP, lote_id, barrio_id };
-}
+const guardiaInvite = (barrio_id: string) => {
+  type: MessageType.ASSOCIATE_GUARDIA, barrio_id;
+};
+
+const loteInvite = (lote_id: string, barrio_id: string) => {
+  type: MessageType.ASSOCIATE_PROP, lote_id, barrio_id;
+};
 
 function select_invite_key_query(message_id: string): string {
   return `SELECT encry_key from message where id = '${message_id}';`;
