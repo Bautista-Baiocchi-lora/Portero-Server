@@ -33,7 +33,8 @@ functions = [
     './functions/insert_propietario.sql',
     './functions/select_lotes_by_barrio.sql',
     './functions/select_lotes_by_propietario.sql',
-    './functions/update_account_type.sql'
+    './functions/update_account_type.sql',
+    './functions/select_guardias_by_barrio.sql'
 ]
 
 scripts = types + tables + functions

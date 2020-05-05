@@ -5,11 +5,11 @@ create or replace function insert_guardia(
 )
 returns void as $$
     declare
-    user uuid;
-    device text;
+    userf uuid;
+    devicef text;
     begin 
-        select user_id, device_id into user, device from user_session s where s.id = sess_id;
+        select user_id, device_id into userf, devicef from user_session s where s.id = sess_id;
 
-        insert into guardia(user_id, device_id, barrio_id, rank) values (user, device, barrio_idf, rank);
+        insert into guardia(user_id, device_id, barrio_id, rank) values (userf, devicef, barrio_idf, rank);
     end
 $$ language plpgsql;

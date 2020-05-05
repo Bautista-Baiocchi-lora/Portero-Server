@@ -14,6 +14,13 @@ export default class BarrioController {
     return await this.barrioService.register(registerDTO);
   }
 
+  @Get('/guardias/all')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.BARRIO)
+  async getBarrioGuardias(@Session() session: JwtSession): Promise<any[]> {
+    return await this.barrioService.getAllGuardias(session);
+  }
+
   @Get('/lotes/all')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.BARRIO)
