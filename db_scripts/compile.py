@@ -29,7 +29,12 @@ functions = [
     './functions/verify_session.sql',
     './functions/insert_lote.sql',
     './functions/delete_lote.sql',
-    './functions/insert_message.sql'
+    './functions/insert_message.sql',
+    './functions/insert_guardia.sql',
+    './functions/insert_propietario.sql',
+    './functions/select_lotes_by_barrio.sql',
+    './functions/select_lotes_by_propietario.sql',
+    './functions/update_account_type.sql'
 ]
 
 scripts = types + tables + functions
