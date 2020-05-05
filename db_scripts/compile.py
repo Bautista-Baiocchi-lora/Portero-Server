@@ -21,7 +21,6 @@ tables = [
 
 functions = [
     './functions/import_uuid_generator.sql',
-    './functions/insert_account.sql',
     './functions/insert_barrio.sql',
     './functions/insert_user.sql',
     './functions/select_account.sql',
