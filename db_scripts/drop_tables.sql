@@ -1,1 +1,0 @@
-drop table account, barrio, account_type, barrio_session, device, guardia, message, lote, lote_in_barrio, person, user_session, propietario, session, trabajador cascade;
