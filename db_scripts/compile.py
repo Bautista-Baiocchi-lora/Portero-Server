@@ -51,5 +51,5 @@ for script_uri in scripts:
 compiled_file.close()
 
 with open('drop_tables.sql', 'wt') as drop_tables_file:
-    drop_tables_file.write("drop table account, barrio, account_type, barrio_session, device, guardia, invite, lote, lote_in_barrio, person, phone_session, propietario, session, trabajador cascade;")
+    drop_tables_file.write("drop table account, barrio, account_type, barrio_session, device, guardia, message, lote, lote_in_barrio, person, user_session, propietario, session, trabajador cascade;")
 

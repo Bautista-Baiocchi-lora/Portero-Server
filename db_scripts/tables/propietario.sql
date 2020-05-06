@@ -10,7 +10,7 @@ CREATE TABLE public.propietario
 TABLESPACE pg_default;
 
 ALTER TABLE public.propietario
-    OWNER to bautista;
+    OWNER to $USER;
 
 
 CREATE FUNCTION can_be_propietario() RETURNS trigger AS $can_be_propietario$

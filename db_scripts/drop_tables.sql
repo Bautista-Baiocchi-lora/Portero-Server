@@ -1,1 +1,1 @@
-drop table account, barrio, account_type, barrio_session, device, guardia, invite, lote, lote_in_barrio, person, phone_session, propietario, session, trabajador cascade;
+drop table account, barrio, account_type, barrio_session, device, guardia, message, lote, lote_in_barrio, person, user_session, propietario, session, trabajador cascade;
