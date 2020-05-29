@@ -1,7 +1,7 @@
-import { Body, Controller, Post, Session } from '@nestjs/common';
+import { Body, Controller, Post, Session, UseGuards } from '@nestjs/common';
 import { AccountType } from 'src/authentication/account.type';
 import { JwtSession } from 'src/session/jwt.service';
-import { AccountTypes } from 'src/session/session.guard';
+import SessionGuard, { AccountTypes } from 'src/session/session.guard';
 import { GuardiaRegistrationDTO } from './guardia.registration.dto';
 import GuardiaService from './guardia.service';
 
@@ -11,6 +11,7 @@ export default class GuardiaController {
 
   @Post('register')
   @AccountTypes(AccountType.USER)
+  @UseGuards(SessionGuard)
   async register(
     @Session() session: JwtSession,
     @Body() registerDTO: GuardiaRegistrationDTO,
