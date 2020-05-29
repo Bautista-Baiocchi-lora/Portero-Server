@@ -1,16 +1,17 @@
 create or replace function select_lotes_by_propietario(
-    propietario_idf uuid,
-    device_idf text
+    sess_id uuid
 )
-returns table (lote_id uuid, lote_name text, lote_street text, lote_num int, lote_code int, barrio_id uuid, nickname text, barrio_name text) as $$
+returns table (lote_id uuid, lote_street text, lote_num int, lote_code int, lote_nickname text, lote_name text, barrio_id uuid, barrio_name text) as $$
     begin 
-	   return query
-       select l.id, l.name, l.street, l.num, l.code, l.barrio_id, pl.nickname, b.name
+       return query
+       select l.id, l.street, l.num, l.code, p.nickname, lib.name, lib.barrio_id, b.name
        from 
-       (barrio b inner join lote l on l.barrio_id = b.id) 
-       inner join 
-       propietario_of_lote pl 
-       on l.id = pl.lote_id
-       where pl.propietario_id = propietario_idf and pl.device_id = device_idf;
+       (user_session s inner join propietario p 
+       on s.user_id = p.user_id and s.device_id = p.device_id)
+       inner join
+       ((lote l inner join lote_in_barrio lib on l.id = lib.lote_id)
+       inner join barrio b on b.id = lib.barrio_id)
+       on p.lote_id = l.id
+       where s.id = sess_id;
     end
 $$ language plpgsql;

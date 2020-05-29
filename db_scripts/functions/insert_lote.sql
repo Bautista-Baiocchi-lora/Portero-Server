@@ -6,12 +6,17 @@ create or replace function insert_lote(
     codef integer
 )
 returns table(id uuid, name text, street text, num int, code int) as $$
-declare
+    declare
+    new_lote uuid;
     begin 
-        insert into lote(barrio_id, name, num, street, code) values (barrio_idf, namef, numf, streetf, codef);
+        insert into lote (street, num, code) values (streetf, numf, codef) returning lote.id into new_lote;
+
+        insert into lote_in_barrio (lote_id, barrio_id, name) values (new_lote, barrio_idf, namef);
 
         return query
-        select l.id, l.name, l.street, l.num, l.code
-        from lote l where l.barrio_id = barrio_idf and l.name = namef;
+        select l.id, lib.name, l.street, l.num, l.code
+        from 
+        lote l inner join lote_in_barrio lib on l.id = lib.lote_id
+        where l.id = new_lote;
     end
 $$ language plpgsql;

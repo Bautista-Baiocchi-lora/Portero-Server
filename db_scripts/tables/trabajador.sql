@@ -1,13 +1,13 @@
 CREATE TABLE public.trabajador
 (
-    id uuid PRIMARY KEY REFERENCES account (id) ON DELETE CASCADE,
-    first_name text not null,
-    last_name text not null,
-    doc_id text not null,
-    doc_type integer not null,
-    unique(doc_id, doc_type)
+    lote_id uuid REFERENCES lote (id) ON DELETE CASCADE,
+    user_id uuid REFERENCES account (id) ON DELETE CASCADE,
+    device_id text REFERENCES device (id) ON DELETE CASCADE,
+    service text not null,
+    creation_date timestamp without time zone default current_timestamp,
+    PRIMARY KEY (user_id, lote_id, device_id)
 )
 TABLESPACE pg_default;
 
 ALTER TABLE public.trabajador
-    OWNER to bautista;
+    OWNER to $USER;

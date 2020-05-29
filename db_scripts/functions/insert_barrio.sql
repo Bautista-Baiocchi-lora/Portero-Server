@@ -1,13 +1,14 @@
 create or replace function insert_barrio(
-    new_email text,
-    new_pass text,
-    new_name text
+    emailf text,
+    passwordf text, 
+    namef text
 )
 returns void as $$
-declare
-    account_id uuid;
+	declare
+    acc_id uuid;
     begin 
-        insert into account(email, password, type) values (new_email, new_pass, 0) RETURNING id INTO account_id;
-        insert into barrio(id, name) values (account_id, new_name);
+        insert into account (email, password) values (emailf, passwordf) returning account.id into acc_id;
+        insert into account_type (id, type) values (acc_id, 0);
+        insert into barrio (id, name) values (acc_id, namef);
     end
 $$ language plpgsql;

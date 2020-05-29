@@ -1,2 +1,4 @@
 node_modules
 dist/*
+db_scripts/compiled.sql
+db_scripts/drop_tables.sql

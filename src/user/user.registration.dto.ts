@@ -1,6 +1,6 @@
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsDateString, IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export default class TrabajadorRegistrationDTO {
+export default class UserRegistrationDTO {
   @IsEmail()
   email: string;
 
@@ -11,6 +11,9 @@ export default class TrabajadorRegistrationDTO {
   @IsString()
   @IsNotEmpty()
   last_name: string;
+
+  @IsDateString()
+  birth_date: Date;
 
   @IsString()
   @IsNotEmpty()

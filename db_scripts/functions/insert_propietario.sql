@@ -1,17 +1,13 @@
 create or replace function insert_propietario(
-    emailf text,
-    passf text,
-    first_namef text,
-    last_namef text,
-    doc_idf text,
-    doc_typef integer
+    barrio_idf uuid,
+    lote_idf uuid,
+    propietario_idf uuid,
+    device_idf text,
+    lote_nickname text
 )
 returns void as $$
 declare
-    account_id uuid;
     begin 
-        insert into account(email, password, type) values (emailf, passf, 1) RETURNING id INTO account_id;
-        insert into propietario(id, first_name, last_name, doc_id, doc_type)
-        values (account_id, first_namef, last_namef, doc_idf, doc_typef);
+        insert into propietario(lote_id, user_id, device_id, nickname) values (lote_idf, propietario_idf, device_idf, lote_nickname);
     end
 $$ language plpgsql;

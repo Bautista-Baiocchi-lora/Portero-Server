@@ -1,5 +1,4 @@
-import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
-import { DeviceType } from './device.type';
+import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class LogInDTO {
   @IsEmail()
@@ -9,9 +8,5 @@ export class LogInDTO {
   password: string;
 
   //device Mac_Adress
-  @IsNotEmpty()
-  mid: string;
-
-  @IsEnum(DeviceType)
-  type: DeviceType;
+  mid?: string;
 }
