@@ -15,7 +15,7 @@ export default class MessageController {
     @Query('lote') lote_id: string,
     @Session() session: JwtSession,
   ): Promise<SignedMessage> {
-    return await this.messageService.createLoteInvite(lote_id, session);
+    return await this.messageService.createPropietarioInvite(lote_id, session);
   }
 
   @Post('guardia/to/barrio')

@@ -1,9 +1,7 @@
 CREATE TABLE public.message
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
-    encry_key text not null,
-    issuer uuid not null REFERENCES account (id) ON DELETE CASCADE,
-    creation_date timestamp without time zone default current_timestamp
+    encry_key text not null
 )
 TABLESPACE pg_default;
 
