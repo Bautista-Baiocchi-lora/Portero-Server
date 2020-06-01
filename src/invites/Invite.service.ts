@@ -10,12 +10,30 @@ export default class InviteService {
     private readonly connection: Connection,
   ) {}
 
-  async createInvite(session: JwtSession, inviteDTO: InviteCreationDTO): Promise<SignedMessage> {
-    return await this.connection
+  async create(session: JwtSession, inviteDTO: InviteCreationDTO): Promise<SignedMessage> {
+    return this.connection
       .query(insert_invite(session.acc_id, session.dev_id, inviteDTO))
       .then(response => response[0].insert_invite)
       .then(id => this.messageService.createGuestInvite(id));
   }
+
+  async validate(session: JwtSession, signedInvite: SignedMessage) {
+    const invite: Invite = await this.messageService.decode(signedInvite.message, signedInvite.id);
+    return this.connection
+      .query(validate_invite(invite.invite_id, session.acc_id, session.dev_id))
+      .then(response => response[0])
+      .catch(error => console.log(error));
+  }
+}
+
+type Invite = {
+  type: number;
+  invite_id: string;
+  iat: number;
+};
+
+function validate_invite(invite_id: string, acc_id: string, dev_id: string): string {
+  return `SELECT * FROM validate_invite('${invite_id}', '${acc_id}', '${dev_id}');`;
 }
 
 function insert_invite(acc_id: string, dev_id: string, inviteDTO: InviteCreationDTO): string {

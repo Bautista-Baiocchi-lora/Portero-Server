@@ -17,6 +17,13 @@ export default class InviteController {
     @Session() session: JwtSession,
     @Body() inviteDTO: InviteCreationDTO,
   ): Promise<SignedMessage> {
-    return await this.inviteService.createInvite(session, inviteDTO);
+    return await this.inviteService.create(session, inviteDTO);
+  }
+
+  @Post('validate')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.GUARDIA)
+  async validateInvite(@Session() session: JwtSession, @Body() signedInvite: SignedMessage) {
+    return await this.inviteService.validate(session, signedInvite);
   }
 }
