@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Session, UseGuards } from '@nestjs/common';
+import { Body, Controller, Post, Query, Session, UseGuards } from '@nestjs/common';
 import { AccountType } from 'src/authentication/account.type';
 import { InviteCreationDTO } from 'src/invites/invite.creation.dto';
 import { SignedMessage } from 'src/message/message.service';
@@ -25,5 +25,12 @@ export default class InviteController {
   @AccountTypes(AccountType.GUARDIA)
   async validateInvite(@Session() session: JwtSession, @Body() signedInvite: SignedMessage) {
     return await this.inviteService.validate(session, signedInvite);
+  }
+
+  @Post('allow')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.GUARDIA)
+  async allowEntrance(@Session() session: JwtSession, @Query('id') inviteId: string) {
+    return await this.inviteService.allowVisita(session, inviteId);
   }
 }
