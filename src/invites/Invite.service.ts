@@ -20,12 +20,17 @@ export default class InviteService {
   async validate(session: JwtSession, signedInvite: SignedMessage) {
     const invite: Invite = await this.messageService.decode(signedInvite.message, signedInvite.id);
     return this.connection
-      .query(validate_invite(invite.invite_id, session.acc_id, session.dev_id))
+      .query(validate_invite(invite.invite_id, session.session_id))
       .then(response => response[0])
       .catch(error => console.log(error));
   }
 
-  async allowVisita(session: JwtSession, inviteId: string) {}
+  async allowVisita(session: JwtSession, inviteId: string): Promise<boolean> {
+    return this.connection
+      .query(allow_visita(inviteId, session.session_id))
+      .then(response => response[0])
+      .catch(error => console.log(error));
+  }
 }
 
 type Invite = {
@@ -34,10 +39,14 @@ type Invite = {
   iat: number;
 };
 
-function validate_invite(invite_id: string, acc_id: string, dev_id: string): string {
-  return `SELECT * FROM validate_invite('${invite_id}', '${acc_id}', '${dev_id}');`;
+function validate_invite(invite_id: string, session_id: string): string {
+  return `SELECT * FROM validate_invite('${invite_id}', '${session_id}');`;
 }
 
 function insert_invite(acc_id: string, dev_id: string, inviteDTO: InviteCreationDTO): string {
   return `SELECT * FROM insert_invite('${acc_id}', '${dev_id}', '${inviteDTO.doc_id}', '${inviteDTO.first_name}', '${inviteDTO.last_name}', '${inviteDTO.lote_id}');`;
+}
+
+function allow_visita(invite_id: string, session_id: string): string {
+  return `SELECT * FROM allow_visita('${invite_id}', '${session_id}');`;
 }

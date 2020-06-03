@@ -30,7 +30,10 @@ export default class InviteController {
   @Post('allow')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.GUARDIA)
-  async allowEntrance(@Session() session: JwtSession, @Query('id') inviteId: string) {
+  async allowVisita(
+    @Session() session: JwtSession,
+    @Query('id') inviteId: string,
+  ): Promise<boolean> {
     return await this.inviteService.allowVisita(session, inviteId);
   }
 }
