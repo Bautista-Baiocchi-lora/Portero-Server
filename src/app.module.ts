@@ -3,10 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthenticationModule } from './authentication/auth.module';
 import BarrioModule from './barrio/barrio.module';
 import GuardiaModule from './guardia/guardia.module';
+import InviteModule from './invites/invite.module';
 import LoteModule from './lote/lote.module';
 import MessageModule from './message/message.module';
 import PropietarioModule from './propretario/propietario.module';
-import TrabajadorModule from './trabajador/trabajador.module';
 import UserModule from './user/user.module';
 
 @Module({
@@ -16,7 +16,7 @@ import UserModule from './user/user.module';
     GuardiaModule,
     UserModule,
     BarrioModule,
-    TrabajadorModule,
+    InviteModule,
     AuthenticationModule,
     LoteModule,
     TypeOrmModule.forRoot({

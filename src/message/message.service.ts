@@ -9,10 +9,8 @@ const jwt = require('jsonwebtoken');
 export default class MessageService {
   constructor(private readonly connection: Connection) {}
 
-  private async sign(data: any, issuer: string): Promise<SignedMessage> {
-    const message = await this.connection
-      .query(insert_message(issuer))
-      .then(response => response[0]);
+  private async sign(data: any): Promise<SignedMessage> {
+    const message = await this.connection.query(insert_message()).then(response => response[0]);
     const token = await jwt.sign(data, message.key);
     return {
       message: token,
@@ -20,12 +18,16 @@ export default class MessageService {
     };
   }
 
-  async createLoteInvite(lote_id: string, session: JwtSession): Promise<SignedMessage> {
-    return await this.sign(loteInvite(lote_id, session.acc_id), session.acc_id);
+  async createGuestInvite(invite_id: string): Promise<SignedMessage> {
+    return await this.sign(guestInvite(invite_id));
+  }
+
+  async createPropietarioInvite(lote_id: string, session: JwtSession): Promise<SignedMessage> {
+    return await this.sign(propietarioInvite(lote_id, session.acc_id));
   }
 
   async createGuardiaInvite(session: JwtSession): Promise<SignedMessage> {
-    return await this.sign(guardiaInvite(session.acc_id, 0), session.acc_id);
+    return await this.sign(guardiaInvite(session.acc_id, 0));
   }
 
   async decode(message: string, message_id: string) {
@@ -39,6 +41,13 @@ export default class MessageService {
 
 export type SignedMessage = { message: string; id: string };
 
+const guestInvite = (invite_id: string) => {
+  return {
+    type: MessageType.INVITE_GUEST,
+    invite_id,
+  };
+};
+
 const guardiaInvite = (barrio_id: string, rank: number) => {
   return {
     type: MessageType.ASSOCIATE_GUARDIA,
@@ -47,7 +56,7 @@ const guardiaInvite = (barrio_id: string, rank: number) => {
   };
 };
 
-const loteInvite = (lote_id: string, barrio_id: string) => {
+const propietarioInvite = (lote_id: string, barrio_id: string) => {
   return {
     type: MessageType.ASSOCIATE_PROP,
     lote_id,
@@ -59,6 +68,6 @@ function select_invite_key_query(message_id: string): string {
   return `SELECT encry_key from message where id = '${message_id}';`;
 }
 
-function insert_message(issuer: string): string {
-  return `SELECT * from insert_message('${issuer}');`;
+function insert_message(): string {
+  return `SELECT * from insert_message();`;
 }
