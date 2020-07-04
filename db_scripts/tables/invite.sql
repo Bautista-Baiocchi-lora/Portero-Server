@@ -6,7 +6,7 @@ CREATE TABLE public.invite
     user_id uuid,
     lote_id uuid,
     creation_date timestamp without time zone default current_timestamp,
-    FOREIGN KEY (user_id, lote_id, device_id) REFERENCES propietario(user_id, lote_id, device_id) 
+    FOREIGN KEY (user_id, lote_id, device_id) REFERENCES propietario(user_id, lote_id, device_id)
 )
 TABLESPACE pg_default;
 
