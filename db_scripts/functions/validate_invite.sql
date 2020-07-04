@@ -9,7 +9,7 @@ returns table(i_id uuid, p_fn text, p_ln text, p_doc text, p_birth date, lote_id
                         inner join 
                         (guardia g inner join user_session us on g.user_id = us.user_id and g.device_id = us.device_id)
                         on lib.barrio_id = g.barrio_id)
-                    where us.id = session_idf)
+                    where us.id = session_idf and g.enabled = true)
         then
             return query 
             select i.id, p.first_name, p.last_name, p.doc_id, p.birth_date, l.id, lib.name, l.street, l.num, l.code, gu.doc_id, gu.first_name, gu.last_name

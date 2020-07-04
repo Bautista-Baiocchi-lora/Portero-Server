@@ -7,7 +7,7 @@ returns bool as $$
     if exists(select 1 from 
                 user_session us inner join guardia g
                 on g.device_id = us.device_id and g.user_id = us.user_id
-            where us.id = session_idf)
+            where us.id = session_idf and g.enabled = true)
     then
     insert into visita (invite_id) values (invite_idf);
     return true;
