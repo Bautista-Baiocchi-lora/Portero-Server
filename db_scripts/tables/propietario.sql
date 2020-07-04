@@ -4,6 +4,7 @@ CREATE TABLE public.propietario
     user_id uuid REFERENCES account (id) ON DELETE CASCADE,
     device_id text REFERENCES device (id) ON DELETE CASCADE,
     nickname text not null,
+    enabled boolean default true,
     creation_date timestamp without time zone default current_timestamp,
     PRIMARY KEY (user_id, lote_id, device_id)
 )
@@ -15,11 +16,11 @@ ALTER TABLE public.propietario
 
 CREATE FUNCTION can_be_propietario() RETURNS trigger AS $can_be_propietario$
     BEGIN
-        if exists(select 1 from propietario p where p.lote_id = NEW.lote_id and p.nickname = NEW.nickname) then
-            RAISE EXCEPTION 'Lote Nickname taken';
+        if exists(select 1 from propietario p where p.device_id = NEW.device_id and p.nickname = NEW.nickname and p.enabled = true) then
+            RAISE EXCEPTION 'Lote nickname taken.';
         end if;
         if exists(select 1 from guardia g where g.user_id = NEW.user_id) then
-            RAISE EXCEPTION 'A guardia cannot be a propietario';
+            RAISE EXCEPTION 'A guardia cannot be a propietario.';
         end if;
         return NEW;
     END;
