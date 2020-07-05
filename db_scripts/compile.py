@@ -16,9 +16,10 @@ tables = [
     './tables/user_session.sql',
     './tables/guardia.sql',
     './tables/propietario.sql',
-    './tables/guest.sql',
     './tables/invite.sql',
-    './tables/visita.sql',
+    './tables/guest.sql',
+    './tables/approved_guest.sql',
+    './tables/rejected_guest.sql',
     ]
 
 functions = [
@@ -38,8 +39,8 @@ functions = [
     './functions/update_account_type.sql',
     './functions/select_guardias_by_barrio.sql',
     './functions/insert_invite.sql',
-    './functions/validate_invite.sql',
-    './functions/allow_visita.sql',
+    './functions/select_invite_as_guardia.sql',
+    './functions/get_invite_guest_list.sql'
 ]
 
 scripts = types + tables + functions
@@ -55,17 +56,22 @@ for script_uri in scripts:
 
 compiled_file.close()
 
-with open('drop_tables.sql', 'wt') as drop_tables_file:
+with open('drop_db.sql', 'wt') as drop_db_file:
     #Drop table triggers
-    drop_tables_file.write("drop trigger can_be_guardia on guardia;\n")
-    drop_tables_file.write("drop trigger revert_account_type_to_user on guardia;\n")
-    drop_tables_file.write("drop trigger update_account_type_to_guardia on guardia;\n")
-    drop_tables_file.write("drop trigger is_user on user_session;\n")
-    drop_tables_file.write("drop trigger can_be_propietario on propietario;\n")
+    drop_db_file.write("--Drop table triggers\n")
+    drop_db_file.write("drop trigger can_be_guardia on guardia;\n")
+    drop_db_file.write("drop trigger revert_account_type_to_user on guardia;\n")
+    drop_db_file.write("drop trigger update_account_type_to_guardia on guardia;\n")
+    drop_db_file.write("drop trigger is_user on user_session;\n")
+    drop_db_file.write("drop trigger can_be_propietario on propietario;\n")
+    drop_db_file.write("drop trigger is_propietario on invite;\n")
 
     #Drop tables
-    drop_tables_file.write("drop table account, barrio, account_type, barrio_session, device, guardia, message, lote, lote_in_barrio, person, user_session, propietario, session, guest, invite, visita cascade;")
+    drop_db_file.write("--Drop tables\n")
+    drop_db_file.write("drop table account, barrio, account_type, barrio_session, device, guardia, message, lote, lote_in_barrio, person, user_session, propietario, session, guest, invite, approved_guest, rejected_guest cascade;\n")
+    
+    #Drop functions
+    drop_db_file.write("--Drop functions\n")
+    drop_db_file.write("drop function if exists get_invite_guest_list, select_invite_as_guardia, can_be_guardia, is_user, can_be_propietario, revert_account_type_to_user, update_account_type_to_guardia, delete_lote, insert_person, insert_barrio_session, insert_user_session, insert_barrio, insert_guardia, insert_invite, insert_lote, insert_message, insert_propietario, insert_message, insert_session, insert_user, select_account, select_guardias_by_barrio, select_lotes_by_barrio, select_lotes_by_propietario, update_account_type, validate_invite, verify_session;\n")
 
-with open('drop_functions.sql', 'wt') as drop_functions_file:
-    drop_functions_file.write("drop function if exists can_be_guardia, is_user, can_be_propietario, revert_account_type_to_user, update_account_type_to_guardia, allow_visita, delete_lote, insert_person, insert_barrio_session, insert_user_session, insert_barrio, insert_guardia, insert_invite, insert_lote, insert_message, insert_propietario, insert_message, insert_session, insert_user, select_account, select_guardias_by_barrio, select_lotes_by_barrio, select_lotes_by_propietario, update_account_type, validate_invite, verify_session;")
-
+    
