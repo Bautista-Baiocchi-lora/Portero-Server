@@ -4,6 +4,7 @@ import { InviteCreationDTO } from 'src/invites/invite.creation.dto';
 import { SignedMessage } from 'src/message/message.service';
 import { JwtSession } from 'src/session/jwt.service';
 import SessionGuard, { AccountTypes } from 'src/session/session.guard';
+import { AuthenticatedGuestsDTO } from './authenticated.guests.dto';
 import InviteService from './Invite.service';
 
 @Controller('invite')
@@ -34,13 +35,13 @@ export default class InviteController {
     return await this.inviteService.validate(session, signedInvite);
   }
 
-  @Post('allow')
+  @Post('auth/guests')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.GUARDIA)
-  async allowVisita(
+  async authenticateGuests(
     @Session() session: JwtSession,
-    @Query('id') inviteId: string,
+    @Body() response: AuthenticatedGuestsDTO,
   ): Promise<boolean> {
-    return await this.inviteService.allowVisita(session, inviteId);
+    return await this.inviteService.authenticateGuests(session, response);
   }
 }
