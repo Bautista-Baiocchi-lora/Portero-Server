@@ -40,7 +40,7 @@ export default class InviteService {
     ])
       .then(values => {
         return {
-          invite: values[0][0],
+          info: values[0][0],
           guests: values[1],
         };
       })
