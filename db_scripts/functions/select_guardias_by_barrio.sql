@@ -12,6 +12,6 @@ returns table(g_id uuid, g_email text, g_fn text, g_ln text, g_birth date, g_doc
         inner join 
         guardia g on g.user_id = a.id)
         on g.barrio_id = b.id
-        where s.id = sess_id;
+        where s.id = sess_id and g.enabled = true;
     end
 $$ language plpgsql;

@@ -12,6 +12,6 @@ returns table (lote_id uuid, lote_street text, lote_num int, lote_code int, lote
        ((lote l inner join lote_in_barrio lib on l.id = lib.lote_id)
        inner join barrio b on b.id = lib.barrio_id)
        on p.lote_id = l.id
-       where s.id = sess_id;
+       where s.id = sess_id and p.enabled = true;
     end
 $$ language plpgsql;
