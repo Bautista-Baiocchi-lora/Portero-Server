@@ -1,14 +1,12 @@
-import { IsString } from 'class-validator';
+import { IsArray, IsDateString, IsString } from 'class-validator';
+import { Guest } from './guest.entity';
 
 export class InviteCreationDTO {
-  @IsString()
-  doc_id: string;
+  @IsArray()
+  guests: Guest[];
 
-  @IsString()
-  first_name: string;
-
-  @IsString()
-  last_name: string;
+  @IsDateString()
+  exp: string;
 
   @IsString()
   lote_id: string;

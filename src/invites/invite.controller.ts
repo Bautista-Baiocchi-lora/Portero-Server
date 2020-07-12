@@ -28,6 +28,13 @@ export default class InviteController {
     return await this.inviteService.getFullInviteAsGuardia(session, inviteId);
   }
 
+  @Get('get/all')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.USER)
+  async getAllInvites(@Session() session: JwtSession): Promise<any> {
+    return await this.inviteService.getAllInvitesAsPropietario(session);
+  }
+
   @Post('validate')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.GUARDIA)

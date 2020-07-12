@@ -18,6 +18,6 @@ export class JwtService {
   }
 }
 
-export type JwtSession = Session & { type: number; email: string };
+export type JwtSession = Session;
 
 const jwt = require('jsonwebtoken');

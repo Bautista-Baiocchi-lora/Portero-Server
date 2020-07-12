@@ -4,15 +4,10 @@ import { AccountType } from 'src/authentication/account.type';
 import { AuthenticationError } from 'src/authentication/auth.error';
 import * as settings from '../server-config.json';
 import { JwtService, JwtSession } from './jwt.service';
-import { SessionService } from './session.service';
 
 @Injectable()
 export default class SessionGuard implements CanActivate {
-  constructor(
-    private readonly jwtService: JwtService,
-    private reflector: Reflector,
-    private readonly sessionService: SessionService,
-  ) {}
+  constructor(private readonly jwtService: JwtService, private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
@@ -29,15 +24,9 @@ export default class SessionGuard implements CanActivate {
       throw new AuthenticationError('Session Token invalid.');
     }
 
-    const dbValidated: boolean = await this.sessionService.verify(session.session_id);
-
-    if (!dbValidated) {
-      throw new AuthenticationError('Session Invalid.');
-    }
-
     request.session = session;
     const accountType = this.reflector.get<AccountType[]>('accountType', context.getHandler());
-    return accountType ? accountType.includes(session.type) : true;
+    return accountType ? accountType.includes(session.acc_type) : true;
   }
 }
 
