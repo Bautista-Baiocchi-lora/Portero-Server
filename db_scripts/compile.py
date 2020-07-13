@@ -43,7 +43,7 @@ functions = [
     './functions/select_invite_as_guardia.sql',
     './functions/get_invite_guest_list.sql',
     './functions/insert_guests_entered.sql',
-    './functions/insert_guests_rejected.sql'
+    './functions/insert_guests_rejected.sql',
     './functions/select_person_user.sql',
      './functions/select_barrio_user.sql',
      './functions/select_invites_by_propietario.sql'

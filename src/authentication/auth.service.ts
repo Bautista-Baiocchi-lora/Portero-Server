@@ -22,6 +22,11 @@ export class AuthenticationService {
     const account: Account = await this.connection
       .query(select_account(logInDTO.email))
       .then(response => response[0]);
+
+    if (account == null) {
+      throw new AuthenticationError('Invalid credentials.');
+    }
+
     const validated: boolean = await bcrypt.compare(logInDTO.password, account.password);
 
     if (!validated) {

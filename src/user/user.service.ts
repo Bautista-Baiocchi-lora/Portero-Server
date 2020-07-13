@@ -16,6 +16,6 @@ export default class UserService {
 }
 
 const insert_query = (registerDTO: UserRegistrationDTO): string => {
-  const { email, password, first_name, last_name, birth_date, doc_id, doc_type } = registerDTO;
-  return `SELECT * from insert_user('${email}', '${password}', '${first_name}', '${last_name}', '${birth_date}'::date, '${doc_id}', ${doc_type});`;
+  const { email, password, first_name, last_name, birth_date, doc_id } = registerDTO;
+  return `SELECT * from insert_user('${email}', '${password}', '${first_name}', '${last_name}', '${birth_date}'::date, '${doc_id}');`;
 };
