@@ -80,6 +80,9 @@ with open('drop_db.sql', 'wt') as drop_db_file:
     
     #Drop functions
     drop_db_file.write("--Drop functions\n")
-    drop_db_file.write("drop function if exists select_invites_by_propietario, select_barrio_user, select_person_user, can_reject_guest, insert_guests_entered, insert_guests_rejected, can_guest_enter, get_invite_guest_list, select_invite_as_guardia, can_be_guardia, is_user, can_be_propietario, revert_account_type_to_user, update_account_type_to_guardia, delete_lote, insert_person, insert_barrio_session, insert_user_session, insert_barrio, insert_guardia, insert_invite, insert_lote, insert_message, insert_propietario, insert_message, insert_session, insert_user, select_account, select_guardias_by_barrio, select_lotes_by_barrio, select_lotes_by_propietario, update_account_type, validate_invite, verify_session;\n")
+    drop_db_file.write("drop function if exists is_propietario, select_invites_by_propietario, select_barrio_user, select_person_user, can_reject_guest, insert_guests_entered, insert_guests_rejected, can_guest_enter, get_invite_guest_list, select_invite_as_guardia, can_be_guardia, is_user, can_be_propietario, revert_account_type_to_user, update_account_type_to_guardia, delete_lote, insert_person, insert_barrio_session, insert_user_session, insert_barrio, insert_guardia, insert_invite, insert_lote, insert_message, insert_propietario, insert_message, insert_session, insert_user, select_account, select_guardias_by_barrio, select_lotes_by_barrio, select_lotes_by_propietario, update_account_type, verify_session;\n")
 
+    #Drop types
+    drop_db_file.write("--Drop types\n")
+    drop_db_file.write("drop type if exists invited_guest;")
     

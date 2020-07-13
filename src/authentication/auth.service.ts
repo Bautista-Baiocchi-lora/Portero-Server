@@ -33,11 +33,12 @@ export class AuthenticationService {
       throw new AuthenticationError('Invalid credentials.');
     }
 
-    const session: Session = await this.sessionService.create(
-      account.id,
-      logInDTO.mid,
-      account.type,
-    );
+    let session: Session = null;
+    if (account.type == AccountType.BARRIO) {
+      session = await this.sessionService.createBarrioSession(account.id);
+    } else {
+      session = await this.sessionService.createUserSession(account.id, logInDTO.mid, account.type);
+    }
 
     const signedToken = await this.jwtService.sign(session, settings.jwt.session_secret);
     return this.connection
