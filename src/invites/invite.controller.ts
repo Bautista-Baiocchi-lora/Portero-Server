@@ -13,7 +13,7 @@ export default class InviteController {
 
   @Post('create')
   @UseGuards(SessionGuard)
-  @AccountTypes(AccountType.USER)
+  @AccountTypes(AccountType.PROPIETARIO)
   async createInvite(
     @Session() session: JwtSession,
     @Body() inviteDTO: InviteCreationDTO,
@@ -30,7 +30,7 @@ export default class InviteController {
 
   @Get('get/all')
   @UseGuards(SessionGuard)
-  @AccountTypes(AccountType.USER)
+  @AccountTypes(AccountType.PROPIETARIO)
   async getAllInvites(@Session() session: JwtSession): Promise<any> {
     return await this.inviteService.getAllInvitesAsPropietario(session);
   }

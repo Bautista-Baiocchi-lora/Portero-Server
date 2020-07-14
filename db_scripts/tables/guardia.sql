@@ -30,23 +30,3 @@ $can_be_guardia$ LANGUAGE plpgsql;
 CREATE trigger can_be_guardia BEFORE INSERT ON guardia
     FOR EACH ROW EXECUTE PROCEDURE can_be_guardia();
 
-
-CREATE OR REPLACE FUNCTION update_account_type_to_guardia() RETURNS trigger AS $update_account_type_to_guardia$
-    BEGIN
-        perform update_account_type(NEW.user_id, 2);
-        return NEW;
-    END;
-$update_account_type_to_guardia$ LANGUAGE plpgsql;
-
-CREATE trigger update_account_type_to_guardia AFTER INSERT ON guardia
-    FOR EACH ROW EXECUTE PROCEDURE update_account_type_to_guardia();
-
-CREATE OR REPLACE FUNCTION revert_account_type_to_user() RETURNS trigger AS $revert_account_type_to_user$
-    BEGIN
-        perform update_account_type(OLD.user_id, 1);
-        return NEW;
-    END;
-$revert_account_type_to_user$ LANGUAGE plpgsql;
-
-CREATE trigger revert_account_type_to_user AFTER DELETE ON guardia
-    FOR EACH ROW EXECUTE PROCEDURE revert_account_type_to_user();

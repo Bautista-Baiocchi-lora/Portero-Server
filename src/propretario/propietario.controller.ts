@@ -11,14 +11,14 @@ export default class PropietarioController {
 
   @Get('/lotes/all')
   @UseGuards(SessionGuard)
-  @AccountTypes(AccountType.USER)
+  @AccountTypes(AccountType.PROPIETARIO)
   async getAllLotes(@Session() session: JwtSession): Promise<any[]> {
     return await this.propietarioService.getAllLotes(session);
   }
 
   @Post('register')
   @UseGuards(SessionGuard)
-  @AccountTypes(AccountType.USER)
+  @AccountTypes(AccountType.USER, AccountType.PROPIETARIO)
   async associatePropietario(
     @Body() registerDTO: PropietarioRegistrationDTO,
     @Session() session: JwtSession,
