@@ -8,7 +8,6 @@ returns void as $$
     acc_id uuid;
     begin 
         insert into account (email, password) values (emailf, passwordf) returning account.id into acc_id;
-        insert into account_type (id, type) values (acc_id, 0);
         insert into barrio (id, name) values (acc_id, namef);
     end
 $$ language plpgsql;

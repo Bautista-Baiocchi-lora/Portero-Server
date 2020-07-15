@@ -1,7 +1,7 @@
 CREATE TABLE public.user_session
 (
     id uuid PRIMARY KEY REFERENCES session (id) ON DELETE CASCADE,
-    user_id uuid REFERENCES account_type (id) ON DELETE CASCADE,
+    user_id uuid REFERENCES account (id) ON DELETE CASCADE,
     device_id text REFERENCES device (id) ON DELETE CASCADE,
     UNIQUE (user_id, device_id)
 )
@@ -13,7 +13,7 @@ ALTER TABLE public.user_session
 
 CREATE FUNCTION is_user() RETURNS trigger AS $is_user$
     BEGIN
-        if not exists(select 1 from account_type t where t.id = NEW.user_id and t.type > 0) then
+        if get_account_type(NEW.user_id) < 1 then
             RAISE EXCEPTION 'Account is not of type user';
         end if;
         return NEW;

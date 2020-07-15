@@ -1,7 +1,6 @@
 create or replace function insert_session(
     acc_id uuid,
     days_till_exp int
-
 )
 returns uuid as $$
     declare
@@ -18,7 +17,6 @@ $$ language plpgsql;
 create or replace function insert_barrio_session(
     barrio_idf uuid,
     days_till_exp int
-
 )
 returns table(session_id uuid, acc_id uuid, creation_date timestamp without time zone, exp double precision) as $$
     declare

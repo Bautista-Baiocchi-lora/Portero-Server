@@ -1,4 +1,4 @@
-import { IsDateString, IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsDateString, IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
 export default class UserRegistrationDTO {
   @IsEmail()
@@ -18,9 +18,6 @@ export default class UserRegistrationDTO {
   @IsString()
   @IsNotEmpty()
   doc_id: string;
-
-  @IsNumber()
-  doc_type: number;
 
   @IsString()
   @IsNotEmpty()

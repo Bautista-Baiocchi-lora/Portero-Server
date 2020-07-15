@@ -1,10 +1,10 @@
 create or replace function get_invite_guest_list(
     invite_idf uuid
 )
-returns table(g_id uuid, g_doc text, g_fn text, g_ln text, g_entered timestamp without time zone, g_rejected timestamp without time zone, g_exited timestamp without time zone) as $$
+returns table(id uuid, doc_id text, fn text, ln text, invite_id uuid, entered timestamp without time zone, rejected timestamp without time zone, exited timestamp without time zone) as $$
     begin
         return query
-        select g.id, g.doc_id, g.first_name, g.last_name, ge.entered, gr.rejected, gx.exited
+        select g.id, g.doc_id, g.first_name, g.last_name, g.invite_id, ge.entered, gr.rejected, gx.exited
         from  
         (guest g inner join invite i on g.invite_id = i.id)
         left join 

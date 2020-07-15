@@ -38,7 +38,7 @@ export default class InviteService {
   async getFullInviteAsGuardia(session: JwtSession, inviteId: string): Promise<any> {
     return Promise.all([
       this.connection.query(query.select_invite_as_guardia(session.session_id, inviteId)),
-      this.connection.query(query.get_invite_guest_list_as_guardia(session.session_id, inviteId)),
+      this.connection.query(query.get_invite_guest_list(inviteId)),
     ])
       .then(values => {
         return {
@@ -58,5 +58,22 @@ export default class InviteService {
         query.insert_guests_rejected(session.acc_id, session.dev_id, response.approved),
       ),
     ]).catch(error => console.log(error));
+  }
+
+  async getAllInvitesAsPropietario(session: JwtSession): Promise<any> {
+    const invites: [] = await this.connection.query(
+      query.select_invites_by_propietario(session.acc_id, session.dev_id),
+    );
+
+    return Promise.all(
+      invites.map(invite => this.connection.query(query.get_invite_guest_list(invite['id']))),
+    )
+      .then(guestLists => guestLists.reduce((acc, val) => acc.concat(val), []))
+      .then(guests => {
+        return {
+          invites,
+          guests,
+        };
+      });
   }
 }
