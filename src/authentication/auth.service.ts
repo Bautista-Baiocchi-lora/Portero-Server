@@ -45,7 +45,11 @@ export class AuthenticationService {
       .query(select_user(session.session_id, session.acc_type))
       .then(response => response[0])
       .then(user => {
-        return { token: signedToken, user: { acc_type: session.acc_type, ...user } };
+        return {
+          token: signedToken,
+          exp: new Date(session.exp),
+          user: { acc_type: session.acc_type, ...user },
+        };
       });
   }
 }
@@ -59,6 +63,7 @@ export type Account = {
 
 export type AuthResponse = {
   token: string;
+  exp: Date;
   user: {
     email: string;
     acc_type: number;
