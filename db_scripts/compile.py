@@ -44,7 +44,7 @@ functions = [
     './functions/insert_guests_rejected.sql',
     './functions/select_person_user.sql',
      './functions/select_barrio_user.sql',
-     './functions/select_invites_by_propietario.sql'
+     './functions/select_invites_by_propietario.sql',
      './functions/insert_person.sql',
      './functions/insert_guests_exited.sql'
 ]
