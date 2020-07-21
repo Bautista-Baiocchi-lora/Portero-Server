@@ -19,6 +19,10 @@ export const select_guardias_by_barrio = (barrio_id: string) => {
   return `SELECT * from select_guardias_by_barrio('${barrio_id}');`;
 };
 
+export const select_propietarios_by_barrio = (barrio_id: string) => {
+  return `SELECT * from select_propietarios_by_barrio('${barrio_id}');`;
+};
+
 export const disable_propietario = (barrio_id: string, dto: DisablePropietarioDTO) => {
   return `SELECT * FROM disable_propietario('${barrio_id}','${dto.prop_id}', '${dto.prop_dev_id}', '${dto.prop_lote_id}');`;
 };
@@ -26,7 +30,3 @@ export const disable_propietario = (barrio_id: string, dto: DisablePropietarioDT
 export const disable_guardia = (barrio_id: string, dto: DisableGuardiaDTO) => {
   return `SELECT * FROM disable_propietario('${barrio_id}','${dto.guardia_id}', '${dto.guardia_dev_id}');`;
 };
-
-export const select_propietarios_by_barrio = (session_id: string) => {
-    return `SELECT * from select_propietarios_by_barrio('${session_id}');`;
-}

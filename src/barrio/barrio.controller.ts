@@ -19,14 +19,21 @@ export default class BarrioController {
   @Get('/guardias/all')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.BARRIO)
-  async getBarrioGuardias(@Session() session: JwtSession): Promise<any[]> {
+  async getGuardias(@Session() session: JwtSession): Promise<any[]> {
     return await this.barrioService.getAllGuardias(session);
+  }
+
+  @Get('/propietarios/all')
+  @UseGuards(SessionGuard)
+  @AccountTypes(AccountType.BARRIO)
+  async getPropietarios(@Session() session: JwtSession): Promise<any[]> {
+    return await this.barrioService.getAllPropietarios(session);
   }
 
   @Get('/lotes/all')
   @UseGuards(SessionGuard)
   @AccountTypes(AccountType.BARRIO)
-  async getBarrioLotes(@Session() session: JwtSession): Promise<any[]> {
+  async getLotes(@Session() session: JwtSession): Promise<any[]> {
     return await this.barrioService.getAllLotes(session);
   }
 

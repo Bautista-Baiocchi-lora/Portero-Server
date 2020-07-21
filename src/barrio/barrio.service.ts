@@ -26,6 +26,10 @@ export class BarrioService {
     return this.connection.query(query.select_all_lotes(session.acc_id));
   }
 
+  async getAllPropietarios(session: JwtSession): Promise<any[]> {
+    return this.connection.query(query.select_propietarios_by_barrio(session.acc_id));
+  }
+
   async getAllGuardias(session: JwtSession): Promise<any[]> {
     return this.connection.query(query.select_guardias_by_barrio(session.acc_id));
   }
@@ -36,12 +40,12 @@ export class BarrioService {
   ): Promise<boolean> {
     return this.connection
       .query(query.disable_propietario(session.acc_id, disableDTO))
-      .then(response => response[0]);
+      .then(response => response[0]['disable_propietario']);
   }
 
   async disableGuardia(session: JwtSession, disableDTO: DisableGuardiaDTO): Promise<boolean> {
     return this.connection
       .query(query.disable_guardia(session.acc_id, disableDTO))
-      .then(response => response[0]);
+      .then(response => response[0]['disable_guardia']);
   }
 }
