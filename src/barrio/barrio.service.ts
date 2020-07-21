@@ -3,6 +3,8 @@ import { JwtSession } from 'src/session/jwt.service';
 import { Connection, DeleteResult } from 'typeorm';
 import * as query from './barrio.queries';
 import { BarrioRegistrationDTO } from './barrio.registration.dto';
+import { DisableGuardiaDTO } from './disable.guardia.dto';
+import { DisablePropietarioDTO } from './disable.propietario.dto';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 8;
@@ -28,5 +30,16 @@ export class BarrioService {
 
   async getAllGuardias(session: JwtSession): Promise<any[]> {
     return await this.connection.query(query.select_guardias_by_barrio(session.session_id));
+  }
+
+  async disablePropietario(
+    session: JwtSession,
+    disableDTO: DisablePropietarioDTO,
+  ): Promise<boolean> {
+    return this.connection.query(query.disable_propietario(session.acc_id, disableDTO));
+  }
+
+  async disableGuardia(session: JwtSession, disableDTO: DisableGuardiaDTO): Promise<boolean> {
+    return this.connection.query(query.disable_guardia(session.acc_id, disableDTO));
   }
 }
