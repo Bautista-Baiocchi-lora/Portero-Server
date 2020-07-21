@@ -15,8 +15,8 @@ export const insert_barrio = (registerDTO: BarrioRegistrationDTO): string => {
   return `SELECT insert_barrio('${email}', '${password}', '${name}');`;
 };
 
-export const select_guardias_by_barrio = (session_id: string) => {
-  return `SELECT * from select_guardias_by_barrio('${session_id}');`;
+export const select_guardias_by_barrio = (barrio_id: string) => {
+  return `SELECT * from select_guardias_by_barrio('${barrio_id}');`;
 };
 
 export const disable_propietario = (barrio_id: string, dto: DisablePropietarioDTO) => {
