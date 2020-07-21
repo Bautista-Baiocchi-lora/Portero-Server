@@ -10,3 +10,16 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.guest_exited
     OWNER to $USER;
+
+
+CREATE FUNCTION can_guest_exit() RETURNS trigger AS $can_guest_exit$
+    BEGIN
+        if not exists(select 1 from guest_entered gen where gen.guest_id = NEW.guest_id) then
+            RAISE EXCEPTION 'Guest never entered.';
+        end if;
+        return NEW;
+    END;
+$can_guest_exit$ LANGUAGE plpgsql;
+
+CREATE trigger can_guest_exit BEFORE INSERT ON guest_exited
+    FOR EACH ROW EXECUTE PROCEDURE can_guest_exit();

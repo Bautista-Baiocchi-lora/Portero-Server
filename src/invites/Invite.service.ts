@@ -66,6 +66,14 @@ export default class InviteService {
       );
     }
 
+    if (response.exited.length > 0) {
+      queries.push(
+        this.connection.query(
+          query.insert_guests_exited(session.acc_id, session.dev_id, response.exited),
+        ),
+      );
+    }
+
     return Promise.all(queries).catch(error => console.log(error));
   }
 

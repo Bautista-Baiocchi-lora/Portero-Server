@@ -18,7 +18,7 @@ CREATE FUNCTION can_reject_guest() RETURNS trigger AS $can_reject_guest$
             RAISE EXCEPTION 'Guest has already exited.';
         end if;
         if exists(select 1 from guest_entered gen where gen.guest_id = NEW.guest_id) then
-            RAISE EXCEPTION 'Guest has already exited.';
+            RAISE EXCEPTION 'Guest has already entered.';
         end if;
         return NEW;
     END;

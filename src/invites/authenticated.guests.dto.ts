@@ -9,4 +9,7 @@ export class AuthenticatedGuestsDTO {
 
   @IsString({ each: true })
   rejected: string[];
+
+  @IsString({ each: true })
+  exited: string[];
 }
