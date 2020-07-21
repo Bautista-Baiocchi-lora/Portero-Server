@@ -17,10 +17,10 @@ create or replace function get_account_type(
 )
 returns int as $$
     begin 
-        if exists(select 1 from propietario p where p.user_id = acc_id)
+        if exists(select 1 from propietario p where p.user_id = acc_id and p.enabled = true)
         then
             return 3;--propietario
-        elsif exists(select 1 from guardia g where g.user_id = acc_id)
+        elsif exists(select 1 from guardia g where g.user_id = acc_id and g.enabled = true)
         then
             return 2;--guardia
         elseif exists(select 1 from barrio b where b.id = acc_id)

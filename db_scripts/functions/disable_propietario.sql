@@ -11,7 +11,7 @@ returns bool as $$
         where p.user_id = prop_id and p.device_id = prop_dev_id and p.lote_id = prop_lote_id
         and exists(select 1 from 
                     lote_in_barrio lib 
-                    where lib.barrio_id = barrio_idf and l.id = prop_lote_id);
+                    where lib.barrio_id = barrio_idf and lib.lote_id = prop_lote_id);
 
         return FOUND;
     end

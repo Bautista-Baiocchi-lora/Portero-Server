@@ -26,5 +26,5 @@ CREATE FUNCTION can_be_propietario() RETURNS trigger AS $can_be_propietario$
     END;
 $can_be_propietario$ LANGUAGE plpgsql;
 
-CREATE trigger can_be_propietario BEFORE INSERT OR UPDATE ON propietario
+CREATE trigger can_be_propietario BEFORE INSERT ON propietario
     FOR EACH ROW EXECUTE PROCEDURE can_be_propietario();

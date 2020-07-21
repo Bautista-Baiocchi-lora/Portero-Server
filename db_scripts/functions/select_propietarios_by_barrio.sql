@@ -1,12 +1,12 @@
 create or replace function select_propietarios_by_barrio(
     barrio_idf uuid
 )
-returns table(prop_id uuid, prop_since timestamp without time zone, email text, first_name text, last_name text, doc_id text, lote_id uuid) as $$
+returns table(id uuid, since timestamp without time zone, email text, dev_id text, first_name text, last_name text, doc_id text, lote_id uuid) as $$
 begin
     return query
-    select (prop.id, prop.creation_date, a.email, p.first_name, p.last_name, p.doc_id, l.id)
+    select prop.user_id, prop.creation_date, a.email, prop.device_id, p.first_name, p.last_name, p.doc_id, l.id
     from
-   (person p join account a on p.id = a.id)
+    (person p join account a on p.id = a.id)
     inner join
     (propietario prop left join (lote l inner join lote_in_barrio lib on l.id = lib.lote_id)
         on prop.lote_id = l.id)
