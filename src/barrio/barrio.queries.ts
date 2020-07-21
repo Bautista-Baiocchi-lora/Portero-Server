@@ -16,3 +16,7 @@ export const insert_barrio = (registerDTO: BarrioRegistrationDTO): string => {
 export const select_guardias_by_barrio = (session_id: string) => {
   return `SELECT * from select_guardias_by_barrio('${session_id}');`;
 };
+
+export const select_propietarios_by_barrio = (session_id: string) => {
+    return `SELECT * from select_propietarios_by_barrio('${session_id}');`;
+}
