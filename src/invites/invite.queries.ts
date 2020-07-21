@@ -11,6 +11,11 @@ export const insert_guests_entered = (guardia_id: string, dev_id: string, guests
   return `SELECT * FROM insert_guests_entered('${guardia_id}', '${dev_id}', ARRAY ['${stringifiedGuests}']::uuid[]);`;
 };
 
+export const insert_guests_exited = (guardia_id: string, dev_id: string, guests: string[]) => {
+  var stringifiedGuests = guests.join("', '");
+  return `SELECT * FROM insert_guests_exited('${guardia_id}', '${dev_id}', ARRAY ['${stringifiedGuests}']::uuid[]);`;
+};
+
 export const get_invite_guest_list = invite_id => {
   return `SELECT * FROM get_invite_guest_list('${invite_id}');`;
 };

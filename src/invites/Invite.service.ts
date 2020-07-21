@@ -31,7 +31,6 @@ export default class InviteService {
       signedInvite.message,
       signedInvite.id,
     );
-
     return this.getFullInviteAsGuardia(session, invite.invite_id);
   }
 
@@ -50,14 +49,32 @@ export default class InviteService {
   }
 
   async authenticateGuests(session: JwtSession, response: AuthenticatedGuestsDTO): Promise<any> {
-    return Promise.all([
-      this.connection.query(
-        query.insert_guests_entered(session.acc_id, session.dev_id, response.approved),
-      ),
-      this.connection.query(
-        query.insert_guests_rejected(session.acc_id, session.dev_id, response.approved),
-      ),
-    ]).catch(error => console.log(error));
+    const queries = [];
+    if (response.approved.length > 0) {
+      queries.push(
+        this.connection.query(
+          query.insert_guests_entered(session.acc_id, session.dev_id, response.approved),
+        ),
+      );
+    }
+
+    if (response.rejected.length > 0) {
+      queries.push(
+        this.connection.query(
+          query.insert_guests_rejected(session.acc_id, session.dev_id, response.rejected),
+        ),
+      );
+    }
+
+    if (response.exited.length > 0) {
+      queries.push(
+        this.connection.query(
+          query.insert_guests_exited(session.acc_id, session.dev_id, response.exited),
+        ),
+      );
+    }
+
+    return Promise.all(queries).catch(error => console.log(error));
   }
 
   async getAllInvitesAsPropietario(session: JwtSession): Promise<any> {
