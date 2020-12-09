@@ -1,9 +1,9 @@
-CREATE TABLE public.admin
+CREATE TABLE public.barrio
 (
     id uuid PRIMARY KEY REFERENCES account (id) ON DELETE CASCADE,
     name text not null unique
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.admin
+ALTER TABLE public.barrio
     OWNER to $USER;

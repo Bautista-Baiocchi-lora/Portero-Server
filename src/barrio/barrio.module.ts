@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import AccountModule from 'src/account/account.module';
 import PostgresModule from 'src/postgres/postgres.module';
-import AdminController from './admin.controller';
-import AdminService from './admin.service';
+import BarrioController from './barrio.controller';
+import BarrioService from './barrio.service';
 
 @Module({
   imports: [PostgresModule, AccountModule],
-  controllers: [AdminController],
-  providers: [AdminService],
+  controllers: [BarrioController],
+  providers: [BarrioService],
 })
-export class AdminModule {}
+export class BarrioModule {}

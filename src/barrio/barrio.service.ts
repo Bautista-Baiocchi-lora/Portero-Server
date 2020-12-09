@@ -1,18 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
 import AccountService from 'src/account/account.service';
-import { bcryptHash } from 'src/encryption';
-import AdminRegistrationDTO from './admin.register.dto';
+import BarrioRegistrationDTO from './barrio.register.dto';
 
 @Injectable()
-export default class AdminService {
+export default class BarrioService {
   constructor(
     @Inject('postgres') private readonly pool,
     private readonly accountService: AccountService,
   ) {}
 
-  async register(registerDTO: AdminRegistrationDTO) {
-    registerDTO.password = await bcryptHash(registerDTO.password);
-
+  async register(registerDTO: BarrioRegistrationDTO) {
     const client = await this.pool.connect();
 
     try {
@@ -23,7 +20,7 @@ export default class AdminService {
         registerDTO.password,
       );
 
-      //register new barrios
+      await client.query(create_barrio_query(acc_id, registerDTO.name));
       await client.query('COMMIT');
     } catch (e) {
       await client.query('ROLLBACK');
@@ -34,4 +31,9 @@ export default class AdminService {
   }
 }
 
-const create_admin_query = (registerDTO: AdminRegistrationDTO) => {};
+const create_barrio_query = (acc_id: string, name: string) => {
+  return {
+    text: 'INSERT INTO barrio (id, name) values ($1, $2)',
+    values: [acc_id, name],
+  };
+};

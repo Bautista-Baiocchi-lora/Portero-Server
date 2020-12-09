@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AdminModule } from './admin/admin.module';
+import { BarrioModule } from './barrio/barrio.module';
 import UserModel from './user/user.modules';
 
 @Module({
-  imports: [UserModel, AdminModule],
+  imports: [UserModel, BarrioModule],
   controllers: [],
   providers: [],
 })
