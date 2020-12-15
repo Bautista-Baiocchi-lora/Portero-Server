@@ -1,6 +1,6 @@
 import Account from './account.entity';
 
-export const select = async (pg, email): Promise<Account> => {
+export const select_account = async (pg, email): Promise<Account> => {
   return pg.query(select_account_query(email));
 };
 

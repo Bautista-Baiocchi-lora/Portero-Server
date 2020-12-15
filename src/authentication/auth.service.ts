@@ -1,15 +1,19 @@
 import { Inject, Injectable } from '@nestjs/common';
-import AccountService from 'src/account/account.service';
+import { select_account } from 'src/account/account.repo';
+import { AuthenticationError } from './auth.error';
 import LogInDTO from './log.in.dto';
 
 @Injectable()
 export default class AuthenticationService {
-  constructor(
-    @Inject('postgres') private readonly pool,
-    private readonly accountService: AccountService,
-  ) {}
+  constructor(@Inject('postgres') private readonly pool) {}
 
   async authenticate(logInDTO: LogInDTO) {
-    return this.accountService.get(logInDTO.email);
+    const account = await select_account(this.pool, logInDTO.email);
+
+    if (account == null) {
+      throw new AuthenticationError('Invalid credentials.');
+    }
+
+    return true;
   }
 }
