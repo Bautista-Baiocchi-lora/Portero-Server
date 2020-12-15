@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 const { Pool } = require('pg');
 
 const connection = {
@@ -12,6 +12,7 @@ const connection = {
     }),
 };
 
+@Global()
 @Module({
   providers: [connection],
   exports: ['postgres'],

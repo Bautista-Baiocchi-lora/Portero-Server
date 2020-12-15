@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { Inject } from '@nestjs/common/decorators/core/inject.decorator';
 import { bcryptHash } from 'src/encryption';
+import Account from './account.entity';
+import { create_account, select } from './account.repo';
 
 @Injectable()
 export default class AccountService {
-  async register(client, email: string, password: string): Promise<string> {
+  constructor(@Inject('postgres') private readonly pool) {}
+
+  async register(email: string, password: string): Promise<string> {
     password = await bcryptHash(password);
 
-    return await client
-      .query(create_account_query(email, password))
-      .then((res) => res.rows[0].id);
+    return await create_account(this.pool, email, password);
+  }
+
+  async get(email: string): Promise<Account> {
+    return await select(this.pool, email);
   }
 }
-
-const create_account_query = (email: string, password: string) => {
-  return {
-    text: 'INSERT INTO account(email, password) values ($1, $2) returning id',
-    values: [email, password],
-  };
-};
