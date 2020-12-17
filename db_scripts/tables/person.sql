@@ -4,8 +4,7 @@ CREATE TABLE public.person
     first_name text not null,
     last_name text not null,
     birth_date date not null,
-    doc_id text not null,
-    unique(doc_id)
+    doc_id uuid REFERENCES person_document (id) ON DELETE RESTRICT
 )
 TABLESPACE pg_default;
 
