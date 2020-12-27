@@ -12,6 +12,7 @@ tables = [
 
 functions = [
     './functions/import_uuid_generator.sql',
+    './functions/insert_session.sql',
 ]
 
 scripts = types + tables + functions

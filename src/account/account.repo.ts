@@ -1,7 +1,7 @@
 import Account from './account.entity';
 
 export const select_account = async (pg, email): Promise<Account> => {
-  return pg.query(select_account_query(email));
+  return pg.query(select_account_query(email)).then((res) => res.rows[0]);
 };
 
 export const create_account = async (

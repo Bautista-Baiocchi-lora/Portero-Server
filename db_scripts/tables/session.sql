@@ -1,9 +1,9 @@
 CREATE TABLE public.session
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
-    acc_id uuid REFERENCES account (id) ON DELETE CASCADE,
-    last_ip text NOT NULL,
-    creation_date timestamp without time zone default current_timestamp
+    acc_id uuid not null REFERENCES account (id) ON DELETE CASCADE,
+    creation_date timestamp without time zone default current_timestamp,
+    exp timestamp without time zone not null
 )
 TABLESPACE pg_default;
 

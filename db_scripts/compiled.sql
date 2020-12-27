@@ -49,9 +49,9 @@ ALTER TABLE public.barrio
 CREATE TABLE public.session
 (
     id uuid PRIMARY KEY default uuid_generate_v1(),
-    acc_id uuid REFERENCES account (id) ON DELETE CASCADE,
-    last_ip text NOT NULL,
-    creation_date timestamp without time zone default current_timestamp
+    acc_id uuid not null REFERENCES account (id) ON DELETE CASCADE,
+    creation_date timestamp without time zone default current_timestamp,
+    exp timestamp without time zone not null
 )
 TABLESPACE pg_default;
 
@@ -61,4 +61,17 @@ ALTER TABLE public.session
 
 
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+create or replace function insert_session(
+    acc_idf uuid,
+    days_till_exp int
+)
+returns table(id uuid, acc_id uuid, exp timestamp without time zone), creation_date timestamp without time zone) as $$
+    declare
+    exp_date timestamp without time zone default current_timestamp + (days_till_exp * interval '1 day');
+    begin 
+        return query
+        insert into session (acc_id, exp) values (acc_idf, exp_date) returning *;
+    end
+$$ language plpgsql;
 
