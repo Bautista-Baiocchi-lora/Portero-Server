@@ -1,6 +1,3 @@
-
-## Description
-
 Backend server for portero mobile/web application. Made with NodeJs + Typescript using the [Nest](https://github.com/nestjs/nest) framework.
 
 ## Installation
