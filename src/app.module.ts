@@ -1,31 +1,13 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthenticationModule } from './authentication/auth.module';
-import BarrioModule from './barrio/barrio.module';
-import GuardiaModule from './guardia/guardia.module';
-import InviteModule from './invites/invite.module';
-import LoteModule from './lote/lote.module';
-import MessageModule from './message/message.module';
-import PropietarioModule from './propretario/propietario.module';
-import UserModule from './user/user.module';
+import { BarrioModule } from './barrio/barrio.module';
+import PostgresModule from './postgres/postgres.module';
+import UserModel from './user/user.modules';
 
 @Module({
-  imports: [
-    PropietarioModule,
-    MessageModule,
-    GuardiaModule,
-    UserModule,
-    BarrioModule,
-    InviteModule,
-    AuthenticationModule,
-    LoteModule,
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      database: 'test',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-    }),
-  ],
+  imports: [UserModel, BarrioModule, AuthenticationModule, PostgresModule],
+  controllers: [],
+  providers: [],
+  exports: [],
 })
 export class AppModule {}

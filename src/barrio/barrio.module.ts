@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import SessionModule from 'src/session/session.module';
 import BarrioController from './barrio.controller';
-import { BarrioService } from './barrio.service';
+import BarrioService from './barrio.service';
 
 @Module({
-  providers: [BarrioService],
+  imports: [],
   controllers: [BarrioController],
-  imports: [SessionModule],
+  providers: [BarrioService],
 })
-export default class BarrioModule {}
+export class BarrioModule {}

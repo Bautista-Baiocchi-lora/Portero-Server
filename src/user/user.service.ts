@@ -1,21 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import { Connection } from 'typeorm';
-import UserRegistrationDTO from './user.registration.dto';
-
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+import { Inject, Injectable } from '@nestjs/common';
+import { bcryptHash } from 'src/encryption';
+import UserRegistrationDTO from './user.register.dto';
+import { create_user } from './user.repo';
 
 @Injectable()
 export default class UserService {
-  constructor(private readonly connection: Connection) {}
+  constructor(@Inject('postgres') private readonly pool) {}
 
   async register(registerDTO: UserRegistrationDTO): Promise<boolean> {
-    registerDTO.password = await bcrypt.hash(registerDTO.password, saltRounds);
-    return await this.connection.query(insert_query(registerDTO)).then(response => !!response);
+    const client = await this.pool.connect();
+
+    registerDTO.password = await bcryptHash(registerDTO.password);
+
+    return await create_user(client, registerDTO);
   }
 }
-
-const insert_query = (registerDTO: UserRegistrationDTO): string => {
-  const { email, password, first_name, last_name, birth_date, doc_id } = registerDTO;
-  return `SELECT * from insert_user('${email}', '${password}', '${first_name}', '${last_name}', '${birth_date}'::date, '${doc_id}');`;
-};
